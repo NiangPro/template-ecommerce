@@ -6,8 +6,9 @@
             <!-- LOGO -->
             <div class="col-md-3">
                 <div class="header-logo">
-                    <a href="#" class="logo">
+                    <a href="{{route("accueil")}}" class="logo">
                         <img src="assets/img/logo.png" alt="">
+                        {{-- Mak<span class="text-danger">Fuz</span> --}}
                     </a>
                 </div>
             </div>
@@ -34,7 +35,7 @@
                 <div class="header-ctn">
                     <!-- Wishlist -->
                     <div>
-                        <a href="#">
+                        <a href="{{route("home")}}">
                             <i class="fa fa-heart-o"></i>
                             <span>Your Wishlist</span>
                             <div class="qty">2</div>
