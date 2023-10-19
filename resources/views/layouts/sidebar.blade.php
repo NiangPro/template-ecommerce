@@ -4,7 +4,7 @@
             <img src="themes/images/logo-icon.png" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Makfuz</h4>
+            <h4 class="logo-text">Makhfuz</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
@@ -12,48 +12,72 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="index.html">
+            <a href="{{route("home")}}">
                 <div class="parent-icon"><i class='bx bx-home-circle'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
-        <li class="menu-label">UI Elements</li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
                 </div>
-                <div class="menu-title">Components</div>
+                <div class="menu-title">Utilisateurs</div>
             </a>
             <ul>
-                <li> <a href="component-buttons.html"><i class="bx bx-right-arrow-alt"></i>Buttons</a>
+                <li> <a href="{{route("client")}}"><i class="bx bx-right-arrow-alt"></i>Clients</a>
                 </li>
-                <li> <a href="component-cards.html"><i class="bx bx-right-arrow-alt"></i>Cards</a>
+                <li> <a href="{{route("admin")}}"><i class="bx bx-right-arrow-alt"></i>Admins</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-repeat"></i>
+            <a href="{{route("product")}}">
+                <div class="parent-icon"><i class="bx bx-user-circle"></i>
                 </div>
-                <div class="menu-title">Content</div>
+                <div class="menu-title">Produits</div>
             </a>
-            <ul>
-                <li> <a href="content-grid-system.html"><i class="bx bx-right-arrow-alt"></i>Grid System</a>
-                </li>
-                <li> <a href="content-typography.html"><i class="bx bx-right-arrow-alt"></i>Typography</a>
-                </li>
-                <li> <a href="content-text-utilities.html"><i class="bx bx-right-arrow-alt"></i>Text Utilities</a>
-                </li>
-            </ul>
         </li>
-        
-        <li class="menu-label">Addons</li>
+        <li>
+            <a href="{{route("category")}}">
+                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                </div>
+                <div class="menu-title">Categories</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route("bareme")}}">
+                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                </div>
+                <div class="menu-title">Barèmes</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route("acheminement")}}">
+                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                </div>
+                <div class="menu-title">Mode Acheminement</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route("commentaire")}}">
+                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                </div>
+                <div class="menu-title">Commentaires</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route("commande")}}">
+                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                </div>
+                <div class="menu-title">Commandes</div>
+            </a>
+        </li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-lock"></i>
                 </div>
-                <div class="menu-title">Authentication</div>
+                <div class="menu-title">Parametres</div>
             </a>
             <ul>
                 <li> <a href="authentication-signin.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign In</a>
@@ -67,19 +91,7 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="charts-chartjs.html">
-                <div class="parent-icon"><i class="bx bx-user-circle"></i>
-                </div>
-                <div class="menu-title">Charts</div>
-            </a>
-        </li>
-        <li>
-            <a href="table-datatable.html">
-                <div class="parent-icon"> <i class="bx bx-video-recording"></i>
-                </div>
-                <div class="menu-title">Tables</div>
-            </a>
-        </li>
+        
+        
     </ul>
 </div>
