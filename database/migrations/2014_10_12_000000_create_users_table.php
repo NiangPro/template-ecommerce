@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('pays')->nullable();
             $table->string('nationalite')->nullable();
             $table->string('tel');
+            $table->string('role')->nullable();
             $table->string('tel2')->nullable();
             $table->string('pseudo')->unique();
             $table->string('email')->unique();
