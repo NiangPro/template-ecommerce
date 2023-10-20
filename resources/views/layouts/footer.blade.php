@@ -1,93 +1,133 @@
-<footer id="footer">
-    <!-- top footer -->
-    <div class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">About Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
-                        <ul class="footer-links">
-                            <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
-                        </ul>
+<!-- Start Footer Section -->
+<footer class="footer-section footer-bg section-top-gap-100">
+    <div class="footer-wrapper">
+        <!-- Start Footer Top -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row mb-n6">
+                    <div class="col-lg-3 col-sm-6 mb-6">
+                        <!-- Start Footer Single Item -->
+                        <div class="footer-widget-single-item footer-widget-color--pink" data-aos="fade-up"
+                            data-aos-delay="0">
+                            <h5 class="title">INFORMATION</h5>
+                            <ul class="footer-nav">
+                                <li><a href="#">Delivery Information</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a href="#">Returns</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Footer Single Item -->
                     </div>
-                </div>
-
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Categories</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">Hot deals</a></li>
-                            <li><a href="#">Laptops</a></li>
-                            <li><a href="#">Smartphones</a></li>
-                            <li><a href="#">Cameras</a></li>
-                            <li><a href="#">Accessories</a></li>
-                        </ul>
+                    <div class="col-lg-3 col-sm-6 mb-6">
+                        <!-- Start Footer Single Item -->
+                        <div class="footer-widget-single-item footer-widget-color--pink" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <h5 class="title">MY ACCOUNT</h5>
+                            <ul class="footer-nav">
+                                <li><a href="my-account.html">My account</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="faq.html">Frequently Questions</a></li>
+                                <li><a href="#">Order History</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Footer Single Item -->
                     </div>
-                </div>
-
-                <div class="clearfix visible-xs"></div>
-
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Information</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Orders and Returns</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                        </ul>
+                    <div class="col-lg-3 col-sm-6 mb-6">
+                        <!-- Start Footer Single Item -->
+                        <div class="footer-widget-single-item footer-widget-color--pink" data-aos="fade-up"
+                            data-aos-delay="400">
+                            <h5 class="title">CATEGORIES</h5>
+                            <ul class="footer-nav">
+                                <li><a href="#">Decorative</a></li>
+                                <li><a href="#">Kitchen utensils</a></li>
+                                <li><a href="#">Chair & Bar stools</a></li>
+                                <li><a href="#">Sofas and Armchairs</a></li>
+                                <li><a href="#">Interior lighting</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Footer Single Item -->
                     </div>
-                </div>
+                    <div class="col-lg-3 col-sm-6 mb-6">
+                        <!-- Start Footer Single Item -->
+                        <div class="footer-widget-single-item footer-widget-color--pink" data-aos="fade-up"
+                            data-aos-delay="600">
+                            <h5 class="title">ABOUT US</h5>
+                            <div class="footer-about">
+                                <p>We are a team of designers and developers that create high quality Magento,
+                                    Prestashop, Opencart.</p>
 
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Service</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">View Cart</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Track My Order</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
+                                <address>
+                                    <span>Address: Your address goes here.</span>
+                                    <span>Email: demo@example.com</span>
+                                </address>
+                            </div>
+                        </div>
+                        <!-- End Footer Single Item -->
                     </div>
                 </div>
             </div>
-            <!-- /row -->
         </div>
-        <!-- /container -->
-    </div>
-    <!-- /top footer -->
+        <!-- End Footer Top -->
 
-    <!-- bottom footer -->
-    <div id="bottom-footer" class="section">
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <ul class="footer-payments">
-                        <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-                        <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-                    </ul>
-                    <span class="copyright">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </span>
+        <!-- Start Footer Center -->
+        <div class="footer-center">
+            <div class="container">
+                <div class="row mb-n6">
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-6">
+                        <div class="footer-social" data-aos="fade-up" data-aos-delay="0">
+                            <h4 class="title">FOLLOW US</h4>
+                            <ul class="footer-social-link">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-6 col-md-6 mb-6">
+                        <div class="footer-newsletter" data-aos="fade-up" data-aos-delay="200">
+                            <h4 class="title">DON'T MISS OUT ON THE LATEST</h4>
+                            <div class="form-newsletter">
+                                <form action="#" method="post">
+                                    <div class="form-fild-newsletter-single-item input-color--pink">
+                                        <input type="email" placeholder="Your email address..." required>
+                                        <button type="submit">SUBSCRIBE!</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-                <!-- /row -->
         </div>
-        <!-- /container -->
+        <!-- Start Footer Center -->
+
+        <!-- Start Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div
+                    class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
+                    <div class="col-auto mb-6">
+                        <div class="footer-copyright">
+                            <p class="copyright-text">&copy; 2021 <a href="index.html">therankme</a>. Made with <i
+                                    class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/"
+                                    target="_blank">therankme</a> </p>
+
+                        </div>
+                    </div>
+                    <div class="col-auto mb-6">
+                        <div class="footer-payment">
+                            <div class="image">
+                                <img src="assets/images/company-logo/payment.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Start Footer Bottom -->
     </div>
-    <!-- /bottom footer -->
 </footer>
+<!-- End Footer Section -->

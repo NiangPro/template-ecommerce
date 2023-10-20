@@ -9,64 +9,61 @@
 
 		<title>Makhfuz</title>
 
-		<!-- Google font -->
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
+        <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
+        <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
 
-		<!-- Bootstrap -->
-		<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+        <!-- Plugin CSS -->
+        <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
+        <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
+        <link rel="stylesheet" href="assets/css/plugins/venobox.min.css">
+        <link rel="stylesheet" href="assets/css/plugins/jquery.lineProgressbar.css">
+        <link rel="stylesheet" href="assets/css/plugins/aos.min.css">
 
-		<!-- Slick -->
-		<link type="text/css" rel="stylesheet" href="assets/css/slick.css"/>
-		<link type="text/css" rel="stylesheet" href="assets/css/slick-theme.css"/>
-
-		<!-- nouislider -->
-		<link type="text/css" rel="stylesheet" href="assets/css/nouislider.min.css"/>
-
-		<!-- Font Awesome Icon -->
-		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-		<!-- Custom stlylesheet -->
-		<link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
-
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
         @livewireStyles
     </head>
 	<body>
 		<!-- HEADER -->
-		<header>
-			<!-- TOP HEADER -->
-			@include('layouts.topheader')
-			<!-- /TOP HEADER -->
-
+		
 			<!-- MAIN HEADER -->
 			@include('layouts.mainheader')
-			<!-- /MAIN HEADER -->
-		</header>
-		<!-- /HEADER -->
-
-		<!-- NAVIGATION -->
-		@include('layouts.navigation')
-		<!-- /NAVIGATION -->
+		<div class="offcanvas-overlay"></div>
         {{$slot}}
 		
 
 		<!-- FOOTER -->
 		@include('layouts.footer')
 		<!-- /FOOTER -->
+<!-- Global Vendor, plugins JS -->
+<script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
+<script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+<script src="assets/js/vendor/popper.min.js"></script>
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<script src="assets/js/vendor/jquery-ui.min.js"></script>
 
-		<!-- jQuery Plugins -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/slick.min.js"></script>
-		<script src="assets/js/nouislider.min.js"></script>
-		<script src="assets/js/jquery.zoom.min.js"></script>
-		<script src="assets/js/main.js"></script>
+<!--Plugins JS-->
+<script src="assets/js/plugins/swiper-bundle.min.js"></script>
+<script src="assets/js/plugins/material-scrolltop.js"></script>
+<script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+<script src="assets/js/plugins/jquery.zoom.min.js"></script>
+<script src="assets/js/plugins/venobox.min.js"></script>
+<script src="assets/js/plugins/jquery.waypoints.js"></script>
+<script src="assets/js/plugins/jquery.lineProgressbar.js"></script>
+<script src="assets/js/plugins/aos.min.js"></script>
+<script src="assets/js/plugins/jquery.instagramFeed.js"></script>
+<script src="assets/js/plugins/ajax-mail.js"></script>
+
+<!-- Use the minified version files listed below for better performance and remove the files listed above -->
+<!-- <script src="assets/js/vendor/vendor.min.js"></script>
+<script src="assets/js/plugins/plugins.min.js"></script> -->
+
+<!-- Main JS -->
+<script src="assets/js/main.js"></script>
 
         @livewireScripts
 	</body>
