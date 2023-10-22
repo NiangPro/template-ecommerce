@@ -8,6 +8,6 @@ class Commande extends Component
 {
     public function render()
     {
-        return view('livewire.commande')->layout("layouts.dashboard");
+        return view('livewire.admin.commande')->layout("layouts.dashboard");
     }
 }

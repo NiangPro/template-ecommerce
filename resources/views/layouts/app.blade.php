@@ -1,70 +1,49 @@
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <head>
+        <meta charset="utf-8">
+        <title>Niang&Famille</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="eCommerce HTML Template Free Download" name="keywords">
+        <meta content="eCommerce HTML Template Free Download" name="description">
 
-		<title>Makhfuz</title>
+        <!-- Favicon -->
+        <link href="assets/img/logo.png" rel="icon">
 
-		<link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
-        <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
-        <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
 
-        <!-- Plugin CSS -->
-        <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css">
-        <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
-        <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
-        <link rel="stylesheet" href="assets/css/plugins/venobox.min.css">
-        <link rel="stylesheet" href="assets/css/plugins/jquery.lineProgressbar.css">
-        <link rel="stylesheet" href="assets/css/plugins/aos.min.css">
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="assets/lib/slick/slick.css" rel="stylesheet">
+        <link href="assets/lib/slick/slick-theme.css" rel="stylesheet">
 
-        <!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- Template Stylesheet -->
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/iziToast.min.css" rel="stylesheet">
         @livewireStyles
     </head>
-	<body>
-		<!-- HEADER -->
-		
-			<!-- MAIN HEADER -->
-			@include('layouts.mainheader')
-		<div class="offcanvas-overlay"></div>
-        {{$slot}}
-		
 
-		<!-- FOOTER -->
-		@include('layouts.footer')
-		<!-- /FOOTER -->
-<!-- Global Vendor, plugins JS -->
-<script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
-<script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
-<script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-<script src="assets/js/vendor/popper.min.js"></script>
-<script src="assets/js/vendor/bootstrap.min.js"></script>
-<script src="assets/js/vendor/jquery-ui.min.js"></script>
-
-<!--Plugins JS-->
-<script src="assets/js/plugins/swiper-bundle.min.js"></script>
-<script src="assets/js/plugins/material-scrolltop.js"></script>
-<script src="assets/js/plugins/jquery.nice-select.min.js"></script>
-<script src="assets/js/plugins/jquery.zoom.min.js"></script>
-<script src="assets/js/plugins/venobox.min.js"></script>
-<script src="assets/js/plugins/jquery.waypoints.js"></script>
-<script src="assets/js/plugins/jquery.lineProgressbar.js"></script>
-<script src="assets/js/plugins/aos.min.js"></script>
-<script src="assets/js/plugins/jquery.instagramFeed.js"></script>
-<script src="assets/js/plugins/ajax-mail.js"></script>
-
-<!-- Use the minified version files listed below for better performance and remove the files listed above -->
-<!-- <script src="assets/js/vendor/vendor.min.js"></script>
-<script src="assets/js/plugins/plugins.min.js"></script> -->
-
-<!-- Main JS -->
-<script src="assets/js/main.js"></script>
-
+    <body>
+        @include('themes.navbar')
+            {{$slot}}    
+        @include('themes.footer')
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/lib/easing/easing.min.js"></script>
+        <script src="assets/lib/slick/slick.min.js"></script>
+        
+        <!-- Template Javascript -->
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/iziToast.min.js"></script>
+        @yield("js")
         @livewireScripts
-	</body>
+    </body>
 </html>

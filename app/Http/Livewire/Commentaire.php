@@ -8,6 +8,6 @@ class Commentaire extends Component
 {
     public function render()
     {
-        return view('livewire.commentaire')->layout("layouts.dashboard");
+        return view('livewire.admin.commentaire')->layout("layouts.dashboard");
     }
 }

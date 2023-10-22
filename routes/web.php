@@ -1,16 +1,23 @@
 <?php
 
+use App\Http\Livewire\Account;
 use App\Http\Livewire\Accueil;
 use App\Http\Livewire\Acheminement;
 use App\Http\Livewire\Admins;
+use App\Http\Livewire\ArchiveProduct;
 use App\Http\Livewire\Baremes;
+use App\Http\Livewire\Cart;
 use App\Http\Livewire\Categories;
+use App\Http\Livewire\Checkout;
 use App\Http\Livewire\Clients;
 use App\Http\Livewire\Commande;
 use App\Http\Livewire\Commentaire;
+use App\Http\Livewire\Contactus;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Products;
+use App\Http\Livewire\SingleProduct;
+use App\Http\Livewire\Wishlist;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +46,11 @@ Route::get("commentaires", Commentaire::class)->name("commentaire");
 Route::get("commande", Commande::class)->name("commande");
 Route::get("clients", Clients::class)->name("client");
 Route::get("administrateurs", Admins::class)->name("admin");
+Route::get("carts", Cart::class)->name("cart");
+Route::get("checkout", Checkout::class)->name("checkout");
+Route::get("contact", Contactus::class)->name("contactus");
+Route::get("account", Account::class)->name("account");
+Route::get("wishlist", Wishlist::class)->name("wishlist");
+Route::get("single-produit", SingleProduct::class)->name("singleProduct");
+Route::get("archive-produit", ArchiveProduct::class)->name("archiveProduct");
+
