@@ -8,6 +8,6 @@ class Acheminement extends Component
 {
     public function render()
     {
-        return view('livewire.acheminement')->layout("layouts.dashboard");
+        return view('livewire.admin.acheminement')->layout("layouts.dashboard");
     }
 }

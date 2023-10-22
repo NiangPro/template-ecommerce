@@ -8,6 +8,6 @@ class Accueil extends Component
 {
     public function render()
     {
-        return view('livewire.accueil')->layout("layouts.app");
+        return view('livewire.frontend.accueil')->layout("layouts.app");
     }
 }

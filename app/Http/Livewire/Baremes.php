@@ -8,6 +8,6 @@ class Baremes extends Component
 {
     public function render()
     {
-        return view('livewire.baremes')->layout("layouts.dashboard");
+        return view('livewire.admin.baremes')->layout("layouts.dashboard");
     }
 }

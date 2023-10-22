@@ -1,465 +1,239 @@
-(function($) {
+(function ($) {
     "use strict";
-
-    /*****************************
-     * Commons Variables
-     *****************************/
-    var $window = $(window),
-        $body = $('body');
-
-    /****************************
-     * Sticky Menu
-     *****************************/
-    $(window).on('scroll', function() {
-        var scroll = $(window).scrollTop();
-        if (scroll < 100) {
-            $(".sticky-header").removeClass("sticky");
-        } else {
-            $(".sticky-header").addClass("sticky");
-        }
-    });
-
-    $(window).on('scroll', function() {
-        var scroll = $(window).scrollTop();
-        if (scroll < 100) {
-            $(".seperate-sticky-bar").removeClass("sticky");
-        } else {
-            $(".seperate-sticky-bar").addClass("sticky");
-        }
-    });
-
-    /************************************************
-     * Modal Search 
-     ***********************************************/
-    $('a[href="#search"]').on('click', function(event) {
-        event.preventDefault();
-        $('#search').addClass('open');
-        $('#search > form > input[type="search"]').focus();
-    });
-
-    $('#search, #search button.close').on('click', function(event) {
-        if ( event.target.className == 'close' ) {
-            $(this).removeClass('open');
-        }
-    });
-
-    /*****************************
-     * Off Canvas Function
-     *****************************/
-    (function() {
-        var $offCanvasToggle = $('.offcanvas-toggle'),
-            $offCanvas = $('.offcanvas'),
-            $offCanvasOverlay = $('.offcanvas-overlay'),
-            $mobileMenuToggle = $('.mobile-menu-toggle');
-        $offCanvasToggle.on('click', function(e) {
-            e.preventDefault();
-            var $this = $(this),
-                $target = $this.attr('href');
-            $body.addClass('offcanvas-open');
-            $($target).addClass('offcanvas-open');
-            $offCanvasOverlay.fadeIn();
-            if ($this.parent().hasClass('mobile-menu-toggle')) {
-                $this.addClass('close');
+    
+    // Dropdown on mouse hover
+    $(document).ready(function () {
+        function toggleNavbarMethod() {
+            if ($(window).width() > 768) {
+                $('.navbar .dropdown').on('mouseover', function () {
+                    $('.dropdown-toggle', this).trigger('click');
+                }).on('mouseout', function () {
+                    $('.dropdown-toggle', this).trigger('click').blur();
+                });
+            } else {
+                $('.navbar .dropdown').off('mouseover').off('mouseout');
             }
-        });
-        $('.offcanvas-close, .offcanvas-overlay').on('click', function(e) {
-            e.preventDefault();
-            $body.removeClass('offcanvas-open');
-            $offCanvas.removeClass('offcanvas-open');
-            $offCanvasOverlay.fadeOut();
-            $mobileMenuToggle.find('a').removeClass('close');
-        });
-    })();
-
-
-    /**************************
-     * Offcanvas: Menu Content
-     **************************/
-    function mobileOffCanvasMenu() {
-        var $offCanvasNav = $('.offcanvas-menu'),
-            $offCanvasNavSubMenu = $offCanvasNav.find('.mobile-sub-menu');
-
-        /*Add Toggle Button With Off Canvas Sub Menu*/
-        $offCanvasNavSubMenu.parent().prepend('<div class="offcanvas-menu-expand"></div>');
-
-        /*Category Sub Menu Toggle*/
-        $offCanvasNav.on('click', 'li a, .offcanvas-menu-expand', function(e) {
-            var $this = $(this);
-            if ($this.attr('href') === '#' || $this.hasClass('offcanvas-menu-expand')) {
-                e.preventDefault();
-                if ($this.siblings('ul:visible').length) {
-                    $this.parent('li').removeClass('active');
-                    $this.siblings('ul').slideUp();
-                    $this.parent('li').find('li').removeClass('active');
-                    $this.parent('li').find('ul:visible').slideUp();
-                } else {
-                    $this.parent('li').addClass('active');
-                    $this.closest('li').siblings('li').removeClass('active').find('li').removeClass('active');
-                    $this.closest('li').siblings('li').find('ul:visible').slideUp();
-                    $this.siblings('ul').slideDown();
+        }
+        toggleNavbarMethod();
+        $(window).resize(toggleNavbarMethod);
+    });
+    
+    
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+    $('.back-to-top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        return false;
+    });
+    
+    
+    // Header slider
+    $('.header-slider').slick({
+        autoplay: true,
+        dots: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+    
+    
+    // Product Slider 4 Column
+    $('.product-slider-4').slick({
+        autoplay: true,
+        infinite: true,
+        dots: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ]
+    });
+    
+    
+    // Product Slider 3 Column
+    $('.product-slider-3').slick({
+        autoplay: true,
+        infinite: true,
+        dots: false,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ]
+    });
+    
+    
+    // Product Detail Slider
+    $('.product-slider-single').slick({
+        infinite: true,
+        autoplay: true,
+        dots: false,
+        fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        asNavFor: '.product-slider-single-nav'
+    });
+    $('.product-slider-single-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true,
+        asNavFor: '.product-slider-single'
+    });
+    
+    
+    // Brand Slider
+    $('.brand-slider').slick({
+        speed: 5000,
+        autoplay: true,
+        autoplaySpeed: 0,
+        cssEase: 'linear',
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        infinite: true,
+        swipeToSlide: true,
+        centerMode: true,
+        focusOnSelect: false,
+        arrows: false,
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 300,
+                settings: {
+                    slidesToShow: 1,
                 }
             }
-        });
-    }
-    mobileOffCanvasMenu();
-
-    /************************************************
-     * Nice Select
-     ***********************************************/
-    $('select').niceSelect();
-
-
-    /*************************
-     *   Hero Slider Active
-     **************************/
-    var heroSlider = new Swiper('.hero-slider-active.swiper-container', {
-        slidesPerView: 1,
-        effect: "fade",
-        speed: 1500,
-        watchSlidesProgress: true,
-        loop: true,
-        autoplay: false,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+        ]
     });
-
-
-    /****************************************
-     *   Product Slider Active - 4 Grid 2 Rows
-     *****************************************/
-    var productSlider4grid2row = new Swiper('.product-default-slider-4grid-2row.swiper-container', {
-        slidesPerView: 4,
-        spaceBetween: 30,
-        speed: 1500,
-        slidesPerColumn: 2,
-        slidesPerColumnFill: 'row',
-
-        navigation: {
-            nextEl: '.product-slider-default-2rows .swiper-button-next',
-            prevEl: '.product-slider-default-2rows .swiper-button-prev',
-        },
-
-        breakpoints: {
-
-            0: {
-                slidesPerView: 1,
-            },
-            576: {
-                slidesPerView: 2,
-            },
-            768: {
-                slidesPerView: 2,
-            },
-            992: {
-                slidesPerView: 3,
-            },
-            1200: {
-                slidesPerView: 4,
+    
+    
+    // Review slider
+    $('.review-slider').slick({
+        autoplay: true,
+        dots: false,
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    });
+    
+    
+    // Widget slider
+    $('.sidebar-slider').slick({
+        autoplay: true,
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+    
+    
+    // Quantity
+    $('.qty button').on('click', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        if ($button.hasClass('btn-plus')) {
+            var newVal = parseFloat(oldValue) + 1;
+        } else {
+            if (oldValue > 0) {
+                var newVal = parseFloat(oldValue) - 1;
+            } else {
+                newVal = 0;
             }
         }
+        $button.parent().find('input').val(newVal);
     });
-
-
-    /*********************************************
-     *   Product Slider Active - 4 Grid Single Rows
-     **********************************************/
-    var productSlider4grid1row = new Swiper('.product-default-slider-4grid-1row.swiper-container', {
-        slidesPerView: 4,
-        spaceBetween: 30,
-        speed: 1500,
-
-        navigation: {
-            nextEl: '.product-slider-default-1row .swiper-button-next',
-            prevEl: '.product-slider-default-1row .swiper-button-prev',
-        },
-
-        breakpoints: {
-
-            0: {
-                slidesPerView: 1,
-            },
-            576: {
-                slidesPerView: 2,
-            },
-            768: {
-                slidesPerView: 2,
-            },
-            992: {
-                slidesPerView: 3,
-            },
-            1200: {
-                slidesPerView: 4,
-            }
+    
+    
+    // Shipping address show hide
+    $('.checkout #shipto').change(function () {
+        if($(this).is(':checked')) {
+            $('.checkout .shipping-address').slideDown();
+        } else {
+            $('.checkout .shipping-address').slideUp();
         }
     });
-
-    /*********************************************
-     *   Product Slider Active - 4 Grid Single 3Rows
-     **********************************************/
-    var productSliderListview4grid3row = new Swiper('.product-listview-slider-4grid-3rows.swiper-container', {
-        slidesPerView: 4,
-        spaceBetween: 30,
-        speed: 1500,
-        slidesPerColumn: 3,
-        slidesPerColumnFill: 'row',
-
-        navigation: {
-            nextEl: '.product-list-slider-3rows .swiper-button-next',
-            prevEl: '.product-list-slider-3rows .swiper-button-prev',
-        },
-
-        breakpoints: {
-
-            0: {
-                slidesPerView: 1,
-            },
-            640: {
-                slidesPerView: 2,
-            },
-            768: {
-                slidesPerView: 2,
-            },
-            992: {
-                slidesPerView: 3,
-            },
-            1200: {
-                slidesPerView: 4,
-            }
+    
+    
+    // Payment methods show hide
+    $('.checkout .payment-method .custom-control-input').change(function () {
+        if ($(this).prop('checked')) {
+            var checkbox_id = $(this).attr('id');
+            $('.checkout .payment-method .payment-content').slideUp();
+            $('#' + checkbox_id + '-show').slideDown();
         }
     });
-
-
-    /*********************************************
-     *   Blog Slider Active - 3 Grid Single Rows
-     **********************************************/
-    var blogSlider = new Swiper('.blog-slider.swiper-container', {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        speed: 1500,
-
-        navigation: {
-            nextEl: '.blog-default-slider .swiper-button-next',
-            prevEl: '.blog-default-slider .swiper-button-prev',
-        },
-        breakpoints: {
-
-            0: {
-                slidesPerView: 1,
-            },
-            576: {
-                slidesPerView: 2,
-            },
-            768: {
-                slidesPerView: 2,
-            },
-            992: {
-                slidesPerView: 3,
-            },
-        }
-    });
-
-
-    /*********************************************
-     *   Company Logo Slider Active - 7 Grid Single Rows
-     **********************************************/
-    var companyLogoSlider = new Swiper('.company-logo-slider.swiper-container', {
-        slidesPerView: 7,
-        speed: 1500,
-
-        navigation: {
-            nextEl: '.company-logo-slider .swiper-button-next',
-            prevEl: '.company-logo-slider .swiper-button-prev',
-        },
-        breakpoints: {
-
-            0: {
-                slidesPerView: 1,
-            },
-            480: {
-                slidesPerView: 2,
-            },
-            768: {
-                slidesPerView: 3,
-            },
-            992: {
-                slidesPerView: 3,
-            },
-            1200: {
-                slidesPerView: 7,
-            },
-        }
-    });
-
-    /********************************
-     *  Product Gallery - Horizontal View
-     **********************************/
-    var galleryThumbsHorizontal = new Swiper('.product-image-thumb-horizontal.swiper-container', {
-        loop: true,
-        speed: 1000,
-        spaceBetween: 25,
-        slidesPerView: 4,
-        freeMode: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-    });
-
-    var gallerylargeHorizonatal = new Swiper('.product-large-image-horaizontal.swiper-container', {
-        slidesPerView: 1,
-        speed: 1500,
-        thumbs: {
-            swiper: galleryThumbsHorizontal
-        }
-    });
-
-    /********************************
-     *  Product Gallery - Vertical View
-     **********************************/
-    var galleryThumbsvartical = new Swiper('.product-image-thumb-vartical.swiper-container', {
-        direction: 'vertical',
-        centeredSlidesBounds: true,
-        slidesPerView: 4,
-        watchOverflow: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        spaceBetween: 25,
-        freeMode: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-    });
-
-    var gallerylargeVartical = new Swiper('.product-large-image-vartical.swiper-container', {
-        slidesPerView: 1,
-        speed: 1500,
-        thumbs: {
-            swiper: galleryThumbsvartical
-        }
-    });
-
-    /********************************
-     *  Product Gallery - Single Slide View
-     * *********************************/
-    var singleSlide = new Swiper('.product-image-single-slide.swiper-container', {
-        loop: true,
-        speed: 1000,
-        spaceBetween: 25,
-        slidesPerView: 4,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-        breakpoints: {
-            0: {
-                slidesPerView: 1,
-            },
-            576: {
-                slidesPerView: 2,
-            },
-            768: {
-                slidesPerView: 3,
-            },
-            992: {
-                slidesPerView: 4,
-            },
-            1200: {
-                slidesPerView: 4,
-            },
-        }
-
-    });
-
-    /******************************************************
-     * Quickview Product Gallery - Horizontal
-     ******************************************************/
-    var modalGalleryThumbs = new Swiper('.modal-product-image-thumb', {
-        spaceBetween: 10,
-        slidesPerView: 4,
-        freeMode: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      });
-
-      var modalGalleryTop = new Swiper('.modal-product-image-large', { 
-        thumbs: {
-          swiper: modalGalleryThumbs
-        }
-      });
-
-    /********************************
-     * Blog List Slider - Single Slide
-     * *********************************/
-    var blogListSLider = new Swiper('.blog-list-slider.swiper-container', {
-        loop: true,
-        speed: 1000,
-        slidesPerView: 1,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-    });
-
-    /********************************
-     *  Product Gallery - Image Zoom
-     **********************************/
-    $('.zoom-image-hover').zoom();
-
-
-    /************************************************
-     * Price Slider
-     ***********************************************/
-    $("#slider-range").slider({
-        range: true,
-        min: 0,
-        max: 500,
-        values: [75, 300],
-        slide: function(event, ui) {
-            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-        }
-    });
-    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-        " - $" + $("#slider-range").slider("values", 1));
-
-
-
-    /************************************************
-     * Animate on Scroll
-     ***********************************************/
-    AOS.init({
-       
-        duration: 1000, 
-        once: true, 
-        easing: 'ease',
-    });
-    window.addEventListener('load', AOS.refresh);    
-
-    /************************************************
-     * Video  Popup
-     ***********************************************/
-    $('.video-play-btn').venobox(); 
-
-    /************************************************
-     * Scroll Top
-     ***********************************************/
-    $('body').materialScrollTop();
-
-
 })(jQuery);
+
