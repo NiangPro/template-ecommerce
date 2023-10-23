@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class Login extends Component
@@ -43,36 +45,52 @@ class Login extends Component
         'form2.password.required' => 'Le mot de passe est requis',
     ];
 
-    public function store()
-    {
+    // connexion
+    public function login(){
         $this->validate([
-            'form1.prenom' => "required|string",
-            'form1.nom' => "required|string",
-            'form1.nationalite' => "required|string",
-            'form1.pays' => "required|string",
-            'form1.pseudo' => "nullable|string",
-            'form1.adresse' => "required|string",
-            'form1.role' => "required|string",
+            "form2.email" => "required|email",
+            "form2.password" => "required",
+        ]);
+        if(Auth::attempt(['email' => $this->form2['email'], 'password' => $this->form2['password']]))
+        {
+            return redirect(route('home'));
+        }else{
+            $this->dispatchBrowserEvent("badConnection");
+        }
+    }
+
+    // inscription
+    public function register(){
+        $this->form1['role'] = "client";
+        $this->validate([
+            'form1.prenom' => 'required|string',
+            'form1.nom' => 'required|string',
+            'form1.nationalite' => 'nullable|string',
+            'form1.pays' => 'nullable|string',
+            'form1.pseudo' => 'required|string',
+            'form1.adresse' => 'required|string',
+            'form1.role' => 'required|string',
             'form1.tel' => ['required', 'min:9', 'max:9', 'regex:/^[33|70|75|76|77|78]+[0-9]{7}$/'],
-            'form1.tel2' => "nullable|string",
-            'form1.email' => "required|string",
-            'form1.password' => "required|string",
+            'form1.tel2' => 'nullable|string',
+            'form1.email' => 'required|string',
+            'form1.password' => 'required|confirmed|string',
         ]);
 
         User::create([
             'prenom' => $this->form1['prenom'],
             'nom' => $this->form1['nom'],
-            'nationalite' => $this->form1['nationalite'],
-            'pays' => $this->form1['pays'],
-            'pseudo' => $this->form1['pseudo'],
-            'adresse' => $this->form1['adresse'],
-            'role' => 'client',
+            'nationalite' => $this->form1['nationalite'] ?: null,
+            'pays' => $this->form1['pays'] ?: null,
+            'pseudo' => $this->form1['pseudo'] ?: null,
+            'adresse' => $this->form1['adresse'], 
+            'role' => $this->form1['role'],
             'tel' => $this->form1['tel'],
-            'tel2' => $this->form1['tel2'],
+            'tel2' => $this->form1['tel2']  ?: null,
             'email' => $this->form1['email'],
-            'password' => $this->form1['password']
+            'password' => Hash::make($this->form1['password']),
         ]);
 
+        $this->dispatchBrowserEvent("addSuccessful");
         $this->initForm();
         return redirect(route('login'));
     }
