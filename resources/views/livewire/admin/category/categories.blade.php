@@ -11,7 +11,11 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
+                @if($type != "list")
+                <button  wire:click.prevent="changeType('list')" class="btn btn-info">Retour</button>
+                @else
                 <button  wire:click.prevent="changeType('add')" class="btn btn-success">Ajouter</button>
+                @endif
             </div>
         </div>
     </div>
@@ -20,38 +24,49 @@
         <div class="card-body">
            <div class="d-flex align-items-center">
                <div>
-                   <h6 class="mb-0">La liste des categories</h6>
+                   <h6 class="mb-0">{{$title}}</h6>
                </div>
                
            </div>
             <div class="table-responsive">
-                @if($type == "add")
+                @if($type == "add" || $type == "edit")
                     @include('livewire.admin.category.add')
                 @else
-                <table class="table align-middle mb-0">
-                <thead class="table-light">
-                    <tr>
-                    <th>Product</th>
-                    <th>Photo</th>
-                    <th>Product ID</th>
-                    <th>Status</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    </tr>
+                <table id="example" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>Iphone 5</td>
-                        <td><img src="assets/images/products/01.png" class="product-img-2" alt="product img"></td>
-                        <td>#9405822</td>
-                        <td><span class="badge bg-success text-white shadow-sm">Paid</span></td>
-                        <td>$1250.00</td>
-                        <td>03 Feb 2020</td>
-                        </tr>
-                </tbody>
+                        @foreach($categories as $c)
+                            <tr>
+                                <td>{{$c->nom}}</td>
+                                <td>
+                                    <button class="btn btn-outline-info btn-sm radius-30" wire:click="editer({{$c->id}})"><i class="bx bx-show"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm radius-30"><i class="bx bx-trash"></i></button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
                 @endif
             </div>
         </div>
      </div>
 </div>
+
+@section('js')
+<script>
+    window.addEventListener('addCategory', event =>{
+        iziToast.success({
+        title: 'Catégorie',
+        message: 'Catégorie ajoutée avec succès',
+        position: 'topRight'
+        });
+    });
+
+</script>
+
+@endsection

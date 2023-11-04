@@ -13,7 +13,8 @@ class Category extends Model
 
     protected $fillable = [
         "nom",
-        "parent_id"
+        "parent_id",
+        "slug",
     ];
 
     public function parent()
@@ -29,5 +30,10 @@ class Category extends Model
     public function childrenRecursive()
     {
         return $this->children()->with('childrenRecursive');
+    }
+
+    public function produits()
+    {
+        return $this->hasMany(Product::class);
     }
 }

@@ -24,7 +24,11 @@
 	<link href="themes/css/icons.css" rel="stylesheet">
 	<!-- Theme Style CSS -->
 	<link rel="stylesheet" href="themes/css/semi-dark.css" />
+	<link href="assets/css/iziToast.min.css" rel="stylesheet">
+
 	<title>Makfuz</title>
+	@livewireStyles
+
 </head>
 
 <body>
@@ -69,6 +73,19 @@
 	<script src="themes/js/index.js"></script>
 	<!--app JS-->
 	<script src="themes/js/app.js"></script>
+	<script src="themes/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="themes/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+	<script src="assets/js/iziToast.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		  } );
+	</script>
+	@yield('js')
+
+	@livewireScripts
+
 </body>
 
 </html>
