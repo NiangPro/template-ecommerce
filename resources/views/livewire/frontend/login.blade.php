@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="login-form">
-                        <form wire:submit.prevent="login">
+                        <form wire:submit.prevent="test">
                         <div class="row">
                             <div class="col-md-12">
                                 <label>E-mail</label>

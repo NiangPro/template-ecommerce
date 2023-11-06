@@ -33,14 +33,14 @@
         </li>
         <li>
             <a href="{{route("product")}}">
-                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                <div class="parent-icon"><i class="bx bx-shopping-bag"></i>
                 </div>
                 <div class="menu-title">Produits</div>
             </a>
         </li>
         <li>
             <a href="{{route("category")}}">
-                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                <div class="parent-icon"><i class="bx bx-tag"></i>
                 </div>
                 <div class="menu-title">Categories</div>
             </a>
