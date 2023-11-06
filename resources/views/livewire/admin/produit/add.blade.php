@@ -12,7 +12,7 @@
                 <select class="form-control" wire:model="form.category_id">
                     <option value="">Veuillez selectionner une catégorie</option>
                     @foreach ($categories as $c)
-                        <option value="{{$c->id}}">{{$c->nom}}</option>
+                        <option value="{{$c->id}}"> @if($c->parent) {{$c->parent->nom}} ->  @endif {{$c->nom}}</option>
                     @endforeach
                 </select>
             </div>
@@ -26,18 +26,21 @@
                 <input type="number" placeholder="Entrer la quantité du produit" class="form-control @error('form.qte') is-invalid @enderror" wire:model="form.qte">
                 @error('form.qte') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
-            <div class="form-group mb-4 col-md-6">
+            <div class="form-group mb-4 col-md-12">
                 <label for="">Description <span class="text-danger">*</span></label>
                 <textarea placeholder="Entrer la description du produit" class="form-control @error('form.description') is-invalid @enderror" wire:model="form.description"></textarea>
                 @error('form.description') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-4 col-md-6">
-                @if($form["image"])
-                <img src="{{$form['image']->temporaryUrl()}}" alt="Responsive image" width="100%" height="100%"><br>
-                @endif
                 <label for="">Image <span class="text-danger">*</span></label>
                 <input type="file" placeholder="Entrer l'image du produit" class="form-control @error('form.image') is-invalid @enderror" wire:model="form.image">
                 @error('form.image') <span class="error text-danger">{{$message}}</span> @enderror
+                <div wire:loading wire:target="form.image" class="text-success">Chargement...</div>
+            </div>
+            <div class="col-md-6 text-center">
+                @if($form["image"])
+                <img src="{{$form['image']->temporaryUrl()}}" alt="Responsive image" width="200" height="150"><br>
+                @endif
             </div>
         </div>
         <button type="submit" class="btn btn-outline-success">Ajouter</button>

@@ -10,6 +10,9 @@
             <label for="">Catégorie parente</label>
             <select class="form-control" wire:model="form.parent_id">
                 <option value="">Veuillez selectionner une catégorie</option>
+                @foreach ($categories as $c)
+                        <option value="{{$c->id}}">{{$c->nom}}</option>
+                    @endforeach
             </select>
         </div>
         <button type="submit" class="btn btn-outline-success">Ajouter</button>

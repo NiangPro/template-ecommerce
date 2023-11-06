@@ -37,7 +37,7 @@ class Categories extends Component
     
     public function createSlug($nom)
     {
-        return implode( "_", explode(" ", $nom));
+        return strtolower(implode( "_", explode(" ", $nom)));
     }
 
     public function editer($id)
@@ -46,6 +46,7 @@ class Categories extends Component
 
         $this->form["nom"] = $c->nom;
         $this->form["id"] = $c->id;
+        $this->form["parent_id"] = $c->parent_id;
 
         $this->changeType("edit");
     }
@@ -55,7 +56,7 @@ class Categories extends Component
         $this->validate();
 
         Category::create([
-            "nom" => $this->form["nom"],
+            "nom" => ucfirst($this->form["nom"]) ,
             "parent_id" => $this->form["parent_id"] ?:null,
             "slug" => $this->createSlug($this->form["nom"])
         ]);
@@ -66,7 +67,7 @@ class Categories extends Component
     public function render()
     {
         return view('livewire.admin.category.categories', [
-            "categories" => Category::orderBy("nom", "ASC")->get()
+            "categories" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get()
         ])->layout("layouts.dashboard");
     }
 

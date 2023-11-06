@@ -42,12 +42,24 @@
                     <tbody>
                         @foreach($categories as $c)
                             <tr>
-                                <td>{{$c->nom}}</td>
+                                <td class="h5">{{$c->nom}}</td>
                                 <td>
                                     <button class="btn btn-outline-info btn-sm radius-30" wire:click="editer({{$c->id}})"><i class="bx bx-show"></i></button>
                                     <button class="btn btn-outline-danger btn-sm radius-30"><i class="bx bx-trash"></i></button>
                                 </td>
                             </tr>
+                            @if($c->children)
+                                
+                                @foreach ($c->children as $child)
+                                    <tr>
+                                        <td class="ps-5 h6"><i class='bx bx-subdirectory-right'></i>{{$child->nom}}</td>
+                                        <td>
+                                            <button class="btn btn-outline-info btn-sm radius-30" wire:click="editer({{$child->id}})"><i class="bx bx-show"></i></button>
+                                            <button class="btn btn-outline-danger btn-sm radius-30"><i class="bx bx-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

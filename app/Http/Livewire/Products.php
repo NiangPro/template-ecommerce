@@ -88,7 +88,7 @@ class Products extends Component
     public function render()
     {
         return view('livewire.admin.produit.products', [
-            'categories' => Category::where("parent_id", null)->get(),
+            'categories' => Category::orderBy("nom", "ASC")->get(),
             "produits" => Product::orderBy("id", "DESC")->get()
         ])->layout("layouts.dashboard");
     }
