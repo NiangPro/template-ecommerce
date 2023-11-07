@@ -15,6 +15,6 @@
                     @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-outline-success">Ajouter</button>
+        <button type="submit" class="btn btn-outline-success">@if($form["id"]) Modifier @else Ajouter @endif</button>
     </form>
 </div>

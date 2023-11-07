@@ -45,21 +45,39 @@
                                 <td class="h5">{{$c->nom}}</td>
                                 <td>
                                     <button class="btn btn-outline-info btn-sm radius-30" wire:click="editer({{$c->id}})"><i class="bx bx-show"></i></button>
-                                    <button class="btn btn-outline-danger btn-sm radius-30"><i class="bx bx-trash"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm radius-30" wire:click="readyForDelete({{$c->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>
                                 </td>
                             </tr>
                             @if($c->children)
                                 
                                 @foreach ($c->children as $child)
-                                    <tr>
+                                    <tr wire:ignore>
                                         <td class="ps-5 h6"><i class='bx bx-subdirectory-right'></i>{{$child->nom}}</td>
                                         <td>
                                             <button class="btn btn-outline-info btn-sm radius-30" wire:click="editer({{$child->id}})"><i class="bx bx-show"></i></button>
-                                            <button class="btn btn-outline-danger btn-sm radius-30"><i class="bx bx-trash"></i></button>
+                                            <button class="btn btn-outline-danger btn-sm radius-30" wire:click="readyForDelete({{$child->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
                             @endif
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      Etes-vous sûr de vouloir supprimer?
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                      <button type="button" class="btn btn-danger" wire:click="delete">Supprimer</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         @endforeach
                     </tbody>
                 </table>
@@ -77,6 +95,24 @@
         message: 'Catégorie ajoutée avec succès',
         position: 'topRight'
         });
+    });
+
+    window.addEventListener('updateCategory', event =>{
+        iziToast.success({
+        title: 'Catégorie',
+        message: 'Mis à jour avec succès',
+        position: 'topRight'
+        });
+    });
+
+    window.addEventListener('deleteCategory', event =>{
+        iziToast.success({
+        title: 'Catégorie',
+        message: 'Catégorie supprimée avec succès',
+        position: 'topRight'
+        });
+
+        $("#exampleModal").modal("hide");
     });
 
 </script>

@@ -8,6 +8,7 @@ use Livewire\Component;
 class Categories extends Component
 {
     public $type = "list";
+    public $idDeleting = null;
     public $title = "La liste des categories";
 
     public $form = [
@@ -46,22 +47,53 @@ class Categories extends Component
 
         $this->form["nom"] = $c->nom;
         $this->form["id"] = $c->id;
+        $this->form["slug"] = $c->slug;
         $this->form["parent_id"] = $c->parent_id;
 
         $this->changeType("edit");
+    }
+
+    public function readyForDelete($id)
+    {
+        $this->idDeleting = $id;
+    }
+
+    public function delete()
+    {
+        $cat = Category::where("id", $this->idDeleting)->first();
+
+        $cat->delete();
+
+        $this->initForm();
+
+        $this->dispatchBrowserEvent("deleteCategory");
     }
 
     public function store()
     {
         $this->validate();
 
-        Category::create([
-            "nom" => ucfirst($this->form["nom"]) ,
-            "parent_id" => $this->form["parent_id"] ?:null,
-            "slug" => $this->createSlug($this->form["nom"])
-        ]);
+        if ($this->form["id"]) {
+            $cat = Category::where("id", $this->form["id"])->first();
 
-        $this->dispatchBrowserEvent("addCategory");
+            $cat->nom = ucfirst($this->form["nom"]);
+            $cat->parent_id = $this->form["parent_id"] ?:null;
+            $cat->slug = $this->createSlug($this->form["nom"]);
+
+            $cat->save();
+            $this->dispatchBrowserEvent("updateCategory");
+
+        }else{
+
+            Category::create([
+                "nom" => ucfirst($this->form["nom"]) ,
+                "parent_id" => $this->form["parent_id"] ?:null,
+                "slug" => $this->createSlug($this->form["nom"])
+            ]);
+    
+            $this->dispatchBrowserEvent("addCategory");
+        }
+
         $this->changeType("list");
     }
     public function render()
@@ -75,5 +107,8 @@ class Categories extends Component
     {
         $this->form["id"] = null;
         $this->form["nom"] = "";
+        $this->form["slug"] = "";
+        $this->form["parent_id"] = null;
+        $this->idDeleting = null;
     }
 }

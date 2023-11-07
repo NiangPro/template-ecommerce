@@ -63,6 +63,17 @@ class Products extends Component
         }
     }
 
+    public function editer($id)
+    {
+        $c = Product::where("id", $id)->first();
+
+        $this->form["nom"] = $c->nom;
+        $this->form["id"] = $c->id;
+        $this->form["category_id"] = $c->category_id;
+        $this->form["prix"] = $c->prix;
+
+        $this->changeType("edit");
+    }
     
     public function store()
     {
