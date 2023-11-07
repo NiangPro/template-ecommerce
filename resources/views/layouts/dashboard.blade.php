@@ -15,6 +15,7 @@
 	<link href="themes/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<!-- loader-->
 	<link href="themes/css/pace.min.css" rel="stylesheet" />
+	<link href="themes/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 	<script src="themes/js/pace.min.js"></script>
 	<!-- Bootstrap CSS -->
 	<link href="themes/css/bootstrap.min.css" rel="stylesheet">

@@ -35,7 +35,8 @@
                 <table id="example" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Nom</th>
+                            <th>Image</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -43,6 +44,7 @@
                         @foreach($categories as $c)
                             <tr>
                                 <td class="h5">{{$c->nom}}</td>
+                                <td><img src="storage/images/{{$c->image}}" class="product-img-2" alt="product img"></td>
                                 <td>
                                     <button class="btn btn-outline-info btn-sm radius-30" wire:click="editer({{$c->id}})"><i class="bx bx-show"></i></button>
                                     <button class="btn btn-outline-danger btn-sm radius-30" wire:click="readyForDelete({{$c->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>

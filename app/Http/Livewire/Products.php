@@ -71,6 +71,7 @@ class Products extends Component
         $this->form["id"] = $c->id;
         $this->form["category_id"] = $c->category_id;
         $this->form["prix"] = $c->prix;
+        $this->form["image"] = $c->image;
 
         $this->changeType("edit");
     }
