@@ -1,7 +1,6 @@
 <div>
-    
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div wire:ignore.self class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -9,85 +8,111 @@
                     </button>
 
                     <div class="form-box">
-                        <div class="form-tab">
-                            <ul class="nav nav-pills nav-fill nav-border-anim" role="tablist">
+                        <div wire:ignore.self class="form-tab">
+                            <ul wire:ignore.self class="nav nav-pills nav-fill nav-border-anim" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+                                    <a wire:ignore.self class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Se connecter</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                                    <a wire:ignore.self class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">S'inscrire</a>
                                 </li>
                             </ul>
-                            <div class="tab-content" id="tab-content-5">
-                                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <label for="singin-email">Username or email address *</label>
-                                            <input type="text" class="form-control" id="singin-email" name="singin-email" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-group">
-                                            <label for="singin-password">Password *</label>
-                                            <input type="password" class="form-control" id="singin-password" name="singin-password" required>
-                                        </div><!-- End .form-group -->
-
+                            <div wire:ignore.self class="tab-content" id="tab-content-5">
+                                <div wire:ignore.self class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                                    <form wire:ignore.self wire:submit.prevent="login">  
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Pseudo</label>
+                                                <input class="form-control @error('form2.pseudo') is-invalid @enderror" wire:model="form2.pseudo" type="text" placeholder="Entrer votre pseudo">
+                                                @error('form2.pseudo') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Mot de passe</label>
+                                                <input class="form-control @error('form2.password') is-invalid @enderror" wire:model="form2.password" type="password" placeholder="Entrer votre mot de passe">
+                                                @error('form2.password') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                        </div>
                                         <div class="form-footer">
                                             <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>LOG IN</span>
+                                                <span>Se connecter</span>
                                                 <i class="icon-long-arrow-right"></i>
                                             </button>
-
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="signin-remember">
-                                                <label class="custom-control-label" for="signin-remember">Remember Me</label>
-                                            </div><!-- End .custom-checkbox -->
-
-                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
                                         </div><!-- End .form-footer -->
                                     </form>
-                                    <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-g">
-                                                    <i class="icon-google"></i>
-                                                    Login With Google
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-f">
-                                                    <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .form-choice -->
                                 </div><!-- .End .tab-pane -->
-                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <label for="register-email">Your email address *</label>
-                                            <input type="email" class="form-control" id="register-email" name="register-email" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-group">
-                                            <label for="register-password">Password *</label>
-                                            <input type="password" class="form-control" id="register-password" name="register-password" required>
-                                        </div><!-- End .form-group -->
-
+                                <div wire:ignore.self class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                    <form  wire:ignore.self wire:submit.prevent="register()">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Prenom</label>
+                                                <input wire.ignore.self class="form-control @error('form1.prenom') is-invalid @enderror" wire:model="form1.prenom" type="text" placeholder="Prenom">
+                                                @error('form1.prenom') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Nom</label>
+                                                <input class="form-control @error('form1.nom') is-invalid @enderror" wire:model="form1.nom" type="text" placeholder="Nom">
+                                                @error('form1.nom') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Pseudo</label>
+                                                <input class="form-control @error('form1.pseudo') is-invalid @enderror" wire:model="form1.pseudo" type="text" placeholder="Pseudo">
+                                                @error('form1.pseudo') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Adresse</label>
+                                                <input class="form-control @error('form1.adresse') is-invalid @enderror" wire:model="form1.adresse" type="text" placeholder="Adresse">
+                                                @error('form1.adresse') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>N° Téléphone 1</label>
+                                                <input class="form-control @error('form1.tel') is-invalid @enderror" wire:model="form1.tel" type="tel" placeholder="Numéro de téléphone 1">
+                                                @error('form1.tel') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>N° Téléphone 2</label>
+                                                <input class="form-control @error('form1.tel2') is-invalid @enderror" wire:model="form1.tel2" type="tel" placeholder="Numéro de téléphone 2">
+                                                @error('form1.tel2') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Nationnalité</label>
+                                                <input class="form-control @error('form1.nationalite') is-invalid @enderror" wire:model="form1.nationalite" type="text" placeholder="Nationnalité">
+                                                @error('form1.nationalite') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Pays</label>
+                                                <input class="form-control @error('form1.pays') is-invalid @enderror" wire:model="form1.pays" type="text" placeholder="Pays">
+                                                @error('form1.pays') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>E-mail</label>
+                                                <input class="form-control @error('form1.email') is-invalid @enderror" wire:model="form1.email" type="email" placeholder="E-mail">
+                                                @error('form1.email') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Mot de passe</label>
+                                                <input class="form-control @error('form1.password') is-invalid @enderror" wire:model="form1.password" type="password" placeholder="Mot de passe">
+                                                @error('form1.password') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Mot de passe de confirmation</label>
+                                                <input class="form-control @error('form1.password_confirmation') is-invalid @enderror" wire:model="form1.password_confirmation" type="password" placeholder="Mot de passe de confirmation">
+                                                @error('form1.password_confirmation') <span class="error text-danger">{{$message}}</span> @enderror
+                                            </div>
+                                        </div>
+                                        
                                         <div class="form-footer">
                                             <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>SIGN UP</span>
+                                                <span>S'inscrir</span>
                                                 <i class="icon-long-arrow-right"></i>
                                             </button>
 
-                                            <div class="custom-control custom-checkbox">
+                                            {{-- <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="register-policy" required>
                                                 <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
-                                            </div><!-- End .custom-checkbox -->
+                                            </div><!-- End .custom-checkbox --> --}}
                                         </div><!-- End .form-footer -->
                                     </form>
-                                    <div class="form-choice">
+                                    {{-- <div class="form-choice">
                                         <p class="text-center">or sign in with</p>
                                         <div class="row">
                                             <div class="col-sm-6">
@@ -103,7 +128,7 @@
                                                 </a>
                                             </div><!-- End .col-6 -->
                                         </div><!-- End .row -->
-                                    </div><!-- End .form-choice -->
+                                    </div><!-- End .form-choice --> --}}
                                 </div><!-- .End .tab-pane -->
                             </div><!-- End .tab-content -->
                         </div><!-- End .form-tab -->
@@ -121,6 +146,14 @@
         iziToast.error({
         title: 'Connexion',
         message: 'Email ou mot de passe incorrect',
+        position: 'topRight'
+        });
+    });
+
+    window.addEventListener('addSuccessful', event =>{
+        iziToast.success({
+        title: 'Inscrit',
+        message: 'Inscription avec succes',
         position: 'topRight'
         });
     });
