@@ -24,17 +24,53 @@
      @include('livewire.admin.administrateur.add')
     @else   
         <div class="row">
-            <div class="col-md-3 card border-primary border-bottom border-3 border-0">
-                <img src="themes/images/gallery/01.png" width="100%" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title text-primary">Card title</h5>
-                    <hr>
-                    <div class="d-flex align-items-center gap-2">
-                        <a href="javascript:;" class="btn btn-inverse-primary"><i class="bx bx-star"></i></a>
-                        <a href="javascript:;" class="btn btn-primary"><i class="bx bx-microphone"></i></a>
+            @foreach ($admins as $admin)
+                <div class="col-md-3 card border-primary border-bottom border-3 border-0">
+                    <img src="storage/images/{{$admin->image}}" width="100%" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{$admin->prenom}} {{$admin->nom}}</h5>
+                        <hr>
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-outline-info" wire:click="editer({{$admin->id}})"><i class="bx bx-show"></i></button>
+                            <button class="btn btn-outline-danger"><i class="bx bx-trash"></i></button>
+                        </div>
                     </div>
                 </div>
-            </div>
+                
+            @endforeach
         </div>
     @endif
 </div>
+
+@section('js')
+<script>
+    window.addEventListener('addAdmin', event =>{
+        iziToast.success({
+        title: 'Administrateur',
+        message: 'Administrateur ajoutée avec succès',
+        position: 'topRight'
+        });
+    });
+
+    window.addEventListener('updateAdmin', event =>{
+        iziToast.success({
+        title: 'Administrateur',
+        message: 'Mis à jour avec succès',
+        position: 'topRight'
+        });
+    });
+
+    window.addEventListener('deleteAdmin', event =>{
+        iziToast.success({
+        title: 'Administrateur',
+        message: 'Catégorie supprimée avec succès',
+        position: 'topRight'
+        });
+
+        $("#exampleModal").modal("hide");
+        document.location();
+    });
+
+</script>
+
+@endsection
