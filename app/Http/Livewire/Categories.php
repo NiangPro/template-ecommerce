@@ -12,6 +12,7 @@ class Categories extends Component
 
     public $type = "list";
     public $idDeleting = null;
+    public $imgEditing = null;
     public $title = "La liste des categories";
 
     public $form = [
@@ -59,6 +60,7 @@ class Categories extends Component
         $this->form["nom"] = $c->nom;
         $this->form["id"] = $c->id;
         $this->form["slug"] = $c->slug;
+        $this->imgEditing = $c->image;
         $this->form["parent_id"] = $c->parent_id;
 
         $this->changeType("edit");
@@ -82,19 +84,29 @@ class Categories extends Component
 
     public function store()
     {
-        $this->validate();
 
         if ($this->form["id"]) {
+            $this->validate(["form.nom" => "required"]);
             $cat = Category::where("id", $this->form["id"])->first();
 
             $cat->nom = ucfirst($this->form["nom"]);
             $cat->parent_id = $this->form["parent_id"] ?:null;
             $cat->slug = $this->createSlug($this->form["nom"]);
 
+            if ($this->form["image"]) {
+                $img_name = uniqid().".jpg";
+
+                $this->form["image"]->storeAs("public/images", $img_name);
+                $cat->image = $img_name;
+
+            }
+
             $cat->save();
             $this->dispatchBrowserEvent("updateCategory");
 
         }else{
+            $this->validate();
+
             $img_name = uniqid().".jpg";
 
             $this->form["image"]->storeAs("public/images", $img_name);

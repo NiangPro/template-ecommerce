@@ -1,102 +1,117 @@
 <div>
     
-    <!-- Breadcrumb Start -->
-    <div class="breadcrumb-wrap">
-        <div class="container-fluid">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                <li class="breadcrumb-item active">Connexion & Inscription</li>
-            </ul>
-        </div>
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="icon-close"></i></span>
+                    </button>
+
+                    <div class="form-box">
+                        <div class="form-tab">
+                            <ul class="nav nav-pills nav-fill nav-border-anim" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="tab-content-5">
+                                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                                    <form action="#">
+                                        <div class="form-group">
+                                            <label for="singin-email">Username or email address *</label>
+                                            <input type="text" class="form-control" id="singin-email" name="singin-email" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="singin-password">Password *</label>
+                                            <input type="password" class="form-control" id="singin-password" name="singin-password" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG IN</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="signin-remember">
+                                                <label class="custom-control-label" for="signin-remember">Remember Me</label>
+                                            </div><!-- End .custom-checkbox -->
+
+                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
+                                        </div><!-- End .form-footer -->
+                                    </form>
+                                    <div class="form-choice">
+                                        <p class="text-center">or sign in with</p>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-g">
+                                                    <i class="icon-google"></i>
+                                                    Login With Google
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-f">
+                                                    <i class="icon-facebook-f"></i>
+                                                    Login With Facebook
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .form-choice -->
+                                </div><!-- .End .tab-pane -->
+                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                    <form action="#">
+                                        <div class="form-group">
+                                            <label for="register-email">Your email address *</label>
+                                            <input type="email" class="form-control" id="register-email" name="register-email" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="register-password">Password *</label>
+                                            <input type="password" class="form-control" id="register-password" name="register-password" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>SIGN UP</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="register-policy" required>
+                                                <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </div><!-- End .form-footer -->
+                                    </form>
+                                    <div class="form-choice">
+                                        <p class="text-center">or sign in with</p>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-g">
+                                                    <i class="icon-google"></i>
+                                                    Login With Google
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login  btn-f">
+                                                    <i class="icon-facebook-f"></i>
+                                                    Login With Facebook
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .form-choice -->
+                                </div><!-- .End .tab-pane -->
+                            </div><!-- End .tab-content -->
+                        </div><!-- End .form-tab -->
+                    </div><!-- End .form-box -->
+                </div><!-- End .modal-body -->
+            </div><!-- End .modal-content -->
+        </div><!-- End .modal-dialog -->
     </div>
-    <!-- Breadcrumb End -->
-    
-    <!-- Login Start -->
-    <div class="login">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8">  
-                    <form wire:submit.prevent="register">  
-                        <div class="register-form">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Prenom</label>
-                                    <input class="form-control @error('form.prenom') is-invalid @enderror" wire:model="form.prenom" type="text" placeholder="Prenom">
-                                    @error('form.prenom') <span class="error text-danger">{{$message}}</span> @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Nom</label>
-                                    <input class="form-control @error('form.nom') is-invalid @enderror" wire:model="form.nom" type="text" placeholder="Nom">
-                                    @error('form.nom') <span class="error text-danger">{{$message}}</span> @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Adresse</label>
-                                    <input class="form-control @error('form.adresse') is-invalid @enderror" wire:model="form.adresse" type="text" placeholder="Adresse">
-                                    @error('form.adresse') <span class="error text-danger">{{$message}}</span> @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <label>N° Téléphone</label>
-                                    <input class="form-control @error('form.tel') is-invalid @enderror" wire:model="form.tel" type="tel" placeholder="Numéro de téléphone">
-                                    @error('form.tel') <span class="error text-danger">{{$message}}</span> @enderror
-                                </div>
-                                <div class="col-md-12">
-                                    <label>E-mail</label>
-                                    <input class="form-control @error('form.email') is-invalid @enderror" wire:model="form.email" type="email" placeholder="E-mail">
-                                    @error('form.email') <span class="error text-danger">{{$message}}</span> @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Mot de passe</label>
-                                    <input class="form-control @error('form.password') is-invalid @enderror" wire:model="form.password" type="password" placeholder="Mot de passe">
-                                    @error('form.password') <span class="error text-danger">{{$message}}</span> @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Mot de passe de confirmation</label>
-                                    <input class="form-control @error('form.password_confirmation') is-invalid @enderror" wire:model="form.password_confirmation" type="password" placeholder="Mot de passe de confirmation">
-                                    @error('form.password_confirmation') <span class="error text-danger">{{$message}}</span> @enderror
-                                </div>
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn">S'incrire</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-4">
-                    <div class="login-form">
-                        <form wire:submit.prevent="test">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>E-mail</label>
-                                <input class="form-control @error('form.email') is-invalid @enderror" wire:model="form.email" type="text" placeholder="Entrer votre email">
-                                @error('form.email') <span class="error text-danger">{{$message}}</span> @enderror
-                            </div>
-                            <div class="col-md-12">
-                                <label>Mot de passe</label>
-                                <input class="form-control @error('form.password') is-invalid @enderror" wire:model="form.password" type="password" placeholder="Entrer votre mot de passe">
-                                @error('form.password') <span class="error text-danger">{{$message}}</span> @enderror
-                            </div>
-                            <div class="col-md-12">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="newaccount">
-                                    <label class="custom-control-label" for="newaccount">Garder ma session</label>
-                                </div>
-                            </div>
-                            <button class="btn col-md-12">Se Connecter</button>
-                            <div class="col-md-12 mt-3 mb-3 text-grey text-center">
-                                Ou
-                            </div>
-                            <button class="btn col-md-12 mb-2" style="background: rgb(82, 82, 249); color:white;border:none;">Facebook</button>
-                            <button class="btn col-md-12 mb-2" style="background: rgb(246, 100, 100); color:white;border:none;">Google</button>
-                            <button class="btn col-md-12" style="background: rgb(25, 25, 26); color:white;border:none;">Github</button>
-                            
-                        </div>
-                    </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Login End -->
    
 </div>
 

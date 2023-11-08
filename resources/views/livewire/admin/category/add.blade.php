@@ -25,6 +25,8 @@
             <div class="col-md-6 text-center">
                 @if($form["image"])
                 <img src="{{$form['image']->temporaryUrl()}}" alt="Responsive image" width="200" height="150"><br>
+                @elseif($imgEditing)
+                <img src="storage/images/{{$imgEditing}}" alt="Responsive image" width="200" height="150"><br>
                 @endif
             </div>
         </div>

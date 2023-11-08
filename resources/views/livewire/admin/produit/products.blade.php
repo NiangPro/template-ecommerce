@@ -32,7 +32,7 @@
                 @if($type != "list")
                     @include('livewire.admin.produit.add')
                 @else
-                <table class="table align-middle mb-0">
+                <table id="example" class="table align-middle mb-0">
                     <thead class="table-light">
                         <tr>
                         <th>Nom</th>
@@ -54,10 +54,28 @@
                             <td>{{$p->prix}} F CFA</td>
                             <td>{{$p->reduction}} F CFA</td>
                             <td>
-                                <a href="" wire:click="editer({{$p->id}})" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></a>
-                                <a href="" class="btn btn-outline-danger btn-sm"><i class="bx bx-trash"></i></a>
+                                <button wire:click="editer({{$p->id}})" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></button>
+                                <button class="btn btn-outline-danger btn-sm"  wire:click="readyForDelete({{$p->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>
                             </td>
                         </tr>
+
+                        <div wire:ignore class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  Etes-vous sûr de vouloir supprimer?
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                  <button type="button" class="btn btn-danger" wire:click="delete">Supprimer</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         @endforeach
                         
 
@@ -78,6 +96,25 @@
         message: 'Produit ajouté avec succès',
         position: 'bottomRight'
         });
+    });
+
+    window.addEventListener('updateProduct', event =>{
+        iziToast.success({
+        title: 'Produit',
+        message: 'Mis à jour avec succès',
+        position: 'topRight'
+        });
+    });
+
+    window.addEventListener('deleteProduct', event =>{
+        iziToast.success({
+        title: 'Produit',
+        message: 'Produit supprimé avec succès',
+        position: 'topRight'
+        });
+
+        $("#exampleModal").modal("hide");
+        
     });
 
 </script>

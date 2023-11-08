@@ -24,6 +24,7 @@ class User extends Authenticatable
         'pays',
         'pseudo',
         'adresse',
+        'image',
         'role',
         'tel',
         'tel2',
