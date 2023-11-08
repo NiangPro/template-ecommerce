@@ -19,17 +19,22 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3 card border-primary border-bottom border-3 border-0">
-            <img src="themes/images/gallery/01.png" width="100%" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title text-primary">Card title</h5>
-                <hr>
-                <div class="d-flex align-items-center gap-2">
-                    <a href="javascript:;" class="btn btn-inverse-primary"><i class="bx bx-star"></i></a>
-                    <a href="javascript:;" class="btn btn-primary"><i class="bx bx-microphone"></i></a>
+
+    @if ($type != "list")
+     @include('livewire.admin.administrateur.add')
+    @else   
+        <div class="row">
+            <div class="col-md-3 card border-primary border-bottom border-3 border-0">
+                <img src="themes/images/gallery/01.png" width="100%" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Card title</h5>
+                    <hr>
+                    <div class="d-flex align-items-center gap-2">
+                        <a href="javascript:;" class="btn btn-inverse-primary"><i class="bx bx-star"></i></a>
+                        <a href="javascript:;" class="btn btn-primary"><i class="bx bx-microphone"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 </div>
