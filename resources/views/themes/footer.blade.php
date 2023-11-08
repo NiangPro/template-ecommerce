@@ -1,88 +1,93 @@
-<!-- Footer Start -->
-<div class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-widget">
-                    <h2>Prendre contact</h2>
-                    <div class="contact-info">
-                        <p><i class="fa fa-map-marker"></i>Touba Ndindy</p>
-                        <p><i class="fa fa-envelope"></i>NiangEtsFamille@gmail.com</p>
-                        <p><i class="fa fa-phone"></i>+221 783123657</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-widget">
-                    <h2>Suivez-nous</h2>
-                    <div class="contact-info">
-                        <div class="social">
-                            <a href=""><i class="fab fa-twitter"></i></a>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                            <a href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                            <a href=""><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<footer class="footer">
+    <div class="cta bg-image bg-dark pt-4 pb-5 mb-0" style="background-image: url(assets/images/demos/demo-4/bg-5.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-10 col-md-8 col-lg-6">
+                    <div class="cta-heading text-center">
+                        <h3 class="cta-title text-white">Get The Latest Deals</h3><!-- End .cta-title -->
+                        <p class="cta-desc text-white">and receive <span class="font-weight-normal">$20 coupon</span> for first shopping</p><!-- End .cta-desc -->
+                    </div><!-- End .text-center -->
+                
+                    <form action="#">
+                        <div class="input-group input-group-round">
+                            <input type="email" class="form-control form-control-white" placeholder="Enter your Email Address" aria-label="Email Adress" required>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit"><span>Subscribe</span><i class="icon-long-arrow-right"></i></button>
+                            </div><!-- .End .input-group-append -->
+                        </div><!-- .End .input-group -->
+                    </form>
+                </div><!-- End .col-sm-10 col-md-8 col-lg-6 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End .cta -->
+    <div class="footer-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="widget widget-about">
+                        <img src="assets/images/demos/demo-4/logo-footer.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
+                        <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-widget">
-                    <h2>Informations</h2>
-                    <ul>
-                        <li><a href="#">À propos de nous</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Conditions générales</a></li>
-                    </ul>
-                </div>
-            </div>
+                        <div class="widget-call">
+                            <i class="icon-phone"></i>
+                            Got Question? Call us 24/7
+                            <a href="tel:#">+0123 456 789</a>         
+                        </div><!-- End .widget-call -->
+                    </div><!-- End .widget about-widget -->
+                </div><!-- End .col-sm-6 col-lg-3 -->
 
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-widget">
-                    <h2>Info sur l'achat</h2>
-                    <ul>
-                        <li><a href="#">Politique de Paiement</a></li>
-                        <li><a href="#">Politique d'expédition</a></li>
-                        <li><a href="#">Politique de retour</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row payment align-items-center">
-            <div class="col-md-6">
-                <div class="payment-method">
-                    <h2>Nous acceptons:</h2>
-                    <img src="assets/img/payment.png" alt="Payment Method" />
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="payment-security">
-                    <h2>Garanti par:</h2>
-                    <img src="assets/img/godaddy.svg" alt="Payment Security" />
-                    <img src="assets/img/norton.svg" alt="Payment Security" />
-                    <img src="assets/img/ssl.svg" alt="Payment Security" />
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer End -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="widget">
+                        <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
 
-<!-- Footer Bottom Start -->
-<div class="footer-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 copyright">
-                <p>Touts droits reservés à &copy; <a href="https://htmlcodex.com">NiangProgrammeur</a>.</p>
-            </div>
+                        <ul class="widget-list">
+                            <li><a href="about.html">About Molla</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">How to shop on Molla</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul><!-- End .widget-list -->
+                    </div><!-- End .widget -->
+                </div><!-- End .col-sm-6 col-lg-3 -->
 
-            <div class="col-md-6 template-by">
-                <p>Conçu par <a href="https://htmlcodex.com">NiangProgrammeur</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer Bottom End -->   
+                <div class="col-sm-6 col-lg-3">
+                    <div class="widget">
+                        <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+
+                        <ul class="widget-list">
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Money-back guarantee!</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Terms and conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul><!-- End .widget-list -->
+                    </div><!-- End .widget -->
+                </div><!-- End .col-sm-6 col-lg-3 -->
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="widget">
+                        <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+
+                        <ul class="widget-list">
+                            <li><a href="#">Sign In</a></li>
+                            <li><a href="cart.html">View Cart</a></li>
+                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul><!-- End .widget-list -->
+                    </div><!-- End .widget -->
+                </div><!-- End .col-sm-6 col-lg-3 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End .footer-middle -->
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="footer-copyright">Copyright © 2023. All Rights Reserved.</p><!-- End .footer-copyright -->
+            <figure class="footer-payments">
+                <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
+            </figure><!-- End .footer-payments -->
+        </div><!-- End .container -->
+    </div><!-- End .footer-bottom -->
+</footer>

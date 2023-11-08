@@ -4,21 +4,33 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Categories extends Component
 {
+    use WithFileUploads;
+
     public $type = "list";
+    public $idDeleting = null;
     public $title = "La liste des categories";
 
     public $form = [
         "nom",
         "id" => null,
         "parent_id"=> null, 
+        "image"=> null, 
         "slug"
     ];
 
     protected $rules = [
         "form.nom" => "required",
+        "form.image" => "required|image",
+    ];
+
+    protected $messages = [
+        "form.nom.required" => "Le nom est obligatoire",
+        "form.image.required" => "L'image est obligatoire",
+        "form.image.image" => "Veuillez selectionner une image",
     ];
 
     public function changeType($type)
@@ -46,22 +58,57 @@ class Categories extends Component
 
         $this->form["nom"] = $c->nom;
         $this->form["id"] = $c->id;
+        $this->form["slug"] = $c->slug;
         $this->form["parent_id"] = $c->parent_id;
 
         $this->changeType("edit");
+    }
+
+    public function readyForDelete($id)
+    {
+        $this->idDeleting = $id;
+    }
+
+    public function delete()
+    {
+        $cat = Category::where("id", $this->idDeleting)->first();
+
+        $cat->delete();
+
+        $this->initForm();
+
+        $this->dispatchBrowserEvent("deleteCategory");
     }
 
     public function store()
     {
         $this->validate();
 
-        Category::create([
-            "nom" => ucfirst($this->form["nom"]) ,
-            "parent_id" => $this->form["parent_id"] ?:null,
-            "slug" => $this->createSlug($this->form["nom"])
-        ]);
+        if ($this->form["id"]) {
+            $cat = Category::where("id", $this->form["id"])->first();
 
-        $this->dispatchBrowserEvent("addCategory");
+            $cat->nom = ucfirst($this->form["nom"]);
+            $cat->parent_id = $this->form["parent_id"] ?:null;
+            $cat->slug = $this->createSlug($this->form["nom"]);
+
+            $cat->save();
+            $this->dispatchBrowserEvent("updateCategory");
+
+        }else{
+            $img_name = uniqid().".jpg";
+
+            $this->form["image"]->storeAs("public/images", $img_name);
+
+            Category::create([
+                "nom" => ucfirst($this->form["nom"]) ,
+                "image" => $img_name,
+                "parent_id" => $this->form["parent_id"] ?:null,
+                "slug" => $this->createSlug($this->form["nom"])
+            ]);
+    
+            $this->dispatchBrowserEvent("addCategory");
+        }
+
         $this->changeType("list");
     }
     public function render()
@@ -75,5 +122,8 @@ class Categories extends Component
     {
         $this->form["id"] = null;
         $this->form["nom"] = "";
+        $this->form["slug"] = "";
+        $this->form["parent_id"] = null;
+        $this->idDeleting = null;
     }
 }
