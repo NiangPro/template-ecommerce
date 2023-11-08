@@ -20,42 +20,42 @@
     <!-- Brand End -->      
     
     <!-- Feature Start-->
-    <div class="feature">
+    <div class="">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-6 feature-col">
                     <div class="feature-content">
                         <i class="fab fa-cc-mastercard"></i>
-                        <h2>Secure Payment</h2>
+                        <h2>Paiement sécurisé</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur elit
+                            Notre priorité
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 feature-col">
                     <div class="feature-content">
                         <i class="fa fa-truck"></i>
-                        <h2>Worldwide Delivery</h2>
+                        <h2>Livraison Rapide</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur elit
+                            Une livraison sur et fiable
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 feature-col">
                     <div class="feature-content">
                         <i class="fa fa-sync-alt"></i>
-                        <h2>90 Days Return</h2>
+                        <h2>Retour sous quelques instants</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur elit
+                            Une possibilité de garantie  
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 feature-col">
                     <div class="feature-content">
                         <i class="fa fa-comments"></i>
-                        <h2>24/7 Support</h2>
+                        <h2>Assistance 24h / 24 et 7j /7</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur elit
+                            Nous serons ravis de vous assister
                         </p>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     <div class="category-item ch-400">
                         <img src="assets/img/category-3.jpg" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>Les catégories top</p>
                         </a>
                     </div>
                 </div>
@@ -80,13 +80,13 @@
                     <div class="category-item ch-250">
                         <img src="assets/img/category-4.jpg" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>Les nouveautés</p>
                         </a>
                     </div>
                     <div class="category-item ch-150">
                         <img src="assets/img/category-5.jpg" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>Venant d'europe</p>
                         </a>
                     </div>
                 </div>
@@ -94,13 +94,13 @@
                     <div class="category-item ch-150">
                         <img src="assets/img/category-6.jpg" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>Venant D'usa</p>
                         </a>
                     </div>
                     <div class="category-item ch-250">
                         <img src="assets/img/category-7.jpg" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>Les meilleures catégories</p>
                         </a>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                     <div class="category-item ch-400">
                         <img src="assets/img/category-8.jpg" />
                         <a class="category-name" href="">
-                            <p>Some text goes here that describes the image</p>
+                            <p>Les plus populaires</p>
                         </a>
                     </div>
                 </div>
@@ -306,13 +306,14 @@
     <div class="recent-product product">
         <div class="container-fluid">
             <div class="section-header">
-                <h1>Recent Product</h1>
+                <h1>Produits Récents</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                <div class="col-lg-3">
+                @foreach ($produits as $p)
+                <div class="col-md-3 " style="width: 100% max-width:100%!important">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
+                            <a href="#">{{$p->nom}}</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -323,21 +324,24 @@
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
-                                <img src="assets/img/product-6.jpg" alt="Product Image">
+                                <img src="storage/images/{{$p->image}}" alt="Product Image">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
                                 <a href="#"><i class="fa fa-heart"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
+                                {{-- <a href="#"><i class="fa fa-search"></i></a> --}}
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            <h3>{{$p->prix}}<span> Fcfa</span></h3><br>
+                            <div>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Ajouter au panier</a>
+                            </div> 
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                @endforeach
+                {{-- <div class="col-md-3">
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
@@ -365,7 +369,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
@@ -393,7 +397,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
@@ -421,7 +425,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-md-3">
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
@@ -448,7 +452,7 @@
                             <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
