@@ -19,13 +19,13 @@ return new class extends Migration
             $table->string('nom');
             $table->string('adresse');
             $table->string('pays')->nullable();
+            $table->string('tel2')->nullable();
+            $table->string('pseudo')->nullable();
+            $table->string('email')->unique();
             $table->string('nationalite')->nullable();
             $table->string('tel');
             $table->string('role')->nullable();
             $table->string('image')->nullable();
-            $table->string('tel2')->nullable();
-            $table->string('pseudo')->unique();
-            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

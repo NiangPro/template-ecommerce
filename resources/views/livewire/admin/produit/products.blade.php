@@ -59,7 +59,7 @@
                             </td>
                         </tr>
 
-                        <div wire:ignore class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+                        <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
