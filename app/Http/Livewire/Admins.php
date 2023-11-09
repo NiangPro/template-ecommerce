@@ -86,6 +86,7 @@ class Admins extends Component
         $this->form["nom"] = $u->nom;
         $this->form["id"] = $u->id;
         $this->form["prenom"] = $u->prenom;
+        $this->form["email"] = $u->email;
         $this->form["tel"] = $u->tel;
         $this->form["tel2"] = $u->tel2;
         $this->form["nationalite"] = $u->nationalite;
@@ -99,33 +100,53 @@ class Admins extends Component
 
     public function store()
     {
-        $this->validate();
+        if ($this->form["id"]) {
+            $this->validate(["form.nom" => "required"]);
+            $u = User::where("id", $this->form["id"])->first();
 
-        if ($this->form["image"]) {
-            $img_name = uniqid().".jpg";
+            $u->nom = ucfirst($this->form["nom"]);
+           
+            if ($this->form["image"]) {
+                $img_name = uniqid().".jpg";
 
-            $this->form["image"]->storeAs("public/images", $img_name);
+                $this->form["image"]->storeAs("public/images", $img_name);
+                $u->image = $img_name;
+
+            }
+
+            $u->save();
+            $this->dispatchBrowserEvent("updateAdmin");
 
         }else{
-            $img_name = "profil.png";
+
+            $this->validate();
+
+            if ($this->form["image"]) {
+                $img_name = uniqid().".jpg";
+
+                $this->form["image"]->storeAs("public/images", $img_name);
+
+            }else{
+                $img_name = "profil.png";
+            }
+
+            User::create([
+                "prenom" => ucfirst($this->form["prenom"]),
+                "nom" => ucfirst($this->form["nom"]),
+                "adresse" => $this->form["adresse"],
+                "pays" => $this->form["pays"],
+                "nationalite" => $this->form["nationalite"],
+                "email" => $this->form["email"],
+                "pseudo" => $this->form["pseudo"],
+                "role" => $this->form["role"],
+                "tel" => $this->form["tel"],
+                "tel2" => $this->form["tel2"],
+                "image" => $img_name,
+                "password" => Hash::make($this->form["password"])
+            ]);
+
+            $this->dispatchBrowserEvent("addAdmin");
         }
-
-        User::create([
-            "prenom" => ucfirst($this->form["prenom"]),
-            "nom" => ucfirst($this->form["nom"]),
-            "adresse" => $this->form["adresse"],
-            "pays" => $this->form["pays"],
-            "nationalite" => $this->form["nationalite"],
-            "email" => $this->form["email"],
-            "pseudo" => $this->form["pseudo"],
-            "role" => $this->form["role"],
-            "tel" => $this->form["tel"],
-            "tel2" => $this->form["tel2"],
-            "image" => $img_name,
-            "password" => Hash::make($this->form["password"])
-        ]);
-
-        $this->dispatchBrowserEvent("addAdmin");
         $this->changeType("list");
     }
 

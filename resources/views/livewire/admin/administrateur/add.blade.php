@@ -41,6 +41,7 @@
                 <input type="email" placeholder="Entrer l'adresse email" class="form-control @error('form.email') is-invalid @enderror" wire:model="form.email">
                 @error('form.email') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
+            @if(!$form["id"])
             <div class="form-group mb-4 col-md-6">
                 <label for="">Mot de passe <span class="text-danger">*</span></label>
                 <input type="password" placeholder="Entrer le mot de passe" class="form-control @error('form.password') is-invalid @enderror" wire:model="form.password">
@@ -51,6 +52,7 @@
                 <input type="password" placeholder="Entrer le mot de passe" class="form-control @error('form.password_confirmation') is-invalid @enderror" wire:model="form.password_confirmation">
                 @error('form.password_confirmation') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
+            @endif
             <div class="form-group mb-4 col-md-6">
                 <label for="">Pays</label>
                 <input type="text" placeholder="Entrer le pays" class="form-control @error('form.pays') is-invalid @enderror" wire:model="form.pays">
