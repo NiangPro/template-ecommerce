@@ -252,13 +252,13 @@
                     <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
                         <div class="banner-content text-center">
                             <img src="assets/images/popup/newsletter/logo.png" class="logo" alt="logo" width="60" height="15">
-                            <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
-                            <p>Subscribe to the Molla eCommerce newsletter to receive timely updates from your favorite products.</p>
+                            <h2 class="banner-title">Obtenez <span>25<light>%</light></span> de réduction</h2>
+                            <p>Souscrivez à notre boutique pour recevoir des mises à jour opportunes de vos produits préférés.</p>
                             <form action="#">
                                 <div class="input-group input-group-round">
-                                    <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required>
-                                    <div class="input-group-append">
-                                        <button class="btn" type="submit"><span>go</span></button>
+                                    {{-- <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required> --}}
+                                    <div class="input-group-append text-center">
+                                        <a href="#signin-modal" data-toggle="modal" class="btn bt-sm btn-info" type="submit"><span>S'inscrire</span></a>
                                     </div><!-- .End .input-group-append -->
                                 </div><!-- .End .input-group -->
                             </form>
@@ -277,6 +277,7 @@
     </div>
     <!-- Plugins JS File -->
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/iziToast.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery.hoverIntent.min.js"></script>
     <script src="assets/js/jquery.waypoints.min.js"></script>

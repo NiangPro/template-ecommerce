@@ -19,7 +19,7 @@
                             </ul>
                             <div wire:ignore.self class="tab-content" id="tab-content-5">
                                 <div wire:ignore.self class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
-                                    <form wire:ignore.self wire:submit.prevent="login">  
+                                    <form wire:ignore.self wire:submit.prevent="login()">  
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <label>Pseudo</label>

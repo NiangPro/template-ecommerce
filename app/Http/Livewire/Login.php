@@ -39,17 +39,16 @@ class Login extends Component
         'form1.tel.max' => 'Le n° de telephone doit avoir au maximum 9 chiffres',
         'form1.email.required' => 'L\'email est requis',
         'form1.password.required' => 'Le mot de passe est requis',
-        'form1.pseudo.required' => 'Le mot de passe est requis',
-        'form1.pseudo.unique' => 'Le mot de passe doit être unique',
+        'form1.pseudo.required' => 'Le pseudo de passe est requis',
         'form1.role.required' => 'Le role est requis',
-        'form2.pseudo.required' => 'L\'email est requis',
+        'form2.pseudo.required' => 'Le pseudo est requis',
         'form2.password.required' => 'Le mot de passe est requis',
     ];
 
     // connexion
     public function login(){
         $this->validate([
-            "form2.pseudo" => "required|unique",
+            "form2.pseudo" => "required|string",
             "form2.password" => "required",
         ]);
         if(Auth::attempt(['pseudo' => $this->form2['pseudo'], 'password' => $this->form2['password']]))
@@ -68,7 +67,7 @@ class Login extends Component
             'form1.nom' => 'required|string',
             'form1.nationalite' => 'nullable|string',
             'form1.pays' => 'nullable|string',
-            'form1.pseudo' => 'required|unique',
+            'form1.pseudo' => 'required|string',
             'form1.adresse' => 'required|string',
             'form1.role' => 'required|string',
             'form1.tel' => ['required', 'min:9', 'max:9', 'regex:/^[33|70|75|76|77|78]+[0-9]{7}$/'],
