@@ -14,24 +14,25 @@ class Admins extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $type = "list";
+    public $idDeleting = null;
     public $imgEditing = null;
     public $title = "La liste des administrateurs";
 
     public $form = [
         "id" => null,
-        "nom",
-        "prenom", 
-        "adresse",
-        "nationalite",
-        "pseudo",
-        "pays",
+        "nom" => "",
+        "prenom" => "", 
+        "adresse" => "",
+        "nationalite" => "",
+        "pseudo" => "",
+        "pays" => "",
         "image" => null,
-        "role" => "admin",
-        "tel",
+        "role" => "client",
+        "tel" => "",
         "tel2" => null,
-        "email",
-        "password",
-        "password_confirmation",
+        "email" => "",
+        "password" => "",
+        "password_confirmation" => "",
     ];
 
     protected $rules = [
@@ -79,6 +80,22 @@ class Admins extends Component
         }
     }
 
+    public function readyForDelete($id)
+    {
+        $this->idDeleting = $id;
+    }
+
+    public function delete()
+    {
+        $u = User::where("id", $this->idDeleting)->first();
+
+        $u->delete();
+
+        $this->initForm();
+
+        $this->dispatchBrowserEvent("deleteAdmin");
+    }
+
     public function editer($id)
     {
         $u = User::where("id", $id)->first();
@@ -101,10 +118,25 @@ class Admins extends Component
     public function store()
     {
         if ($this->form["id"]) {
-            $this->validate(["form.nom" => "required"]);
+            $this->validate([
+                "form.nom" => "required",
+                "form.prenom" => "required",
+                "form.adresse" => "required",
+                "form.tel" => ['required', 'min:9', 'max:9', 'regex:/^[33|70|75|76|77|78]+[0-9]{7}$/'],
+                "form.tel2" => ['nullable', 'min:9', 'max:9', 'regex:/^[33|70|75|76|77|78]+[0-9]{7}$/'],
+                "form.email" => "required",
+                "form.pseudo" => "required",
+                "form.image" => "nullable|image",
+            ]);
             $u = User::where("id", $this->form["id"])->first();
 
+            $u->prenom = ucfirst($this->form["prenom"]);
             $u->nom = ucfirst($this->form["nom"]);
+            $u->email = $this->form["email"];
+            $u->tel = $this->form["tel"];
+            $u->tel2 = $this->form["tel2"];
+            $u->pseudo = $this->form["pseudo"];
+            $u->adresse = $this->form["adresse"];
            
             if ($this->form["image"]) {
                 $img_name = uniqid().".jpg";
@@ -173,5 +205,8 @@ class Admins extends Component
         $this->form["email"] = "";
         $this->form["password"] = "";
         $this->form["password_confirmation"] = "";
+
+        $this->imgEditing = null;
+        $this->idDeleting = null;
     }
 }

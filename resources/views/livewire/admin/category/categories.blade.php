@@ -42,7 +42,7 @@
                     </thead>
                     <tbody>
                         @foreach($categories as $c)
-                            <tr>
+                            <tr >
                                 <td class="h5">{{$c->nom}}</td>
                                 <td><img src="storage/images/{{$c->image}}" class="product-img-2" alt="product img"></td>
                                 <td>
@@ -53,8 +53,9 @@
                             @if($c->children)
                                 
                                 @foreach ($c->children as $child)
-                                    <tr wire:ignore>
+                                    <tr wire:ignore.self>
                                         <td class="ps-5 h6"><i class='bx bx-subdirectory-right'></i>{{$child->nom}}</td>
+                                        <td><img src="storage/images/{{$child->image}}" class="product-img-2" alt="product img"></td>
                                         <td>
                                             <button class="btn btn-outline-info btn-sm radius-30" wire:click="editer({{$child->id}})"><i class="bx bx-show"></i></button>
                                             <button class="btn btn-outline-danger btn-sm radius-30" wire:click="readyForDelete({{$child->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>
@@ -79,7 +80,7 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                            </div>
                         @endforeach
                     </tbody>
                 </table>
