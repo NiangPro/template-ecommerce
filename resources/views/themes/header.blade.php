@@ -193,7 +193,7 @@
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
                         <li class="megamenu-container active">
-                            <a href="{{route('home')}}" class="sf-with-ul">Home</a>
+                            <a href="{{route('accueil')}}" >Home</a>
                         </li>
                         <li>
                             <a href="category.html" class="sf-with-ul">Shop</a>

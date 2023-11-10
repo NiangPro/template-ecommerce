@@ -5,11 +5,11 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class Home extends Component
+class Profil extends Component
 {
     public function render()
     {
-        return view('livewire.admin.home')->layout("layouts.dashboard");
+        return view('livewire.admin.profil')->layout("layouts.dashboard");
     }
 
     public function mount()

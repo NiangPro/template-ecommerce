@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -138,5 +139,13 @@ class Categories extends Component
         $this->form["slug"] = "";
         $this->form["parent_id"] = null;
         $this->idDeleting = null;
+    }
+
+    
+    public function mount()
+    {
+        if (!Auth()->user() || !Auth()->user()->isAdmin()) {
+            return redirect(route("accueil"));
+        }
     }
 }

@@ -5,11 +5,17 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class Home extends Component
+class Logout extends Component
 {
+    public function deconnecter()
+    {
+        Auth::logout();
+        
+        return redirect(route("accueil"));
+    }
     public function render()
     {
-        return view('livewire.admin.home')->layout("layouts.dashboard");
+        return view('livewire.logout');
     }
 
     public function mount()

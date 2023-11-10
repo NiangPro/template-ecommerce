@@ -16,6 +16,7 @@ use App\Http\Livewire\Contactus;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Products;
+use App\Http\Livewire\Profil;
 use App\Http\Livewire\SingleProduct;
 use App\Http\Livewire\Visiteurs;
 use App\Http\Livewire\Wishlist;
@@ -53,6 +54,7 @@ Route::get("contact", Contactus::class)->name("contactus");
 Route::get("account", Account::class)->name("account");
 Route::get("wishlist", Wishlist::class)->name("wishlist");
 Route::get("visiteur", Visiteurs::class)->name("visiteur");
+Route::get("mon-profil", Profil::class)->name("profil");
 Route::get("single-produit", SingleProduct::class)->name("singleProduct");
 Route::get("archive-produit/{slug}-{id}", ArchiveProduct::class)->name("archiveProduct");
 
