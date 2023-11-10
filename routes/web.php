@@ -17,6 +17,7 @@ use App\Http\Livewire\Home;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Products;
 use App\Http\Livewire\SingleProduct;
+use App\Http\Livewire\Visiteurs;
 use App\Http\Livewire\Wishlist;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,7 @@ Route::get("checkout", Checkout::class)->name("checkout");
 Route::get("contact", Contactus::class)->name("contactus");
 Route::get("account", Account::class)->name("account");
 Route::get("wishlist", Wishlist::class)->name("wishlist");
+Route::get("visiteur", Visiteurs::class)->name("visiteur");
 Route::get("single-produit", SingleProduct::class)->name("singleProduct");
 Route::get("archive-produit", ArchiveProduct::class)->name("archiveProduct");
 

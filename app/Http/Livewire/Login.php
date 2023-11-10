@@ -53,7 +53,11 @@ class Login extends Component
         ]);
         if(Auth::attempt(['pseudo' => $this->form2['pseudo'], 'password' => $this->form2['password']]))
         {
-            return redirect(route('home'));
+            if (Auth::user()->isAdmin()) {
+                return redirect(route('home'));
+            }else{
+                return redirect(route('visiteur'));
+            }
         }else{
             $this->dispatchBrowserEvent("badConnection");
         }
@@ -112,5 +116,16 @@ class Login extends Component
     public function render()
     {
         return view('livewire.frontend.login')->layout("layouts.app");
+    }
+
+    public function mount(){
+        if (Auth::user()) {
+            if (Auth::user()->isAdmin()) {
+                return redirect(route('home'));
+            }else{
+                return redirect(route('visiteur'));
+            }
+        }
+        
     }
 }

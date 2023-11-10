@@ -12,7 +12,14 @@
                         <a href="#">Links</a>
                         <ul>
                             
-                            <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i> Mon Compte</a></li>
+                            <li>
+                                @if (Auth::user())
+
+                                <a href="{{route('login')}}" ><i class="icon-user"></i> {{Auth::user()->pseudo}}</a>
+                                @else   
+                                 <a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i> Mon Compte</a>
+                                @endif
+                            </li>
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
