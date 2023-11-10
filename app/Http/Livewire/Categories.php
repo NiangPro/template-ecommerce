@@ -134,6 +134,7 @@ class Categories extends Component
     {
         $this->form["id"] = null;
         $this->form["nom"] = "";
+        $this->form["image"] = "";
         $this->form["slug"] = "";
         $this->form["parent_id"] = null;
         $this->idDeleting = null;

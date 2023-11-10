@@ -5,7 +5,7 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="{{route('home')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Produits</li>
+                    <li class="breadcrumb-item active" aria-current="page">Clients</li>
                 </ol>
             </nav>
         </div>
@@ -19,7 +19,6 @@
             </div>
         </div>
     </div>
-
     <div class="card radius-10">
         <div class="card-body">
            <div class="d-flex align-items-center">
@@ -30,32 +29,35 @@
            </div>
            <div class="table-responsive">
                 @if($type != "list")
-                    @include('livewire.admin.produit.add')
+                    @include('livewire.admin.administrateur.add')
                 @else
                 <table id="example" class="table align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                        <th>Nom</th>
                         <th>Image</th>
-                        <th>Categorie</th>
-                        <th>Quantité</th>
-                        <th>Prix</th>
-                        <th>Réduction</th>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+                        <th>Telephone</th>
+                        <th>Pseudo</th>
                         <th>ACtions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($produits as $p)
+                        @foreach ($clients as $c)
                         <tr>
-                            <td>{{$p->nom}}</td>
-                            <td><img src="storage/images/{{$p->image}}" class="product-img-2" alt="product img"></td>
-                            <td>{{$p->category->nom}}</td>
-                            <td><span class="badge bg-success text-white shadow-sm">{{$p->qte}}</span></td>
-                            <td>{{$p->prix}} F CFA</td>
-                            <td>{{$p->reduction}} F CFA</td>
+                            <td><img src="storage/images/{{$c->image}}" class="product-img-2" alt="product img"></td>
+                            <td>{{$c->prenom}}</td>
+                            <td>{{$c->nom}}</td>
+                            <td>{{$c->email}}</td>
+                            <td>{{$c->adresse}}</td>
+                            <td>{{$c->tel}}</td>
+                            <td>{{$c->pseudo}}</td>
+                            
                             <td>
-                                <button wire:click="editer({{$p->id}})" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></button>
-                                <button class="btn btn-outline-danger btn-sm"  wire:click="readyForDelete({{$p->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>
+                                <button wire:click="editer({{$c->id}})" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></button>
+                                <button class="btn btn-outline-danger btn-sm"  wire:click="readyForDelete({{$c->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>
                             </td>
                         </tr>
 
@@ -87,36 +89,3 @@
         </div>
     </div>
 </div>
-
-@section('js')
-<script>
-    window.addEventListener('addProduct', event =>{
-        iziToast.success({
-        title: 'Produit',
-        message: 'Produit ajouté avec succès',
-        position: 'bottomRight'
-        });
-    });
-
-    window.addEventListener('updateProduct', event =>{
-        iziToast.success({
-        title: 'Produit',
-        message: 'Mis à jour avec succès',
-        position: 'topRight'
-        });
-    });
-
-    window.addEventListener('deleteProduct', event =>{
-        iziToast.success({
-        title: 'Produit',
-        message: 'Produit supprimé avec succès',
-        position: 'topRight'
-        });
-
-        $("#exampleModal").modal("hide");
-        
-    });
-
-</script>
-
-@endsection
