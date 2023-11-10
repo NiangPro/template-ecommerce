@@ -145,7 +145,7 @@
     window.addEventListener('badConnection', event =>{
         iziToast.error({
         title: 'Connexion',
-        message: 'Email ou mot de passe incorrect',
+        message: 'Nom d\'utilisateur ou mot de passe incorrect',
         position: 'topRight'
         });
     });
