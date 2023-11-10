@@ -4,7 +4,7 @@
         <div class="row">
             <div class="form-group mb-4 col-md-6">
                 <label for="">Nom <span class="text-danger">*</span></label>
-                <input type="text" placeholder="Entrer le nom de la catégorie" class="form-control @error('form.nom') is-invalid @enderror" wire:model="form.nom">
+                <input type="text" placeholder="Entrer le nom du produit" class="form-control @error('form.nom') is-invalid @enderror" wire:model="form.nom">
                 @error('form.nom') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-4 col-md-6">

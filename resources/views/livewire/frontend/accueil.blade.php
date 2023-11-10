@@ -81,7 +81,7 @@
                 <div class="row">
                     @foreach($categories as $c)
                     <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="category.html" class="cat-block">
+                        <a href="{{route('archiveProduct', ['slug' => $c->slug, "id" => $c->id])}}" class="cat-block">
                             <figure>
                                 <span>
                                     @if($c->image)
