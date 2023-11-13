@@ -55,6 +55,6 @@ Route::get("account", Account::class)->name("account");
 Route::get("wishlist", Wishlist::class)->name("wishlist");
 Route::get("visiteur", Visiteurs::class)->name("visiteur");
 Route::get("mon-profil", Profil::class)->name("profil");
-Route::get("single-produit", SingleProduct::class)->name("singleProduct");
+Route::get("produit/{id}", SingleProduct::class)->name("singleProduct");
 Route::get("archive-produit/{slug}-{id}", ArchiveProduct::class)->name("archiveProduct");
 

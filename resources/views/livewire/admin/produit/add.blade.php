@@ -1,6 +1,6 @@
 <div class="container col-md-10 mt-4">
 
-    <form wire:submit.prevent="store" method="post">
+    <form wire:ignore.self wire:submit.prevent="store" method="post">
         <div class="row">
             <div class="form-group mb-4 col-md-6">
                 <label for="">Nom <span class="text-danger">*</span></label>
@@ -26,10 +26,18 @@
                 <input type="number" placeholder="Entrer la quantité du produit" class="form-control @error('form.qte') is-invalid @enderror" wire:model="form.qte">
                 @error('form.qte') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
-            <div class="form-group mb-4 col-md-12">
+            <div class="form-group mb-4 col-md-6">
                 <label for="">Description <span class="text-danger">*</span></label>
                 <textarea placeholder="Entrer la description du produit" class="form-control @error('form.description') is-invalid @enderror" wire:model="form.description"></textarea>
                 @error('form.description') <span class="error text-danger">{{$message}}</span> @enderror
+            </div>
+            <div class="form-group mb-4 col-md-6">
+                <label for="">Statut <span class="text-danger">*</span></label>
+                <select class="form-select" id="status" wire:model="form.status" multiple>
+                    <option value="">Veuillez selectionner une catégorie</option>
+                    <option value="Nouveaute">Nouveaute</option>
+                    <option value="Top">Top</option>
+                </select>
             </div>
             <div class="form-group mb-4 col-md-6">
                 <label for="">Image <span class="text-danger">*</span></label>
@@ -52,3 +60,4 @@
         @endif
     </form>
 </div>
+

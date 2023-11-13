@@ -26,6 +26,7 @@ class Products extends Component
         "qte" => 0,
         "reduction" => 0,
         "image" => null,
+        "status" => []
     ];
 
     protected $rules = [
@@ -98,6 +99,7 @@ class Products extends Component
     
     public function store()
     {
+        dd($this->form["status"]);
         if ($this->form["id"]) {
             $this->validate(["form.nom" => "required",
             "form.category_id" => "required",
@@ -167,5 +169,9 @@ class Products extends Component
         $this->form["reduction"] = 0;
 
         $this->idDeleting = null;
+    }
+    public function updatedSelectedStatus()
+    {
+        $this->emit('select2Updated');
     }
 }

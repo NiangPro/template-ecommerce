@@ -27,7 +27,7 @@ class Admins extends Component
         "pseudo" => "",
         "pays" => "",
         "image" => null,
-        "role" => "client",
+        "role" => "admin",
         "tel" => "",
         "tel2" => null,
         "email" => "",
