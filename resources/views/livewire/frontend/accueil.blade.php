@@ -80,81 +80,22 @@
             <div class="cat-blocks-container">
                 <div class="row">
                     @foreach($categories as $c)
-                    <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="{{route('archiveProduct', ['slug' => $c->slug, "id" => $c->id])}}" class="cat-block">
-                            <figure>
-                                <span>
-                                    @if($c->image)
-                                        <img src="storage/images/{{ $c->image}}" alt="Category image">
-                                    @else
-                                        <img src="assets/images/demos/demo-4/cats/3.png" alt="Category image">
-                                    @endif
-                                </span>
-                            </figure>
+                        <div class="col-6 col-sm-4 col-lg-2">
+                            <a href="{{route('archiveProduct', ['slug' => $c->slug, "id" => $c->id])}}" class="cat-block">
+                                <figure>
+                                    <span>
+                                        @if($c->image)
+                                            <img src="storage/images/{{ $c->image}}" alt="Category image">
+                                        @else
+                                            <img src="assets/images/demos/demo-4/cats/3.png" alt="Category image">
+                                        @endif
+                                    </span>
+                                </figure>
 
-                            <h3 class="cat-block-title">{{$c->nom}}</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
+                                <h3 class="cat-block-title">{{$c->nom}}</h3><!-- End .cat-block-title -->
+                            </a>
+                        </div><!-- End .col-sm-4 col-lg-2 -->
                     @endforeach
-                    <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="category.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="assets/images/demos/demo-4/cats/2.png" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Digital Cameras</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-                    
-                    <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="category.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="assets/images/demos/demo-4/cats/3.png" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Smart Phones</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-
-                    <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="category.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="assets/images/demos/demo-4/cats/4.png" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Televisions</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-
-                    <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="category.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="assets/images/demos/demo-4/cats/5.png" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Audio</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
-
-                    <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="category.html" class="cat-block">
-                            <figure>
-                                <span>
-                                    <img src="assets/images/demos/demo-4/cats/6.png" alt="Category image">
-                                </span>
-                            </figure>
-
-                            <h3 class="cat-block-title">Smart Watches</h3><!-- End .cat-block-title -->
-                        </a>
-                    </div><!-- End .col-sm-4 col-lg-2 -->
                 </div><!-- End .row -->
             </div><!-- End .cat-blocks-container -->
         </div>
