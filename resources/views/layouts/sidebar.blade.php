@@ -32,6 +32,13 @@
             </ul>
         </li>
         <li>
+            <a href="{{route("tag")}}">
+                <div class="parent-icon"><i class="bx bx-tag"></i>
+                </div>
+                <div class="menu-title">Tags Produits</div>
+            </a>
+        </li>
+        <li>
             <a href="{{route("product")}}">
                 <div class="parent-icon"><i class="bx bx-shopping-bag"></i>
                 </div>

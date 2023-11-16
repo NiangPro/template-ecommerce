@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Tag;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -26,7 +27,7 @@ class Products extends Component
         "qte" => 0,
         "reduction" => 0,
         "image" => null,
-        "status" => []
+        "tags" => []
     ];
 
     protected $rules = [
@@ -92,6 +93,7 @@ class Products extends Component
         $this->form["qte"] = $c->qte;
         $this->form["category_id"] = $c->category_id;
         $this->form["prix"] = $c->prix;
+        $this->form["tags"] = $c->tags;
         $this->imgEditing = $c->image;
 
         $this->changeType("edit");
@@ -99,7 +101,6 @@ class Products extends Component
     
     public function store()
     {
-        dd($this->form["status"]);
         if ($this->form["id"]) {
             $this->validate(["form.nom" => "required",
             "form.category_id" => "required",
@@ -126,6 +127,18 @@ class Products extends Component
             }
 
             $p->save();
+
+            foreach ($p->tags as $t) {
+                $p->tags()->detach($t->id);
+            }
+            
+            if ($this->form["tags"]) {
+                foreach ($this->form["tags"] as $value) {
+                    if ($value) {
+                        $p->tags()->attach($value);
+                    }
+                }
+            }
             $this->dispatchBrowserEvent("updateProduct");
 
         }else{
@@ -134,15 +147,21 @@ class Products extends Component
 
             $this->form["image"]->storeAs("public/images", $img_name);
 
-            Product::create([
-                "nom" => $this->form["nom"],
-                "description" => $this->form["description"],
-                "prix" => $this->form["prix"],
-                "qte" => $this->form["qte"],
-                "reduction" => $this->form["reduction"],
-                "category_id" => $this->form["category_id"],
-                "image" => $img_name,
-            ]);
+            $p = new Product();
+
+            $p->nom = $this->form["nom"];
+            $p->description = $this->form["description"];
+            $p->prix = $this->form["prix"];
+            $p->qte = $this->form["qte"];
+            $p->reduction = $this->form["reduction"];
+            $p->category_id = $this->form["category_id"];
+            $p->image = $img_name;
+
+            $p->save();
+
+            if ($this->form["tags"]) {
+                $p->tags()->attach($this->form["tags"]);
+            }
 
             $this->dispatchBrowserEvent("addProduct");
         }
@@ -153,6 +172,7 @@ class Products extends Component
     {
         return view('livewire.admin.produit.products', [
             'categories' => Category::orderBy("nom", "ASC")->get(),
+            'tags' => Tag::orderBy("nom", "ASC")->get(),
             "produits" => Product::orderBy("id", "DESC")->get()
         ])->layout("layouts.dashboard");
     }
@@ -167,8 +187,10 @@ class Products extends Component
         $this->form["prix"] = 0;
         $this->form["qte"] = 0;
         $this->form["reduction"] = 0;
+        $this->form["tags"] = [];
 
         $this->idDeleting = null;
+        $this->imgEditing = null;
     }
     public function updatedSelectedStatus()
     {

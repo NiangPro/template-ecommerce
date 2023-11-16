@@ -40,6 +40,7 @@
                         <th>Categorie</th>
                         <th>Quantité</th>
                         <th>Prix</th>
+                        <th>Tags</th>
                         <th>Réduction</th>
                         <th>ACtions</th>
                         </tr>
@@ -50,8 +51,13 @@
                             <td>{{$p->nom}}</td>
                             <td><img src="storage/images/{{$p->image}}" class="product-img-2" alt="product img"></td>
                             <td>{{$p->category->nom}}</td>
-                            <td><span class="badge bg-success text-white shadow-sm">{{$p->qte}}</span></td>
+                            <td class="text-center"><span class="badge bg-success text-white shadow-sm">{{$p->qte}}</span></td>
                             <td>{{$p->prix}} F CFA</td>
+                            <td>
+                                @foreach($p->tags as $t)
+                                    <span class="badge bg-info">{{$t->nom}}</span>
+                                @endforeach
+                            </td>
                             <td>{{$p->reduction}} F CFA</td>
                             <td>
                                 <button wire:click="editer({{$p->id}})" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></button>

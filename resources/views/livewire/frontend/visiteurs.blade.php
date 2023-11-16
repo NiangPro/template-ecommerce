@@ -29,9 +29,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false">Detail Compte</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Déconnexion</a>
-                            </li>
+                            <livewire:deconnexion />
                         </ul>
                     </aside><!-- End .col-lg-3 -->
 
