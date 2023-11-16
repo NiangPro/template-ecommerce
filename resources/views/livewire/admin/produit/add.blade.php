@@ -32,12 +32,10 @@
                 @error('form.description') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-4 col-md-6">
-                <label for="">Statut <span class="text-danger">*</span></label>
-                <select class="form-select" id="status" wire:model="form.status" multiple>
-                    <option value="">Veuillez selectionner une catégorie</option>
-                    <option value="Nouveaute">Nouveaute</option>
-                    <option value="Top">Top</option>
-                </select>
+                <label for="">Tags</label> <br>
+                @foreach($tags as $key=>$t)
+                <label for="">{{$t->nom}} <input type="checkbox" class="" wire:model="form.tags.{{$key}}" value="{{$t->id}}"></label>
+                @endforeach
             </div>
             <div class="form-group mb-4 col-md-6">
                 <label for="">Image <span class="text-danger">*</span></label>

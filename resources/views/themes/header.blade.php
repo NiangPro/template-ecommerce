@@ -84,7 +84,7 @@
                 </div><!-- End .compare-dropdown -->
 
                 <div class="wishlist">
-                    <a href="wishlist.html" title="Wishlist">
+                    <a href="{{route('wishlist')}}" title="Wishlist">
                         <div class="icon">
                             <i class="icon-heart-o"></i>
                             <span class="wishlist-count badge">3</span>
@@ -152,7 +152,7 @@
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
-                            <a href="cart.html" class="btn btn-primary">View Cart</a>
+                            <a href="{{route('cart')}}" class="btn btn-primary">View Cart</a>
                             <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
                         </div><!-- End .dropdown-cart-total -->
                     </div><!-- End .dropdown-menu -->
