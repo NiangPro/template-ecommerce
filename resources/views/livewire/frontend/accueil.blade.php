@@ -85,9 +85,10 @@
                                 <figure>
                                     <span>
                                         @if($c->image)
-                                            <img src="storage/images/{{ $c->image}}" alt="Category image">
+                                            <img src="{{asset('storage/images/'.$c->image)}}" alt="Category image">
                                         @else
                                             <img src="assets/images/demos/demo-4/cats/3.png" alt="Category image">
+                                            <input type="d">
                                         @endif
                                     </span>
                                 </figure>

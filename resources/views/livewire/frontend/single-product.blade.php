@@ -1,469 +1,409 @@
 <div>
-    
-        
-    <!-- Breadcrumb Start -->
-    <div class="breadcrumb-wrap">
-        <div class="container-fluid">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Products</a></li>
-                <li class="breadcrumb-item active">Product Detail</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
-    
-    <!-- Product Detail Start -->
-    <div class="product-detail">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="product-detail-top">
-                        <div class="row align-items-center">
-                            <div class="col-md-5">
-                                <div class="product-slider-single normal-slider">
-                                    <img src="assets/img/product-1.jpg" alt="Product Image">
-                                    <img src="assets/img/product-3.jpg" alt="Product Image">
-                                    <img src="assets/img/product-5.jpg" alt="Product Image">
-                                    <img src="assets/img/product-7.jpg" alt="Product Image">
-                                    <img src="assets/img/product-9.jpg" alt="Product Image">
-                                    <img src="assets/img/product-10.jpg" alt="Product Image">
-                                </div>
-                                <div class="product-slider-single-nav normal-slider">
-                                    <div class="slider-nav-img"><img src="assets/img/product-1.jpg" alt="Product Image"></div>
-                                    <div class="slider-nav-img"><img src="assets/img/product-3.jpg" alt="Product Image"></div>
-                                    <div class="slider-nav-img"><img src="assets/img/product-5.jpg" alt="Product Image"></div>
-                                    <div class="slider-nav-img"><img src="assets/img/product-7.jpg" alt="Product Image"></div>
-                                    <div class="slider-nav-img"><img src="assets/img/product-9.jpg" alt="Product Image"></div>
-                                    <div class="slider-nav-img"><img src="assets/img/product-10.jpg" alt="Product Image"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="product-content">
-                                    <div class="title"><h2>Product Name</h2></div>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <div class="price">
-                                        <h4>Price:</h4>
-                                        <p>$99 <span>$149</span></p>
-                                    </div>
-                                    <div class="quantity">
-                                        <h4>Quantity:</h4>
-                                        <div class="qty">
-                                            <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
-                                            <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="p-size">
-                                        <h4>Size:</h4>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn">S</button>
-                                            <button type="button" class="btn">M</button>
-                                            <button type="button" class="btn">L</button>
-                                            <button type="button" class="btn">XL</button>
-                                        </div> 
-                                    </div>
-                                    <div class="p-color">
-                                        <h4>Color:</h4>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn">White</button>
-                                            <button type="button" class="btn">Black</button>
-                                            <button type="button" class="btn">Blue</button>
-                                        </div> 
-                                    </div>
-                                    <div class="action">
-                                        <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                                        <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row product-detail-bottom">
-                        <div class="col-lg-12">
-                            <ul class="nav nav-pills nav-justified">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="pill" href="#description">Description</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#specification">Specification</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#reviews">Reviews (1)</a>
-                                </li>
-                            </ul>
+    <main class="main">
+        <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+            <div class="container d-flex align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="#">Produits</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Détails</li>
+                </ol>
 
+                <nav class="product-pager ml-auto" aria-label="Product">
+                    <a class="product-pager-link product-pager-prev" href="#" aria-label="Previous" tabindex="-1">
+                        <i class="icon-angle-left"></i>
+                        <span>Suivant</span>
+                    </a>
+
+                    <a class="product-pager-link product-pager-next" href="#" aria-label="Next" tabindex="-1">
+                        <span>Precedant</span>
+                        <i class="icon-angle-right"></i>
+                    </a>
+                </nav><!-- End .pager-nav -->
+            </div><!-- End .container -->
+        </nav><!-- End .breadcrumb-nav -->
+
+        <div class="page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="product-details-top">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="product-gallery">
+                                        <figure class="product-main-image">
+                                            <span class="product-label label-top">Top</span>
+                                            <img id="product-zoom" src="{{asset('storage/images/'.$product->image)}}" data-zoom-image="assets/images/products/single/sidebar-gallery/1-big.jpg" alt="product image">
+
+                                            <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                                <i class="icon-arrows"></i>
+                                            </a>
+                                        </figure><!-- End .product-main-image -->
+
+                                        {{-- <div id="product-zoom-gallery" class="product-image-gallery">
+                                            <a class="product-gallery-item active" href="#" data-image="assets/images/products/single/sidebar-gallery/1.jpg" data-zoom-image="assets/images/products/single/sidebar-gallery/1-big.jpg">
+                                                <img src="assets/images/products/single/sidebar-gallery/1-small.jpg" alt="product side">
+                                            </a>
+
+                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/sidebar-gallery/2.jpg" data-zoom-image="assets/images/products/single/sidebar-gallery/2-big.jpg">
+                                                <img src="assets/images/products/single/sidebar-gallery/2-small.jpg" alt="product cross">
+                                            </a>
+
+                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/sidebar-gallery/3.jpg" data-zoom-image="assets/images/products/single/sidebar-gallery/3-big.jpg">
+                                                <img src="assets/images/products/single/sidebar-gallery/3-small.jpg" alt="product with model">
+                                            </a>
+
+                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/sidebar-gallery/4.jpg" data-zoom-image="assets/images/products/single/sidebar-gallery/4-big.jpg">
+                                                <img src="assets/images/products/single/sidebar-gallery/4-small.jpg" alt="product back">
+                                            </a>
+                                        </div><!-- End .product-image-gallery --> --}}
+                                    </div><!-- End .product-gallery -->
+                                </div><!-- End .col-md-6 -->
+
+                                <div class="col-md-6">
+                                    <div class="product-details product-details-sidebar">
+                                        <h1 class="product-title">{{$product->nom}}</h1><!-- End .product-title -->
+
+                                        <div class="ratings-container">
+                                            <div class="ratings">
+                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                            </div><!-- End .ratings -->
+                                            <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
+                                        </div><!-- End .rating-container -->
+
+                                        <div class="product-price">
+                                            {{$product->prix}}
+                                        </div><!-- End .product-price -->
+
+                                        <div class="product-content">
+                                            <p>{{$product->description}}</p>
+                                        </div><!-- End .product-content -->
+
+                                        {{-- <div class="details-filter-row details-row-size">
+                                            <label>Color:</label>
+
+                                            <div class="product-nav product-nav-dots">
+                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #efe7db;"><span class="sr-only">Color name</span></a>
+                                            </div><!-- End .product-nav -->
+                                        </div><!-- End .details-filter-row --> --}}
+
+                                        {{-- <div class="details-filter-row details-row-size">
+                                            <label for="size">Size:</label>
+                                            <div class="select-custom">
+                                                <select name="size" id="size" class="form-control">
+                                                    <option value="#" selected="selected">Select a size</option>
+                                                    <option value="s">Small</option>
+                                                    <option value="m">Medium</option>
+                                                    <option value="l">Large</option>
+                                                    <option value="xl">Extra Large</option>
+                                                </select>
+                                            </div><!-- End .select-custom -->
+
+                                            <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a>
+                                        </div><!-- End .details-filter-row --> --}}
+
+                                        <div class="product-details-action">
+                                            <div class="details-action-col">
+                                                <label for="qty">Quantité</label>
+                                                <div class="product-details-quantity">
+                                                    <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                                </div><!-- End .product-details-quantity -->
+
+                                                <a href="#" class="btn-product btn-cart"><span>ajouter au panier</span></a>
+                                            </div><!-- End .details-action-col -->
+
+                                            <div class="details-action-wrapper">
+                                                <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>ajouter au favoris</span></a>
+                                                {{-- <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to Compare</span></a> --}}
+                                            </div><!-- End .details-action-wrapper -->
+                                        </div><!-- End .product-details-action -->
+
+                                        <div class="product-details-footer details-footer-col">
+                                            <div class="product-cat">
+                                                <span>Catégorie</span>
+                                                <a href="#">{{$product->category->nom}}</a>,
+                                            </div><!-- End .product-cat -->
+
+                                            <div class="social-icons social-icons-sm">
+                                                <span class="social-label">Share:</span>
+                                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                                <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                                <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                                <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                                            </div>
+                                        </div><!-- End .product-details-footer -->
+                                    </div><!-- End .product-details -->
+                                </div><!-- End .col-md-6 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .product-details-top -->
+
+                        <div class="product-details-tab">
+                            <ul class="nav nav-pills justify-content-center" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">information additionnelle</a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping & Returns</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</a>
+                                </li> --}}
+                            </ul>
                             <div class="tab-content">
-                                <div id="description" class="container tab-pane active">
-                                    <h4>Product description</h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus. Nulla tristique viverra nisl, sit amet bibendum ante suscipit non. Praesent in faucibus tellus, sed gravida lacus. Vivamus eu diam eros. Aliquam et sapien eget arcu rhoncus scelerisque. Suspendisse sit amet neque neque. Praesent suscipit et magna eu iaculis. Donec arcu libero, commodo ac est a, malesuada finibus dolor. Aenean in ex eu velit semper fermentum. In leo dui, aliquet sit amet eleifend sit amet, varius in turpis. Maecenas fermentum ut ligula at consectetur. Nullam et tortor leo. 
-                                    </p>
-                                </div>
-                                <div id="specification" class="container tab-pane fade">
-                                    <h4>Product specification</h4>
-                                    <ul>
-                                        <li>Lorem ipsum dolor sit amet</li>
-                                        <li>Lorem ipsum dolor sit amet</li>
-                                        <li>Lorem ipsum dolor sit amet</li>
-                                        <li>Lorem ipsum dolor sit amet</li>
-                                        <li>Lorem ipsum dolor sit amet</li>
-                                    </ul>
-                                </div>
-                                <div id="reviews" class="container tab-pane fade">
-                                    <div class="reviews-submitted">
-                                        <div class="reviewer">Phasellus Gravida - <span>01 Jan 2020</span></div>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <p>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-                                        </p>
-                                    </div>
-                                    <div class="reviews-submit">
-                                        <h4>Give your Review:</h4>
-                                        <div class="ratting">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                        <div class="row form">
-                                            <div class="col-sm-6">
-                                                <input type="text" placeholder="Name">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input type="email" placeholder="Email">
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <textarea placeholder="Review"></textarea>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <button>Submit</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product">
-                        <div class="section-header">
-                            <h1>Related Products</h1>
-                        </div>
+                                <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
+                                    <div class="product-desc-content">
+                                        <h3>Detail du produit</h3>
+                                        <p>{{$product->nom}}</p>
+                                        <ul>
+                                            <li>{{$product->nom}} {{$product->description}}</li>
+                                        </ul>
+                                    </div><!-- End .product-desc-content -->
+                                </div><!-- .End .tab-pane -->
+                                <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
+                                    <div class="product-desc-content">
+                                        <h3>Information</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
 
-                        <div class="row align-items-center product-slider product-slider-3">
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="assets/img/product-10.jpg" alt="Product Image">
+                                        <h3>Fabric & care</h3>
+                                        <ul>
+                                            <li>Faux suede fabric</li>
+                                            <li>Gold tone metal hoop handles.</li>
+                                            <li>RI branding</li>
+                                            <li>Snake print trim interior </li>
+                                            <li>Adjustable cross body strap</li>
+                                            <li> Height: 31cm; Width: 32cm; Depth: 12cm; Handle Drop: 61cm</li>
+                                        </ul>
+
+                                        <h3>Size</h3>
+                                        <p>one size</p>
+                                    </div><!-- End .product-desc-content -->
+                                </div><!-- .End .tab-pane -->
+                                {{-- <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel" aria-labelledby="product-shipping-link">
+                                    <div class="product-desc-content">
+                                        <h3>Delivery & returns</h3>
+                                        <p>We deliver to over 100 countries around the world. For full details of the delivery options we offer, please view our <a href="#">Delivery information</a><br>
+                                        We hope you’ll love every purchase, but if you ever need to return an item you can do so within a month of receipt. For full details of how to make a return, please view our <a href="#">Returns information</a></p>
+                                    </div><!-- End .product-desc-content -->
+                                </div><!-- .End .tab-pane -->
+                                <div class="tab-pane fade" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
+                                    <div class="reviews">
+                                        <h3>Reviews (2)</h3>
+                                        <div class="review">
+                                            <div class="row no-gutters">
+                                                <div class="col-auto">
+                                                    <h4><a href="#">Samanta J.</a></h4>
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                    </div><!-- End .rating-container -->
+                                                    <span class="review-date">6 days ago</span>
+                                                </div><!-- End .col -->
+                                                <div class="col">
+                                                    <h4>Good, perfect size</h4>
+
+                                                    <div class="review-content">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!</p>
+                                                    </div><!-- End .review-content -->
+
+                                                    <div class="review-action">
+                                                        <a href="#"><i class="icon-thumbs-up"></i>Helpful (2)</a>
+                                                        <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
+                                                    </div><!-- End .review-action -->
+                                                </div><!-- End .col-auto -->
+                                            </div><!-- End .row -->
+                                        </div><!-- End .review -->
+
+                                        <div class="review">
+                                            <div class="row no-gutters">
+                                                <div class="col-auto">
+                                                    <h4><a href="#">John Doe</a></h4>
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                    </div><!-- End .rating-container -->
+                                                    <span class="review-date">5 days ago</span>
+                                                </div><!-- End .col -->
+                                                <div class="col">
+                                                    <h4>Very good</h4>
+
+                                                    <div class="review-content">
+                                                        <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
+                                                    </div><!-- End .review-content -->
+
+                                                    <div class="review-action">
+                                                        <a href="#"><i class="icon-thumbs-up"></i>Helpful (0)</a>
+                                                        <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
+                                                    </div><!-- End .review-action -->
+                                                </div><!-- End .col-auto -->
+                                            </div><!-- End .row -->
+                                        </div><!-- End .review -->
+                                    </div><!-- End .reviews -->
+                                </div><!-- .End .tab-pane --> --}}
+                            </div><!-- End .tab-content -->
+                        </div><!-- End .product-details-tab -->
+
+                        <h2 class="title text-center mb-4">Tu pourrais aussi aimer</h2><!-- End .title text-center -->
+                        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                            data-owl-options='{
+                                "nav": false, 
+                                "dots": true,
+                                "margin": 20,
+                                "loop": false,
+                                "responsive": {
+                                    "0": {
+                                        "items":1
+                                    },
+                                    "480": {
+                                        "items":2
+                                    },
+                                    "768": {
+                                        "items":3
+                                    },
+                                    "992": {
+                                        "items":4
+                                    },
+                                    "1200": {
+                                        "items":4,
+                                        "nav": true,
+                                        "dots": false
+                                    }
+                                }
+                            }'>
+                            @foreach ($produits as $p)
+                                <div class="product product-7 text-center">
+                                    <figure class="product-media">
+                                        <span class="product-label label-new">tag</span>
+                                        <a href="product.html">
+                                            <img src="{{asset('storage/images'.$p->image)}}" alt="Product image" class="product-image">
                                         </a>
+
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>ajouter au favoris</span></a>
+                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>voir plus</span></a>
+                                            {{-- <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a> --}}
+                                        </div><!-- End .product-action-vertical -->
+
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
+                                            <a href="#" class="btn-product btn-cart"><span>Ajouter au panier</span></a>
+                                        </div><!-- End .product-action -->
+                                    </figure><!-- End .product-media -->
+
+                                    <div class="product-body">
+                                        <div class="product-cat">
+                                            <a href="#">{{$product->category->nom}}</a>
+                                        </div><!-- End .product-cat -->
+                                        <h3 class="product-title"><a href="product.html">{{$p->nom}}</a></h3><!-- End .product-title -->
+                                        <div class="product-price">
+                                            {{$p->nom}} Fcfa
+                                        </div><!-- End .product-price -->
+                                        <div class="ratings-container">
+                                            <div class="ratings">
+                                                <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                                            </div><!-- End .ratings -->
+                                            <span class="ratings-text">( 2 Reviews )</span>
+                                        </div><!-- End .rating-container -->
+
+                                        <div class="product-nav product-nav-dots">
+                                            <a href="#" class="active" style="background: #cc9966;"><span class="sr-only">Color name</span></a>
+                                            <a href="#" style="background: #7fc5ed;"><span class="sr-only">Color name</span></a>
+                                            <a href="#" style="background: #e8c97a;"><span class="sr-only">Color name</span></a>
+                                        </div><!-- End .product-nav -->
+                                    </div><!-- End .product-body -->
                                 </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="assets/img/product-8.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="assets/img/product-6.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="assets/img/product-4.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="assets/img/product-2.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Side Bar Start -->
-                <div class="col-lg-4 sidebar">
-                    <div class="sidebar-widget category">
-                        <h2 class="title">Category</h2>
-                        <nav class="navbar bg-light">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-female"></i>Fashion & Beauty</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-child"></i>Kids & Babies Clothes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Men & Women Clothes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-mobile-alt"></i>Gadgets & Accessories</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-microchip"></i>Electronics & Accessories</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    
-                    <div class="sidebar-widget widget-slider">
-                        <div class="sidebar-slider normal-slider">
-                            <div class="product-item">
-                                <div class="product-title">
-                                    <a href="#">Product Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="assets/img/product-7.jpg" alt="Product Image">
+                            @endforeach
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- End .col-lg-9 -->
+
+                    {{-- <aside class="col-lg-3">
+                        <div class="sidebar sidebar-product">
+                            <div class="widget widget-products">
+                                <h4 class="widget-title">Related Product</h4><!-- End .widget-title -->
+
+                                <div class="products">
+                                    <div class="product product-sm">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/products/single/sidebar/1.jpg" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <h5 class="product-title"><a href="product.html">Light brown studded Wide fit wedges</a></h5><!-- End .product-title -->
+                                            <div class="product-price">
+                                                <span class="new-price">$50.00</span>
+                                                <span class="old-price">$110.00</span>
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                    </div><!-- End .product product-sm -->
+
+                                    <div class="product product-sm">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/products/single/sidebar/2.jpg" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <h5 class="product-title"><a href="product.html">Yellow button front tea top</a></h5><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $56.00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                    </div><!-- End .product product-sm -->
+
+                                    <div class="product product-sm">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/products/single/sidebar/3.jpg" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <h5 class="product-title"><a href="product.html">Beige metal hoop tote bag</a></h5><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $50.00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                    </div><!-- End .product product-sm -->
+
+                                    <div class="product product-sm">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/products/single/sidebar/4.jpg" alt="Product image" class="product-image">
+                                            </a>
+                                        </figure>
+
+                                        <div class="product-body">
+                                            <h5 class="product-title"><a href="product.html">Black soft RI weekend travel bag</a></h5><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $75.00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                    </div><!-- End .product product-sm -->
+                                </div><!-- End .products -->
+
+                                <a href="category.html" class="btn btn-outline-dark-3"><span>Voir d'autres produits</span><i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .widget widget-products -->
+
+                            <div class="widget widget-banner-sidebar">
+                                <div class="banner-sidebar-title">ad box 280 x 280</div><!-- End .ad-title -->
+                                
+                                <div class="banner-sidebar banner-overlay">
+                                    <a href="#">
+                                        <img src="assets/images/blog/sidebar/banner.jpg" alt="banner">
                                     </a>
-                                    <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-title">
-                                    <a href="#">Product Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="assets/img/product-8.jpg" alt="Product Image">
-                                    </a>
-                                    <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-title">
-                                    <a href="#">Product Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="assets/img/product-9.jpg" alt="Product Image">
-                                    </a>
-                                    <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="sidebar-widget brands">
-                        <h2 class="title">Our Brands</h2>
-                        <ul>
-                            <li><a href="#">Nulla </a><span>(45)</span></li>
-                            <li><a href="#">Curabitur </a><span>(34)</span></li>
-                            <li><a href="#">Nunc </a><span>(67)</span></li>
-                            <li><a href="#">Ullamcorper</a><span>(74)</span></li>
-                            <li><a href="#">Fusce </a><span>(89)</span></li>
-                            <li><a href="#">Sagittis</a><span>(28)</span></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="sidebar-widget tag">
-                        <h2 class="title">Tags Cloud</h2>
-                        <a href="#">Lorem ipsum</a>
-                        <a href="#">Vivamus</a>
-                        <a href="#">Phasellus</a>
-                        <a href="#">pulvinar</a>
-                        <a href="#">Curabitur</a>
-                        <a href="#">Fusce</a>
-                        <a href="#">Sem quis</a>
-                        <a href="#">Mollis metus</a>
-                        <a href="#">Sit amet</a>
-                        <a href="#">Vel posuere</a>
-                        <a href="#">orci luctus</a>
-                        <a href="#">Nam lorem</a>
-                    </div>
-                </div>
-                <!-- Side Bar End -->
-            </div>
-        </div>
-    </div>
-    <!-- Product Detail End -->
-    
-    <!-- Brand Start -->
-    <div class="brand">
-        <div class="container-fluid">
-            <div class="brand-slider">
-                <div class="brand-item"><img src="assets/img/brand-1.png" alt=""></div>
-                <div class="brand-item"><img src="assets/img/brand-2.png" alt=""></div>
-                <div class="brand-item"><img src="assets/img/brand-3.png" alt=""></div>
-                <div class="brand-item"><img src="assets/img/brand-4.png" alt=""></div>
-                <div class="brand-item"><img src="assets/img/brand-5.png" alt=""></div>
-                <div class="brand-item"><img src="assets/img/brand-6.png" alt=""></div>
-            </div>
-        </div>
-    </div>
-    <!-- Brand End -->
+                                </div><!-- End .banner-ad -->
+                            </div><!-- End .widget -->
+                        </div><!-- End .sidebar sidebar-product -->
+                    </aside><!-- End .col-lg-3 --> --}}
+                </div><!-- End .row -->
+
+            </div><!-- End .container -->
+        </div><!-- End .page-content -->
+    </main>
 </div>

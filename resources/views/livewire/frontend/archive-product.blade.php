@@ -74,12 +74,12 @@
                                     <figure class="product-media">
                                         <span class="product-label label-new">Nouveauté</span>
                                         <a href="product.html">
-                                            <img src="../../storage/images/{{$p->image}}" alt="Product image" class="product-image">
+                                            <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span> Ajouter au favori</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                            <a  href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product-icon btn-quickview" title="Quick view"><span>voir</span></a>
                                             <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Comparer</span></a>
                                         </div><!-- End .product-action-vertical -->
 
@@ -105,14 +105,14 @@
 
                                         <div class="product-nav product-nav-thumbs">
                                             <a href="#" class="active">
-                                                <img src="../../storage/images/{{ $p->image}}" alt="product desc">
+                                                <img src="{{asset('storage/images/'.$p->image)}}" alt="product desc">
                                             </a>
                                             <a href="#">
-                                                <img src="../../storage/images/{{ $p->image}}" alt="product desc">
+                                                <img src="{{asset('storage/images/'.$p->image)}}" alt="product desc">
                                             </a>
 
                                             <a href="#">
-                                                <img src="../../storage/images/{{ $p->image}}" alt="product desc">
+                                                <img src="{{asset('storage/images/'.$p->image)}}" alt="product desc">
                                             </a>
                                         </div><!-- End .product-nav -->
                                     </div><!-- End .product-body -->
