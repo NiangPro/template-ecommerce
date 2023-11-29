@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -192,8 +193,11 @@ class Products extends Component
         $this->idDeleting = null;
         $this->imgEditing = null;
     }
-    public function updatedSelectedStatus()
+   
+    public function mount()
     {
-        $this->emit('select2Updated');
+        if (!Auth()->user() || !Auth()->user()->isAdmin()) {
+            return redirect(route("accueil"));
+        }
     }
 }

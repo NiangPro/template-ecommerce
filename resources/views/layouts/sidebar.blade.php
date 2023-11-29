@@ -20,7 +20,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                <div class="parent-icon"><i class='bx bx-user'></i>
                 </div>
                 <div class="menu-title">Utilisateurs</div>
             </a>
@@ -47,37 +47,44 @@
         </li>
         <li>
             <a href="{{route("category")}}">
-                <div class="parent-icon"><i class="bx bx-tag"></i>
+                <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
                 <div class="menu-title">Categories</div>
             </a>
         </li>
         <li>
             <a href="{{route("bareme")}}">
-                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                <div class="parent-icon"><i class="bx bx-ruler"></i>
                 </div>
                 <div class="menu-title">Barèmes</div>
             </a>
         </li>
         <li>
             <a href="{{route("acheminement")}}">
-                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                <div class="parent-icon"><i class="bx bx-map-pin"></i>
                 </div>
                 <div class="menu-title">Mode Acheminement</div>
             </a>
         </li>
         <li>
             <a href="{{route("commentaire")}}">
-                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                <div class="parent-icon"><i class="bx bx-comment"></i>
                 </div>
                 <div class="menu-title">Commentaires</div>
             </a>
         </li>
         <li>
             <a href="{{route("commande")}}">
-                <div class="parent-icon"><i class="bx bx-user-circle"></i>
+                <div class="parent-icon"><i class="bx bx-cart"></i>
                 </div>
                 <div class="menu-title">Commandes</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route("partenaire")}}">
+                <div class="parent-icon"><i class="bx bx-group"></i>
+                </div>
+                <div class="menu-title">Partenaires</div>
             </a>
         </li>
         <li>
