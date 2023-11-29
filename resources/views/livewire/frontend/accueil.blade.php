@@ -1666,7 +1666,7 @@
                                                 </div><!-- End .product-action -->
 
                                                 <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
+                                                    <a href="#"   wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
                                                     <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="Quick view"><span>Voir plus</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
@@ -1733,7 +1733,7 @@
                                                 </div><!-- End .product-action -->
 
                                                 <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
+                                                    <a href="#"  wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
                                                     <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="Quick view"><span>Voir plus</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
@@ -1972,11 +1972,11 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                    <a  class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
                                 </div><!-- End .product-action -->
 
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart" title="ajout panier"><span>Ajouter au panier</span></a>
+                                    <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="ajout panier"><span>Ajouter au panier</span></a>
                                     <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="voir plus"><span>Voir plus</span></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
@@ -2076,3 +2076,46 @@
         </div><!-- End .container -->
     </div><!-- End .icon-boxes-container -->
 </div>
+
+
+@section('js')
+<script>
+    window.addEventListener('productAdded', event =>{
+        iziToast.success({
+        title: 'Produit',
+        message: 'Produit ajouté avec succès',
+        position: 'topRight'
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
+   window.addEventListener('noLogged', event =>{
+        iziToast.error({
+        title: 'Panier',
+        message: 'Veuillez d\'abord se connecter',
+        position: 'topRight'
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
+    window.addEventListener('existProduct', event =>{
+        iziToast.error({
+        title: 'Panier',
+        message: 'Ce produit existe déja dans le panier',
+        position: 'topRight'
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
+</script>
+
+@endsection

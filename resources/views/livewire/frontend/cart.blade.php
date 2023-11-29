@@ -1,15 +1,15 @@
 <div>
         <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
             <div class="container">
-                <h1 class="page-title">Shopping Cart<span>Shop</span></h1>
+                <h1 class="page-title">Panier<span>Boutique</span></h1>
             </div><!-- End .container -->
         </div><!-- End .page-header -->
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                    <li class="breadcrumb-item"><a href="{{route("accueil")}}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="#">Boutique</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panier</li>
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
@@ -31,29 +31,31 @@
                                 </thead>
 
                                 <tbody>
+                                    @foreach($products as $key =>$c)
                                     <tr>
                                         <td class="product-col">
                                             <div class="product">
                                                 <figure class="product-media">
                                                     <a href="#">
-                                                        <img src="assets/images/products/table/product-1.jpg" alt="Product image">
+                                                        <img src="{{asset('storage/images/'.$c->product->image)}}" alt="Product image">
                                                     </a>
                                                 </figure>
 
                                                 <h3 class="product-title">
-                                                    <a href="#">Beige knitted elastic runner shoes</a>
+                                                    <a href="#">{{$c->product->nom}}</a>
                                                 </h3><!-- End .product-title -->
                                             </div><!-- End .product -->
                                         </td>
-                                        <td class="price-col">$84.00</td>
+                                        <td class="price-col">{{$c->product->prix}} F</td>
                                         <td class="quantity-col">
-                                            <div class="cart-product-quantity">
-                                                <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                            <div class="cart-product-quantity" wire:ignore.self>
+                                                <input type="number" class="form-control" wire:model="qtes.{{$key}}" value="{{$c->qte}}" min="1"  step="1" data-decimals="0" required>
                                             </div><!-- End .cart-product-quantity -->
                                         </td>
-                                        <td class="total-col">$84.00</td>
-                                        <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
+                                        <td class="total-col">{{$c->product->prix * $c->qte}} F</td>
+                                        <td class="remove-col"><button wire:click="removeCart({{$c->id}})" class="btn-remove"><i class="icon-close"></i></button></td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table><!-- End .table table-wishlist -->
 
@@ -139,3 +141,17 @@
             </div><!-- End .cart -->
         </div><!-- End .page-content -->
 </div>
+
+@section('js')
+<script>
+    window.addEventListener('removeCart', event =>{
+        iziToast.success({
+        title: 'Produit',
+        message: 'Le Produit a été retiré du panier',
+        position: 'topRight'
+        });
+
+    });
+</script>
+
+@endsection
