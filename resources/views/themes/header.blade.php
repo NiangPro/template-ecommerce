@@ -99,7 +99,7 @@
                             <i class="icon-shopping-cart"></i>
                             <span class="cart-count">2</span>
                         </div>
-                        <p>Cart</p>
+                        <p>Panier</p>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
@@ -152,7 +152,7 @@
                         </div><!-- End .dropdown-cart-total -->
 
                         <div class="dropdown-cart-action">
-                            <a href="{{route('cart')}}" class="btn btn-primary">View Cart</a>
+                            <a href="{{route('cart')}}" class="btn btn-primary">Voir le panier</a>
                             <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
                         </div><!-- End .dropdown-cart-total -->
                     </div><!-- End .dropdown-menu -->
@@ -193,10 +193,10 @@
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
                         <li class="megamenu-container active">
-                            <a href="{{route('accueil')}}" >Home</a>
+                            <a href="{{route('accueil')}}" >Accueil</a>
                         </li>
                         <li>
-                            <a href="category.html" class="sf-with-ul">Shop</a>
+                            <a href="category.html" class="sf-with-ul">Boutique</a>
 
                             <div class="megamenu megamenu-md">
                                 <div class="row no-gutters">
