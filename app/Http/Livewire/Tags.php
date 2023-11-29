@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Tags extends Component
@@ -98,5 +99,12 @@ class Tags extends Component
         $this->form["id"] = null;
 
         $this->idDeleting = null;
+    }
+
+    public function mount()
+    {
+        if (!Auth()->user() || !Auth()->user()->isAdmin()) {
+            return redirect(route("accueil"));
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -187,6 +188,13 @@ class Clients extends Component
         return view('livewire.admin.client.clients', [
             "clients" => User::where("role", "client")->orderBy("id", "DESC")->get()
         ])->layout("layouts.dashboard");
+    }
+
+    public function mount()
+    {
+        if (!Auth()->user() || !Auth()->user()->isAdmin()) {
+            return redirect(route("accueil"));
+        }
     }
 
     public function initForm()
