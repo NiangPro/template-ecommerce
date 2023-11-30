@@ -5,11 +5,33 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Cache\RateLimiting\Limit;
 use Livewire\Component;
 
 class ArchiveProduct extends Component
 {
     public $idCategory;
+
+    public function addToCart($product_id)
+    {
+        if (Auth::user()) {
+            $ct = Cart::where("product_id", $product_id)->first();
+            if ($ct) {
+               $this->dispatchBrowserEvent("existProduct");
+            }else{
+                Cart::create([
+                    "product_id" => $product_id,
+                    "user_id" => Auth::user()->id,
+                    "qte" => 1
+                ]);
+                $this->dispatchBrowserEvent("productAdded");
+            }
+            
+        }else{
+            $this->dispatchBrowserEvent("noLogged");
+        }
+    }
+
     public function render()
     {
 

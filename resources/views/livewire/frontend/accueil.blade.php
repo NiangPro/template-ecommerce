@@ -152,19 +152,19 @@
     <div class="mb-3"></div><!-- End .mb-5 -->
 
     <div wire:ignore.self class="container new-arrivals">
-        <div class="heading heading-flex mb-3">
+        <div wire:ignore.self  class="heading heading-flex mb-3">
             <div class="heading-left">
                 <h2 class="title">Nouvel arrivage</h2><!-- End .title -->
             </div><!-- End .heading-left -->
 
-           <div class="heading-right">
+           <div wire:ignore.self class="heading-right">
                 <ul wire:ignore.self class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                     <li wire:ignore.self class="nav-item">
-                        <a wire:ignore.self class="nav-link active" id="new-all-link" data-toggle="tab" href="#new-all-tab" role="tab" aria-controls="new-all-tab" aria-selected="true">All</a>
+                        <a wire:ignore.self class="nav-link active" id="new-all-link" data-toggle="tab" href="#new-all-tab" role="tab" aria-controls="new-all-tab" aria-selected="true">Tout</a>
                     </li>
                         @foreach($categoryType as $cat)
-                            <li wire:ignore.self class="nav-item">
-                                <a wire:ignore.self wire:click.prevent="changeCategory({{$cat->id}})" class="nav-link" id="{{$cat->slug}}{{$cat->id}}-link" data-toggle="tab" href="#{{$cat->slug}}{{$cat->id}}-tab" role="tab" aria-controls="{{$cat->slug}}{{$cat->id}}-tab" aria-selected="false">{{$cat->nom}}</a>
+                            <li  wire:ignore.self class="nav-item">
+                                <a wire:ignore wire:ignore.self wire:click.prevent="changeCategory({{$cat->id}})" class="nav-link" id="{{$cat->slug}}{{$cat->id}}-link" data-toggle="tab" href="#{{$cat->slug}}{{$cat->id}}-tab" role="tab" aria-controls="{{$cat->slug}}{{$cat->id}}-tab" aria-selected="false">{{$cat->nom}}</a>
                             </li>
                         @endforeach
                 </ul>
@@ -173,10 +173,29 @@
 
         <div wire:ignore.self class="tab-content tab-content-carousel just-action-icons-sm">
             <div wire:ignore.self class="tab-pane p-0 fade show active" id="new-all-tab" role="tabpanel" aria-labelledby="new-all-link">
-                <div wire:ignore.self class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
-                    >
+                <div wire:ignore.self class="row owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": true, 
+                        "dots": false,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            }
+                        }
+                    }'>
                     @foreach($produits as $p)
-                        <div wire:ignore.self class="product product-2 col-3">
+                        <div wire:ignore.self class="product product-2">
                             <figure class="product-media">
                                 @foreach($p->tags as $t)
                                     <span class="product-label label-circle label-top">{{$t->nom}}</span>
@@ -191,7 +210,7 @@
                                 </div><!-- End .product-action -->
 
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>Ajouter au panier</span></a>
+                                    <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
                                     <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="voir plus"><span>Voir plus</span></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
@@ -219,8 +238,27 @@
 
             @foreach($categoryType as $cat)
                 <div wire:ignore.self class="tab-pane p-0 fade" id="{{$cat->slug}}{{$cat->id}}-tab" role="tabpanel" aria-labelledby="{{$cat->slug}}{{$cat->id}}-link">
-                    <div wire:ignore.self class="row owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
-                        >
+                    <div wire:ignore.self class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                        data-owl-options='{
+                            "nav": true, 
+                            "dots": false,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":1
+                                },
+                                "480": {
+                                    "items":2
+                                },
+                                "768": {
+                                    "items":3
+                                },
+                                "992": {
+                                    "items":4
+                                }
+                            }
+                        }'>
                         @foreach($tabpanProduct as $p)
                             <div wire:ignore.self class="product product-2 col-3">
                                 <figure wire:ignore.self class="product-media">
@@ -237,8 +275,8 @@
                                     </div><!-- End .product-action -->
 
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>Ajouter au panier</span></a>
-                                        <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>Ajout favoris</span></a>
+                                        <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Add to cart"><span>Ajouter au panier</span></a>
+                                        <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="voir plus"><span>Voir plus</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -397,20 +435,20 @@
     </div><!-- End .container -->
 
     {{-- tendances --}}
-        <div class="bg-light pt-5 pb-6">
-            <div class="container trending-products">
+        <div wire:ignore.self class="bg-light pt-5 pb-6">
+            <div wire:ignore.self class="container trending-products">
                 <div class="heading heading-flex mb-3">
                     <div class="heading-left">
                         <h2 class="title">Tendances</h2><!-- End .title -->
                     </div><!-- End .heading-left -->
 
-                    <div class="heading-right">
-                        <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
+                    <div wire:ignore.self class="heading-right">
+                        <ul wire:ignore.self class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="trending-top-link" data-toggle="tab" href="#trending-top-tab" role="tab" aria-controls="trending-top-tab" aria-selected="true">LES MIEUX NOTÉS</a>
+                                <a wire:ignore.self class="nav-link active" id="trending-top-link" data-toggle="tab" href="#trending-top-tab" role="tab" aria-controls="trending-top-tab" aria-selected="true">LES MIEUX NOTÉS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="trending-best-link" data-toggle="tab" href="#trending-best-tab" role="tab" aria-controls="trending-best-tab" aria-selected="false">MEILLEURES VENTES</a>
+                                <a wire:ignore.self class="nav-link" id="trending-best-link" data-toggle="tab" href="#trending-best-tab" role="tab" aria-controls="trending-best-tab" aria-selected="false">MEILLEURES VENTES</a>
                             </li>
                             {{-- <li class="nav-item">
                                 <a class="nav-link" id="trending-sale-link" data-toggle="tab" href="#trending-sale-tab" role="tab" aria-controls="trending-sale-tab" aria-selected="false">On Sale</a>
@@ -419,7 +457,7 @@
                     </div><!-- End .heading-right -->
                 </div><!-- End .heading -->
 
-                <div class="row">
+                <div class="row" wire:ignore.self>
                     <div class="col-xl-5col d-none d-xl-block">
                         <div class="banner">
                             <a href="#">
@@ -428,10 +466,10 @@
                         </div><!-- End .banner -->
                     </div><!-- End .col-xl-5col -->
 
-                    <div class="col-xl-4-5col col-3">
-                        <div class="tab-content tab-content-carousel just-action-icons-sm">
-                            <div class="tab-pane p-0 fade show active" id="trending-top-tab" role="tabpanel" aria-labelledby="trending-top-link">
-                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    <div class="col-xl-4-5col">
+                        <div wire:ignore.self class="tab-content tab-content-carousel just-action-icons-sm">
+                            <div wire:ignore wire:ignore.self class="tab-pane p-0 fade show active" id="trending-top-tab" role="tabpanel" aria-labelledby="trending-top-link">
+                                <div wire:ignore.self class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
                                     data-owl-options='{
                                         "nav": true, 
                                         "dots": false,
@@ -439,7 +477,7 @@
                                         "loop": false,
                                         "responsive": {
                                             "0": {
-                                                "items":1
+                                                "items":2
                                             },
                                             "480": {
                                                 "items":2
@@ -453,7 +491,7 @@
                                         }
                                     }'>
                                     @foreach ($produits as $p)
-                                        <div class="product product-2 col-3">
+                                        <div class="product product-2">
                                             <figure class="product-media">
                                                 @foreach($p->tags as $t)
                                                     <span class="product-label label-circle label-top">{{$t->nom}}</span>
@@ -467,7 +505,7 @@
                                                 </div><!-- End .product-action -->
 
                                                 <div class="product-action">
-                                                    <a href="#"   wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
+                                                    <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
                                                     <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="Quick view"><span>Voir plus</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
@@ -492,8 +530,8 @@
                                     @endforeach
                                 </div><!-- End .owl-carousel -->
                             </div><!-- .End .tab-pane -->
-                            <div class="tab-pane p-0 fade" id="trending-best-tab" role="tabpanel" aria-labelledby="trending-best-link">
-                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                            <div  wire:ignore.self class="tab-pane p-0 fade" id="trending-best-tab" role="tabpanel" aria-labelledby="trending-best-link">
+                                <div wire:ignore.self class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
                                     data-owl-options='{
                                         "nav": true, 
                                         "dots": false,
@@ -515,7 +553,7 @@
                                         }
                                     }'>
                                     @foreach ($produits as $p)
-                                        <div class="product product-2 col-3">
+                                        <div class="product product-2">
                                             <figure class="product-media">
                                                 @foreach($p->tags as $t)
                                                     <span class="product-label label-circle label-top">{{$t->nom}}</span>
@@ -553,182 +591,6 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{-- <div class="tab-pane p-0 fade" id="trending-sale-tab" role="tabpanel" aria-labelledby="trending-sale-link">
-                                <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
-                                    data-owl-options='{
-                                        "nav": true, 
-                                        "dots": false,
-                                        "margin": 20,
-                                        "loop": false,
-                                        "responsive": {
-                                            "0": {
-                                                "items":2
-                                            },
-                                            "480": {
-                                                "items":2
-                                            },
-                                            "768": {
-                                                "items":3
-                                            },
-                                            "992": {
-                                                "items":4
-                                            }
-                                        }
-                                    }'>
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <span class="product-label label-circle label-new">New</span>
-                                            <a href="product.html">
-                                                <img src="assets/images/demos/demo-4/products/product-8.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                            </div><!-- End .product-action -->
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Smartwatches</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">Apple Watch Series 4 Gold Aluminum Case</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $499.99
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 4 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-
-                                            <div class="product-nav product-nav-dots">
-                                                <a href="#" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <span class="product-label label-circle label-top">Top</span>
-                                            <a href="product.html">
-                                                <img src="assets/images/demos/demo-4/products/product-6.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                            </div><!-- End .product-action -->
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Headphones</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">Bose - SoundSport  wireless headphones</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $199.99
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 4 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-
-                                            <div class="product-nav product-nav-dots">
-                                                <a href="#" style="background: #69b4ff;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" style="background: #ff887f;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/demos/demo-4/products/product-7.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                            </div><!-- End .product-action -->
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Video Games</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">Microsoft - Refurbish Xbox One S 500GB</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $279.99
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 6 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <span class="product-label label-circle label-new">New</span>
-                                            <a href="product.html">
-                                                <img src="assets/images/demos/demo-4/products/product-3.jpg" alt="Product image" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                            </div><!-- End .product-action -->
-
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">Tablets</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">Apple - 11 Inch iPad Pro  with Wi-Fi 256GB </a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $899.99
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 4 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-
-                                            <div class="product-nav product-nav-dots">
-                                                <a href="#" style="background: #edd2c8;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" style="background: #eaeaec;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .owl-carousel -->
-                            </div><!-- .End .tab-pane --> --}}
                         </div>
                     </div>
                 </div>
