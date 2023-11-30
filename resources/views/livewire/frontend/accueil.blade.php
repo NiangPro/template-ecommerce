@@ -35,7 +35,7 @@
                                     
                                 </div><!-- End .intro-price -->
 
-                                <a href="category.html" class="btn btn-primary btn-round">
+                                <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn btn-primary btn-round">
                                     <span>Voir Plus</span>
                                     <i class="icon-long-arrow-right"></i>
                                 </a>
@@ -219,7 +219,7 @@
 
             @foreach($categoryType as $cat)
                 <div wire:ignore.self class="tab-pane p-0 fade" id="{{$cat->slug}}{{$cat->id}}-tab" role="tabpanel" aria-labelledby="{{$cat->slug}}{{$cat->id}}-link">
-                    <div wire:ignore.self class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    <div wire:ignore.self class="row owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
                         >
                         @foreach($tabpanProduct as $p)
                             <div wire:ignore.self class="product product-2 col-3">
@@ -428,7 +428,7 @@
                         </div><!-- End .banner -->
                     </div><!-- End .col-xl-5col -->
 
-                    <div class="col-xl-4-5col">
+                    <div class="col-xl-4-5col col-3">
                         <div class="tab-content tab-content-carousel just-action-icons-sm">
                             <div class="tab-pane p-0 fade show active" id="trending-top-tab" role="tabpanel" aria-labelledby="trending-top-link">
                                 <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
@@ -439,7 +439,7 @@
                                         "loop": false,
                                         "responsive": {
                                             "0": {
-                                                "items":2
+                                                "items":1
                                             },
                                             "480": {
                                                 "items":2
@@ -453,7 +453,7 @@
                                         }
                                     }'>
                                     @foreach ($produits as $p)
-                                        <div class="product product-2">
+                                        <div class="product product-2 col-3">
                                             <figure class="product-media">
                                                 @foreach($p->tags as $t)
                                                     <span class="product-label label-circle label-top">{{$t->nom}}</span>
@@ -467,7 +467,7 @@
                                                 </div><!-- End .product-action -->
 
                                                 <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
+                                                    <a href="#"   wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
                                                     <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="Quick view"><span>Voir plus</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
@@ -501,7 +501,7 @@
                                         "loop": false,
                                         "responsive": {
                                             "0": {
-                                                "items":2
+                                                "items":1
                                             },
                                             "480": {
                                                 "items":2
@@ -515,7 +515,7 @@
                                         }
                                     }'>
                                     @foreach ($produits as $p)
-                                        <div class="product product-2">
+                                        <div class="product product-2 col-3">
                                             <figure class="product-media">
                                                 @foreach($p->tags as $t)
                                                     <span class="product-label label-circle label-top">{{$t->nom}}</span>
@@ -529,7 +529,7 @@
                                                 </div><!-- End .product-action -->
 
                                                 <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
+                                                    <a href="#"  wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
                                                     <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="Quick view"><span>Voir plus</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
@@ -762,11 +762,11 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                    <a  class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
                                 </div><!-- End .product-action -->
 
                                 <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart" title="ajout panier"><span>Ajouter au panier</span></a>
+                                    <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="ajout panier"><span>Ajouter au panier</span></a>
                                     <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="voir plus"><span>Voir plus</span></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
@@ -858,3 +858,46 @@
         </div><!-- End .container -->
     </div><!-- End .icon-boxes-container -->
 </div>
+
+
+@section('js')
+<script>
+    window.addEventListener('productAdded', event =>{
+        iziToast.success({
+        title: 'Produit',
+        message: 'Produit ajouté avec succès',
+        position: 'topRight'
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
+   window.addEventListener('noLogged', event =>{
+        iziToast.error({
+        title: 'Panier',
+        message: 'Veuillez d\'abord se connecter',
+        position: 'topRight'
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
+    window.addEventListener('existProduct', event =>{
+        iziToast.error({
+        title: 'Panier',
+        message: 'Ce produit existe déja dans le panier',
+        position: 'topRight'
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
+</script>
+
+@endsection

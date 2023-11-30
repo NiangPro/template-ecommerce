@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return strtolower($this->role) == "client";
     }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

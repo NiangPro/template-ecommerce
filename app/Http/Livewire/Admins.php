@@ -189,6 +189,13 @@ class Admins extends Component
         ])->layout("layouts.dashboard");
     }
 
+    public function mount()
+    {
+        if (!Auth()->user() || !Auth()->user()->isAdmin()) {
+            return redirect(route("accueil"));
+        }
+    }
+
     public function initForm()
     {
         $this->form["id"] = null;
