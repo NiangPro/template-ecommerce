@@ -49,14 +49,14 @@
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="q" class="sr-only">Search</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                            <input type="search" class="form-control" name="q" id="q" placeholder="Rechercher un produit ..." required>
                         </div><!-- End .header-search-wrapper -->
                     </form>
                 </div><!-- End .header-search -->
             </div>
 
             <div class="header-right">
-                <div class="dropdown compare-dropdown">
+                {{-- <div class="dropdown compare-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
                         <div class="icon">
                             <i class="icon-random"></i>
@@ -81,7 +81,7 @@
                             <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
                         </div>
                     </div><!-- End .dropdown-menu -->
-                </div><!-- End .compare-dropdown -->
+                </div><!-- End .compare-dropdown --> --}}
 
                 <div class="wishlist">
                     <a href="{{route('wishlist')}}" title="Wishlist">
@@ -363,7 +363,7 @@
             </div><!-- End .header-center -->
 
             <div class="header-right">
-                <i class="la la-lightbulb-o"></i><p>Clearance<span class="highlight">&nbsp;Up to 30% Off</span></p>
+                <i class="la la-lightbulb-o"></i><p>Soldes<span class="highlight"> jusqu'à 30% de réduction</span></p>
             </div>
         </div><!-- End .container -->
     </div><!-- End .header-bottom -->

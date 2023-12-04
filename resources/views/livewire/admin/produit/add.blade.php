@@ -15,16 +15,22 @@
                         <option value="{{$c->id}}"> @if($c->parent) {{$c->parent->nom}} ->  @endif {{$c->nom}}</option>
                     @endforeach
                 </select>
+                @error('form.category_id') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
-            <div class="form-group mb-4 col-md-6">
+            <div class="form-group mb-4 col-md-4">
                 <label for="">Prix <span class="text-danger">*</span></label>
-                <input type="number" placeholder="Entrer le prix du produit" class="form-control @error('form.prix') is-invalid @enderror" wire:model="form.prix">
+                <input type="number" min="0" placeholder="Entrer le prix du produit" class="form-control @error('form.prix') is-invalid @enderror" wire:model="form.prix">
                 @error('form.prix') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
-            <div class="form-group mb-4 col-md-6">
+            <div class="form-group mb-4 col-md-4">
                 <label for="">Quantité en stock <span class="text-danger">*</span></label>
-                <input type="number" placeholder="Entrer la quantité du produit" class="form-control @error('form.qte') is-invalid @enderror" wire:model="form.qte">
+                <input type="number" min="0" placeholder="Entrer la quantité du produit" class="form-control @error('form.qte') is-invalid @enderror" wire:model="form.qte">
                 @error('form.qte') <span class="error text-danger">{{$message}}</span> @enderror
+            </div>
+            <div class="form-group mb-4 col-md-4">
+                <label for="">Poids (en Kg) <span class="text-danger">*</span></label>
+                <input type="number" min="0" step="0.1" placeholder="Entrer le poids du produit" class="form-control @error('form.poids') is-invalid @enderror" wire:model="form.poids">
+                @error('form.poids') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-4 col-md-6">
                 <label for="">Description <span class="text-danger">*</span></label>

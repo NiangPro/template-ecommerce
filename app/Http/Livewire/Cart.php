@@ -25,9 +25,14 @@ class Cart extends Component
     {
         $ct = ModelsCart::where("id", $id)->first();
 
-        $ct->qte = $this->tabProds[$key]["qte"];
-        $ct->save();
+        if ($ct->product->qte >= $this->tabProds[$key]["qte"]) {
+            $ct->qte = $this->tabProds[$key]["qte"];
+            $ct->save();
+        }else{
+            $this->dispatchBrowserEvent("lowQuantity");
+        }
         $this->initProducts();
+        
     }
 
     public function refreshCart()

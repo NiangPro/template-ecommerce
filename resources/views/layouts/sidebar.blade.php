@@ -61,7 +61,7 @@
         </li>
         <li>
             <a href="{{route("acheminement")}}">
-                <div class="parent-icon"><i class="bx bx-map-pin"></i>
+                <div class="parent-icon"><i class="bx bx-baby-carriage"></i>
                 </div>
                 <div class="menu-title">Mode Acheminement</div>
             </a>

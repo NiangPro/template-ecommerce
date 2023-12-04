@@ -14,5 +14,6 @@ class Acheminement extends Model
     protected $fillable = [
         "nom",
         "nbrejour",
+        "prix",
     ];
 }

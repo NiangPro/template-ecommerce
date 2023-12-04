@@ -113,6 +113,17 @@
 
     });
 
+    window.addEventListener('lowQuantity', event =>{
+        iziToast.error({
+        title: 'Panier',
+        message: 'Quantité de stock insuffisante',
+        position: 'topRight'
+        });
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
     window.addEventListener('refresh', event =>{
         window.location.reload();
 
