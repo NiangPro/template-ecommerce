@@ -11,8 +11,8 @@ class Souhait extends Model
 
     protected $table ="souhaits";
     protected $fillable = [
-        "qte",
         "user_id",
+        "product_id"
     ];
 
     public function product()
