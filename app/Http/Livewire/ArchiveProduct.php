@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Cache\RateLimiting\Limit;
 use Livewire\Component;
@@ -46,6 +47,7 @@ class ArchiveProduct extends Component
 
         return view('livewire.frontend.archive-product',[
             "produits" => Product::where("category_id", $this->idCategory)->orderBy("id", "DESC")->get(),
+            "category" => Category::orderBy("id", "DESC")->get(),
 
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
