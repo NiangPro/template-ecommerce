@@ -30,4 +30,26 @@ class Reglage extends Model
             ]);
         }
     }
+
+    public function createFirstClientDemo()
+    {
+        $client = User::where("role", "client")->first();
+
+        if(!$client){
+            User::create([
+                "prenom" => 'Alioune',
+                "nom" => 'Fall',
+                "adresse" => 'Sangalkam',
+                "pays" => 'Senegal',
+                "tel2" =>  NULL,
+                "pseudo" => 'alioune', 
+                "email" => 'alioune@gmail.com', 
+                "nationalite" => 'Senegalaise', 
+                "tel" => '783123657', 
+                "role" => 'client', 
+                "image" => 'profil.png', 
+                "password" => '$2y$10$k6MuUBF/eb7cpbEv5QVqKuRNFw1Y71xtIT7rRlJn3aq5DbFEKvWKy'
+            ]);
+        }
+    }
 }
