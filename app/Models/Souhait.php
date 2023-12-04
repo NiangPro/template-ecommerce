@@ -13,7 +13,6 @@ class Souhait extends Model
     protected $fillable = [
         "qte",
         "user_id",
-        "product_id"
     ];
 
     public function product()
