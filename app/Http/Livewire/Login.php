@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Reglage;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -9,6 +10,7 @@ use Livewire\Component;
 
 class Login extends Component
 {
+    public $reglage;
     public $form1 = [
         "prenom" => "",
         "nom" => "",
@@ -126,6 +128,10 @@ class Login extends Component
                 return redirect(route('visiteur'));
             }
         }
+
+        $this->reglage = new Reglage();
+
+        $this->reglage->createFirstAdmin();
         
     }
 }
