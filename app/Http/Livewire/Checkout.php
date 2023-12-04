@@ -15,7 +15,7 @@ class Checkout extends Component
         if (Auth::user()) {
             $prodsCart = Cart::where("user_id", Auth::user()->id)->get();
             foreach ($prodsCart as $c) {
-                $total += $c->product->prix; 
+                $total += ($c->product->prix * $c->qte);  
             }
         }
         return view('livewire.frontend.checkout')->layout("layouts.app", [

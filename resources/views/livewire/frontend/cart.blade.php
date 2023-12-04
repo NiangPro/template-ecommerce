@@ -31,29 +31,29 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach($products as $key =>$c)
-                                    <tr>
+                                    @foreach($tabProds as $key =>$c)
+                                    <tr wire:ignore.self>
                                         <td class="product-col">
                                             <div class="product">
                                                 <figure class="product-media">
                                                     <a href="#">
-                                                        <img src="{{asset('storage/images/'.$c->product->image)}}" alt="Product image">
+                                                        <img src="{{asset('storage/images/'.$c["image"])}}" alt="Product image">
                                                     </a>
                                                 </figure>
 
                                                 <h3 class="product-title">
-                                                    <a href="#">{{$c->product->nom}}</a>
+                                                    <a href="#">{{$c["nom"]}}</a>
                                                 </h3><!-- End .product-title -->
                                             </div><!-- End .product -->
                                         </td>
-                                        <td class="price-col">{{$c->product->prix}} F</td>
-                                        <td class="quantity-col">
-                                            <div class="cart-product-quantity" wire:ignore.self>
-                                                <input type="number" class="form-control" wire:model="qtes.{{$key}}" value="{{$c->qte}}" min="1"  step="1" data-decimals="0" required>
+                                        <td class="price-col">{{$c["prix"]}} F</td>
+                                        <td class="price-col">
+                                            <div class="cart-product-quantity">
+                                                <input type="number" class="form-control" wire:change="changeQteProd({{$c["id"]}}, {{$key}})" wire:model="tabProds.{{$key}}.qte"  min="1"  step="1" data-decimals="0" required>
                                             </div><!-- End .cart-product-quantity -->
                                         </td>
-                                        <td class="total-col">{{$c->product->prix * $c->qte}} F</td>
-                                        <td class="remove-col"><button wire:click="removeCart({{$c->id}})" class="btn-remove"><i class="icon-close"></i></button></td>
+                                        <td class="total-col">{{$c["prix"] * $c["qte"]}} F</td>
+                                        <td class="remove-col"><button wire:click="removeCart({{$c["id"]}})" class="btn-remove"><i class="icon-close"></i></button></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -63,70 +63,31 @@
                                 <div class="cart-discount">
                                     <form action="#">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" required placeholder="coupon code">
+                                            {{-- <input type="text" class="form-control" required placeholder="coupon code">
                                             <div class="input-group-append">
                                                 <button class="btn btn-outline-primary-2" type="submit"><i class="icon-long-arrow-right"></i></button>
-                                            </div><!-- .End .input-group-append -->
+                                            </div><!-- .End .input-group-append --> --}}
                                         </div><!-- End .input-group -->
                                     </form>
                                 </div><!-- End .cart-discount -->
 
-                                <a href="#" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
+                                <a href="#" wire:click="refreshCart" class="btn btn-outline-dark-2"><span>Actualiser le panier</span><i class="icon-refresh"></i></a>
                             </div><!-- End .cart-bottom -->
                         </div><!-- End .col-lg-9 -->
                         <aside class="col-lg-3">
                             <div class="summary summary-cart">
-                                <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
+                                <h3 class="summary-title">Total du Panier</h3><!-- End .summary-title -->
 
                                 <table class="table table-summary">
                                     <tbody>
                                         <tr class="summary-subtotal">
-                                            <td>Subtotal:</td>
-                                            <td>$160.00</td>
+                                            <td>Sous-total:</td>
+                                            <td>{{$subTotal}}F</td>
                                         </tr><!-- End .summary-subtotal -->
-                                        <tr class="summary-shipping">
-                                            <td>Shipping:</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-
-                                        <tr class="summary-shipping-row">
-                                            <td>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
-                                                    <label class="custom-control-label" for="free-shipping">Free Shipping</label>
-                                                </div><!-- End .custom-control -->
-                                            </td>
-                                            <td>$0.00</td>
-                                        </tr><!-- End .summary-shipping-row -->
-
-                                        <tr class="summary-shipping-row">
-                                            <td>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="standart-shipping" name="shipping" class="custom-control-input">
-                                                    <label class="custom-control-label" for="standart-shipping">Standart:</label>
-                                                </div><!-- End .custom-control -->
-                                            </td>
-                                            <td>$10.00</td>
-                                        </tr><!-- End .summary-shipping-row -->
-
-                                        <tr class="summary-shipping-row">
-                                            <td>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="express-shipping" name="shipping" class="custom-control-input">
-                                                    <label class="custom-control-label" for="express-shipping">Express:</label>
-                                                </div><!-- End .custom-control -->
-                                            </td>
-                                            <td>$20.00</td>
-                                        </tr><!-- End .summary-shipping-row -->
-
-                                        <tr class="summary-shipping-estimate">
-                                            <td>Estimate for Your Country<br> <a href="dashboard.html">Change address</a></td>
-                                            <td>&nbsp;</td>
-                                        </tr><!-- End .summary-shipping-estimate -->
 
                                         <tr class="summary-total">
                                             <td>Total:</td>
-                                            <td>$160.00</td>
+                                            <td>{{$subTotal}}F</td>
                                         </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
@@ -134,7 +95,6 @@
                                 <a href="{{route("checkout")}}" class="btn btn-outline-primary-2 btn-order btn-block">Suivre ma commande</a>
                             </div><!-- End .summary -->
 
-                            <a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>POURSUIVRE LES ACHATS</span><i class="icon-refresh"></i></a>
                         </aside><!-- End .col-lg-3 -->
                     </div><!-- End .row -->
                 </div><!-- End .container -->
@@ -150,6 +110,11 @@
         message: 'Le Produit a été retiré du panier',
         position: 'topRight'
         });
+
+    });
+
+    window.addEventListener('refresh', event =>{
+        window.location.reload();
 
     });
 </script>

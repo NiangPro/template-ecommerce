@@ -113,7 +113,7 @@
                                     </h4>
 
                                     <span class="cart-product-info">
-                                        <span class="cart-product-qty">1</span>
+                                        <span class="cart-product-qty">{{$c->qte}}</span>
                                         x {{$c->product->prix}} FCFA
                                     </span>
                                 </div><!-- End .product-cart-details -->
