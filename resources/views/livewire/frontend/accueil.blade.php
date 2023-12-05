@@ -501,7 +501,7 @@
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                                    <a href="#"wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
                                                 </div><!-- End .product-action -->
 
                                                 <div class="product-action">
@@ -563,7 +563,7 @@
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                                    <a href="#" wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
                                                 </div><!-- End .product-action -->
 
                                                 <div class="product-action">
@@ -624,7 +624,7 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a  class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                    <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Ajouer au favori"></a>
                                 </div><!-- End .product-action -->
 
                                 <div class="product-action">

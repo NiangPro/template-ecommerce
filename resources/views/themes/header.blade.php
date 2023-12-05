@@ -57,12 +57,12 @@
 
             <div class="header-right">
                 <div class="dropdown compare-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
+                    {{-- <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
                         <div class="icon">
                             <i class="icon-random"></i>
                         </div>
                         <p>Compare</p>
-                    </a>
+                    </a> --}}
 
                     <div class="dropdown-menu dropdown-menu-right">
                         <ul class="compare-products">
@@ -84,12 +84,12 @@
                 </div><!-- End .compare-dropdown -->
 
                 <div class="wishlist">
-                    <a href="{{route('wishlist')}}" title="Wishlist">
+                    <a href="{{route('wishlist')}}" title="Favori">
                         <div class="icon">
                             <i class="icon-heart-o"></i>
-                            <span class="wishlist-count badge">3</span>
+                            @if(Auth()->user()) @if($favoris !=null)<span class="wishlist-count badge">{{count($favoris)}}</span>@endif @endif
                         </div>
-                        <p>Wishlist</p>
+                        <p>Favori</p>
                     </a>
                 </div><!-- End .compare-dropdown -->
 

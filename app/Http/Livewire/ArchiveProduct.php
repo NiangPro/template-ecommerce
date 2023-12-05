@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Souhait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Cache\RateLimiting\Limit;
 use Livewire\Component;
@@ -12,6 +13,23 @@ use Livewire\Component;
 class ArchiveProduct extends Component
 {
     public $idCategory;
+
+    public function addToWishlist($product_id){
+        if (Auth::user()) {
+           $fav = Souhait::where("product_id", $product_id)->first();
+           if ($fav) {
+                $this->dispatchBrowserEvent("existFavori");
+           }else{
+                Souhait::create([
+                    "user_id" => Auth::user()->id,
+                    "product_id" => $product_id,
+                ]);
+                $this->dispatchBrowserEvent("favoriAdded");
+           }
+        }else{
+            $this->dispatchBrowserEvent("noLogged");
+        }
+    }
 
     public function addToCart($product_id)
     {
@@ -37,12 +55,15 @@ class ArchiveProduct extends Component
     {
 
         $prodsCart = null;
+        $favoris = null;
         $total = 0;
         if (Auth::user()) {
             $prodsCart = Cart::where("user_id", Auth::user()->id)->get();
             foreach ($prodsCart as $c) {
                 $total += $c->product->prix; 
             }
+
+            $favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
 
         return view('livewire.frontend.archive-product',[
@@ -51,7 +72,8 @@ class ArchiveProduct extends Component
 
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
-            "total" => $total
+            "total" => $total,
+            "favoris" => $favoris
         ]);
     }
 

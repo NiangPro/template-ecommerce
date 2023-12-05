@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Souhait;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -13,6 +14,23 @@ class Accueil extends Component
 {
     public $tabpanProduct = [];
 
+    public function addToWishlist($product_id){
+        if (Auth::user()) {
+           $fav = Souhait::where("product_id", $product_id)->first();
+           if ($fav) {
+                $this->dispatchBrowserEvent("existFavori");
+           }else{
+                Souhait::create([
+                    "user_id" => Auth::user()->id,
+                    "product_id" => $product_id,
+                ]);
+                $this->dispatchBrowserEvent("favoriAdded");
+           }
+        }else{
+            $this->dispatchBrowserEvent("noLogged");
+        }
+    }
+    
     public function changeCategory($idCategory){
         $this->tabpanProduct = Product::where("category_id", $idCategory)->orderBy("id", "DESC")->limit(6)->get();
     }
@@ -36,16 +54,20 @@ class Accueil extends Component
             $this->dispatchBrowserEvent("noLogged");
         }
     }
+
     public function render()
     {
         
         $prodsCart = null;
+        $favoris = null;
         $total = 0;
         if (Auth::user()) {
             $prodsCart = Cart::where("user_id", Auth::user()->id)->get();
             foreach ($prodsCart as $c) {
                 $total += $c->product->prix; 
             }
+
+            $favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
 
         return view('livewire.frontend.accueil',[
@@ -57,7 +79,8 @@ class Accueil extends Component
             "CategorieSlider" => Category::orderBy("id", "DESC")->Limit(4)->get(),
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
-            "total" => $total
+            "total" => $total,
+            "favoris" => $favoris
         ]);
     }
 }

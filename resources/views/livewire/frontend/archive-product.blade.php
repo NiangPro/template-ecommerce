@@ -72,13 +72,15 @@
                             <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                                 <div class="product product-7 text-center">
                                     <figure class="product-media">
-                                        <span class="product-label label-new">Nouveauté</span>
+                                        @foreach($p->tags as $t)
+                                            <span class="product-label label-new">{{$t->nom}}</span>
+                                        @endforeach
                                         <a href="product.html">
                                             <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span> Ajouter au favori</span></a>
+                                            <a href="#"  wire:click="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-expandable"><span> Ajouter au favori</span></a>
                                             <a  href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product-icon btn-quickview" title="Quick view"><span>voir</span></a>
                                             {{-- <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Comparer</span></a> --}}
                                         </div><!-- End .product-action-vertical -->
@@ -211,6 +213,30 @@
         iziToast.error({
         title: 'Panier',
         message: 'Ce produit existe déja dans le panier',
+        position: 'topRight'
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
+    window.addEventListener('favoriAdded', event =>{
+        iziToast.success({
+        title: 'Favori',
+        message: 'Favori ajouté avec succès',
+        position: 'topRight'
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
+    window.addEventListener('existFavori', event =>{
+        iziToast.error({
+        title: 'Favori',
+        message: 'Ce favori existe déja dans la liste',
         position: 'topRight'
         });
 
