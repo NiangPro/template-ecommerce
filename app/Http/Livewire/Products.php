@@ -26,6 +26,7 @@ class Products extends Component
         "description",
         "prix" => 0,
         "qte" => 0,
+        "poids" => 0,
         "reduction" => 0,
         "image" => null,
         "tags" => []
@@ -117,6 +118,7 @@ class Products extends Component
             $p->description = $this->form["description"];
             $p->prix = $this->form["prix"];
             $p->qte = $this->form["qte"];
+            $p->poids = $this->form["poids"];
             $p->reduction = $this->form["reduction"];
 
             if ($this->form["image"]) {
@@ -154,6 +156,7 @@ class Products extends Component
             $p->description = $this->form["description"];
             $p->prix = $this->form["prix"];
             $p->qte = $this->form["qte"];
+            $p->poids = $this->form["poids"];
             $p->reduction = $this->form["reduction"];
             $p->category_id = $this->form["category_id"];
             $p->image = $img_name;
@@ -187,6 +190,7 @@ class Products extends Component
         $this->form["image"] = null;
         $this->form["prix"] = 0;
         $this->form["qte"] = 0;
+        $this->form["poids"] = 0;
         $this->form["reduction"] = 0;
         $this->form["tags"] = [];
 

@@ -64,7 +64,7 @@ class Accueil extends Component
         if (Auth::user()) {
             $prodsCart = Cart::where("user_id", Auth::user()->id)->get();
             foreach ($prodsCart as $c) {
-                $total += $c->product->prix; 
+                $total += ($c->product->prix * $c->qte); 
             }
 
             $favoris = Souhait::where("user_id", Auth::user()->id)->get();

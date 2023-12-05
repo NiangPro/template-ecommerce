@@ -41,7 +41,7 @@
                         <th>Quantité</th>
                         <th>Prix</th>
                         <th>Tags</th>
-                        <th>Réduction</th>
+                        <th>Poids</th>
                         <th>ACtions</th>
                         </tr>
                     </thead>
@@ -58,7 +58,7 @@
                                     <span class="badge bg-info">{{$t->nom}}</span>
                                 @endforeach
                             </td>
-                            <td>{{$p->reduction}} F CFA</td>
+                            <td>{{$p->poids}} Kg</td>
                             <td>
                                 <button wire:click="editer({{$p->id}})" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></button>
                                 <button class="btn btn-outline-danger btn-sm"  wire:click="readyForDelete({{$p->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>
@@ -83,9 +83,7 @@
                             </div>
                           </div>
                         @endforeach
-                        
-
-                        
+                     
                     </tbody>
                 </table>
                 @endif

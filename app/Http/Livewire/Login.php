@@ -132,6 +132,7 @@ class Login extends Component
         $this->reglage = new Reglage();
 
         $this->reglage->createFirstAdmin();
+        $this->reglage->createFirstClientDemo();
         
     }
 }

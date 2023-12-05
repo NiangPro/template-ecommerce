@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text("description")->nullable();
             $table->double("prix");
             $table->double("qte");
+            $table->double("poids")->default(0);
             $table->string("image")->nullable();
             $table->double("reduction")->nullable();
             $table->unsignedBigInteger("category_id");

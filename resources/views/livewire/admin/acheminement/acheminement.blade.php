@@ -37,6 +37,7 @@
                         <tr>
                             <th>Nom</th>
                             <th>Nombre de jours</th>
+                            <th>Prix d'un Kg</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@
                             <tr >
                                 <td class="h5">{{$c->nom}}</td>
                                 <td>{{$c->nbrejour}} jour(s)</td>
+                                <td>{{$c->prix}} FCFA</td>
                                 <td>
                                     <button class="btn btn-outline-info btn-sm radius-30" wire:click="editer({{$c->id}})"><i class="bx bx-show"></i></button>
                                     <button class="btn btn-outline-danger btn-sm radius-30" wire:click="readyForDelete({{$c->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>

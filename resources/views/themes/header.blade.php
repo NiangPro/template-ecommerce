@@ -49,7 +49,7 @@
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="q" class="sr-only">Search</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                            <input type="search" class="form-control" name="q" id="q" placeholder="Rechercher un produit ..." required>
                         </div><!-- End .header-search-wrapper -->
                     </form>
                 </div><!-- End .header-search -->
@@ -81,7 +81,7 @@
                             <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
                         </div>
                     </div><!-- End .dropdown-menu -->
-                </div><!-- End .compare-dropdown -->
+                </div><!-- End .compare-dropdown --> --}}
 
                 <div class="wishlist">
                     <a href="{{route('wishlist')}}" title="Favori">
@@ -113,7 +113,7 @@
                                     </h4>
 
                                     <span class="cart-product-info">
-                                        <span class="cart-product-qty">1</span>
+                                        <span class="cart-product-qty">{{$c->qte}}</span>
                                         x {{$c->product->prix}} FCFA
                                     </span>
                                 </div><!-- End .product-cart-details -->
@@ -363,7 +363,7 @@
             </div><!-- End .header-center -->
 
             <div class="header-right">
-                <i class="la la-lightbulb-o"></i><p>Clearance<span class="highlight">&nbsp;Up to 30% Off</span></p>
+                <i class="la la-lightbulb-o"></i><p>Soldes<span class="highlight"> jusqu'à 30% de réduction</span></p>
             </div>
         </div><!-- End .container -->
     </div><!-- End .header-bottom -->

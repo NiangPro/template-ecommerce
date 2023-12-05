@@ -16,7 +16,8 @@ class Acheminement extends Component
     public $form = [
         "nom" => "",
         "id" => null,
-        "nbrejour"=>0
+        "nbrejour"=>0,
+        "prix"=>0,
     ];
 
     protected $rules = [
@@ -49,6 +50,7 @@ class Acheminement extends Component
         $this->form["nom"] = $c->nom;
         $this->form["id"] = $c->id;
         $this->form["nbrejour"] = $c->nbrejour;
+        $this->form["prix"] = $c->prix;
 
         $this->changeType("edit");
     }
@@ -78,6 +80,7 @@ class Acheminement extends Component
 
             $cat->nom = ucfirst($this->form["nom"]);
             $cat->nbrejour = $this->form["nbrejour"];
+            $cat->prix = $this->form["prix"];
 
 
             $cat->save();
@@ -87,7 +90,8 @@ class Acheminement extends Component
 
             ModelsAcheminement::create([
                 "nom" => ucfirst($this->form["nom"]) ,
-                "nbrejour" => $this->form["nbrejour"]
+                "nbrejour" => $this->form["nbrejour"],
+                "prix" => $this->form["prix"],
             ]);
     
             $this->dispatchBrowserEvent("addAcheminement");
@@ -107,7 +111,8 @@ class Acheminement extends Component
     {
         $this->form["id"] = null;
         $this->form["nom"] = "";
-        $this->form["nbrejour"] = "";
+        $this->form["nbrejour"] = 0;
+        $this->form["prix"] = 0;
         $this->idDeleting = null;
     }
 

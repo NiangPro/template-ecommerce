@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('acheminements', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->string("nom");
-            $table->unsignedInteger("nbrejour")->nullable();
+            $table->unsignedInteger("nbrejour")->default(0);
+            $table->unsignedDouble("prix")->default(0);
             $table->timestamps();
         });
     }

@@ -102,18 +102,15 @@
                                         </thead>
 
                                         <tbody>
+                                            @foreach($products as $c)
                                             <tr>
-                                                <td><a href="#">Beige knitted elastic runner shoes</a></td>
-                                                <td>$84.00</td>
+                                                <td><a href="#">{{$c->product->nom}}</a></td>
+                                                <td>{{$c->product->prix * $c->qte}}F</td>
                                             </tr>
-
-                                            <tr>
-                                                <td><a href="#">Blue utility pinafore denimdress</a></td>
-                                                <td>$76,00</td>
-                                            </tr>
+                                            @endforeach
                                             <tr class="summary-subtotal">
                                                 <td>Sous-total:</td>
-                                                <td>$160.00</td>
+                                                <td>{{$subTotal}}F</td>
                                             </tr><!-- End .summary-subtotal -->
                                             <tr>
                                                 <td>Livraison:</td>

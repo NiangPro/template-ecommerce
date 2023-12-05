@@ -16,6 +16,7 @@ class Product extends Model
         "description",
         "prix",
         "qte",
+        "poids",
         "reduction",
         "image",
         "category_id"
