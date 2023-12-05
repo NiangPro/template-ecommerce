@@ -56,7 +56,7 @@
             </div>
 
             <div class="header-right">
-                <div class="dropdown compare-dropdown">
+                {{-- <div class="dropdown compare-dropdown"> --}}
                     {{-- <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
                         <div class="icon">
                             <i class="icon-random"></i>
@@ -64,7 +64,7 @@
                         <p>Compare</p>
                     </a> --}}
 
-                    <div class="dropdown-menu dropdown-menu-right">
+                    {{-- <div class="dropdown-menu dropdown-menu-right">
                         <ul class="compare-products">
                             <li class="compare-product">
                                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
@@ -81,7 +81,7 @@
                             <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
                         </div>
                     </div><!-- End .dropdown-menu -->
-                </div><!-- End .compare-dropdown --> --}}
+                </div><!-- End .compare-dropdown --> --}} 
 
                 <div class="wishlist">
                     <a href="{{route('wishlist')}}" title="Favori">

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cart as ModelsCart;
+use App\Models\Souhait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -13,6 +14,8 @@ class Cart extends Component
     public $subTotal;
 
     public $tabProds = [];
+
+    public $favoris = null;
 
     public function removeCart($id)
     {
@@ -50,12 +53,15 @@ class Cart extends Component
             foreach ($prodsCart as $c) {
                 $total += ($c->product->prix * $c->qte); 
             }
+
+            $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
 
         $this->initProducts();
         return view('livewire.frontend.cart')->layout("layouts.app", [
             "prodsCart" => $prodsCart,
-            "total" => $total
+            "total" => $total,
+            "favoris" => $this->favoris,
         ]);
     }
 
@@ -76,3 +82,4 @@ class Cart extends Component
 
     }
 }
+ 
