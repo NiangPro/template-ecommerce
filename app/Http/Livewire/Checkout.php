@@ -4,11 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Acheminement;
 use App\Models\Cart;
-<<<<<<< HEAD
 use App\Models\Souhait;
-=======
 use App\Models\User;
->>>>>>> main
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -18,9 +15,7 @@ class Checkout extends Component
 
     public $subTotal;
 
-<<<<<<< HEAD
     public $favoris = null;
-=======
     public $form = [
         "id" => null,
         "nom" => "",
@@ -33,7 +28,6 @@ class Checkout extends Component
         "tel2" => null,
         "email" => "",
     ];
->>>>>>> main
 
     public function render()
     {
