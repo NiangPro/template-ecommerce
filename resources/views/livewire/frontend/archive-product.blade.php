@@ -1,6 +1,7 @@
 <div class="page-content">
     <div class="container">
         <div class="row">
+            
             <div class="col-lg-9">
                 <div class="toolbox">
                     <div class="toolbox-left">
@@ -94,7 +95,7 @@
                                         <div class="product-cat">
                                             <a href="#">Tel</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">{{ $p->nom}}</a></h3><!-- End .product-title -->
+                                        <h3 class="product-title"><a href="produit/{{$p->id}}">{{ $p->nom}}</a></h3><!-- End .product-title -->
                                         <div class="product-price">
                                             {{ $p->prix}} Fcfa
                                         </div><!-- End .product-price -->
