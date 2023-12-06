@@ -17,76 +17,53 @@
         <div class="page-content">
             <div class="checkout">
                 <div class="container">
-                    <div class="checkout-discount">
-                        <form action="#">
-                            <input type="text" class="form-control" required id="checkout-discount-input">
-                            <label for="checkout-discount-input" class="text-truncate">Vous avez un coupon ? <span>Cliquez ici pour saisir votre code</span></label>
-                        </form>
-                    </div><!-- End .checkout-discount -->
                     <form action="#">
+                    <div class="checkout-discount">
+                            <input type="text" class="form-control" required id="checkout-discount-input">
+                            <label for="checkout-discount-input" class="text-truncate">Vous avez un coupon? <span>Cliquez ici pour saisir votre code</span></label>
+                    </div><!-- End .checkout-discount -->
                         <div class="row">
                             <div class="col-lg-9">
                                 <h2 class="checkout-title">Détails de la facturation</h2><!-- End .checkout-title -->
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <label>First Name *</label>
-                                            <input type="text" class="form-control" required>
+                                            <label>Prénom *</label>
+                                            <input type="text"  class="form-control" readonly wire:model="form.prenom">
                                         </div><!-- End .col-sm-6 -->
 
                                         <div class="col-sm-6">
-                                            <label>Last Name *</label>
-                                            <input type="text" class="form-control" required>
+                                            <label>Nom *</label>
+                                            <input type="text" class="form-control"  readonly wire:model="form.nom">
                                         </div><!-- End .col-sm-6 -->
                                     </div><!-- End .row -->
 
-                                    <label>Company Name (Optional)</label>
-                                    <input type="text" class="form-control">
+                                    <label>Pays *</label>
+                                    <input type="text" class="form-control"  readonly wire:model="form.pays">
 
-                                    <label>Country *</label>
-                                    <input type="text" class="form-control" required>
+                                    <label>Nationalité *</label>
+                                    <input type="text" class="form-control"  readonly wire:model="form.nationalite">
 
-                                    <label>Street address *</label>
-                                    <input type="text" class="form-control" placeholder="House number and Street name" required>
-                                    <input type="text" class="form-control" placeholder="Appartments, suite, unit etc ..." required>
+                                    <label>Adresse *</label>
+                                    <input type="text" class="form-control" placeholder="House number and Street name"  readonly wire:model="form.adresse">
 
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <label>Town / City *</label>
-                                            <input type="text" class="form-control" required>
+                                            <label>N° Telephone 1 *</label>
+                                            <input type="text" class="form-control"  readonly wire:model="form.tel">
                                         </div><!-- End .col-sm-6 -->
 
                                         <div class="col-sm-6">
-                                            <label>State / County *</label>
-                                            <input type="text" class="form-control" required>
+                                            <label>N° Telephone 2</label>
+                                            <input type="text" class="form-control"  readonly wire:model="form.tel2">
                                         </div><!-- End .col-sm-6 -->
                                     </div><!-- End .row -->
 
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label>Postcode / ZIP *</label>
-                                            <input type="text" class="form-control" required>
-                                        </div><!-- End .col-sm-6 -->
 
-                                        <div class="col-sm-6">
-                                            <label>Phone *</label>
-                                            <input type="tel" class="form-control" required>
-                                        </div><!-- End .col-sm-6 -->
-                                    </div><!-- End .row -->
+                                    <label>Email *</label>
+                                    <input type="email" class="form-control"  readonly wire:model="form.email">
 
-                                    <label>Email address *</label>
-                                    <input type="email" class="form-control" required>
 
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
-                                        <label class="custom-control-label" for="checkout-create-acc">Create an account?</label>
-                                    </div><!-- End .custom-checkbox -->
-
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="checkout-diff-address">
-                                        <label class="custom-control-label" for="checkout-diff-address">Ship to a different address?</label>
-                                    </div><!-- End .custom-checkbox -->
-
-                                    <label>Order notes (optional)</label>
+                                    <label>Notes sur la commande (optionnel)</label>
                                     <textarea class="form-control" cols="30" rows="4" placeholder="Notes concernant votre commande, par exemple, notes spéciales pour la livraison"></textarea>
                             </div><!-- End .col-lg-9 -->
                             <aside class="col-lg-3">
@@ -112,13 +89,31 @@
                                                 <td>Sous-total:</td>
                                                 <td>{{$subTotal}}F</td>
                                             </tr><!-- End .summary-subtotal -->
-                                            <tr>
-                                                <td>Livraison:</td>
-                                                <td>Bateaux</td>
-                                            </tr>
-                                            <tr>
+                                            <tr class="summary-subtotal">
+                                                <td>Expédition par:</td>
                                                 <td></td>
-                                                <td>Avions</td>
+                                            </tr><!-- End .summary-subtotal -->
+                                            <tr>
+                                                <td colspan="2" class="text-left">
+                                                    <div class="accordion-summary" id="accordion-mode">
+                                                        @foreach($achms as $key => $a)
+                                                        <div class="card">
+                                                            <div class="card-header" id="mode-{{$a->id}}">
+                                                                <h2 class="card-title">
+                                                                    <a class="collapsed" role="button" data-toggle="collapse" href="#ach-{{$a->id}}" aria-expanded="false" aria-controls="ach-{{$a->id}}">
+                                                                        {{ucfirst($a->nom)}}
+                                                                    </a>
+                                                                </h2>
+                                                            </div><!-- End .card-header -->
+                                                            <div id="ach-{{$a->id}}" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-mode">
+                                                                <div class="card-body">
+                                                                    Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. 
+                                                                </div><!-- End .card-body -->
+                                                            </div><!-- End .collapse -->
+                                                        </div>
+                                                        @endforeach
+                                                    </div><!-- End .accordion --> 
+                                                </td>
                                             </tr>
                                             <tr class="summary-total">
                                                 <td>Total:</td>

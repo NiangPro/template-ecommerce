@@ -3,7 +3,7 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
             <div class="container d-flex align-items-center">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
                     <li class="breadcrumb-item"><a href="#">Produits</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Détails</li>
                 </ol>
@@ -278,7 +278,7 @@
                                 <div class="product product-7 text-center">
                                     <figure class="product-media">
                                         <span class="product-label label-new">tag</span>
-                                        <a href="product.html">
+                                        <a href="produit/{{$p->id}}">
                                             <img src="{{asset('storage/images'.$p->image)}}" alt="Product image" class="product-image">
                                         </a>
 
@@ -297,7 +297,7 @@
                                         <div class="product-cat">
                                             <a href="#">{{$product->category->nom}}</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">{{$p->nom}}</a></h3><!-- End .product-title -->
+                                        <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                         <div class="product-price">
                                             {{$p->nom}} Fcfa
                                         </div><!-- End .product-price -->

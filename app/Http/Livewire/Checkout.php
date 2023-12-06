@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Acheminement;
 use App\Models\Cart;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -11,6 +13,19 @@ class Checkout extends Component
     public $products;
 
     public $subTotal;
+
+    public $form = [
+        "id" => null,
+        "nom" => "",
+        "prenom" => "", 
+        "adresse" => "",
+        "nationalite" => "",
+        "pays" => "",
+        "image" => null,
+        "tel" => "",
+        "tel2" => null,
+        "email" => "",
+    ];
 
     public function render()
     {
@@ -26,7 +41,9 @@ class Checkout extends Component
         }
 
         $this->initProducts();
-        return view('livewire.frontend.checkout')->layout("layouts.app", [
+        return view('livewire.frontend.checkout', [
+            "achms" => Acheminement::orderBy("nom", "ASC")->get()
+        ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total
         ]);
@@ -38,5 +55,20 @@ class Checkout extends Component
             $this->subTotal += ($p->product->prix*$p->qte);
         }
 
+    }
+
+    public function mount()
+    {
+        $u = User::where("id", Auth::user()->id)->first();
+
+        $this->form["nom"] = $u->nom;
+        $this->form["id"] = $u->id;
+        $this->form["prenom"] = $u->prenom;
+        $this->form["email"] = $u->email;
+        $this->form["tel"] = $u->tel;
+        $this->form["tel2"] = $u->tel2;
+        $this->form["nationalite"] = $u->nationalite;
+        $this->form["adresse"] = $u->adresse;
+        $this->form["pays"] = $u->pays;
     }
 }

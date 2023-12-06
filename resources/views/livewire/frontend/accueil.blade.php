@@ -164,7 +164,7 @@
                     </li>
                         @foreach($categoryType as $cat)
                             <li  wire:ignore.self class="nav-item">
-                                <a wire:ignore wire:ignore.self wire:click.prevent="changeCategory({{$cat->id}})" class="nav-link" id="{{$cat->slug}}{{$cat->id}}-link" data-toggle="tab" href="#{{$cat->slug}}{{$cat->id}}-tab" role="tab" aria-controls="{{$cat->slug}}{{$cat->id}}-tab" aria-selected="false">{{$cat->nom}}</a>
+                                <a wire:ignore.self wire:click.prevent="changeCategory({{$cat->id}})" class="nav-link" id="{{$cat->slug}}{{$cat->id}}-link" data-toggle="tab" href="#{{$cat->slug}}{{$cat->id}}-tab" role="tab" aria-controls="{{$cat->slug}}{{$cat->id}}-tab" aria-selected="false">{{$cat->nom}}</a>
                             </li>
                         @endforeach
                 </ul>
@@ -201,7 +201,7 @@
                                     <span class="product-label label-circle label-top">{{$t->nom}}</span>
                                 @endforeach
                                 {{-- <span class="product-label label-circle label-sale">Sale</span> --}}
-                                <a href="product.html">
+                                <a wire:navigate href="produit/{{$p->id}}">
                                     <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                 </a>
 
@@ -211,7 +211,7 @@
 
                                 <div class="product-action">
                                     <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
-                                    <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="voir plus"><span>Voir plus</span></a>
+                                    <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
@@ -219,7 +219,7 @@
                                 <div class="product-cat">
                                     <a href="#">{{$p->category->nom}}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">{{$p->nom}}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
                                     <span class="new-price">{{$p->reduction}}</span>
                                     <span class="old-price">{{$p->prix}}</span>
@@ -266,7 +266,7 @@
                                         <span class="product-label label-circle label-top">{{$t->nom}}</span>
                                     @endforeach
                                     {{-- <span class="product-label label-circle label-sale">Sale</span> --}}
-                                    <a href="product.html">
+                                    <a href="produit/{{$p->id}}">
                                         <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                     </a>
 
@@ -276,7 +276,7 @@
 
                                     <div class="product-action">
                                         <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Add to cart"><span>Ajouter au panier</span></a>
-                                        <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="voir plus"><span>Voir plus</span></a>
+                                        <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -284,7 +284,7 @@
                                     <div class="product-cat">
                                         <a href="#">{{$p->category->nom}}</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">{{$p->nom}}</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="new-price">{{$p->reduction}}</span>
                                         <span class="old-price">{{$p->prix}}</span>
@@ -337,14 +337,14 @@
                     </div><!-- End .deal-top -->
 
                     <div class="deal-content">
-                        <h3 class="product-title"><a href="product.html">Home Smart Speaker with  Google Assistant</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="produit/{{$p->id}}">Home Smart Speaker with  Google Assistant</a></h3><!-- End .product-title -->
 
                         <div class="product-price">
                             <span class="new-price">$129.00</span>
                             <span class="old-price">Was $150.99</span>
                         </div><!-- End .product-price -->
 
-                        <a href="product.html" class="btn btn-link"><span>Shop Now</span><i class="icon-long-arrow-right"></i></a>
+                        <a href="produit/{{$p->id}}" class="btn btn-link"><span>Shop Now</span><i class="icon-long-arrow-right"></i></a>
                     </div><!-- End .deal-content -->
 
                     <div class="deal-bottom">
@@ -361,7 +361,7 @@
                     </div><!-- End .deal-top -->
 
                     <div class="deal-content">
-                        <h3 class="product-title"><a href="product.html">Certified Wireless Charging  Pad for iPhone / Android</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a href="produit/{{$p->id}}">Certified Wireless Charging  Pad for iPhone / Android</a></h3><!-- End .product-title -->
 
                         <div class="product-price">
                             <span class="new-price">$29.99</span>
@@ -496,7 +496,7 @@
                                                 @foreach($p->tags as $t)
                                                     <span class="product-label label-circle label-top">{{$t->nom}}</span>
                                                 @endforeach
-                                                <a href="product.html">
+                                                <a href="produit/{{$p->id}}">
                                                     <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                                 </a>
 
@@ -506,7 +506,7 @@
 
                                                 <div class="product-action">
                                                     <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
-                                                    <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="Quick view"><span>Voir plus</span></a>
+                                                    <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
@@ -514,7 +514,7 @@
                                                 <div class="product-cat">
                                                     <a href="#">{{$p->category->nom}}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">{{$p->nom}}</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                     {{$p->prix}}
                                                 </div><!-- End .product-price -->
@@ -558,7 +558,7 @@
                                                 @foreach($p->tags as $t)
                                                     <span class="product-label label-circle label-top">{{$t->nom}}</span>
                                                 @endforeach
-                                                <a href="product.html">
+                                                <a href="produit/{{$p->id}}">
                                                     <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                                 </a>
 
@@ -568,7 +568,8 @@
 
                                                 <div class="product-action">
                                                     <a href="#"  wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
-                                                    <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="Quick view"><span>Voir plus</span></a>
+                                                    <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
+
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
@@ -576,7 +577,7 @@
                                                 <div class="product-cat">
                                                     <a href="#">{{$p->category->nom}}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">{{$p->nom}}</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                     {{$p->prix}}
                                                 </div><!-- End .product-price -->
@@ -619,7 +620,7 @@
                                 @foreach($p->tags as $t)
                                     <span class="product-label label-circle label-sale">{{$t->nom}}</span>
                                 @endforeach
-                                <a href="product.html">
+                                <a href="produit/{{$p->id}}">
                                     <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                 </a>
 
@@ -629,7 +630,7 @@
 
                                 <div class="product-action">
                                     <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="ajout panier"><span>Ajouter au panier</span></a>
-                                    <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product btn-quickview" title="voir plus"><span>Voir plus</span></a>
+                                    <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
@@ -637,7 +638,7 @@
                                 <div class="product-cat">
                                     <a href="#">{{$p->category->nom}}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">{{$p->nom}}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
                                     <span class="new-price">{{$p->reduction}}</span>
                                     <span class="old-price">{{$p->prix}}</span>
