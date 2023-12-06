@@ -81,7 +81,7 @@
                                         <tbody>
                                             @foreach($products as $c)
                                             <tr>
-                                                <td><a href="#">{{$c->product->nom}}</a></td>
+                                                <td><a href="#">{{str($c->product->nom)->limit(17)}}</a></td>
                                                 <td>{{$c->product->prix * $c->qte}}F</td>
                                             </tr>
                                             @endforeach
@@ -97,7 +97,7 @@
                                                 <td colspan="2" class="text-left">
                                                     <div class="accordion-summary" id="accordion-mode">
                                                         @foreach($achms as $key => $a)
-                                                        <div class="card">
+                                                        <div class="card" wire:click.prevent="calculTransport({{$a->id}})">
                                                             <div class="card-header" id="mode-{{$a->id}}">
                                                                 <h2 class="card-title">
                                                                     <a class="collapsed" role="button" data-toggle="collapse" href="#ach-{{$a->id}}" aria-expanded="false" aria-controls="ach-{{$a->id}}">
@@ -105,19 +105,28 @@
                                                                     </a>
                                                                 </h2>
                                                             </div><!-- End .card-header -->
-                                                            <div id="ach-{{$a->id}}" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-mode">
+                                                            <div id="ach-{{$a->id}}" class="collapse" aria-labelledby="mode-{{$a->id}}" data-parent="#accordion-mode">
                                                                 <div class="card-body">
-                                                                    Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. 
+                                                                    Prix d'un Kg -> {{$a->prix}} FCFA le Kg <br>
+                                                                    Durée de Livraison -> {{$a->nbrejour}} jours
+                                                                    <h6 class="border-top">Calcul du prix de transport</h6>
+                                                                    @foreach($products as $c)
+                                                                    <span>
+                                                                        <b>{{$c->product->nom}}</b><br>
+                                                                            {{$c->product->poids}}kg x {{$c->qte}} x {{$a->prix}} = {{$c->product->poids * $a->prix * $c->qte}} FCFA
+                                                                    </span><br>
+                                                                    @endforeach
                                                                 </div><!-- End .card-body -->
                                                             </div><!-- End .collapse -->
                                                         </div>
                                                         @endforeach
                                                     </div><!-- End .accordion --> 
+                                                    <span><b>Montant du Transport</b> = {{$montantTransport}} FCFA</span>
                                                 </td>
                                             </tr>
                                             <tr class="summary-total">
                                                 <td>Total:</td>
-                                                <td>$160.00</td>
+                                                <td>{{$item_price}} FCFA</td>
                                             </tr><!-- End .summary-total -->
                                         </tbody>
                                     </table><!-- End .table table-summary -->
@@ -198,7 +207,7 @@
                                         </div><!-- End .card -->
                                     </div><!-- End .accordion -->
 
-                                    <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
+                                    <button type="button" wire:click="payer" class="btn btn-outline-primary-2 btn-order btn-block">
                                         <span class="btn-text">Passer une commande</span>
                                         <span class="btn-hover-text">Procéder au paiement</span>
                                     </button>

@@ -53,7 +53,7 @@
                                             </div><!-- End .cart-product-quantity -->
                                         </td>
                                         <td class="total-col">{{$c["prix"] * $c["qte"]}} F</td>
-                                        <td class="remove-col"><button wire:click="removeCart({{$c["id"]}})" class="btn-remove"><i class="icon-close"></i></button></td>
+                                        <td class="remove-col"><button wire:confirm="Êtes-vous sûr de vouloir supprimer ?" wire:click="removeCart({{$c["id"]}})" class="btn-remove"><i class="icon-close"></i></button></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Acheminement;
 use App\Models\Cart;
+use App\Models\PayTech;
 use App\Models\Souhait;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,12 @@ class Checkout extends Component
     public $products;
 
     public $subTotal;
+    public $item_price;
+    public $payTech;
+
+    public $montantTransport =0;
+
+    public $etatTransport = null;
 
     public $favoris = null;
     public $form = [
@@ -29,10 +36,30 @@ class Checkout extends Component
         "email" => "",
     ];
 
+    public function calculTransport($cle)
+    {
+        $this->montantTransport = 0;
+        if ($this->etatTransport != $cle) {
+            $ach = Acheminement::find($cle);
+
+            foreach ($this->products as $c) {
+                $this->montantTransport += ($c->qte * $c->product->poids * $ach->prix);
+            }
+        }
+
+        $this->etatTransport = $cle;
+        $this->initProducts();
+    }
+
+    public function payer()
+    {
+        dd($this->payTech->send($this->item_price));
+    }
+
     public function render()
     {
         $this->products = Cart::where("user_id", Auth::user()->id)->get();
-
+        $this->payTech = new PayTech();
         $prodsCart = null;
         $total = 0;
         if (Auth::user()) {
@@ -59,7 +86,7 @@ class Checkout extends Component
         foreach ($this->products as $p) {
             $this->subTotal += ($p->product->prix*$p->qte);
         }
-
+        $this->item_price = $this->subTotal + $this->montantTransport;
     }
 
     public function mount()

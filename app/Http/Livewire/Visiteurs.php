@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Souhait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -24,7 +25,8 @@ class Visiteurs extends Component
 
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
-            "total" => $total
+            "total" => $total,
+            "favoris" => Auth::user() ? Souhait::where("user_id", Auth::user()->id)->get() : null
         ]);
     }
 }
