@@ -4,7 +4,9 @@ namespace App\Http\Livewire;
 
 use App\Models\Acheminement;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\PayTech;
+use App\Models\Product;
 use App\Models\Souhait;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
