@@ -54,6 +54,19 @@ class Checkout extends Component
     public function payer()
     {
         $response = $this->payTech->send($this->item_price);
+
+        $success = $response["success"];
+        $errors = $response["errors"];
+
+        if (count($errors) > 0) {
+            $this->dispatchBrowserEvent('display-errors', [
+                'errors' => $errors,
+            ]);
+        }else{
+            $this->dispatchBrowserEvent('display-success', [
+                'success' => $success,
+            ]);
+        }
     }
 
     public function render()

@@ -132,7 +132,7 @@
                                         </tbody>
                                     </table><!-- End .table table-summary -->
 
-                                    <div class="accordion-summary" id="accordion-payment">
+                                    {{-- <div class="accordion-summary" id="accordion-payment">
                                         <div class="card">
                                             <div class="card-header" id="heading-1">
                                                 <h2 class="card-title">
@@ -206,7 +206,7 @@
                                                 </div><!-- End .card-body -->
                                             </div><!-- End .collapse -->
                                         </div><!-- End .card -->
-                                    </div><!-- End .accordion -->
+                                    </div><!-- End .accordion --> --}}
 
                                     <button type="button" wire:click="payer" class="btn btn-outline-primary-2 btn-order btn-block">
                                         <span class="btn-text">Passer une commande</span>
@@ -229,3 +229,31 @@
             </div><!-- End .checkout -->
         </div><!-- End .page-content -->
 </div>
+
+@section('js')
+<script>
+    window.addEventListener('display-errors', (errors) => {
+        console.log(errors.detail.errors);
+        for (let i = 0; i < errors.detail.errors.length; i++) {
+            iziToast.error({
+                title: 'Paiement',
+                message: errors.detail.errors[i],
+                position: 'topRight'
+            });
+        }
+    });
+   window.addEventListener('noLogged', event =>{
+        iziToast.error({
+        title: 'Panier',
+        message: 'Veuillez d\'abord se connecter',
+        position: 'topRight'
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    });
+
+</script>
+
+@endsection
