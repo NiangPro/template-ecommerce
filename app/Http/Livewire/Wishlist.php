@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Souhait;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,9 @@ class Wishlist extends Component
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,
-            "favoris" => $this->favoris
+            "favoris" => $this->favoris,
+            "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
+            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
         ]);
     }
 }

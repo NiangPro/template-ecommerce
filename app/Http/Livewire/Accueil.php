@@ -75,12 +75,14 @@ class Accueil extends Component
             'categoryType' => Category::orderBy("id", "DESC")->Limit(4)->get(),
             "produits" => Product::orderBy("id", "DESC")->get(),
             "produitsRec" => Product::orderBy("id", "DESC")->Limit(4)->get(),
-            "produitSlider" => Product::orderBy("id", "DESC")->Limit(4)->get(),
+            "produitSlider" => Product::orderBy("id", "DESC")->Limit(5)->get(),
             "CategorieSlider" => Category::orderBy("id", "DESC")->Limit(4)->get(),
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,
-            "favoris" => $favoris
+            "favoris" => $favoris,
+            "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
+            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
         ]);
     }
 }

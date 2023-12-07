@@ -73,7 +73,9 @@ class ArchiveProduct extends Component
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,
-            "favoris" => $favoris
+            "favoris" => $favoris,
+            "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
+            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
         ]);
     }
 

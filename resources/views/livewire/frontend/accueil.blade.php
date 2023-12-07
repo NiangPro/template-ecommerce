@@ -1,6 +1,6 @@
 <div>
     {{-- Slider accueil --}}
-    <div class="intro-slider-container mb-5">
+    <div class="intro-slider-container mb-5" style="background-color: rgb(255, 255, 255)!important">
         <div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" 
             data-owl-options='{
                 "dots": true,
@@ -13,7 +13,7 @@
                 }
             }'>
             @foreach ($produitSlider as $p)
-                <div class="intro-slide" style="background-image: url(storage/images/{{$p->image}});">
+                <div  class="intro-slide" style="background-image: url(storage/images/{{$p->image}}); align-items: center; background-size: contain; background-position: left; background-repeat: no-repeat;">
                     <div class="container intro-content">
                         <div class="row justify-content-end">
                             <div class="col-auto col-sm-7 col-md-6 col-lg-5">
@@ -151,157 +151,73 @@
 
     <div class="mb-3"></div><!-- End .mb-5 -->
 
-    <div wire:ignore.self class="container new-arrivals">
-        <div wire:ignore.self  class="heading heading-flex mb-3">
-            <div class="heading-left">
-                <h2 class="title">Nouvel arrivage</h2><!-- End .title -->
-            </div><!-- End .heading-left -->
-
-           <div wire:ignore.self class="heading-right">
-                <ul wire:ignore.self class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
-                    <li wire:ignore.self class="nav-item">
-                        <a wire:ignore.self class="nav-link active" id="new-all-link" data-toggle="tab" href="#new-all-tab" role="tab" aria-controls="new-all-tab" aria-selected="true">Tout</a>
-                    </li>
-                        @foreach($categoryType as $cat)
-                            <li  wire:ignore.self class="nav-item">
-                                <a wire:ignore.self wire:click.prevent="changeCategory({{$cat->id}})" class="nav-link" id="{{$cat->slug}}{{$cat->id}}-link" data-toggle="tab" href="#{{$cat->slug}}{{$cat->id}}-tab" role="tab" aria-controls="{{$cat->slug}}{{$cat->id}}-tab" aria-selected="false">{{$cat->nom}}</a>
-                            </li>
+    <div class="container">
+        <h2 class="title text-center mb-4">Nouvel arrivage</h2><!-- End .title text-center -->
+        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+            data-owl-options='{
+                "nav": false, 
+                "dots": true,
+                "margin": 20,
+                "loop": false,
+                "responsive": {
+                    "0": {
+                        "items":1
+                    },
+                    "480": {
+                        "items":2
+                    },
+                    "768": {
+                        "items":3
+                    },
+                    "992": {
+                        "items":4
+                    },
+                    "1200": {
+                        "items":4,
+                        "nav": true,
+                        "dots": false
+                    }
+                }
+            }'>
+            @foreach ($produitSlider as $p)
+                <div class="product product-7 text-center">
+                    <figure class="product-media">
+                        @foreach($p->tags as $t)
+                            <span class="product-label label-new">{{$t->nom}}</span>
                         @endforeach
-                </ul>
-           </div><!-- End .heading-right -->
-        </div><!-- End .heading -->
+                        <a href="product.html">
+                            <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
+                        </a>
 
-        <div wire:ignore.self class="tab-content tab-content-carousel just-action-icons-sm">
-            <div wire:ignore.self class="tab-pane p-0 fade show active" id="new-all-tab" role="tabpanel" aria-labelledby="new-all-link">
-                <div wire:ignore.self class="row owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
-                    data-owl-options='{
-                        "nav": true, 
-                        "dots": false,
-                        "margin": 20,
-                        "loop": false,
-                        "responsive": {
-                            "0": {
-                                "items":2
-                            },
-                            "480": {
-                                "items":2
-                            },
-                            "768": {
-                                "items":3
-                            },
-                            "992": {
-                                "items":4
-                            }
-                        }
-                    }'>
-                    @foreach($produits as $p)
-                        <div wire:ignore.self class="product product-2">
-                            <figure class="product-media">
-                                @foreach($p->tags as $t)
-                                    <span class="product-label label-circle label-top">{{$t->nom}}</span>
-                                @endforeach
-                                {{-- <span class="product-label label-circle label-sale">Sale</span> --}}
-                                <a wire:navigate href="produit/{{$p->id}}">
-                                    <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
-                                </a>
+                        <div class="product-action-vertical">
+                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>ajouter au favori</span></a>
+                            <a href="produit/{{$p->id}}" class="btn-product-icon btn-quickview" title="Voir plus"><span>Voir plus</span></a>
+                        </div><!-- End .product-action-vertical -->
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                </div><!-- End .product-action -->
+                        <div class="product-action">
+                            <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart"><span>Ajouter au panier</span></a>
+                        </div><!-- End .product-action -->
+                    </figure><!-- End .product-media -->
 
-                                <div class="product-action">
-                                    <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
-                                    <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">{{$p->category->nom}}</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    <span class="new-price">{{$p->reduction}}</span>
-                                    <span class="old-price">{{$p->prix}}</span>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 10 j'aime )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div>
-                    @endforeach
-                </div><!-- End .owl-carousel -->
-            </div><!-- .End .tab-pane -->
-
-            @foreach($categoryType as $cat)
-                <div wire:ignore.self class="tab-pane p-0 fade" id="{{$cat->slug}}{{$cat->id}}-tab" role="tabpanel" aria-labelledby="{{$cat->slug}}{{$cat->id}}-link">
-                    <div wire:ignore.self class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl" 
-                        data-owl-options='{
-                            "nav": true, 
-                            "dots": false,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":1
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                }
-                            }
-                        }'>
-                        @foreach($tabpanProduct as $p)
-                            <div wire:ignore.self class="product product-2 col-3">
-                                <figure wire:ignore.self class="product-media">
-                                    @foreach($p->tags as $t)
-                                        <span class="product-label label-circle label-top">{{$t->nom}}</span>
-                                    @endforeach
-                                    {{-- <span class="product-label label-circle label-sale">Sale</span> --}}
-                                    <a href="produit/{{$p->id}}">
-                                        <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                    </div><!-- End .product-action -->
-
-                                    <div class="product-action">
-                                        <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Add to cart"><span>Ajouter au panier</span></a>
-                                        <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">{{$p->category->nom}}</a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="new-price">{{$p->reduction}}</span>
-                                        <span class="old-price">{{$p->prix}}</span>
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 10 j'aime )</span>
-                                    </div><!-- End .rating-container -->
-                                </div><!-- End .product-body -->
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
+                    <div class="product-body">
+                        <div class="product-cat">
+                            <a href="#">{{$p->category->nom}}</a>
+                        </div><!-- End .product-cat -->
+                        <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
+                        <div class="product-price">
+                            {{$p->nom}}
+                        </div><!-- End .product-price -->
+                        <div class="ratings-container">
+                            <div class="ratings">
+                                <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                            </div><!-- End .ratings -->
+                            <span class="ratings-text">( 2 Reviews )</span>
+                        </div><!-- End .rating-container -->
+                    </div><!-- End .product-body -->
+                </div><!-- End .product -->
             @endforeach
-        </div><!-- End .tab-content -->
+            
+        </div><!-- End .owl-carousel -->
     </div><!-- End .container -->
 
     <div class="mb-6"></div><!-- End .mb-6 -->

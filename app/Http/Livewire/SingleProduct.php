@@ -3,13 +3,16 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Souhait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class SingleProduct extends Component
 {
     public $idProduit = null;
+    public $favoris = null;
     public function render()
     {
         $prodsCart = null;
@@ -19,6 +22,7 @@ class SingleProduct extends Component
             foreach ($prodsCart as $c) {
                 $total += ($c->product->prix * $c->qte); 
             }
+            $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
         
         return view('livewire.frontend.single-product',[
@@ -26,7 +30,10 @@ class SingleProduct extends Component
             "produits" => Product::orderBy("id", "DESC")->get(),
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
-            "total" => $total
+            "total" => $total,
+            "favoris" => $this->favoris,
+            "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
+            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
         ]);
     }
 

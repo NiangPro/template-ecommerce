@@ -51,6 +51,8 @@ class Checkout extends Component
             "prodsCart" => $prodsCart,
             "total" => $total,
             "favoris" => $this->favoris,
+            "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
+            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
         ]);
     }
 
