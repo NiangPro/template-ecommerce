@@ -29,7 +29,7 @@
             </div>
             <div class="form-group mb-4 col-md-4">
                 <label for="">Poids (en Kg) <span class="text-danger">*</span></label>
-                <input type="number" min="0" step="0.1" placeholder="Entrer le poids du produit" class="form-control @error('form.poids') is-invalid @enderror" wire:model="form.poids">
+                <input type="number" min="0" step="0.01" placeholder="Entrer le poids du produit" class="form-control @error('form.poids') is-invalid @enderror" wire:model="form.poids">
                 @error('form.poids') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-4 col-md-6">
