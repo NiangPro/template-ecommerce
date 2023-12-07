@@ -53,7 +53,7 @@ class Checkout extends Component
 
     public function payer()
     {
-        dd($this->payTech->send($this->item_price));
+        $response = $this->payTech->send($this->item_price);
     }
 
     public function render()

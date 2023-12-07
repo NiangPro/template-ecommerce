@@ -17,11 +17,12 @@
         <div class="page-content">
             <div class="checkout">
                 <div class="container">
+                    @if(count($products) > 0)
                     <form action="#">
-                    <div class="checkout-discount">
-                            <input type="text" class="form-control" required id="checkout-discount-input">
-                            <label for="checkout-discount-input" class="text-truncate">Vous avez un coupon? <span>Cliquez ici pour saisir votre code</span></label>
-                    </div><!-- End .checkout-discount -->
+                        <div class="checkout-discount">
+                                <input type="text" class="form-control" required id="checkout-discount-input">
+                                <label for="checkout-discount-input" class="text-truncate">Vous avez un coupon? <span>Cliquez ici pour saisir votre code</span></label>
+                        </div><!-- End .checkout-discount -->
                         <div class="row">
                             <div class="col-lg-9">
                                 <h2 class="checkout-title">Détails de la facturation</h2><!-- End .checkout-title -->
@@ -215,6 +216,15 @@
                             </aside><!-- End .col-lg-3 -->
                         </div><!-- End .row -->
                     </form>
+                    @else
+                        <div class="alert alert-primary alert-dismissible fade show text-center" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong class="h4 text-white">Veuillez d'abord ajouter des produits dans le panier!</strong>.
+                        </div>
+                    @endif
                 </div><!-- End .container -->
             </div><!-- End .checkout -->
         </div><!-- End .page-content -->
