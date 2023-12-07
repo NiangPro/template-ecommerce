@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cart as ModelsCart;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Souhait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -62,6 +64,8 @@ class Cart extends Component
             "prodsCart" => $prodsCart,
             "total" => $total,
             "favoris" => $this->favoris,
+            "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
+            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
         ]);
     }
 
