@@ -246,7 +246,7 @@
                                             <div class="menu-title">Produits ciblés</div><!-- End .menu-title -->
                                             <ul>
                                                 @foreach($product as $p)
-                                                    <li><a href="produit/{{$p->id}}">{{$p->nom}}</a></li>
+                                                    <li><a href="{{route('singleProduct', ["id" => $p->id])}}">{{$p->nom}}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div><!-- End .menu-col -->
