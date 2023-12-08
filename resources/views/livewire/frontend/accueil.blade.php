@@ -105,47 +105,53 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="banner banner-overlay banner-overlay-light">
-                    <a href="#">
-                        <img src="assets/images/demos/demo-4/banners/banner-1.png" alt="Banner">
-                    </a>
+            @foreach($minipubs as $key=>$p)
+                @if($key == 0)
+                    <div class="col-md-6 col-lg-4">
+                        <div class="banner banner-overlay banner-overlay-light">
+                            <a href="produit/{{$p->product->id}}">
+                                <img src="storage/images/{{$p->product->image}}" alt="Banner">
+                            </a>
 
-                    <div class="banner-content">
-                        <h4 class="banner-subtitle"><a href="#">Offre Intelligente</a></h4><!-- End .banner-subtitle -->
-                        <h3 class="banner-title"><a href="#">Economisez de l'argent sur <strong>le Samsung <br>Galaxy Note9</strong></a></h3><!-- End .banner-title -->
-                        <a href="#" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
-                    </div><!-- End .banner-content -->
-                </div><!-- End .banner -->
-            </div><!-- End .col-md-4 -->
+                            <div class="banner-content">
+                                <h4 class="banner-subtitle"><a href="produit/{{$p->product->id}}">Offre Intelligente</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title"><a href="produit/{{$p->product->id}}">Economisez de l'argent sur <strong>{{$p->product->nom}}</strong></a></h3><!-- End .banner-title -->
+                                <a href="produit/{{$p->product->id}}" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .banner-content -->
+                        </div><!-- End .banner -->
+                    </div><!-- End .col-md-4 -->
+                @endif
+                @if($key == 1)
+                    <div class="col-md-6 col-lg-4">
+                        <div class="banner banner-overlay banner-overlay-light">
+                            <a href="produit/{{$p->product->id}}">
+                                <img src="storage/images/{{$p->product->image}}" alt="Banner">
+                            </a>
 
-            <div class="col-md-6 col-lg-4">
-                <div class="banner banner-overlay banner-overlay-light">
-                    <a href="#">
-                        <img src="assets/images/demos/demo-4/banners/banner-2.jpg" alt="Banner">
-                    </a>
+                            <div class="banner-content">
+                                <h4 class="banner-subtitle"><a href="produit/{{$p->product->id}}">Offre de temps</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title"><a href="produit/{{$p->product->id}}"><strong>{{$p->product->nom}}</strong> <br>Réduction de Temps -30%</a></h3><!-- End .banner-title -->
+                                <a href="produit/{{$p->product->id}}" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .banner-content -->
+                        </div><!-- End .banner -->
+                    </div><!-- End .col-md-4 -->
+                @endif
+                @if($key == 2)
+                    <div class="col-md-6 col-lg-4">
+                        <div class="banner banner-overlay banner-overlay-light">
+                            <a href="produit/{{$p->product->id}}" style="max-height: 200px">
+                                <img src="storage/images/{{$p->product->image}}" alt="Banner">
+                            </a>
 
-                    <div class="banner-content">
-                        <h4 class="banner-subtitle"><a href="#">Offre de temps</a></h4><!-- End .banner-subtitle -->
-                        <h3 class="banner-title"><a href="#"><strong>casque bluethoof</strong> <br>Réduction de Temps -30%</a></h3><!-- End .banner-title -->
-                        <a href="#" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
-                    </div><!-- End .banner-content -->
-                </div><!-- End .banner -->
-            </div><!-- End .col-md-4 -->
-
-            <div class="col-md-6 col-lg-4">
-                <div class="banner banner-overlay banner-overlay-light">
-                    <a href="#">
-                        <img src="assets/images/demos/demo-4/banners/banner-3.png" alt="Banner">
-                    </a>
-
-                    <div class="banner-content">
-                        <h4 class="banner-subtitle"><a href="#">Autorisation</a></h4><!-- End .banner-subtitle -->
-                        <h3 class="banner-title"><a href="#"><strong>GoPro - Fusion 360</strong> <br>Economisez de l'argent</a></h3><!-- End .banner-title -->
-                        <a href="#" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
-                    </div><!-- End .banner-content -->
-                </div><!-- End .banner -->
-            </div><!-- End .col-lg-4 -->
+                            <div class="banner-content">
+                                <h4 class="banner-subtitle"><a href="produit/{{$p->product->id}}">Autorisation</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title"><a href="produit/{{$p->product->id}}"><strong>{{$p->product->nom}}</strong> <br>Economisez de l'argent</a></h3><!-- End .banner-title -->
+                                <a href="produit/{{$p->product->id}}" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .banner-content -->
+                        </div><!-- End .banner -->
+                    </div><!-- End .col-lg-4 -->
+                @endif
+            @endforeach
         </div><!-- End .row -->
     </div><!-- End .container -->
 
@@ -224,14 +230,14 @@
 
     <div class="container">
         <div class="cta cta-border mb-5" style="background-image: url(assets/images/demos/demo-4/bg-1.jpg);">
-            <img src="assets/images/demos/demo-4/camera.png" alt="camera" class="cta-img">
+            @if($banner)<img  src="storage/images/{{$banner->product->image}}"  width="300px" height="250px" alt="camera" class="cta-img">@endif
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="cta-content">
                         <div class="cta-text text-right text-white">
-                            <p>Achetez les offres du jour <br><strong>géniales en toute simplicité. HERO7 Black</strong></p>
+                            <p>Achetez les offres du jour <br>géniales en toute simplicité. @if($banner)<strong> {{$banner->product->nom}} </strong>@endif </p>
                         </div><!-- End .cta-text -->
-                        <a href="#" class="btn btn-primary btn-round"><span>Acheter maintenant</span><i class="icon-long-arrow-right"></i></a>
+                        @if($banner)<a href="produit/{{$banner->product->id}}" class="btn btn-primary btn-round"><span>Acheter maintenant</span><i class="icon-long-arrow-right"></i></a>@endif
                     </div><!-- End .cta-content -->
                 </div><!-- End .col-md-12 -->
             </div><!-- End .row -->

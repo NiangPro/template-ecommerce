@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Publicite;
 use App\Models\Souhait;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\Auth;
@@ -77,6 +78,8 @@ class Accueil extends Component
             "produitsRec" => Product::orderBy("id", "DESC")->Limit(4)->get(),
             "produitSlider" => Product::orderBy("id", "DESC")->Limit(5)->get(),
             "CategorieSlider" => Category::orderBy("id", "DESC")->Limit(4)->get(),
+            "banner" => Publicite::where("type", "banner")->first(),
+            "minipubs" => Publicite::where("type", "mini")->limit(3)->get(),
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,
