@@ -5,7 +5,7 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="{{route('home')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Produits</li>
+                    <li class="breadcrumb-item active" aria-current="page">Produits publicitaires</li>
                 </ol>
             </nav>
         </div>
@@ -30,40 +30,27 @@
            </div>
            <div class="table-responsive">
                 @if($type != "list")
-                    @include('livewire.admin.produit.add')
+                    @include('livewire.admin.publicity.add')
                 @else
                 <table id="example" class="table align-middle mb-0">
                     <thead class="table-light">
                         <tr>
                         <th>Nom</th>
                         <th>Image</th>
-                        <th>Categorie</th>
-                        <th>Quantité</th>
                         <th>Prix</th>
-                        <th>Tags</th>
-                        <th>Poids</th>
-                        <th>ACtions</th>
+                        <th>Type de publicité</th>
+                        <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($produits as $p)
                         <tr>
-                            <td>{{$p->nom}}</td>
-                            <td><img src="storage/images/{{$p->image}}" class="product-img-2" alt="product img"></td>
-                            <td>{{$p->category->nom}}</td>
-                            <td class="text-center"><span class="badge bg-success text-white shadow-sm">{{$p->qte}}</span></td>
-                            <td>{{$p->prix}} F CFA</td>
+                            <td>{{$p->product->nom}}</td>
+                            <td><img src="storage/images/{{$p->product->image}}" class="product-img-2" alt="product img"></td>
+                            <td>{{$p->product->prix}} F CFA</td>
+                            <td class="text-center">{{ucfirst($p->type)}}</td>
                             <td>
-                                @foreach($p->tags as $t)
-                                    <span class="badge bg-info">{{$t->nom}}</span>
-                                @endforeach
-                            </td>
-                            <td>{{$p->poids}} Kg</td>
-                            <td class="text-right">
                                 <button wire:click="editer({{$p->id}})" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></button>
-                                @if(!$p->publicite)
-                                <button wire:click="publicite({{$p->id}})" title="Mettre sous forme de publicité" class="btn btn-outline-info btn-sm"><i class="bx bx-image"></i></button>
-                                @endif
                                 <button class="btn btn-outline-danger btn-sm"  wire:click="readyForDelete({{$p->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>
                             </td>
                         </tr>
@@ -97,33 +84,18 @@
 
 @section('js')
 <script>
-    window.addEventListener('addProduct', event =>{
+    
+    window.addEventListener('updatePub', event =>{
         iziToast.success({
-        title: 'Produit',
-        message: 'Produit ajouté avec succès',
-        position: 'bottomRight'
-        });
-    });
-
-    window.addEventListener('updateProduct', event =>{
-        iziToast.success({
-        title: 'Produit',
+        title: 'Publicité',
         message: 'Mis à jour avec succès',
         position: 'topRight'
         });
     });
 
-    window.addEventListener('addPub', event =>{
+    window.addEventListener('deletePub', event =>{
         iziToast.success({
-        title: 'Produit',
-        message: 'Produit a été mis en publicité',
-        position: 'topRight'
-        });
-    });
-
-    window.addEventListener('deleteProduct', event =>{
-        iziToast.success({
-        title: 'Produit',
+        title: 'Publicité',
         message: 'Produit supprimé avec succès',
         position: 'topRight'
         });

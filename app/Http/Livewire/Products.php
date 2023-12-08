@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Publicite;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -66,6 +67,20 @@ class Products extends Component
         }else{
             $this->title = "La liste des produits";
             $this->initForm();
+        }
+    }
+
+    public function publicite($id)
+    {
+        $pub = Publicite::where("product_id", $id)->first();
+
+        if (!$pub) {
+            Publicite::create([
+                "type" => "mini",
+                "product_id" => $id
+            ]);
+
+            $this->dispatchBrowserEvent("addPub");
         }
     }
     

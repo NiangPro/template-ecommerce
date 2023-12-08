@@ -39,6 +39,13 @@
             </a>
         </li>
         <li>
+            <a href="{{route("category")}}">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Categories</div>
+            </a>
+        </li>
+        <li>
             <a href="{{route("product")}}">
                 <div class="parent-icon"><i class="bx bx-shopping-bag"></i>
                 </div>
@@ -46,10 +53,10 @@
             </a>
         </li>
         <li>
-            <a href="{{route("category")}}">
-                <div class="parent-icon"><i class="bx bx-category"></i>
+            <a href="{{route("publicity")}}">
+                <div class="parent-icon"><i class="bx bx-gift"></i>
                 </div>
-                <div class="menu-title">Categories</div>
+                <div class="menu-title">Publicités</div>
             </a>
         </li>
         <li>
@@ -61,7 +68,7 @@
         </li>
         <li>
             <a href="{{route("acheminement")}}">
-                <div class="parent-icon"><i class="bx bx-baby-carriage"></i>
+                <div class="parent-icon"><i class="bx bx-car"></i>
                 </div>
                 <div class="menu-title">Mode Acheminement</div>
             </a>
