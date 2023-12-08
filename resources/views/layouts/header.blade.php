@@ -18,22 +18,22 @@
                                 <div class="col text-center">
                                     <div class="app-box mx-auto text-primary"><i class='bx bx-group'></i>
                                     </div>
-                                    <div class="app-title">Teams</div>
+                                    <div class="app-title"><a class="text-black" href="{{route('client')}}">Clients</a></div>
                                 </div>
                                 <div class="col text-center">
-                                    <div class="app-box mx-auto text-danger"><i class='bx bx-atom'></i>
+                                    <div class="app-box mx-auto text-danger"><i class='bx bx-basket'></i>
                                     </div>
-                                    <div class="app-title">Projects</div>
+                                    <div class="app-title"><a class="text-black" href="{{route('product')}}">Produits</a></div>
                                 </div>
                                 <div class="col text-center">
                                     <div class="app-box mx-auto text-success"><i class='bx bx-shield'></i>
                                     </div>
-                                    <div class="app-title">Tasks</div>
+                                    <div class="app-title"><a class="text-black" href="{{route('category')}}">Catégories</a></div>
                                 </div>
                                 <div class="col text-center">
-                                    <div class="app-box mx-auto text-info"><i class='bx bx-notification'></i>
+                                    <div class="app-box mx-auto text-info"><i class='bx bx-cart'></i>
                                     </div>
-                                    <div class="app-title">Feeds</div>
+                                    <div class="app-title">Commandes</div>
                                 </div>
                                 <div class="col text-center">
                                     <div class="app-box mx-auto text-warning"><i class='bx bx-file'></i>

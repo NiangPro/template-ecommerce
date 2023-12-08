@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Orders</p>
+                            <p class="mb-0">Commandes</p>
                             <h4 class="my-1 text-primary">845</h4>
                         </div>
                         <div class="text-primary ms-auto font-35"><i class="bx bx-cart-alt"></i>
@@ -19,10 +19,10 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Income</p>
-                            <h4 class="my-1 text-success">$89,245</h4>
+                            <p class="mb-0">Produits</p>
+                            <h4 class="my-1 text-success">{{count($produits)}}</h4>
                         </div>
-                        <div class="text-success ms-auto font-35"><i class="bx bx-dollar"></i>
+                        <div class="text-success ms-auto font-35"><i class="bx bx-basket"></i>
                         </div>
                     </div>
                 </div>
@@ -33,8 +33,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Users</p>
-                            <h4 class="text-warning my-1">24.5K</h4>
+                            <p class="mb-0">Clients</p>
+                            <h4 class="text-warning my-1">{{count($clients)}}</h4>
                         </div>
                         <div class="text-warning ms-auto font-35"><i class="bx bx-user-pin"></i>
                         </div>
@@ -213,34 +213,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </div>
-
-    <div class="card radius-10 w-100">
-        <div class="card-header bg-transparent">
-            <div class="d-flex align-items-center">
-                <div>
-                    <h6 class="mb-0">World Map</h6>
-                </div>
-                <div class="dropdown ms-auto">
-                    <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="javascript:;">Action</a>
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <div id="geographic-map-2"></div>
         </div>
     </div>
 </div>
