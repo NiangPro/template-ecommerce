@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Acheminement;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\PayTech;
 use App\Models\Product;
 use App\Models\Souhait;
 use App\Models\User;
@@ -16,7 +17,8 @@ class Checkout extends Component
     public $products;
 
     public $subTotal;
-
+    public $montantTransport;
+    public $etatTransport;
     public $favoris = null;
     public $form = [
         "id" => null,
@@ -30,6 +32,39 @@ class Checkout extends Component
         "tel2" => null,
         "email" => "",
     ];
+
+    public function calculTransport($cle)
+    {
+        $this->montantTransport = 0;
+        if ($this->etatTransport != $cle) {
+            $ach = Acheminement::find($cle);
+
+            foreach ($this->products as $c) {
+                $this->montantTransport += ($c->qte * $c->product->poids * $ach->prix);
+            }
+        }
+
+        $this->etatTransport = $cle;
+        $this->initProducts();
+    }
+
+    public function payer()
+    {
+        $response = $this->payTech->send($this->item_price);
+
+        $success = $response["success"];
+        $errors = $response["errors"];
+
+        if (count($errors) > 0) {
+            $this->dispatchBrowserEvent('display-errors', [
+                'errors' => $errors,
+            ]);
+        }else{
+            $this->dispatchBrowserEvent('display-success', [
+                'success' => $success,
+            ]);
+        }
+    }
 
     public function render()
     {

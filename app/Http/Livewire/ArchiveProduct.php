@@ -13,6 +13,12 @@ use Livewire\Component;
 class ArchiveProduct extends Component
 {
     public $idCategory;
+    public $products;
+    public $produits;
+
+    public $filters = [
+        'categories' => [],
+    ];
 
     public function addToWishlist($product_id){
         if (Auth::user()) {
@@ -33,6 +39,7 @@ class ArchiveProduct extends Component
 
     public function addToCart($product_id)
     {
+        // dd($product_id);
         if (Auth::user()) {
             $ct = Cart::where("product_id", $product_id)->first();
             if ($ct) {
@@ -51,9 +58,21 @@ class ArchiveProduct extends Component
         }
     }
 
+    public function getFilter(){
+        $this->filters['categories'] = array_filter($this->filters['categories']);
+
+        if (empty($this->filters['categories'])) {
+            return Product::where("category_id", $this->idCategory)->orderBy("id", "DESC")->get();
+        }
+
+
+        return Product::whereIn('category_id', array_keys($this->filters['categories']))->orderBy("id", "DESC")->get();
+
+    }
+
     public function render()
     {
-
+        $this->produits = $this->getFilter();
         $prodsCart = null;
         $favoris = null;
         $total = 0;
@@ -66,8 +85,10 @@ class ArchiveProduct extends Component
             $favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
 
+        
+
         return view('livewire.frontend.archive-product',[
-            "produits" => Product::where("category_id", $this->idCategory)->orderBy("id", "DESC")->get(),
+            "produits" => $this->produits,
             "category" => Category::orderBy("id", "DESC")->get(),
 
         ])->layout("layouts.app", [
