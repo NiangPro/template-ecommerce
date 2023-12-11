@@ -19,6 +19,7 @@ class Checkout extends Component
     public $subTotal;
     public $montantTransport;
     public $etatTransport;
+    public $item_price;
     public $favoris = null;
     public $form = [
         "id" => null,
@@ -98,6 +99,8 @@ class Checkout extends Component
         foreach ($this->products as $p) {
             $this->subTotal += ($p->product->prix*$p->qte);
         }
+
+        $this->item_price = $this->subTotal + $this->montantTransport;
 
     }
 
