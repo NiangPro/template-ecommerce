@@ -9,12 +9,15 @@ use App\Models\Souhait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Cache\RateLimiting\Limit;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ArchiveProduct extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $idCategory;
     public $products;
-    public $produits;
+    protected $produits;
 
     public $filters = [
         'categories' => [],
@@ -62,11 +65,10 @@ class ArchiveProduct extends Component
         $this->filters['categories'] = array_filter($this->filters['categories']);
 
         if (empty($this->filters['categories'])) {
-            return Product::where("category_id", $this->idCategory)->orderBy("id", "DESC")->get();
+            return Product::where("category_id", $this->idCategory)->orderBy("id", "DESC")->paginate(6);
         }
 
-
-        return Product::whereIn('category_id', array_keys($this->filters['categories']))->orderBy("id", "DESC")->get();
+        return Product::whereIn('category_id', array_keys($this->filters['categories']))->orderBy("id", "DESC")->paginate(6);
 
     }
 

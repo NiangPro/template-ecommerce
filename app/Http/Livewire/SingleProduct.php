@@ -24,10 +24,13 @@ class SingleProduct extends Component
             }
             $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
+
+        $produit = Product::where("id", $this->idProduit)->first();
+
         
         return view('livewire.frontend.single-product',[
             "product" => Product::where("id", $this->idProduit)->first(),
-            "produits" => Product::orderBy("id", "DESC")->get(),
+            "produits" => Product::orderBy("id", "DESC")->where("category_id", $produit->category_id)->Limit(4)->get(),
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,

@@ -527,10 +527,6 @@
             <div class="heading-left">
                 <h2 class="title">Recommendation pour vous</h2><!-- End .title -->
             </div><!-- End .heading-left -->
-
-           {{-- <div class="heading-right">
-                <a href="#" class="title-link">Voir toutes les recommandations<i class="icon-long-arrow-right"></i></a>
-           </div><!-- End .heading-right --> --}}
         </div><!-- End .heading -->
 
         <div class="products">
@@ -562,7 +558,9 @@
                                 </div><!-- End .product-cat -->
                                 <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
-                                    <span class="new-price">{{$p->reduction}}</span>
+                                    @if($p->reduction!=0)
+                                        <span class="new-price">{{$p->reduction}}</span>
+                                    @endif
                                     <span class="old-price">{{$p->prix}}</span>
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">

@@ -102,7 +102,9 @@
 
                         </div><!-- End .row -->
                     </div><!-- End .products -->
-
+                    <div class="d-flex justify-content-center">
+                        {{ $produits->links() }}
+                    </div>
                 </div><!-- End .col-lg-9 -->
                 <aside class="col-lg-3 order-lg-first">
                     <div class="sidebar sidebar-shop">

@@ -4,15 +4,15 @@
             <div class="row justify-content-center">
                 <div class="col-sm-10 col-md-8 col-lg-6">
                     <div class="cta-heading text-center">
-                        <h3 class="cta-title text-white">Get The Latest Deals</h3><!-- End .cta-title -->
-                        <p class="cta-desc text-white">and receive <span class="font-weight-normal">$20 coupon</span> for first shopping</p><!-- End .cta-desc -->
+                        <h3 class="cta-title text-white">Obtenez les dernières offres</h3><!-- End .cta-title -->
+                        <p class="cta-desc text-white"> et recevez  <span class="font-weight-normal">un coupon </span> pour votre premier achat</p><!-- End .cta-desc -->
                     </div><!-- End .text-center -->
-                
+        
                     <form action="#">
                         <div class="input-group input-group-round">
                             <input type="email" class="form-control form-control-white" placeholder="Enter your Email Address" aria-label="Email Adress" required>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit"><span>Subscribe</span><i class="icon-long-arrow-right"></i></button>
+                                <button class="btn btn-primary" type="submit"><span>Soumettre</span><i class="icon-long-arrow-right"></i></button>
                             </div><!-- .End .input-group-append -->
                         </div><!-- .End .input-group -->
                     </form>
@@ -24,57 +24,46 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
-                    <div class="widget widget-about">
-                        <img src="assets/images/demos/demo-4/logo-footer.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
-                        <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
+                    <div class="widget widget-about mt-n5">
+                        <img src="{{asset('assets/images/smb.png')}}" class="footer-logo" alt="Footer Logo" width="200" height="25">
+                    </div><!-- End .widget about-widget -->
+                    <p class="mt-n5 ml-5">La solution facile. </p>
 
+                </div><!-- End .col-sm-6 col-lg-3 -->
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="widget">
+                       
                         <div class="widget-call">
                             <i class="icon-phone"></i>
-                            Got Question? Call us 24/7
-                            <a href="tel:#">+0123 456 789</a>         
+                            Vous avez des questions ? Appelez-nous 24h/24 et 7j/7
+                            <a href="tel:#">+221 77 728 37 22</a>         
                         </div><!-- End .widget-call -->
-                    </div><!-- End .widget about-widget -->
+                    </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">Liens utiles</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="about.html">About Molla</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">How to shop on Molla</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="contact.html">Contact us</a></li>
+                            @foreach($category as $cat)
+                                <li class="item-lead">
+                                    <a href="{{route('archiveProduct', ['slug' => $cat->slug, "id" => $cat->id])}}">{{$cat->nom}}</a>
+                                </li> 
+                            @endforeach
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">Mon compte</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Money-back guarantee!</a></li>
-                            <li><a href="#">Returns</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Terms and conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul><!-- End .widget-list -->
-                    </div><!-- End .widget -->
-                </div><!-- End .col-sm-6 col-lg-3 -->
-
-                <div class="col-sm-6 col-lg-3">
-                    <div class="widget">
-                        <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
-
-                        <ul class="widget-list">
-                            <li><a href="#">Sign In</a></li>
-                            <li><a href="cart.html">View Cart</a></li>
-                            <li><a href="#">My Wishlist</a></li>
-                            <li><a href="#">Track My Order</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="#signin-modal" data-toggle="modal">S'inscrire</a></li>
+                            <li><a href="{{route('cart')}}">Voir panier</a></li>
+                            <li><a href="{{route('wishlist')}}">Mes favoris</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->
@@ -84,7 +73,7 @@
 
     <div class="footer-bottom">
         <div class="container">
-            <p class="footer-copyright">Copyright © 2023. All Rights Reserved.</p><!-- End .footer-copyright -->
+            <p class="footer-copyright">Copyright © 2023. Tout droits réservés.</p><!-- End .footer-copyright -->
             <figure class="footer-payments">
                 <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
             </figure><!-- End .footer-payments -->
