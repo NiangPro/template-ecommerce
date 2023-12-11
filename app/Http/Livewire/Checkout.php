@@ -15,7 +15,7 @@ use Livewire\Component;
 class Checkout extends Component
 {
     public $products;
-
+    public $payTech;
     public $subTotal;
     public $montantTransport;
     public $etatTransport;
@@ -81,6 +81,8 @@ class Checkout extends Component
 
             $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
+
+        $this->payTech = new PayTech();
 
         $this->initProducts();
         return view('livewire.frontend.checkout', [
