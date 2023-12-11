@@ -29,16 +29,16 @@
     </div><!-- End .header-top -->
 
     <div class="header-middle">
-        <div class="container">
+        <div class="container mt-n5">
             <div class="header-left">
                 <button class="mobile-menu-toggler">
                     <span class="sr-only">Toggle mobile menu</span>
                     <i class="icon-bars"></i>
                 </button>
                 
-                <a href="index.html" class="logo">
-                    {{-- <img src="assets/images/demos/demo-4/logo.png" alt="Molla Logo" width="105" height="25"> --}}
-                    <span class="display-4">Makhfuz</span>
+                <a href="{{route('accueil')}}" class="logo">
+                    <img src="{{asset('assets/images/smb.png')}}" alt="Molla Logo" width="200" height="25">
+                    {{-- <span class="display-4">Makhfuz</span> --}}
                 </a>
             </div><!-- End .header-left -->
 

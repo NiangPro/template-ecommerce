@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about mt-n5">
-                        <img src="{{asset('assets/images/smb.png')}}" class="footer-logo" alt="Footer Logo" width="200" height="25">
+                        <a href="{{route('accueil')}}"><img src="{{asset('assets/images/smb.png')}}" class="footer-logo" alt="Footer Logo" width="200" height="25"></a>
                     </div><!-- End .widget about-widget -->
                     <p class="mt-n5 ml-5">La solution facile. </p>
 
