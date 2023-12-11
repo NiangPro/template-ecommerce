@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Partener;
 use App\Models\Product;
 use App\Models\Publicite;
 use App\Models\Souhait;
@@ -72,6 +73,7 @@ class Accueil extends Component
         }
 
         return view('livewire.frontend.accueil',[
+            'parteners' => Partener::all(),
             'categories' => Category::orderBy("nom", "ASC")->get(),
             'categoryType' => Category::orderBy("id", "DESC")->Limit(4)->get(),
             "produits" => Product::orderBy("id", "DESC")->get(),

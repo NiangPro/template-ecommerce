@@ -15,10 +15,11 @@ use Livewire\Component;
 class Checkout extends Component
 {
     public $products;
-
+    public $payTech;
     public $subTotal;
     public $montantTransport;
     public $etatTransport;
+    public $item_price;
     public $favoris = null;
     public $form = [
         "id" => null,
@@ -81,6 +82,8 @@ class Checkout extends Component
             $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
 
+        $this->payTech = new PayTech();
+
         $this->initProducts();
         return view('livewire.frontend.checkout', [
             "achms" => Acheminement::orderBy("nom", "ASC")->get()
@@ -98,6 +101,8 @@ class Checkout extends Component
         foreach ($this->products as $p) {
             $this->subTotal += ($p->product->prix*$p->qte);
         }
+
+        $this->item_price = $this->subTotal + $this->montantTransport;
 
     }
 

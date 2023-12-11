@@ -303,9 +303,10 @@
             <a href="#" class="btn btn-outline-dark-2 btn-round btn-more"><span>Shop more Outlet deals</span><i class="icon-long-arrow-right"></i></a>
         </div><!-- End .more-container -->
     </div><!-- End .container -->
-
+    @if(count($parteners) > 0)
     <div class="container">
         <hr class="mb-0">
+        <h2 class=" mt-3 title text-center mb-4">Mes Partenaires</h2><!-- End .title text-center -->
         <div class="owl-carousel mt-5 mb-5 owl-simple" data-toggle="owl" 
             data-owl-options='{
                 "nav": false, 
@@ -330,32 +331,16 @@
                     }
                 }
             }'>
-            <a href="#" class="brand">
-                <img src="assets/images/brands/1.png" alt="Brand Name">
-            </a>
 
-            <a href="#" class="brand">
-                <img src="assets/images/brands/2.png" alt="Brand Name">
-            </a>
-
-            <a href="#" class="brand">
-                <img src="assets/images/brands/3.png" alt="Brand Name">
-            </a>
-
-            <a href="#" class="brand">
-                <img src="assets/images/brands/4.png" alt="Brand Name">
-            </a>
-
-            <a href="#" class="brand">
-                <img src="assets/images/brands/5.png" alt="Brand Name">
-            </a>
-
-            <a href="#" class="brand">
-                <img src="assets/images/brands/6.png" alt="Brand Name">
-            </a>
+            @foreach ($parteners as $p)
+                <a href="#" class="brand">
+                    <img src="storage/images/{{$p->image}}" style="height: 90px; width:200px!important;box-shadow:2px 2px 2px #ccc, -2px -2px 2px #ccc; border-radius:10px;"  alt="{{$p->nom}}">
+                </a>
+            @endforeach
+            
         </div><!-- End .owl-carousel -->
     </div><!-- End .container -->
-
+    @endif
     {{-- tendances --}}
         <div wire:ignore.self class="bg-light pt-5 pb-6">
             <div wire:ignore.self class="container trending-products">
