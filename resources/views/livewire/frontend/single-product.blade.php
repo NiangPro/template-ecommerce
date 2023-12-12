@@ -87,7 +87,7 @@
                                                     <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
                                                 </div><!-- End .product-details-quantity -->
 
-                                                <a href="#" class="btn-product btn-cart"><span>ajouter au panier</span></a>
+                                                <button class="btn-product btn-cart" wire:click.prevent="addToCart"><span>ajouter au panier</span></button>
                                             </div><!-- End .details-action-col -->
 
                                             <div class="details-action-wrapper">
@@ -312,3 +312,39 @@
         </div><!-- End .page-content -->
     </main>
 </div>
+
+@section('js')
+<script>
+    window.addEventListener('addPartener', event =>{
+        iziToast.success({
+        title: 'Partenaire',
+        message: 'Partenaire ajouté avec succès',
+        position: 'bottomRight'
+        });
+    });
+
+    window.addEventListener('updatePartener', event =>{
+        iziToast.success({
+        title: 'Partenaire',
+        message: 'Mis à jour avec succès',
+        position: 'topRight'
+        });
+    });
+
+    
+
+    window.addEventListener('noLogged', event =>{
+        iziToast.success({
+        title: 'Panier',
+        message: "Veuillez vous connecter d'abord",
+        position: 'topRight'
+        });
+        
+    });
+
+
+  
+
+</script>
+
+@endsection

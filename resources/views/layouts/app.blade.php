@@ -292,6 +292,7 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/demos/demo-4.js"></script>
         @yield("js")
+        
         @livewireScripts
     </body>
 </html>

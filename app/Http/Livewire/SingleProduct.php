@@ -13,6 +13,29 @@ class SingleProduct extends Component
 {
     public $idProduit = null;
     public $favoris = null;
+
+    public function addToCart()
+    {
+        dd("bien");
+        if (Auth::user()) {
+            $ct = Cart::where("product_id", $this->idProduit)->first();
+            if ($ct) {
+               $this->dispatchBrowserEvent("existProduct");
+            }else{
+                Cart::create([
+                    "product_id" => $this->idProduit,
+                    "user_id" => Auth::user()->id,
+                    "qte" => 1
+                ]);
+                $this->dispatchBrowserEvent("productAdded");
+            }
+            
+        }else{
+            $this->dispatchBrowserEvent("noLogged");
+            $this->emit('someEvent');
+        }
+    }
+
     public function render()
     {
         $prodsCart = null;
