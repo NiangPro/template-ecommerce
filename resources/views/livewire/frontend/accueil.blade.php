@@ -17,7 +17,7 @@
                     <div class="container intro-content">
                         <div class="row justify-content-end">
                             <div class="col-auto col-sm-7 col-md-6 col-lg-5">
-                                <h3 class="intro-subtitle text-third">Offre et promotion</h3><!-- End .h3 intro-subtitle -->
+                                <h3 class="intro-subtitle text-third" style="color: #27c965;">Offre et promotion</h3><!-- End .h3 intro-subtitle -->
                                 <h1 class="intro-title">{{$p->nom}}</h1>
                                 {{-- <h1 class="intro-title">Dre Studio 3</h1><!-- End .intro-title --> --}}
 
@@ -35,7 +35,7 @@
                                     
                                 </div><!-- End .intro-price -->
 
-                                <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn btn-primary btn-round">
+                                <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn btn-round" style="background-color:#faad2b;">
                                     <span>Voir Plus</span>
                                     <i class="icon-long-arrow-right"></i>
                                 </a>
@@ -110,12 +110,12 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="banner banner-overlay banner-overlay-light">
                             <a href="produit/{{$p->product->id}}">
-                                <img src="storage/images/{{$p->product->image}}" alt="Banner">
+                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important">
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle"><a href="produit/{{$p->product->id}}">Offre Intelligente</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title"><a href="produit/{{$p->product->id}}">Economisez de l'argent sur <strong>{{$p->product->nom}}</strong></a></h3><!-- End .banner-title -->
+                                <h4 class="banner-subtitle" style="color: #27c965"><a href="produit/{{$p->product->id}}">Offre Intelligente</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title" style="color: #f9ad2c"><a href="produit/{{$p->product->id}}">Economisez de l'argent sur <strong>{{$p->product->nom}}</strong></a></h3><!-- End .banner-title -->
                                 <a href="produit/{{$p->product->id}}" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner -->
@@ -125,12 +125,12 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="banner banner-overlay banner-overlay-light">
                             <a href="produit/{{$p->product->id}}">
-                                <img src="storage/images/{{$p->product->image}}" alt="Banner">
+                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important">
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle"><a href="produit/{{$p->product->id}}">Offre de temps</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title"><a href="produit/{{$p->product->id}}"><strong>{{$p->product->nom}}</strong> <br>Réduction de Temps -30%</a></h3><!-- End .banner-title -->
+                                <h4 class="banner-subtitle" style="color: #27c965"><a href="produit/{{$p->product->id}}">Offre de temps</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title" style="color: #f9ad2c"><a href="produit/{{$p->product->id}}"><strong>{{$p->product->nom}}</strong> <br>Réduction de Temps -30%</a></h3><!-- End .banner-title -->
                                 <a href="produit/{{$p->product->id}}" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner -->
@@ -140,12 +140,12 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="banner banner-overlay banner-overlay-light">
                             <a href="produit/{{$p->product->id}}" style="max-height: 200px">
-                                <img src="storage/images/{{$p->product->image}}" alt="Banner">
+                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important">
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle"><a href="produit/{{$p->product->id}}">Autorisation</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title"><a href="produit/{{$p->product->id}}"><strong>{{$p->product->nom}}</strong> <br>Economisez de l'argent</a></h3><!-- End .banner-title -->
+                                <h4 class="banner-subtitle" style="color: #27c965"><a href="produit/{{$p->product->id}}">Autorisation</a></h4><!-- End .banner-subtitle -->
+                                <h3 class="banner-title" style="color: #f9ad2c"><a href="produit/{{$p->product->id}}"><strong>{{$p->product->nom}}</strong> <br>Economisez de l'argent</a></h3><!-- End .banner-title -->
                                 <a href="produit/{{$p->product->id}}" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner -->
@@ -237,7 +237,7 @@
                         <div class="cta-text text-right text-white">
                             <p>Achetez les offres du jour <br>géniales en toute simplicité. @if($banner)<strong> {{$banner->product->nom}} </strong>@endif </p>
                         </div><!-- End .cta-text -->
-                        @if($banner)<a href="produit/{{$banner->product->id}}" class="btn btn-primary btn-round"><span>Acheter maintenant</span><i class="icon-long-arrow-right"></i></a>@endif
+                        @if($banner)<a href="produit/{{$banner->product->id}}" class="btn btn-round" style="background-color: #f9ad2c"><span>Acheter maintenant</span><i class="icon-long-arrow-right"></i></a>@endif
                     </div><!-- End .cta-content -->
                 </div><!-- End .col-md-12 -->
             </div><!-- End .row -->
@@ -357,21 +357,27 @@
                             <li class="nav-item">
                                 <a wire:ignore.self class="nav-link" id="trending-best-link" data-toggle="tab" href="#trending-best-tab" role="tab" aria-controls="trending-best-tab" aria-selected="false">MEILLEURES VENTES</a>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" id="trending-sale-link" data-toggle="tab" href="#trending-sale-tab" role="tab" aria-controls="trending-sale-tab" aria-selected="false">On Sale</a>
-                            </li> --}}
                         </ul>
                     </div><!-- End .heading-right -->
                 </div><!-- End .heading -->
 
                 <div class="row" wire:ignore.self>
                     <div class="col-xl-5col d-none d-xl-block">
-                        <div class="banner">
-                            <a href="#">
-                                <img src="assets/images/demos/demo-4/banners/banner-4.jpg" alt="banner">
-                            </a>
-                        </div><!-- End .banner -->
+                        @foreach($minipubs as $key=>$p)
+                            @if($key == 2)
+                                <div class="banner">
+                                    @foreach($p->product->tags as $t)
+                                        <span style="background-color: #f9ad2c" class="product-label label-circle label-top">{{$t->nom}}</span>
+                                    @endforeach
+                                    <h3 class="mt-4">{{$p->product->nom}}</h3>
+                                    <a href="produit/{{$p->product->id}}">
+                                        <img style="height: 260px!important;" src="storage/images/{{$p->product->image}}" alt="banner">
+                                    </a>
+                                </div><!-- End .banner -->
+                            @endif
+                        @endforeach
                     </div><!-- End .col-xl-5col -->
+                       
 
                     <div class="col-xl-4-5col">
                         <div wire:ignore.self class="tab-content tab-content-carousel just-action-icons-sm">
