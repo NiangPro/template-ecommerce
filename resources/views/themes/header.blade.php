@@ -37,7 +37,7 @@
                 </button>
                 
                 <a href="{{route('accueil')}}" class="logo">
-                    <img src="{{asset('assets/images/smb.png')}}" alt="Molla Logo" width="200" height="25">
+                    <img src="{{asset('assets/images/smb.png')}}" alt="Molla Logo" width="200" height="25px">
                     {{-- <span class="display-4">Makhfuz</span> --}}
                 </a>
             </div><!-- End .header-left -->
@@ -56,13 +56,13 @@
             </div>
 
             <div class="header-right">
-                {{-- <div class="dropdown compare-dropdown"> --}}
-                    {{-- <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
+                <div class="dropdown compare-dropdown"> 
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
                         <div class="icon">
-                            <i class="icon-random"></i>
+                            <i class="icon-user"></i>
                         </div>
                         <p>Compare</p>
-                    </a> --}}
+                    </a>
 
                     {{-- <div class="dropdown-menu dropdown-menu-right">
                         <ul class="compare-products">
@@ -80,8 +80,8 @@
                             <a href="#" class="action-link">Clear All</a>
                             <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
                         </div>
-                    </div><!-- End .dropdown-menu -->
-                </div><!-- End .compare-dropdown --> --}} 
+                    </div> <!-- End .dropdown-menu --> --}}
+                </div><!-- End .compare-dropdown --> 
 
                 <div class="wishlist">
                     <a href="{{route('wishlist')}}" title="Favori">

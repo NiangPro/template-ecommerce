@@ -9,7 +9,7 @@
         <meta content="eCommerce" name="description">
 
         <!-- Favicon -->
-        <link href="assets/img/logo.png" rel="icon">
+        <link href="assets/images/smb.png" rel="icon">
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
