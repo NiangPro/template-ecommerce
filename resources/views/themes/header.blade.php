@@ -13,12 +13,8 @@
                         <ul>
                             
                             <li>
-                                @if (Auth::user())
-
-                                <a href="{{route('login')}}" ><i class="icon-user"></i> {{Auth::user()->pseudo}}</a>
-                                @else   
-                                 <a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i> Mon Compte</a>
-                                @endif
+                                <a href="#" ><i class="icon-envelope"></i>makhfuzmare@gmail.com</a>
+                                
                             </li>
                         </ul>
                     </li>
@@ -37,7 +33,7 @@
                 </button>
                 
                 <a href="{{route('accueil')}}" class="logo">
-                    <img src="{{asset('assets/images/smb.png')}}" alt="Molla Logo" width="200" height="25px">
+                    <img src="{{asset('assets/images/smb.png')}}" alt="Molla Logo" width="105" height="25">
                     {{-- <span class="display-4">Makhfuz</span> --}}
                 </a>
             </div><!-- End .header-left -->
@@ -57,30 +53,13 @@
 
             <div class="header-right">
                 <div class="dropdown compare-dropdown"> 
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
+                    <a href="{{route('login')}}" class="dropdown-toggle" role="button" title="Mon compte" aria-label="Compare Products">
                         <div class="icon">
                             <i class="icon-user"></i>
                         </div>
-                        <p>Compare</p>
+                        <p>@if (Auth::user()) {{Auth::user()->pseudo}} @else Connexion @endif</p>
                     </a>
 
-                    {{-- <div class="dropdown-menu dropdown-menu-right">
-                        <ul class="compare-products">
-                            <li class="compare-product">
-                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                <h4 class="compare-product-title"><a href="product.html">Blue Night Dress</a></h4>
-                            </li>
-                            <li class="compare-product">
-                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                <h4 class="compare-product-title"><a href="product.html">White Long Skirt</a></h4>
-                            </li>
-                        </ul>
-
-                        <div class="compare-actions">
-                            <a href="#" class="action-link">Clear All</a>
-                            <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
-                        </div>
-                    </div> <!-- End .dropdown-menu --> --}}
                 </div><!-- End .compare-dropdown --> 
 
                 <div class="wishlist">

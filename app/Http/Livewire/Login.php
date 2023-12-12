@@ -2,7 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Cart;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Reglage;
+use App\Models\Souhait;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -117,7 +121,24 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.frontend.login')->layout("layouts.app");
+        $prodsCart = null;
+        $favoris = null;
+        $total = 0;
+        if (Auth::user()) {
+            $prodsCart = Cart::where("user_id", Auth::user()->id)->get();
+            foreach ($prodsCart as $c) {
+                $total += ($c->product->prix * $c->qte); 
+            }
+
+            $favoris = Souhait::where("user_id", Auth::user()->id)->get();
+        }
+        return view('livewire.frontend.login')->layout("layouts.app", [
+            "prodsCart" => $prodsCart,
+            "total" => $total,
+            "favoris" => $favoris,
+            "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
+            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
+        ]);
     }
 
     public function mount(){
