@@ -18,6 +18,7 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+        @if(Auth()->user()->isSuperAdmin())
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-user'></i>
@@ -31,6 +32,7 @@
                 </li>
             </ul>
         </li>
+        @endif
         <li>
             <a href="{{route("tag")}}">
                 <div class="parent-icon"><i class="bx bx-tag"></i>
