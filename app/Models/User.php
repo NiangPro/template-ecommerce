@@ -53,7 +53,12 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return strtolower($this->role) == "admin";
+        return strtolower($this->role) == "admin" || strtolower($this->role) == "superadmin";
+    }
+
+    public function isSuperAdmin()
+    {
+        return strtolower($this->role) == "superadmin";
     }
 
     public function isClient()

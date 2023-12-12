@@ -11,12 +11,12 @@ class Reglage extends Model
 
     public function createFirstAdmin()
     {
-        $admin = User::where("role", "admin")->first();
+        $admin = User::where("role", "superadmin")->first();
 
         if(!$admin){
             User::create([
-                "prenom" => 'Bassirou',
-                "nom" => 'Niang',
+                "prenom" => 'Modou',
+                "nom" => 'Mar',
                 "adresse" => 'Golf sud',
                 "pays" => 'Senegal',
                 "tel2" =>  NULL,
@@ -24,7 +24,7 @@ class Reglage extends Model
                 "email" => 'makhfuz@gmail.com', 
                 "nationalite" => 'Senegalaise', 
                 "tel" => '783123657', 
-                "role" => 'admin', 
+                "role" => 'superadmin', 
                 "image" => 'profil.png', 
                 "password" => '$2y$10$k6MuUBF/eb7cpbEv5QVqKuRNFw1Y71xtIT7rRlJn3aq5DbFEKvWKy'
             ]);
@@ -33,7 +33,7 @@ class Reglage extends Model
 
     public function createFirstClientDemo()
     {
-        $client = User::where("role", "client")->first();
+        $client = User::where("role", "admin")->first();
 
         if(!$client){
             User::create([
@@ -46,7 +46,7 @@ class Reglage extends Model
                 "email" => 'alioune@gmail.com', 
                 "nationalite" => 'Senegalaise', 
                 "tel" => '783123657', 
-                "role" => 'client', 
+                "role" => 'admin', 
                 "image" => 'profil.png', 
                 "password" => '$2y$10$k6MuUBF/eb7cpbEv5QVqKuRNFw1Y71xtIT7rRlJn3aq5DbFEKvWKy'
             ]);
