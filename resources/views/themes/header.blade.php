@@ -37,7 +37,7 @@
                 </button>
                 
                 <a href="{{route('accueil')}}" class="logo">
-                    <img src="{{asset('assets/images/smb.png')}}" alt="Molla Logo" width="200" height="25">
+                    <img src="{{asset('assets/images/smb.png')}}" alt="Molla Logo" width="105" height="25">
                     {{-- <span class="display-4">Makhfuz</span> --}}
                 </a>
             </div><!-- End .header-left -->
