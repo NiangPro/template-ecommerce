@@ -65,7 +65,7 @@
 
 
                                     <label>Notes sur la commande (optionnel)</label>
-                                    <textarea class="form-control" cols="30" rows="4" placeholder="Notes concernant votre commande, par exemple, notes spéciales pour la livraison"></textarea>
+                                    <textarea class="form-control" wire:model="comments" cols="30" rows="4" placeholder="Notes concernant votre commande, par exemple, notes spéciales pour la livraison"></textarea>
                             </div><!-- End .col-lg-9 -->
                             <aside class="col-lg-3">
                                 <div class="summary">
@@ -242,6 +242,15 @@
             });
         }
     });
+
+    window.addEventListener('successOrder', event =>{
+        iziToast.success({
+        title: 'Commande',
+        message: 'Commande effectuée avec succès',
+        position: 'topRight'
+        });
+    });
+
    window.addEventListener('noLogged', event =>{
         iziToast.error({
         title: 'Panier',

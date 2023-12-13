@@ -44,9 +44,12 @@
             </div>
             <div class="form-group mb-4 col-md-6">
                 <label for="">Tags</label> <br>
-                @foreach($tags as $key=>$t)
-                <label for="">{{$t->nom}} <input type="checkbox" class="" wire:model="form.tags.{{$key}}" value="{{$t->id}}"></label>
-                @endforeach
+                <select wire:model="form.tags" multiple class="form-control">
+                    <option value="">Veuillez selectionner des tags</option>
+                    @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->nom }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group mb-4 col-md-6">
                 <label for="">Image <span class="text-danger">*</span></label>
