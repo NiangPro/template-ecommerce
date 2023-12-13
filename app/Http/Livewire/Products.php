@@ -110,6 +110,7 @@ class Products extends Component
         $this->form["qte"] = $c->qte;
         $this->form["category_id"] = $c->category_id;
         $this->form["prix"] = $c->prix;
+        $this->form["reduction"] = $c->reduction;
         $this->form["tags"] = $c->tags;
         $this->imgEditing = $c->image;
 
