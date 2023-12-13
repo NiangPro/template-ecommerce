@@ -82,6 +82,7 @@ class Accueil extends Component
             "CategorieSlider" => Category::orderBy("id", "DESC")->Limit(4)->get(),
             "banner" => Publicite::where("type", "banner")->first(),
             "minipubs" => Publicite::where("type", "mini")->limit(3)->get(),
+            "offreproduits" => Product::orderBy("id", "DESC")->where("reduction", "!=", 0)->limit(2)->get()
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,

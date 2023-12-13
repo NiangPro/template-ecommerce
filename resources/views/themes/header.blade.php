@@ -13,7 +13,7 @@
                         <ul>
                             
                             <li>
-                                <a href="#" ><i class="icon-envelope"></i>makhfuzmare@gmail.com</a>
+                                <a href="#" ><i class="icon-envelope"></i>makhfuzmar@gmail.com</a>
                                 
                             </li>
                         </ul>

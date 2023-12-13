@@ -2,12 +2,12 @@
 
     <form wire:ignore.self wire:submit.prevent="store" method="post">
         <div class="row">
-            <div class="form-group mb-4 col-md-6">
+            <div class="form-group mb-4 col-md-4">
                 <label for="">Nom <span class="text-danger">*</span></label>
                 <input type="text" placeholder="Entrer le nom du produit" class="form-control @error('form.nom') is-invalid @enderror" wire:model="form.nom">
                 @error('form.nom') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
-            <div class="form-group mb-4 col-md-6">
+            <div class="form-group mb-4 col-md-4">
                 <label for="">Catégorie <span class="text-danger">*</span></label>
                 <select class="form-control" wire:model="form.category_id">
                     <option value="">Veuillez selectionner une catégorie</option>
@@ -21,6 +21,11 @@
                 <label for="">Prix <span class="text-danger">*</span></label>
                 <input type="number" min="0" placeholder="Entrer le prix du produit" class="form-control @error('form.prix') is-invalid @enderror" wire:model="form.prix">
                 @error('form.prix') <span class="error text-danger">{{$message}}</span> @enderror
+            </div>
+            <div class="form-group mb-4 col-md-4">
+                <label for="">Réduction</label>
+                <input type="number" min="0" placeholder="Entrer le prix de réduction" class="form-control @error('form.reduction') is-invalid @enderror" wire:model="form.reduction">
+                @error('form.reduction') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-4 col-md-4">
                 <label for="">Quantité en stock <span class="text-danger">*</span></label>
