@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Acheminement;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\PayTech;
 use App\Models\Product;
 use App\Models\Souhait;
@@ -15,9 +16,11 @@ use Livewire\Component;
 class Checkout extends Component
 {
     public $products;
+    public $comments;
     public $payTech;
     public $subTotal;
-    public $montantTransport;
+    public $prodsCart;
+    public $montantTransport = 0.0;
     public $etatTransport;
     public $item_price;
     public $favoris = null;
@@ -51,6 +54,7 @@ class Checkout extends Component
 
     public function payer()
     {
+        
         $response = $this->payTech->send($this->item_price);
 
         $success = $response["success"];
@@ -61,9 +65,22 @@ class Checkout extends Component
                 'errors' => $errors,
             ]);
         }else{
-            $this->dispatchBrowserEvent('display-success', [
-                'success' => $success,
+            
+            $order = new Order([
+                'user_id' => auth()->user()->id,
+                'total_amount' => $this->item_price,
+                'shipping' => $this->montantTransport,
+                'comments' => $this->comments,
+                'reference' => "#smb".date("dmYHis"),
             ]);
+            
+            $order->save();
+
+            foreach ($this->prodsCart as $cart) {
+                $order->products()->attach($cart->product->id, ['quantity' => $cart->qte, 'price' => $cart->product->prix]);
+            }
+
+            $this->dispatchBrowserEvent("successOrder");
         }
     }
 
@@ -71,11 +88,11 @@ class Checkout extends Component
     {
         $this->products = Cart::where("user_id", Auth::user()->id)->get();
 
-        $prodsCart = null;
+        $this->prodsCart = null;
         $total = 0;
         if (Auth::user()) {
-            $prodsCart = Cart::where("user_id", Auth::user()->id)->get();
-            foreach ($prodsCart as $c) {
+            $this->prodsCart = Cart::where("user_id", Auth::user()->id)->get();
+            foreach ($this->prodsCart as $c) {
                 $total += ($c->product->prix * $c->qte);  
             }
 
@@ -88,7 +105,7 @@ class Checkout extends Component
         return view('livewire.frontend.checkout', [
             "achms" => Acheminement::orderBy("nom", "ASC")->get()
         ])->layout("layouts.app", [
-            "prodsCart" => $prodsCart,
+            "prodsCart" => $this->prodsCart,
             "total" => $total,
             "favoris" => $this->favoris,
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),

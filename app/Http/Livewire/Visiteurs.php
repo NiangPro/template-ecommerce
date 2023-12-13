@@ -12,6 +12,7 @@ use Livewire\Component;
 class Visiteurs extends Component
 {
     public $favoris = null;
+    public $userOrders;
 
     public function render()
     {
@@ -24,6 +25,10 @@ class Visiteurs extends Component
             }
             $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
+        $this->userOrders = auth()->user()->orders()->with('products')->get();
+
+        dd($this->userOrders);
+
         return view('livewire.frontend.visiteurs',[
             "produits" => Product::orderBy("id", "DESC")->get(),
 
