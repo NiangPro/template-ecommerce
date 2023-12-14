@@ -3,10 +3,6 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="icon-close"></i></span>
-                    </button>
-
                     <div class="form-box">
                         <div wire:ignore.self class="form-tab">
                             <ul wire:ignore.self class="nav nav-pills nav-fill nav-border-anim" role="tablist">
