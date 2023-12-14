@@ -46,6 +46,8 @@ class Checkout extends Component
             foreach ($this->products as $c) {
                 $this->montantTransport += ($c->qte * $c->product->poids * $ach->prix);
             }
+        }else{
+            $cle = -1;
         }
 
         $this->etatTransport = $cle;

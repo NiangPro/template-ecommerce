@@ -98,10 +98,10 @@
                                                 <td colspan="2" class="text-left">
                                                     <div class="accordion-summary" id="accordion-mode">
                                                         @foreach($achms as $key => $a)
-                                                        <div class="card" wire:click.prevent="calculTransport({{$a->id}})">
+                                                        <div class="card">
                                                             <div class="card-header" id="mode-{{$a->id}}">
                                                                 <h2 class="card-title">
-                                                                    <a class="collapsed" role="button" data-toggle="collapse" href="#ach-{{$a->id}}" aria-expanded="false" aria-controls="ach-{{$a->id}}">
+                                                                    <a class="collapsed"  wire:click.prevent="calculTransport({{$a->id}})" role="button" data-toggle="collapse" href="#ach-{{$a->id}}" aria-expanded="false" aria-controls="ach-{{$a->id}}">
                                                                         {{ucfirst($a->nom)}}
                                                                     </a>
                                                                 </h2>
