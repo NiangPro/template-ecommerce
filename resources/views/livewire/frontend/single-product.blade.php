@@ -7,18 +7,6 @@
                     <li class="breadcrumb-item"><a href="#">Produits</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Détails</li>
                 </ol>
-
-                <nav class="product-pager ml-auto" aria-label="Product">
-                    <a class="product-pager-link product-pager-prev" href="#" aria-label="Previous" tabindex="-1">
-                        <i class="icon-angle-left"></i>
-                        <span>Suivant</span>
-                    </a>
-
-                    <a class="product-pager-link product-pager-next" href="#" aria-label="Next" tabindex="-1">
-                        <span>Precedant</span>
-                        <i class="icon-angle-right"></i>
-                    </a>
-                </nav><!-- End .pager-nav -->
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
 
@@ -39,23 +27,6 @@
                                             </a>
                                         </figure><!-- End .product-main-image -->
 
-                                        {{-- <div id="product-zoom-gallery" class="product-image-gallery">
-                                            <a class="product-gallery-item active" href="#" data-image="assets/images/products/single/sidebar-gallery/1.jpg" data-zoom-image="assets/images/products/single/sidebar-gallery/1-big.jpg">
-                                                <img src="assets/images/products/single/sidebar-gallery/1-small.jpg" alt="product side">
-                                            </a>
-
-                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/sidebar-gallery/2.jpg" data-zoom-image="assets/images/products/single/sidebar-gallery/2-big.jpg">
-                                                <img src="assets/images/products/single/sidebar-gallery/2-small.jpg" alt="product cross">
-                                            </a>
-
-                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/sidebar-gallery/3.jpg" data-zoom-image="assets/images/products/single/sidebar-gallery/3-big.jpg">
-                                                <img src="assets/images/products/single/sidebar-gallery/3-small.jpg" alt="product with model">
-                                            </a>
-
-                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/sidebar-gallery/4.jpg" data-zoom-image="assets/images/products/single/sidebar-gallery/4-big.jpg">
-                                                <img src="assets/images/products/single/sidebar-gallery/4-small.jpg" alt="product back">
-                                            </a>
-                                        </div><!-- End .product-image-gallery --> --}}
                                     </div><!-- End .product-gallery -->
                                 </div><!-- End .col-md-6 -->
 
@@ -87,12 +58,11 @@
                                                     <input type="number" wire:model="qte" class="form-control" min="1"  step="1" data-decimals="0" required>
                                                 </div><!-- End .product-details-quantity -->
 
-                                                <button class="btn-product btn-cart" wire:click.prevent="addToCart"><span>ajouter au panier</span></button>
+                                                <button class="btn-product btn-cart btn btn-warning btn" wire:click.prevent="addToCart"><span>ajouter au panier</span></button>
                                             </div><!-- End .details-action-col -->
 
                                             <div class="details-action-wrapper">
-                                                <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>ajouter au favoris</span></a>
-                                                {{-- <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to Compare</span></a> --}}
+                                                <a href="#" wire:click.prevent="addToWishlist({{$product->id}})" class="btn-product btn-compare" title="Compare"><span>ajouter au favoris</span></a>
                                             </div><!-- End .details-action-wrapper -->
                                         </div><!-- End .product-details-action -->
 
@@ -102,13 +72,13 @@
                                                 <a href="#">{{$product->category->nom}}</a>,
                                             </div><!-- End .product-cat -->
 
-                                            <div class="social-icons social-icons-sm">
+                                            {{-- <div class="social-icons social-icons-sm">
                                                 <span class="social-label">Share:</span>
                                                 <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                                 <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
                                                 <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
                                                 <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-                                            </div>
+                                            </div> --}}
                                         </div><!-- End .product-details-footer -->
                                     </div><!-- End .product-details -->
                                 </div><!-- End .col-md-6 -->
@@ -123,12 +93,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">information additionnelle</a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping & Returns</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</a>
-                                </li> --}}
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">

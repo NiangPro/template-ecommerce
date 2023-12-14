@@ -14,6 +14,7 @@ class SingleProduct extends Component
     public $idProduit = null;
     public $favoris = null;
     public $qte = 1;
+    public $singleProduct;
 
     public function addToCart()
     {
@@ -62,7 +63,7 @@ class SingleProduct extends Component
         
         return view('livewire.frontend.single-product',[
             "product" => Product::where("id", $this->idProduit)->first(),
-            "produits" => Product::orderBy("id", "DESC")->get(),
+            "produits" => Product::orderBy("id", "DESC")->where("category_id", $this->singleProduct->category_id)->limit(4)->get(),
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,
@@ -75,5 +76,6 @@ class SingleProduct extends Component
     public function mount($id)
     {
         $this->idProduit = $id;
+        $this->singleProduct = Product::where("id", $this->idProduit)->first();
     }
 }

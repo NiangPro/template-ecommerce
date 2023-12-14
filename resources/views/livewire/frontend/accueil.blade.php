@@ -12,39 +12,45 @@
                     }
                 }
             }'>
-            @foreach ($produitSlider as $p)
-                <div  class="intro-slide" style="background-image: url(storage/images/{{$p->image}}); align-items: center; background-size: contain; background-position: left; background-repeat: no-repeat;">
-                    <div class="container intro-content">
-                        <div class="row justify-content-end">
-                            <div class="col-auto col-sm-7 col-md-6 col-lg-5">
-                                <h3 class="intro-subtitle text-third" style="color: #27c965;">Offre et promotion</h3><!-- End .h3 intro-subtitle -->
-                                <h1 class="intro-title">{{$p->nom}}</h1>
-                                {{-- <h1 class="intro-title">Dre Studio 3</h1><!-- End .intro-title --> --}}
+            @if(count($produitSlider)>0)
+                @foreach ($produitSlider as $p)
+                    <div  class="intro-slide" style="background-image: url(storage/images/{{$p->image}}); align-items: center; background-size: contain; background-position: left; background-repeat: no-repeat;">
+                        <div class="container intro-content">
+                            <div class="row justify-content-end">
+                                <div class="col-auto col-sm-7 col-md-6 col-lg-5">
+                                    <h3 class="intro-subtitle text-third" style="color: #27c965;">Offre et promotion</h3><!-- End .h3 intro-subtitle -->
+                                    <h1 class="intro-title">{{$p->nom}}</h1>
+                                    {{-- <h1 class="intro-title">Dre Studio 3</h1><!-- End .intro-title --> --}}
 
-                                <div class="intro-price">
-                                    @if($p->reduction)
-                                        <sup class="intro-old-price">{{$p->prix}} Fcfa</sup>
-                                        <span class="text-third">
-                                            {{$p->reduction}} Fcfa
-                                        </span>
-                                    @else
-                                        <span class="text-black">
-                                            {{$p->prix}} Fcfa
-                                        </span>
-                                    @endif
-                                    
-                                </div><!-- End .intro-price -->
+                                    <div class="intro-price">
+                                        @if($p->reduction)
+                                            <sup class="intro-old-price">{{$p->prix}} Fcfa</sup>
+                                            <span class="text-third">
+                                                {{$p->reduction}} Fcfa
+                                            </span>
+                                        @else
+                                            <span class="text-black">
+                                                {{$p->prix}} Fcfa
+                                            </span>
+                                        @endif
+                                        
+                                    </div><!-- End .intro-price -->
 
-                                <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn btn-round" style="background-color:#faad2b;">
-                                    <span>Voir Plus</span>
-                                    <i class="icon-long-arrow-right"></i>
-                                </a>
-                            </div><!-- End .col-lg-11 offset-lg-1 -->
-                        </div><!-- End .row -->
-                    </div><!-- End .intro-content -->
-                </div><!-- End .intro-slide -->
-            @endforeach
-            
+                                    <a href="{{route('singleProduct', ["id" => $p->id])}}" class="btn btn-round" style="background-color:#faad2b;">
+                                        <span>Voir Plus</span>
+                                        <i class="icon-long-arrow-right"></i>
+                                    </a>
+                                </div><!-- End .col-lg-11 offset-lg-1 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .intro-content -->
+                    </div><!-- End .intro-slide -->
+                @endforeach
+            @else
+                <div class="text-center" style="color: #27c965;">
+                    <h2>Aucun produit disponible sur votre boutique; </h2>
+                    <h2>Pour pouvoir ajouter un produit au panier, il faut impérativement avoir un compte</h2>
+                </div>
+            @endif
             {{-- <div class="intro-slide" style="background-image: url(assets/images/demos/demo-4/slider/slide-2.png);">
                 <div class="container intro-content">
                     <div class="row justify-content-end">
@@ -108,9 +114,9 @@
             @foreach($minipubs as $key=>$p)
                 @if($key == 0)
                     <div class="col-md-6 col-lg-4">
-                        <div class="banner banner-overlay banner-overlay-light">
+                        <div  class="banner banner-overlay banner-overlay-light">
                             <a href="produit/{{$p->product->id}}">
-                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important">
+                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important ; background-color: rgb(0 0 0 / 69%)!important;">
                             </a>
 
                             <div class="banner-content">
@@ -125,7 +131,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="banner banner-overlay banner-overlay-light">
                             <a href="produit/{{$p->product->id}}">
-                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important">
+                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important; background-color: rgb(0 0 0 / 69%)!important;">
                             </a>
 
                             <div class="banner-content">
@@ -140,7 +146,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="banner banner-overlay banner-overlay-light">
                             <a href="produit/{{$p->product->id}}" style="max-height: 200px">
-                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important">
+                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important; background-color: rgb(0 0 0 / 69%)!important;">
                             </a>
 
                             <div class="banner-content">
@@ -254,18 +260,18 @@
             @foreach($offreproduits as $key=>$p)
                 @if($key == 0)
                     <div class="col-lg-6 deal-col">
-                        <div class="deal" style="background-image: url('{{asset('storage/images/'.$p->image)}}'); opacity:0.5;">
+                        <div class="deal" style="background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{asset('storage/images/'.$p->image)}}'); max-height:350px!important; min-width:350px!important;">
                             <div class="deal-top">
                                 <h2>L'affaire du jour.</h2>
-                                <h4>Quantités limitées. </h4>
+                                <h4 class="text-white">Quantités limitées. </h4>
                             </div><!-- End .deal-top -->
 
                             <div class="deal-content">
-                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title text-white"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
 
                                 <div class="product-price">
-                                    <span class="new-price">{{$p->reduction}}</span>
-                                    <span class="old-price">Etait à {{$p->prix}}</span>
+                                    <span class="new-price">{{$p->reduction}} F CFA</span>
+                                    <span class="old-price">Etait à {{$p->prix}} F CFA</span>
                                 </div><!-- End .product-price -->
 
                                 <a href="produit/{{$p->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
@@ -280,14 +286,14 @@
 
                 @if($key == 1)
                     <div class="col-lg-6 deal-col">
-                        <div class="deal" style="background-image: url('{{asset('storage/images/'.$p->image)}}');">
+                        <div class="deal" style="background-image: background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{asset('storage/images/'.$p->image)}}');max-height:350px!important; min-width:350px!important;">
                             <div class="deal-top">
                                 <h2>Vos offres exclusives.</h2>
-                                <h4>Connectez-vous pour voir des offres incroyables.</h4>
+                                <h4 class="text-white">Connectez-vous pour voir des offres incroyables.</h4>
                             </div><!-- End .deal-top -->
 
                             <div class="deal-content">
-                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title text-white"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
 
                                 <div class="product-price">
                                     <span class="new-price">{{$p->reduction}}</span>
@@ -305,9 +311,9 @@
              @endforeach
         </div><!-- End .row -->
 
-        <div class="more-container text-center mt-1 mb-5">
+        {{-- <div class="more-container text-center mt-1 mb-5">
             <a href="#" class="btn btn-outline-dark-2 btn-round btn-more"><span>Shop more Outlet deals</span><i class="icon-long-arrow-right"></i></a>
-        </div><!-- End .more-container -->
+        </div><!-- End .more-container --> --}}
     </div><!-- End .container -->
     @if(count($parteners) > 0)
     <div class="container">
@@ -471,44 +477,48 @@
                                             }
                                         }
                                     }'>
-                                    @foreach ($produits as $p)
-                                        <div class="product product-2">
-                                            <figure class="product-media">
-                                                @foreach($p->tags as $t)
-                                                    <span class="product-label label-circle label-top">{{$t->nom}}</span>
-                                                @endforeach
-                                                <a href="produit/{{$p->id}}">
-                                                    <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
-                                                </a>
+                                    @if(count($produits) > 0)
+                                        @foreach ($produits as $p)
+                                            <div class="product product-2">
+                                                <figure class="product-media">
+                                                    @foreach($p->tags as $t)
+                                                        <span class="product-label label-circle label-top">{{$t->nom}}</span>
+                                                    @endforeach
+                                                    <a href="produit/{{$p->id}}">
+                                                        <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
+                                                    </a>
 
-                                                <div class="product-action-vertical">
-                                                    <a href="#" wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                                </div><!-- End .product-action -->
+                                                    <div class="product-action-vertical">
+                                                        <a href="#" wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                                    </div><!-- End .product-action -->
 
-                                                <div class="product-action">
-                                                    <a href="#"  wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
-                                                    <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
+                                                    <div class="product-action">
+                                                        <a href="#"  wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="Ajout panier"><span>Ajouter au panier</span></a>
+                                                        <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
 
-                                                </div><!-- End .product-action -->
-                                            </figure><!-- End .product-media -->
+                                                    </div><!-- End .product-action -->
+                                                </figure><!-- End .product-media -->
 
-                                            <div class="product-body">
-                                                <div class="product-cat">
-                                                    <a href="#">{{$p->category->nom}}</a>
-                                                </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
-                                                <div class="product-price">
-                                                    {{$p->prix}}
-                                                </div><!-- End .product-price -->
-                                                <div class="ratings-container">
-                                                    <div class="ratings">
-                                                        <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-                                                    </div><!-- End .ratings -->
-                                                    <span class="ratings-text">( 4 vues )</span>
-                                                </div><!-- End .rating-container -->
-                                            </div><!-- End .product-body -->
-                                        </div><!-- End .product -->
-                                    @endforeach
+                                                <div class="product-body">
+                                                    <div class="product-cat">
+                                                        <a href="#">{{$p->category->nom}}</a>
+                                                    </div><!-- End .product-cat -->
+                                                    <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
+                                                    <div class="product-price">
+                                                        {{$p->prix}}
+                                                    </div><!-- End .product-price -->
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                        <span class="ratings-text">( 4 vues )</span>
+                                                    </div><!-- End .rating-container -->
+                                                </div><!-- End .product-body -->
+                                            </div><!-- End .product -->
+                                        @endforeach
+                                    @else
+                                        <h3>Aucun produit disponible ! veuillez vou connecter pour en r'ajouter</h3>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -528,48 +538,52 @@
 
         <div class="products">
             <div class="row justify-content-center">
-                @foreach ($produitsRec as $p)
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                @foreach($p->tags as $t)
-                                    <span class="product-label label-circle label-sale">{{$t->nom}}</span>
-                                @endforeach
-                                <a href="produit/{{$p->id}}">
-                                    <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
-                                </a>
+                @if(count($produitsRec) > 0)
+                    @foreach ($produitsRec as $p)
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    @foreach($p->tags as $t)
+                                        <span class="product-label label-circle label-sale">{{$t->nom}}</span>
+                                    @endforeach
+                                    <a href="produit/{{$p->id}}">
+                                        <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
+                                    </a>
 
-                                <div class="product-action-vertical">
-                                    <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Ajouer au favori"></a>
-                                </div><!-- End .product-action -->
+                                    <div class="product-action-vertical">
+                                        <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Ajouer au favori"></a>
+                                    </div><!-- End .product-action -->
 
-                                <div class="product-action">
-                                    <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="ajout panier"><span>Ajouter au panier</span></a>
-                                    <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                    <div class="product-action">
+                                        <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="ajout panier"><span>Ajouter au panier</span></a>
+                                        <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">{{$p->category->nom}}</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    @if($p->reduction!=0)
-                                        <span class="new-price">{{$p->reduction}}</span>
-                                    @endif
-                                    <span class="old-price">{{$p->prix}}</span>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 Reviews )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                    </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-                @endforeach
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#">{{$p->category->nom}}</a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        @if($p->reduction!=0)
+                                            <span class="new-price">{{$p->reduction}}</span>
+                                        @endif
+                                        <span class="old-price">{{$p->prix}}</span>
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( 4 Reviews )</span>
+                                    </div><!-- End .rating-container -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                        </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                    @endforeach
+                @else
+                    <h3>Aucun produit disponible ! veuillez vou connecter pour en r'ajouter</h3>           
+                @endif
 
             </div><!-- End .row -->
         </div><!-- End .products -->
