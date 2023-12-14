@@ -252,57 +252,57 @@
 
         <div class="row">
             @foreach($offreproduits as $key=>$p)
-            @if($key == 0)
-                <div class="col-lg-6 deal-col">
-                    <div class="deal" style="background-image: url('{{asset('storage/images/'.$p->image)}}'); opacity:0.5;">
-                        <div class="deal-top">
-                            <h2>L'affaire du jour.</h2>
-                            <h4>Quantités limitées. </h4>
-                        </div><!-- End .deal-top -->
+                @if($key == 0)
+                    <div class="col-lg-6 deal-col">
+                        <div class="deal" style="background-image: url('{{asset('storage/images/'.$p->image)}}'); opacity:0.5;">
+                            <div class="deal-top">
+                                <h2>L'affaire du jour.</h2>
+                                <h4>Quantités limitées. </h4>
+                            </div><!-- End .deal-top -->
 
-                        <div class="deal-content">
-                            <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
+                            <div class="deal-content">
+                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
 
-                            <div class="product-price">
-                                <span class="new-price">{{$p->reduction}}</span>
-                                <span class="old-price">Etait à {{$p->prix}}</span>
-                            </div><!-- End .product-price -->
+                                <div class="product-price">
+                                    <span class="new-price">{{$p->reduction}}</span>
+                                    <span class="old-price">Etait à {{$p->prix}}</span>
+                                </div><!-- End .product-price -->
 
-                            <a href="produit/{{$p->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
-                        </div><!-- End .deal-content -->
+                                <a href="produit/{{$p->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .deal-content -->
 
-                        <div class="deal-bottom">
-                            <div class="deal-countdown daily-deal-countdown" data-until="+10h"></div><!-- End .deal-countdown -->
-                        </div><!-- End .deal-bottom -->
-                    </div><!-- End .deal -->
-                </div><!-- End .col-lg-6 -->
-            @endif
+                            <div class="deal-bottom">
+                                <div class="deal-countdown daily-deal-countdown" data-until="+10h"></div><!-- End .deal-countdown -->
+                            </div><!-- End .deal-bottom -->
+                        </div><!-- End .deal -->
+                    </div><!-- End .col-lg-6 -->
+                @endif
 
-            @if($key == 1)
-                <div class="col-lg-6 deal-col">
-                    <div class="deal" style="background-image: url('{{asset('storage/images/'.$p->image)}}');">
-                        <div class="deal-top">
-                            <h2>Vos offres exclusives.</h2>
-                            <h4>Connectez-vous pour voir des offres incroyables.</h4>
-                        </div><!-- End .deal-top -->
+                @if($key == 1)
+                    <div class="col-lg-6 deal-col">
+                        <div class="deal" style="background-image: url('{{asset('storage/images/'.$p->image)}}');">
+                            <div class="deal-top">
+                                <h2>Vos offres exclusives.</h2>
+                                <h4>Connectez-vous pour voir des offres incroyables.</h4>
+                            </div><!-- End .deal-top -->
 
-                        <div class="deal-content">
-                            <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
+                            <div class="deal-content">
+                                <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
 
-                            <div class="product-price">
-                                <span class="new-price">{{$p->reduction}}</span>
-                            </div><!-- End .product-price -->
+                                <div class="product-price">
+                                    <span class="new-price">{{$p->reduction}}</span>
+                                </div><!-- End .product-price -->
 
-                            <a href="login.html" class="btn btn-link"><span>Ajouter au panier</span><i class="icon-long-arrow-right"></i></a>
-                        </div><!-- End .deal-content -->
+                                <a href="login.html" class="btn btn-link"><span>Ajouter au panier</span><i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .deal-content -->
 
-                        <div class="deal-bottom">
-                            <div class="deal-countdown offer-countdown" data-until="+11d"></div><!-- End .deal-countdown -->
-                        </div><!-- End .deal-bottom -->
-                    </div><!-- End .deal -->
-                </div><!-- End .col-lg-6 -->
-            @endif
-        @endforeach
+                            <div class="deal-bottom">
+                                <div class="deal-countdown offer-countdown" data-until="+11d"></div><!-- End .deal-countdown -->
+                            </div><!-- End .deal-bottom -->
+                        </div><!-- End .deal -->
+                    </div><!-- End .col-lg-6 -->
+                @endif
+             @endforeach
         </div><!-- End .row -->
 
         <div class="more-container text-center mt-1 mb-5">
