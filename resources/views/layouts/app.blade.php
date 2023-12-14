@@ -9,12 +9,12 @@
         <meta content="eCommerce" name="description">
 
         <!-- Favicon -->
-        <link href="assets/images/smb.png" rel="icon">
+        <link href="{{asset('assets/images/smb.png')}}" rel="icon">
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
+        <link rel="stylesheet" href="{{asset('assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css')}}">
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css')}}">
@@ -79,14 +79,14 @@
                 <div class="row no-gutters bg-white newsletter-popup-content">
                     <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
                         <div class="banner-content text-center">
-                            <img src="assets/images/popup/newsletter/logo.png" class="logo" alt="logo" width="60" height="15">
+                            <img src="{{asset('assets/images/smb.png')}}" class="logo" alt="logo" width="60" height="15">
                             <h2 class="banner-title">Obtenez <span>25<light>%</light></span> de réduction</h2>
                             <p>Souscrivez à notre boutique pour recevoir des mises à jour opportunes de vos produits préférés.</p>
                             <form action="#">
                                 <div class="input-group input-group-round">
                                     {{-- <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required> --}}
                                     <div class="input-group-append text-center">
-                                        <a href="#signin-modal" data-toggle="modal" class="btn bt-sm btn-info" type="submit"><span>S'inscrire</span></a>
+                                        <a href="{{route('login')}}" class="btn bt-sm btn-info" type="submit"><span>S'inscrire</span></a>
                                     </div><!-- .End .input-group-append -->
                                 </div><!-- .End .input-group -->
                             </form>
@@ -97,27 +97,27 @@
                         </div>
                     </div>
                     <div class="col-xl-2-5col col-lg-5 ">
-                        <img src="assets/images/popup/newsletter/img-1.jpg" class="newsletter-img" alt="newsletter">
+                        <img src="{{asset('assets/images/popup/newsletter/img-1.jpg')}}" class="newsletter-img" alt="newsletter">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Plugins JS File -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/iziToast.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/superfish.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/bootstrap-input-spinner.js"></script>
-    <script src="assets/js/jquery.plugin.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/iziToast.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.hoverIntent.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.waypoints.min.js')}}"></script>
+    <script src="{{asset('assets/js/superfish.min.js')}}"></script>
+    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap-input-spinner.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.plugin.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
     <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/demos/demo-4.js"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{asset('assets/js/demos/demo-4.js')}}"></script>
         @yield("js")
         
         @livewireScripts

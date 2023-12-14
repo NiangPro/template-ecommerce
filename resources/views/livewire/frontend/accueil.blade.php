@@ -191,13 +191,13 @@
                         @foreach($p->tags as $t)
                             <span class="product-label label-new">{{$t->nom}}</span>
                         @endforeach
-                        <a href="product.html">
+                        <a href="{{route('singleProduct', ["id" => $p->id])}}">
                             <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>ajouter au favori</span></a>
-                            <a href="produit/{{$p->id}}" class="btn-product-icon btn-quickview" title="Voir plus"><span>Voir plus</span></a>
+                            <a  href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product-icon" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">

@@ -13,21 +13,33 @@ class SingleProduct extends Component
 {
     public $idProduit = null;
     public $favoris = null;
+    public $qte = 1;
 
     public function addToCart()
     {
-        dd("bien");
         if (Auth::user()) {
             $ct = Cart::where("product_id", $this->idProduit)->first();
             if ($ct) {
-               $this->dispatchBrowserEvent("existProduct");
+                if ($ct->product->qte >= $this->qte) {
+                    $ct->qte = $this->qte;
+                    $ct->save();
+                    $this->dispatchBrowserEvent("productUpdate");
+                }else{
+                    $this->dispatchBrowserEvent("lowQuantity");
+                }
             }else{
-                Cart::create([
-                    "product_id" => $this->idProduit,
-                    "user_id" => Auth::user()->id,
-                    "qte" => 1
-                ]);
-                $this->dispatchBrowserEvent("productAdded");
+                $p = Product::find($this->idProduit);
+                if ($p->qte >= $this->qte) {
+                    Cart::create([
+                        "product_id" => $this->idProduit,
+                        "user_id" => Auth::user()->id,
+                        "qte" => $this->qte
+                    ]);
+                    $this->dispatchBrowserEvent("productAdded");
+                }else{
+                    $this->dispatchBrowserEvent("lowQuantity");
+                }
+                
             }
             
         }else{

@@ -1,5 +1,5 @@
 <footer class="footer">
-    <div class="cta bg-image bg-dark pt-4 pb-5 mb-0" style="background-image: url(assets/images/demos/demo-4/bg-5.jpg);">
+    <div class="cta bg-image bg-dark pt-4 pb-5 mb-0" style="background-image: url({{asset('assets/images/demos/demo-4/bg-5.jpg')}});">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-sm-10 col-md-8 col-lg-6">
@@ -61,7 +61,7 @@
                         <h4 class="widget-title">Mon compte</h4><!-- End .widget-title -->
 
                         <ul class="widget-list">
-                            <li><a href="#signin-modal" data-toggle="modal">S'inscrire</a></li>
+                            <li><a href="{{route('login')}}" >S'inscrire</a></li>
                             <li><a href="{{route('cart')}}">Voir panier</a></li>
                             <li><a href="{{route('wishlist')}}">Mes favoris</a></li>
                         </ul><!-- End .widget-list -->
@@ -75,7 +75,7 @@
         <div class="container">
             <p class="footer-copyright">Copyright © 2023. Tout droits réservés.</p><!-- End .footer-copyright -->
             <figure class="footer-payments">
-                <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
+                <img src="{{asset('assets/images/payments.png')}}" alt="Payment methods" width="272" height="20">
             </figure><!-- End .footer-payments -->
         </div><!-- End .container -->
     </div><!-- End .footer-bottom -->
