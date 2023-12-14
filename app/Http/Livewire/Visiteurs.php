@@ -27,8 +27,6 @@ class Visiteurs extends Component
         }
         $this->userOrders = auth()->user()->orders()->with('products')->get();
 
-        dd($this->userOrders);
-
         return view('livewire.frontend.visiteurs',[
             "produits" => Product::orderBy("id", "DESC")->get(),
 
