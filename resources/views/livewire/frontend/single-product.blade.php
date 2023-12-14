@@ -84,7 +84,7 @@
                                             <div class="details-action-col">
                                                 <label for="qty">Quantité</label>
                                                 <div class="product-details-quantity">
-                                                    <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                                    <input type="number" wire:model="qte" class="form-control" min="1"  step="1" data-decimals="0" required>
                                                 </div><!-- End .product-details-quantity -->
 
                                                 <button class="btn-product btn-cart" wire:click.prevent="addToCart"><span>ajouter au panier</span></button>
@@ -267,7 +267,7 @@
                                             @foreach($p->tags as $t)
                                                 <span class="product-label label-circle label-sale">{{$t->nom}}</span>
                                             @endforeach
-                                            <a href="produit/{{$p->id}}">
+                                            <a href="{{route('singleProduct', ["id" => $p->id])}}">
                                                 <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                             </a>
 
@@ -277,7 +277,7 @@
 
                                             <div class="product-action">
                                                 <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="ajout panier"><span>Ajouter au panier</span></a>
-                                                <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
+                                                <a  href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
                                             </div><!-- End .product-action -->
                                         </figure><!-- End .product-media -->
 
@@ -315,23 +315,29 @@
 
 @section('js')
 <script>
-    window.addEventListener('addPartener', event =>{
+    window.addEventListener('productAdded', event =>{
         iziToast.success({
-        title: 'Partenaire',
-        message: 'Partenaire ajouté avec succès',
-        position: 'bottomRight'
-        });
-    });
-
-    window.addEventListener('updatePartener', event =>{
-        iziToast.success({
-        title: 'Partenaire',
-        message: 'Mis à jour avec succès',
+        title: 'Panier',
+        message: 'Produit ajouté au panier avec succès',
         position: 'topRight'
         });
     });
 
-    
+    window.addEventListener('productUpdate', event =>{
+        iziToast.success({
+        title: 'Panier',
+        message: 'La quantité a été mise à jour avec succès',
+        position: 'topRight'
+        });
+    });
+
+    window.addEventListener('lowQuantity', event =>{
+        iziToast.error({
+        title: 'Panier',
+        message: 'Quantité de stock insuffisante',
+        position: 'topRight'
+        });
+    });
 
     window.addEventListener('noLogged', event =>{
         iziToast.success({

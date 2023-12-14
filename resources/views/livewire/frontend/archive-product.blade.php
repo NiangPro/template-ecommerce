@@ -53,13 +53,13 @@
                                             @foreach($p->tags as $t)
                                                 <span class="product-label label-new">{{$t->nom}}</span>
                                             @endforeach
-                                            <a href="product.html">
+                                            <a href="{{route('singleProduct', ["id" => $p->id])}}">
                                                 <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                             </a>
 
                                             <div class="product-action-vertical">
                                                 <a href="#"  wire:click="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-expandable"><span> Ajouter au favori</span></a>
-                                                <a  href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product-icon btn-quickview" title="Quick view"><span>voir</span></a>
+                                                <a  href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product-icon" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
                                                 {{-- <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Comparer</span></a> --}}
                                             </div><!-- End .product-action-vertical -->
 
@@ -70,17 +70,17 @@
 
                                         <div class="product-body">
                                             <div class="product-cat">
-                                                <a href="#">Tel</a>
+                                                <a href="#">{{$p->category->nom}}</a>
                                             </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="produit/{{$p->id}}">{{ $p->nom}}</a></h3><!-- End .product-title -->
+                                            <h3 class="product-title"><a href="{{route('singleProduct', ["id" => $p->id])}}">{{ $p->nom}}</a></h3><!-- End .product-title -->
                                             <div class="product-price">
                                                 {{ $p->prix}} Fcfa
                                             </div><!-- End .product-price -->
                                             <div class="ratings-container">
-                                                <div class="ratings">
+                                                {{-- <div class="ratings">
                                                     <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 vue )</span>
+                                                </div><!-- End .ratings --> --}}
+                                                {{-- <span class="ratings-text">( 2 vue )</span> --}}
                                             </div><!-- End .rating-container -->
 
                                             <div class="product-nav product-nav-thumbs">
@@ -130,7 +130,7 @@
                                                         <input type="checkbox" wire:model="filters.categories.{{ $c->id }}" class="custom-control-input" id="cat-{{$c->id}}">
                                                         <label class="custom-control-label" for="cat-{{$c->id}}">{{$c->nom}}</label>
                                                     </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">3</span>
+                                                    <span class="item-count">{{count($c->produits)}}</span>
                                                 </div><!-- End .filter-item -->
                                             @endforeach
 

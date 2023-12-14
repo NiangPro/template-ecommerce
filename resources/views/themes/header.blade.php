@@ -204,7 +204,7 @@
                                     <div class="col-md-4">
                                         <div class="banner banner-overlay">
                                             <a href="category.html" class="banner banner-menu">
-                                                <img src="assets/images/menu/banner-1.jpg" alt="Banner">
+                                                <img src="{{asset('assets/images/menu/banner-1.jpg')}}" alt="Banner">
 
                                                 <div class="banner-content banner-content-top">
                                                     <div class="banner-title text-white">Last <br>Chance<br><span><strong>Sale</strong></span></div><!-- End .banner-title -->
@@ -234,7 +234,7 @@
                                     <div class="col-md-6">
                                         <div class="banner banner-overlay">
                                             <a href="category.html">
-                                                <img src="assets/images/menu/banner-2.jpg" alt="Banner">
+                                                <img src="{{asset('assets/images/menu/banner-2.jpg')}}" alt="Banner">
 
                                                 <div class="banner-content banner-content-bottom">
                                                     <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span></div><!-- End .banner-title -->
