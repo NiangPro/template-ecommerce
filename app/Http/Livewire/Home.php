@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +16,9 @@ class Home extends Component
         return view('livewire.admin.home',[
             "clients" => User::where("role", "client")->get(),
             "produits" => Product::all(),
+            "categories" => Category::all(),
+            "orders" => Order::orderBy("id", "DESC")->limit(10)->get(),
+            "commandes" => Order::all()
         ])->layout("layouts.dashboard");
     }
 

@@ -194,6 +194,10 @@ class Clients extends Component
     {
         if (!Auth()->user() || !Auth()->user()->isAdmin()) {
             return redirect(route("accueil"));
+        }else{
+            if (!Auth()->user()->isSuperAdmin()) {
+                return redirect(route("home"));
+            }
         }
     }
 
