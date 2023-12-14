@@ -114,47 +114,59 @@
             @foreach($minipubs as $key=>$p)
                 @if($key == 0)
                     <div class="col-md-6 col-lg-4">
-                        <div  class="banner banner-overlay banner-overlay-light">
-                            <a href="produit/{{$p->product->id}}">
-                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important ; background-color: rgb(0 0 0 / 69%)!important;">
-                            </a>
+                        <div class="deal" style="min-height: 250px; background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{asset('storage/images/'.$p->product->image)}}');">
+                            <div class="deal-top">
+                                <h2 style="color: #27c965">Offre Intelligente.</h2>
+                            </div><!-- End .deal-top -->
 
-                            <div class="banner-content">
-                                <h4 class="banner-subtitle" style="color: #27c965"><a href="produit/{{$p->product->id}}">Offre Intelligente</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title" style="color: #f9ad2c"><a href="produit/{{$p->product->id}}">Economisez de l'argent sur <strong>{{$p->product->nom}}</strong></a></h3><!-- End .banner-title -->
-                                <a href="produit/{{$p->product->id}}" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
-                            </div><!-- End .banner-content -->
-                        </div><!-- End .banner -->
+                            <div class="deal-content mt-n5">
+                                <h4 class="product-title" style="color: #f9ad2c;"><a href="produit/{{$p->product->id}}">Economisez de l'argent sur.<strong style="color: white;">{{$p->product->nom}}</strong></a> </h4>
+
+                                <div class="product-price ">
+                                    <span class="old-price">{{$p->product->prix}} F CFA</span>
+                                </div><!-- End .product-price -->
+
+                                <a href="produit/{{$p->product->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .deal-content -->
+                        </div><!-- End .deal -->
                     </div><!-- End .col-md-4 -->
                 @endif
                 @if($key == 1)
                     <div class="col-md-6 col-lg-4">
-                        <div class="banner banner-overlay banner-overlay-light">
-                            <a href="produit/{{$p->product->id}}">
-                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important; background-color: rgb(0 0 0 / 69%)!important;">
-                            </a>
+                        <div class="deal" style="min-height: 250px; background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{asset('storage/images/'.$p->product->image)}}');">
+                            <div class="deal-top">
+                                <h2 style="color: #27c965">Offre de temps.</h2>
+                            </div><!-- End .deal-top -->
 
-                            <div class="banner-content">
-                                <h4 class="banner-subtitle" style="color: #27c965"><a href="produit/{{$p->product->id}}">Offre de temps</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title" style="color: #f9ad2c"><a href="produit/{{$p->product->id}}"><strong>{{$p->product->nom}}</strong> <br>Réduction de Temps -30%</a></h3><!-- End .banner-title -->
-                                <a href="produit/{{$p->product->id}}" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
-                            </div><!-- End .banner-content -->
-                        </div><!-- End .banner -->
+                            <div class="deal-content mt-n5">
+                                <h4 class="product-title" style="color: #f9ad2c;"><a href="produit/{{$p->product->id}}"><strong style="color: white;">{{$p->product->nom}}</strong><br>Réduction de Temps -30%</a> </h4>
+
+                                <div class="product-price ">
+                                    <span class="old-price">{{$p->product->prix}} F CFA</span>
+                                </div><!-- End .product-price -->
+
+                                <a href="produit/{{$p->product->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .deal-content -->
+                        </div><!-- End .deal -->
                     </div><!-- End .col-md-4 -->
                 @endif
                 @if($key == 2)
                     <div class="col-md-6 col-lg-4">
-                        <div class="banner banner-overlay banner-overlay-light">
-                            <a href="produit/{{$p->product->id}}" style="max-height: 200px">
-                                <img src="storage/images/{{$p->product->image}}" alt="Banner" style="height: 280px!important; background-color: rgb(0 0 0 / 69%)!important;">
-                            </a>
+                        <div class="deal" style="min-height: 250px; background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{asset('storage/images/'.$p->product->image)}}');">
+                            <div class="deal-top">
+                                <h2 style="color: #27c965">Autorisation.</h2>
+                            </div><!-- End .deal-top -->
 
-                            <div class="banner-content">
-                                <h4 class="banner-subtitle" style="color: #27c965"><a href="produit/{{$p->product->id}}">Autorisation</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title" style="color: #f9ad2c"><a href="produit/{{$p->product->id}}"><strong>{{$p->product->nom}}</strong> <br>Economisez de l'argent</a></h3><!-- End .banner-title -->
-                                <a href="produit/{{$p->product->id}}" class="banner-link">Acheter maintenant<i class="icon-long-arrow-right"></i></a>
-                            </div><!-- End .banner-content -->
-                        </div><!-- End .banner -->
+                            <div class="deal-content mt-n5">
+                                <h4 class="product-title" style="color: #f9ad2c;"><a href="produit/{{$p->product->id}}"><strong style="color: white;">{{$p->product->nom}}</strong><br>Economisez de l'argent</a> </h4>
+
+                                <div class="product-price ">
+                                    <span class="old-price">{{$p->product->prix}} F CFA</span>
+                                </div><!-- End .product-price -->
+
+                                <a href="produit/{{$p->product->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
+                            </div><!-- End .deal-content -->
+                        </div><!-- End .deal -->
                     </div><!-- End .col-lg-4 -->
                 @endif
             @endforeach
@@ -260,14 +272,14 @@
             @foreach($offreproduits as $key=>$p)
                 @if($key == 0)
                     <div class="col-lg-6 deal-col">
-                        <div class="deal" style="background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{asset('storage/images/'.$p->image)}}'); max-height:350px!important; min-width:350px!important;">
+                        <div class="deal banner-overlay" style="min-height: 380px; background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{asset('storage/images/'.$p->image)}}'); max-height:350px!important; min-width:350px!important;">
                             <div class="deal-top">
                                 <h2>L'affaire du jour.</h2>
                                 <h4 class="text-white">Quantités limitées. </h4>
                             </div><!-- End .deal-top -->
 
                             <div class="deal-content">
-                                <h3 class="product-title text-white"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title text-white"><a href="produit/{{$p->id}}">{{str($p->description)->limit(50)}}</a></h3><!-- End .product-title -->
 
                                 <div class="product-price">
                                     <span class="new-price">{{$p->reduction}} F CFA</span>
@@ -286,14 +298,14 @@
 
                 @if($key == 1)
                     <div class="col-lg-6 deal-col">
-                        <div class="deal" style="background-image: background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{asset('storage/images/'.$p->image)}}');max-height:350px!important; min-width:350px!important;">
+                        <div class="deal" style="min-height: 380px; background-image: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{asset('storage/images/'.$p->image)}}');max-height:350px!important; min-width:350px!important;">
                             <div class="deal-top">
                                 <h2>Vos offres exclusives.</h2>
                                 <h4 class="text-white">Connectez-vous pour voir des offres incroyables.</h4>
                             </div><!-- End .deal-top -->
 
                             <div class="deal-content">
-                                <h3 class="product-title text-white"><a href="produit/{{$p->id}}">{{$p->description}}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title text-white"><a href="produit/{{$p->id}}">{{str($p->description)->limit(50)}}</a></h3><!-- End .product-title -->
 
                                 <div class="product-price">
                                     <span class="new-price">{{$p->reduction}}</span>
