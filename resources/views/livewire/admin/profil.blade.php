@@ -3,17 +3,22 @@
         <div class="card radius-10 border-primary border-start border-0 border-4 col-md-5">
             <div class="card-body">
                 <h5 class="text-center">Modification du mot de passe</h5><hr>
-                <form wire:submit.prevent="store" method="post">
-                        <div class="form-group mb-4">
-                            <label for="">Mot de passe <span class="text-danger">*</span></label>
-                            <input type="password" placeholder="Entrer le mot de passe" class="form-control @error('form.password') is-invalid @enderror" wire:model="form.password">
-                            @error('form.password') <span class="error text-danger">{{$message}}</span> @enderror
-                        </div>
-                        <div class="form-group mb-4">
-                            <label for="">Mot de passe de confirmation <span class="text-danger">*</span></label>
-                            <input type="password" placeholder="Entrer le mot de passe" class="form-control @error('form.password_confirmation') is-invalid @enderror" wire:model="form.password_confirmation">
-                            @error('form.password_confirmation') <span class="error text-danger">{{$message}}</span> @enderror
-                        </div>
+                <form wire:submit.prevent="changePassword" method="post">
+                    <div class="form-group mb-4">
+                        <label for="">Ancien Mot de passe <span class="text-danger">*</span></label>
+                        <input type="password" placeholder="Entrer le mot de passe" class="form-control @error('form.password_old') is-invalid @enderror" wire:model="form.password_old">
+                        @error('form.password_old') <span class="error text-danger">{{$message}}</span> @enderror
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="">Mot de passe <span class="text-danger">*</span></label>
+                        <input type="password" placeholder="Entrer le mot de passe" class="form-control @error('form.password') is-invalid @enderror" wire:model="form.password">
+                        @error('form.password') <span class="error text-danger">{{$message}}</span> @enderror
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="">Mot de passe de confirmation <span class="text-danger">*</span></label>
+                        <input type="password" placeholder="Entrer le mot de passe" class="form-control @error('form.password_confirmation') is-invalid @enderror" wire:model="form.password_confirmation">
+                        @error('form.password_confirmation') <span class="error text-danger">{{$message}}</span> @enderror
+                    </div>
                     <button type="submit" class="btn btn-outline-warning">Modifier</button>
                     
                 </form>
@@ -23,10 +28,14 @@
         <div class="card radius-10 border-warning border-start border-0 border-4 col-md-7">
             <div class="card-body">
                 <h5 class="text-center">Information Personnelle</h5><hr>
-                <form action="" method="post">
+                <form  wire:submit.prevent="editInformation">
                     <div class="row">
                         <div class="col-md-5">
+                            @if($form["image"])
+                            <img width="180" class="col-md-12 rounded" height="200" src="{{$form['image']->temporaryUrl()}}" alt="user avatar">
+                            @elseif($imgEditing)
                             <img width="180" class="col-md-12 rounded" height="200" src="{{asset('storage/images/'.Auth::user()->image)}}" alt="user avatar">
+                            @endif
                             <div class="form-group mt-2 mb-4 col-md-12">
                                 <input type="file" placeholder="Entrer l'image du produit" class="form-control @error('form.image') is-invalid @enderror" wire:model="form.image">
                                 @error('form.image') <span class="error text-danger">{{$message}}</span> @enderror
@@ -89,3 +98,35 @@
     </div>
     
 </div>
+
+@section('js')
+<script>
+    window.addEventListener('passwordFailed', event =>{
+        iziToast.error({
+        title: 'Mot de passe',
+        message: 'Le mot de passe actuel est incorrect',
+        position: 'topRight'
+        });
+    });
+
+    window.addEventListener('passwordUpdate', event =>{
+        iziToast.success({
+        title: 'Mot de passe',
+        message: 'Mis à jour de mot de passe avec succès',
+        position: 'topRight'
+        });
+    });
+
+    window.addEventListener('updateInfo', event =>{
+        iziToast.success({
+        title: 'Mot de passe',
+        message: 'Mis à jour avec succès',
+        position: 'topRight'
+        });
+    });
+
+
+</script>
+
+@endsection
+
