@@ -21,7 +21,7 @@
             flex-direction:column;
             align-items:center;
             background: #F1AB34;border-radius: 15px;
-            padding:20px;z-index:100">
+            padding:20px;z-index:100;transition:2s ease-in">
                     @if(count($products)<1)
                     <h4 class="text-center text-white"><strong class="text-success">({{$nom}}):</strong> Aucun produit pour le moment </h4>
                     @else
