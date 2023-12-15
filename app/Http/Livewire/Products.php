@@ -127,54 +127,62 @@ class Products extends Component
             "form.reduction" => "required|integer",
             "form.qte" => "required|integer"]);
 
-            $p = Product::where("id", $this->form["id"])->first();
+            if($this->form["reduction"] >= $this->form["prix"]){
+                $this->dispatchBrowserEvent("overReduction");
+            }else{
+                $p = Product::where("id", $this->form["id"])->first();
 
-            $p->nom = ucfirst($this->form["nom"]);
-            $p->category_id = $this->form["category_id"];
-            $p->description = $this->form["description"];
-            $p->prix = $this->form["prix"];
-            $p->qte = $this->form["qte"];
-            $p->poids = $this->form["poids"];
-            $p->reduction = $this->form["reduction"];
+                $p->nom = ucfirst($this->form["nom"]);
+                $p->category_id = $this->form["category_id"];
+                $p->description = $this->form["description"];
+                $p->prix = $this->form["prix"];
+                $p->qte = $this->form["qte"];
+                $p->poids = $this->form["poids"];
+                $p->reduction = $this->form["reduction"];
 
-            if ($this->form["image"]) {
+                if ($this->form["image"]) {
+                    $img_name = uniqid().".jpg";
+
+                    $this->form["image"]->storeAs("public/images", $img_name);
+                    $p->image = $img_name;
+
+                }
+
+                $p->save();
+
+                $p->tags()->sync($this->form["tags"]);
+                
+                $this->dispatchBrowserEvent("updateProduct");
+                $this->changeType("list");
+            }
+        }else{
+            $this->validate();
+            if($this->form["reduction"] >= $this->form["prix"]){
+                $this->dispatchBrowserEvent("overReduction");
+            }else{
                 $img_name = uniqid().".jpg";
 
                 $this->form["image"]->storeAs("public/images", $img_name);
+
+                $p = new Product();
+
+                $p->nom = $this->form["nom"];
+                $p->description = $this->form["description"];
+                $p->prix = $this->form["prix"];
+                $p->qte = $this->form["qte"];
+                $p->poids = $this->form["poids"];
+                $p->reduction = $this->form["reduction"];
+                $p->category_id = $this->form["category_id"];
                 $p->image = $img_name;
 
+                $p->save();
+
+                $p->tags()->attach($this->form["tags"]);
+
+                $this->dispatchBrowserEvent("addProduct");
+                $this->changeType("list");
             }
-
-            $p->save();
-
-            $p->tags()->sync($this->form["tags"]);
-            
-            $this->dispatchBrowserEvent("updateProduct");
-
-        }else{
-            $this->validate();
-            $img_name = uniqid().".jpg";
-
-            $this->form["image"]->storeAs("public/images", $img_name);
-
-            $p = new Product();
-
-            $p->nom = $this->form["nom"];
-            $p->description = $this->form["description"];
-            $p->prix = $this->form["prix"];
-            $p->qte = $this->form["qte"];
-            $p->poids = $this->form["poids"];
-            $p->reduction = $this->form["reduction"];
-            $p->category_id = $this->form["category_id"];
-            $p->image = $img_name;
-
-            $p->save();
-
-            $p->tags()->attach($this->form["tags"]);
-
-            $this->dispatchBrowserEvent("addProduct");
         }
-        $this->changeType("list");
     }
 
     public function render()
