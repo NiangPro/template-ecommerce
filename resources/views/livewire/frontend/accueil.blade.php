@@ -123,7 +123,12 @@
                                 <h4 class="product-title" style="color: #f9ad2c;"><a href="produit/{{$p->product->id}}">Economisez de l'argent sur.<strong style="color: white;">{{$p->product->nom}}</strong></a> </h4>
 
                                 <div class="product-price ">
-                                    <span class="old-price">{{$p->product->prix}} F CFA</span>
+                                    @if($p->reduction!=0)
+                                        <span class="new-price">{{$p->reduction}}</span>F CFA
+                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                    @else
+                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                    @endif
                                 </div><!-- End .product-price -->
 
                                 <a href="produit/{{$p->product->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
@@ -142,7 +147,12 @@
                                 <h4 class="product-title" style="color: #f9ad2c;"><a href="produit/{{$p->product->id}}"><strong style="color: white;">{{$p->product->nom}}</strong><br>Réduction de Temps -30%</a> </h4>
 
                                 <div class="product-price ">
-                                    <span class="old-price">{{$p->product->prix}} F CFA</span>
+                                    @if($p->reduction!=0)
+                                        <span class="new-price">{{$p->reduction}}</span>F CFA
+                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                    @else
+                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                    @endif
                                 </div><!-- End .product-price -->
 
                                 <a href="produit/{{$p->product->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
@@ -161,7 +171,12 @@
                                 <h4 class="product-title" style="color: #f9ad2c;"><a href="produit/{{$p->product->id}}"><strong style="color: white;">{{$p->product->nom}}</strong><br>Economisez de l'argent</a> </h4>
 
                                 <div class="product-price ">
-                                    <span class="old-price">{{$p->product->prix}} F CFA</span>
+                                    @if($p->reduction!=0)
+                                        <span class="new-price">{{$p->reduction}}</span>F CFA
+                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                    @else
+                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                    @endif
                                 </div><!-- End .product-price -->
 
                                 <a href="produit/{{$p->product->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
@@ -229,13 +244,18 @@
                         </div><!-- End .product-cat -->
                         <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                         <div class="product-price">
-                            {{$p->nom}}
+                            @if($p->reduction!=0)
+                                <span class="new-price">{{$p->reduction}}</span>F CFA
+                                <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                            @else
+                                <span class="new-price">{{$p->prix}}</span>F CFA
+                            @endif
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
                             <div class="ratings">
                                 <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
                             </div><!-- End .ratings -->
-                            <span class="ratings-text">( 2 Reviews )</span>
+                            {{-- <span class="ratings-text">( 2 Reviews )</span> --}}
                         </div><!-- End .rating-container -->
                     </div><!-- End .product-body -->
                 </div><!-- End .product -->
@@ -282,8 +302,13 @@
                                 <h3 class="product-title text-white"><a href="produit/{{$p->id}}">{{str($p->description)->limit(50)}}</a></h3><!-- End .product-title -->
 
                                 <div class="product-price">
-                                    <span class="new-price">{{$p->reduction}} F CFA</span>
-                                    <span class="old-price">Etait à {{$p->prix}} F CFA</span>
+                                    @if($p->reduction!=0)
+                                        <span class="new-price">{{$p->reduction}} F CFA</span>
+                                        <span class="old-price">Etait à {{$p->prix}} F CFA</span>
+                                    @else
+                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                    @endif
+                                    
                                 </div><!-- End .product-price -->
 
                                 <a href="produit/{{$p->id}}" class="btn btn-link"><span>Achetez maintenant</span><i class="icon-long-arrow-right"></i></a>
@@ -308,10 +333,15 @@
                                 <h3 class="product-title text-white"><a href="produit/{{$p->id}}">{{str($p->description)->limit(50)}}</a></h3><!-- End .product-title -->
 
                                 <div class="product-price">
-                                    <span class="new-price">{{$p->reduction}}</span>
+                                    @if($p->reduction!=0)
+                                        <span class="new-price">{{$p->reduction}}</span>F CFA
+                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                    @else
+                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                    @endif
                                 </div><!-- End .product-price -->
 
-                                <a href="login.html" class="btn btn-link"><span>Ajouter au panier</span><i class="icon-long-arrow-right"></i></a>
+                                <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn btn-link"><span>Ajouter au panier</span><i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .deal-content -->
 
                             <div class="deal-bottom">
@@ -431,7 +461,7 @@
                                         <div class="product product-2">
                                             <figure class="product-media">
                                                 @foreach($p->tags as $t)
-                                                    <span class="product-label label-circle label-top">{{$t->nom}}</span>
+                                                    <span style="background-color: #f9ad2c;" class="product-label label-circle label-top">{{$t->nom}}</span>
                                                 @endforeach
                                                 <a href="produit/{{$p->id}}">
                                                     <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
@@ -453,13 +483,18 @@
                                                 </div><!-- End .product-cat -->
                                                 <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                    {{$p->prix}}
+                                                    @if($p->reduction!=0)
+                                                        <span class="new-price">{{$p->reduction}}</span>F CFA
+                                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                                    @else
+                                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                                    @endif
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
                                                         <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
-                                                    <span class="ratings-text">( 4 vues )</span>
+                                                    {{-- <span class="ratings-text">( 4 vues )</span> --}}
                                                 </div><!-- End .rating-container -->
 
                                             </div><!-- End .product-body -->
@@ -494,7 +529,7 @@
                                             <div class="product product-2">
                                                 <figure class="product-media">
                                                     @foreach($p->tags as $t)
-                                                        <span class="product-label label-circle label-top">{{$t->nom}}</span>
+                                                        <span style="background-color: #f9ad2c;" class="product-label label-circle label-top">{{$t->nom}}</span>
                                                     @endforeach
                                                     <a href="produit/{{$p->id}}">
                                                         <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
@@ -517,13 +552,18 @@
                                                     </div><!-- End .product-cat -->
                                                     <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                                     <div class="product-price">
-                                                        {{$p->prix}}
+                                                        @if($p->reduction!=0)
+                                                            <span class="new-price">{{$p->reduction}}</span>F CFA
+                                                            <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                                        @else
+                                                            <span class="new-price">{{$p->prix}}</span>F CFA
+                                                        @endif
                                                     </div><!-- End .product-price -->
                                                     <div class="ratings-container">
                                                         <div class="ratings">
                                                             <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
                                                         </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( 4 vues )</span>
+                                                        {{-- <span class="ratings-text">( 4 vues )</span> --}}
                                                     </div><!-- End .rating-container -->
                                                 </div><!-- End .product-body -->
                                             </div><!-- End .product -->
@@ -579,15 +619,18 @@
                                     <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         @if($p->reduction!=0)
-                                            <span class="new-price">{{$p->reduction}}</span>
+                                            <span class="new-price">{{$p->reduction}}</span>F CFA
+                                            <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                        @else
+                                            <span class="new-price">{{$p->prix}}</span>F CFA
                                         @endif
-                                        <span class="old-price">{{$p->prix}}</span>
+                                        
                                     </div><!-- End .product-price -->
                                     <div class="ratings-container">
                                         <div class="ratings">
                                             <div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
                                         </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 4 Reviews )</span>
+                                        {{-- <span class="ratings-text">( 4 Reviews )</span> --}}
                                     </div><!-- End .rating-container -->
                                 </div><!-- End .product-body -->
                             </div><!-- End .product -->

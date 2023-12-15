@@ -74,7 +74,12 @@
                                             </div><!-- End .product-cat -->
                                             <h3 class="product-title"><a href="{{route('singleProduct', ["id" => $p->id])}}">{{ $p->nom}}</a></h3><!-- End .product-title -->
                                             <div class="product-price">
-                                                {{ $p->prix}} Fcfa
+                                                @if($p->reduction!=0)
+                                                    <span class="new-price">{{$p->reduction}}</span>F CFA
+                                                    <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                                @else
+                                                    <span class="new-price">{{$p->prix}}</span>F CFA
+                                                @endif
                                             </div><!-- End .product-price -->
                                             <div class="ratings-container">
                                                 {{-- <div class="ratings">
