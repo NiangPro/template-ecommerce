@@ -53,8 +53,8 @@ class PayTech extends Model
 
     public function __construct()
     {
-        $this->setApiKey("c2715f239b52c9ec7015281566601c67bf5ee5f9b510fec7d4ed682a64d672b7");
-        $this->setApiSecret("92219699cc0181c3caf8e483de20eaff3c5524dc200b1adfd544245b28f86b09");
+        $this->setApiKey("295442e4b448812977f4fe314f1db4298a2254b6be44e3cafb8c49566d892245");
+        $this->setApiSecret("a97b0b414430fb593f815219ca79a8f8577b0f3f7f847ba7e16e007e98120498");
 
         if (!empty($_POST['is_mobile']) && $_POST['is_mobile'] === 'yes') {
             $this->isMobile = true;
