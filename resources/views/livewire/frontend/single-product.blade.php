@@ -304,7 +304,7 @@
     });
 
     window.addEventListener('noLogged', event =>{
-        iziToast.success({
+        iziToast.error({
         title: 'Panier',
         message: "Veuillez vous connecter d'abord",
         position: 'topRight'
@@ -318,9 +318,6 @@
             message: 'Veuillez d\'abord se connecter',
             position: 'topRight'
             });
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
         });
 
         window.addEventListener('favoriAdded', event =>{
