@@ -17,6 +17,10 @@ class SingleProduct extends Component
     public $qte = 1;
     public $singleProduct;
 
+    public function isFavori($id_produit){
+        return Souhait::where("product_id", $id_produit)->where("user_id", Auth::user()->id)->first();
+    }
+
     public function addToWishlist($product_id){
         if (Auth::user()) {
            $fav = Souhait::where("product_id", $product_id)->first();

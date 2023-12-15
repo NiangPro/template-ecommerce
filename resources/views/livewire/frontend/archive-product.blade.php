@@ -58,7 +58,11 @@
                                             </a>
 
                                             <div class="product-action-vertical">
-                                                <a href="#"  wire:click="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-expandable"><span> Ajouter au favori</span></a>
+                                                @if($this->isFavori($p->id))
+                                                    <a href="#" wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-fav btn-wish btn-expandable"><i class="icon-heart"></i><span>ajouter au favori</span></a>    
+                                                @else
+                                                    <a href="#" wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-fav btn-expandable" title="Ajouer au favori"><span>ajouter au favori</span></a>
+                                                @endif
                                                 <a  href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product-icon" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
                                                 {{-- <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Comparer</span></a> --}}
                                             </div><!-- End .product-action-vertical -->

@@ -229,7 +229,11 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>ajouter au favori</span></a>
+                            @if($this->isFavori($p->id))
+                                <a href="#" wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-fav btn-wish btn-expandable"><i class="icon-heart"></i><span>ajouter au favori</span></a>    
+                            @else
+                                <a href="#" wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-fav btn-expandable" title="Ajouer au favori"><span>ajouter au favori</span></a>
+                            @endif
                             <a  href="{{route('singleProduct', ["id" => $p->id])}}" class="btn-product-icon" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
                         </div><!-- End .product-action-vertical -->
 
@@ -245,10 +249,10 @@
                         <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                         <div class="product-price">
                             @if($p->reduction!=0)
-                                <span class="new-price">{{$p->reduction}}</span>F CFA
-                                <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                <span class="new-price">{{$p->reduction}}F CFA </span>
+                                <span class="intro-old-price ml-2">{{$p->prix}}F CFA </span>
                             @else
-                                <span class="new-price">{{$p->prix}}</span>F CFA
+                                <span class="new-price">{{$p->prix}}F CFA </span>
                             @endif
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
@@ -303,10 +307,10 @@
 
                                 <div class="product-price">
                                     @if($p->reduction!=0)
-                                        <span class="new-price">{{$p->reduction}} F CFA</span>
-                                        <span class="old-price">Etait à {{$p->prix}} F CFA</span>
+                                        <span class="new-price">{{$p->reduction}}F CFA</span>
+                                        <span class="intro-old-price ml-2"> {{$p->prix}}F CFA</span>
                                     @else
-                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                        <span class="new-price"> {{$p->prix}} F CFA</span>
                                     @endif
                                     
                                 </div><!-- End .product-price -->
@@ -334,10 +338,10 @@
 
                                 <div class="product-price">
                                     @if($p->reduction!=0)
-                                        <span class="new-price">{{$p->reduction}}</span>F CFA
-                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                        <span class="new-price">{{$p->reduction}}F CFA</span>
+                                        <span class="intro-old-price ml-2">{{$p->prix}}F CFA</span>
                                     @else
-                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                        <span class="new-price">{{$p->prix}}F CFA</span>
                                     @endif
                                 </div><!-- End .product-price -->
 
@@ -421,7 +425,7 @@
                             @if($key == 2)
                                 <div class="banner">
                                     @foreach($p->product->tags as $t)
-                                        <span style="background-color: #f9ad2c" class="product-label label-circle label-top">{{$t->nom}}</span>
+                                        <span style="background-color: #27c965;" class="product-label label-circle label-top">{{$t->nom}}</span>
                                     @endforeach
                                     <h3 class="mt-4">{{$p->product->nom}}</h3>
                                     <a href="produit/{{$p->product->id}}">
@@ -468,7 +472,11 @@
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a href="#"wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                                    @if($this->isFavori($p->id))
+                                                        <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-fav btn-wish" title="Ajouer au favori"><i class="icon-heart"></i></a>
+                                                    @else
+                                                        <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-fav" title="Ajouer au favori"></a>
+                                                    @endif
                                                 </div><!-- End .product-action -->
 
                                                 <div class="product-action">
@@ -484,10 +492,10 @@
                                                 <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                     @if($p->reduction!=0)
-                                                        <span class="new-price">{{$p->reduction}}</span>F CFA
-                                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                                        <span class="new-price">{{$p->reduction}}F CFA</span>
+                                                        <span class="intro-old-price ml-2">{{$p->prix}}F CFA</span>
                                                     @else
-                                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                                        <span class="new-price">{{$p->prix}}F CFA</span>
                                                     @endif
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
@@ -536,7 +544,11 @@
                                                     </a>
 
                                                     <div class="product-action-vertical">
-                                                        <a href="#" wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                                        @if($this->isFavori($p->id))
+                                                            <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-fav btn-wish" title="Ajouer au favori"><i class="icon-heart"></i></a>
+                                                        @else
+                                                            <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-fav" title="Ajouer au favori"></a>
+                                                        @endif
                                                     </div><!-- End .product-action -->
 
                                                     <div class="product-action">
@@ -553,10 +565,10 @@
                                                     <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                                     <div class="product-price">
                                                         @if($p->reduction!=0)
-                                                            <span class="new-price">{{$p->reduction}}</span>F CFA
-                                                            <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                                            <span class="new-price">{{$p->reduction}}F CFA</span>
+                                                            <span class="intro-old-price ml-2">{{$p->prix}}F CFA</span>
                                                         @else
-                                                            <span class="new-price">{{$p->prix}}</span>F CFA
+                                                            <span class="new-price">{{$p->prix}}F CFA</span>
                                                         @endif
                                                     </div><!-- End .product-price -->
                                                     <div class="ratings-container">
@@ -596,14 +608,18 @@
                             <div class="product product-2">
                                 <figure class="product-media">
                                     @foreach($p->tags as $t)
-                                        <span class="product-label label-circle label-sale">{{$t->nom}}</span>
+                                        <span style="background-color: #f9ad2c" class="product-label label-circle label-sale">{{$t->nom}}</span>
                                     @endforeach
                                     <a href="produit/{{$p->id}}">
                                         <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Ajouer au favori"></a>
+                                        @if($this->isFavori($p->id))
+                                            <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-fav btn-wish" title="Ajouer au favori"><i class="icon-heart"></i></a>
+                                        @else
+                                            <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-fav" title="Ajouer au favori"></a>
+                                        @endif
                                     </div><!-- End .product-action -->
 
                                     <div class="product-action">
@@ -619,10 +635,10 @@
                                     <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         @if($p->reduction!=0)
-                                            <span class="new-price">{{$p->reduction}}</span>F CFA
-                                            <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                            <span class="new-price">{{$p->reduction}}F CFA</span>
+                                            <span class="intro-old-price ml-2">{{$p->prix}}F CFA</span>
                                         @else
-                                            <span class="new-price">{{$p->prix}}</span>F CFA
+                                            <span class="new-price">{{$p->prix}}F CFA</span>
                                         @endif
                                         
                                     </div><!-- End .product-price -->

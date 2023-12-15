@@ -165,7 +165,7 @@
                             <a href="{{route('accueil')}}" >Accueil</a>
                         </li>
                         <li>
-                            <a href="category.html" class="sf-with-ul">Boutique</a>
+                            <a href="#" class="sf-with-ul">Boutique</a>
 
                             <div class="megamenu megamenu-md">
                                 <div class="row no-gutters">
@@ -267,7 +267,7 @@
                                 </div><!-- End .row -->
                             </div><!-- End .megamenu megamenu-sm -->
                         </li>
-                       
+                        <li><a href="{{route('login')}}" >Mon compte</a></li>
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->
             </div><!-- End .header-center -->

@@ -19,7 +19,9 @@
                                 <div class="col-md-6">
                                     <div class="product-gallery">
                                         <figure class="product-main-image">
-                                            <span class="product-label label-top">Top</span>
+                                            @foreach($product->tags as $t)
+                                                <span style="background-color: " class="product-label label-new">{{$t->nom}}</span>
+                                            @endforeach
                                             <img id="product-zoom" src="{{asset('storage/images/'.$product->image)}}" data-zoom-image="assets/images/products/single/sidebar-gallery/1-big.jpg" alt="product image">
 
                                             <a href="#" id="btn-product-gallery" class="btn-product-gallery">
@@ -43,11 +45,11 @@
 
                                         <div class="product-price">
                                             @if($product->reduction!=0)
-                                                <span class="new-price">{{$product->reduction}}</span>F CFA
-                                                <span class="old-price ml-2">{{$product->prix}}</span>F CFA
+                                                <span class="new-price">{{$product->reduction}}F CFA</span>
+                                                <span class="intro-old-price ml-2">{{$product->prix}}F CFA</span>
                                             @else
-                                                <span class="new-price">{{$product->prix}}</span>F CFA
-                                            @endif>
+                                                <span class="new-price">{{$product->prix}}F CFA</span>
+                                            @endif
                                         </div><!-- End .product-price -->
 
                                         <div class="product-content">
@@ -241,7 +243,11 @@
                                             </a>
 
                                             <div class="product-action-vertical">
-                                                <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist" title="Ajouer au favori"></a>
+                                                @if($this->isFavori($p->id))
+                                                    <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-fav btn-wish" title="Ajouer au favori"><i class="icon-heart"></i></a>
+                                                @else
+                                                    <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-fav" title="Ajouer au favori"></a>
+                                                @endif
                                             </div><!-- End .product-action -->
 
                                             <div class="product-action">
@@ -257,15 +263,17 @@
                                             <h3 class="product-title"><a href="produit/{{$p->id}}">{{$p->nom}}</a></h3><!-- End .product-title -->
                                             <div class="product-price">
                                                 @if($p->reduction!=0)
-                                                    <span class="new-price">{{$p->reduction}}</span>
+                                                    <span class="new-price">{{$p->reduction}}F CFA</span>
+                                                    <span class="intro-old-price ml-2">{{$p->prix}}F CFA</span>
+                                                @else
+                                                    <span class="new-price">{{$p->prix}}F CFA</span>
                                                 @endif
-                                                <span class="old-price">{{$p->prix}}</span>
                                             </div><!-- End .product-price -->
                                             <div class="ratings-container">
                                                 <div class="ratings">
                                                     <div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
                                                 </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 4 Reviews )</span>
+                                                {{-- <span class="ratings-text">( 4 Reviews )</span> --}}
                                             </div><!-- End .rating-container -->
                                         </div><!-- End .product-body -->
                                     </div><!-- End .product -->
