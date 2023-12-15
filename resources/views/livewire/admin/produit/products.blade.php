@@ -101,7 +101,7 @@
         iziToast.success({
         title: 'Produit',
         message: 'Produit ajouté avec succès',
-        position: 'bottomRight'
+        position: 'topRight'
         });
     });
 
@@ -130,6 +130,15 @@
 
         $("#exampleModal").modal("hide");
         
+    });
+
+    window.addEventListener('overReduction', event =>{
+        iziToast.error({
+        title: 'Produit',
+        message: 'La reduction doit être inférieur au prix',
+        position: 'topRight'
+        });
+
     });
 
 </script>

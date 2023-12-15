@@ -165,9 +165,6 @@
             position: 'topRight'
             });
 
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
         });
 
         window.addEventListener('noLogged', event =>{
@@ -176,9 +173,6 @@
             message: 'Veuillez d\'abord se connecter',
             position: 'topRight'
             });
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
         });
 
         window.addEventListener('existProduct', event =>{
@@ -187,10 +181,6 @@
             message: 'Ce produit existe déja dans le panier',
             position: 'topRight'
             });
-
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
         });
 
         window.addEventListener('noLoggedFavori', event =>{
@@ -199,9 +189,6 @@
             message: 'Veuillez d\'abord se connecter',
             position: 'topRight'
             });
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
         });
 
         window.addEventListener('favoriAdded', event =>{
@@ -211,9 +198,6 @@
             position: 'topRight'
             });
 
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
         });
 
         window.addEventListener('existFavori', event =>{
@@ -223,9 +207,6 @@
             position: 'topRight'
             });
 
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
         });
 
     </script>
