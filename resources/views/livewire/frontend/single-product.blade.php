@@ -42,7 +42,12 @@
                                         </div><!-- End .rating-container -->
 
                                         <div class="product-price">
-                                            {{$product->prix}}
+                                            @if($product->reduction!=0)
+                                                <span class="new-price">{{$product->reduction}}</span>F CFA
+                                                <span class="old-price ml-2">{{$product->prix}}</span>F CFA
+                                            @else
+                                                <span class="new-price">{{$product->prix}}</span>F CFA
+                                            @endif>
                                         </div><!-- End .product-price -->
 
                                         <div class="product-content">
