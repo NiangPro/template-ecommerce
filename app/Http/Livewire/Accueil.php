@@ -29,7 +29,7 @@ class Accueil extends Component
                 $this->dispatchBrowserEvent("favoriAdded");
            }
         }else{
-            $this->dispatchBrowserEvent("noLogged");
+            $this->dispatchBrowserEvent("noLoggedFavori");
         }
     }
     
@@ -74,7 +74,7 @@ class Accueil extends Component
 
         return view('livewire.frontend.accueil',[
             'parteners' => Partener::all(),
-            'categories' => Category::orderBy("nom", "ASC")->get(),
+            'categories' => Category::orderBy("nom", "ASC")->Limit(12)->get(),
             'categoryType' => Category::orderBy("id", "DESC")->Limit(4)->get(),
             "produits" => Product::orderBy("id", "DESC")->get(),
             "produitsRec" => Product::orderBy("id", "DESC")->Limit(4)->get(),
@@ -89,6 +89,7 @@ class Accueil extends Component
             "favoris" => $favoris,
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
             "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
+            "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
         ]);
     }
 }

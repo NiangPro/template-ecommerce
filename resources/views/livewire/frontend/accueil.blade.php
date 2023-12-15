@@ -692,6 +692,17 @@
         }, 3000);
     });
 
+    window.addEventListener('noLoggedFavori', event =>{
+            iziToast.error({
+            title: 'Favori',
+            message: 'Veuillez d\'abord se connecter',
+            position: 'topRight'
+            });
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        });
+
     window.addEventListener('existProduct', event =>{
         iziToast.error({
         title: 'Panier',

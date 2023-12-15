@@ -312,7 +312,40 @@
         
     });
 
+    window.addEventListener('noLoggedFavori', event =>{
+            iziToast.error({
+            title: 'Favori',
+            message: 'Veuillez d\'abord se connecter',
+            position: 'topRight'
+            });
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        });
 
+        window.addEventListener('favoriAdded', event =>{
+            iziToast.success({
+            title: 'Favori',
+            message: 'Favori ajouté avec succès',
+            position: 'topRight'
+            });
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        });
+
+        window.addEventListener('existFavori', event =>{
+            iziToast.error({
+            title: 'Favori',
+            message: 'Ce favori existe déja dans la liste',
+            position: 'topRight'
+            });
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        });
   
 
 </script>

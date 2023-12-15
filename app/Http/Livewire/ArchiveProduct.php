@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Publicite;
 use App\Models\Souhait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -36,7 +37,7 @@ class ArchiveProduct extends Component
                 $this->dispatchBrowserEvent("favoriAdded");
            }
         }else{
-            $this->dispatchBrowserEvent("noLogged");
+            $this->dispatchBrowserEvent("noLoggedFavori");
         }
     }
 
@@ -99,6 +100,7 @@ class ArchiveProduct extends Component
             "favoris" => $favoris,
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
             "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
+            "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
         ]);
     }
 

@@ -11,10 +11,8 @@
                     <li>
                         <a href="#">Links</a>
                         <ul>
-                            
                             <li>
                                 <a href="#" ><i class="icon-envelope"></i>makhfuzmar@gmail.com</a>
-                                
                             </li>
                         </ul>
                     </li>
@@ -137,19 +135,23 @@
                                 {{-- <li class="item-lead"><a href="#">Daily offers</a></li>
                                 <li class="item-lead"><a href="#">Gift Ideas</a></li> --}}
                                 {{-- {{dd($category)}} --}}
-                                @foreach($category as $cat)
-                                    <li class="item-lead">
-                                        <a href="{{route('archiveProduct', ['slug' => $cat->slug, "id" => $cat->id])}}">{{$cat->nom}}</a>
-                                        @if(count($cat->children) > 0)
-                                            <ul wire:ignore.self>
-                                                @foreach ($cat->children as $child)
-                                                    <li><a class="item-lead" href="{{route('archiveProduct', ['slug' => $child->slug, "id" => $child->id])}}">{{$child->nom}}</a></li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </li>
-                                    
-                                @endforeach
+                                @if(count($category) > 0)
+                                    @foreach($category as $cat)
+                                        <li class="item-lead">
+                                            <a href="{{route('archiveProduct', ['slug' => $cat->slug, "id" => $cat->id])}}">{{$cat->nom}}</a>
+                                            @if(count($cat->children) > 0)
+                                                <ul wire:ignore.self>
+                                                    @foreach ($cat->children as $child)
+                                                        <li><a class="item-lead" href="{{route('archiveProduct', ['slug' => $child->slug, "id" => $child->id])}}">{{$child->nom}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </li>
+                                        
+                                    @endforeach
+                                @else
+                                    <li>Aucune catégorie </li>
+                                @endif
                             </ul><!-- End .menu-vertical -->
                         </nav><!-- End .side-nav -->
                     </div><!-- End .dropdown-menu -->
@@ -173,17 +175,21 @@
                                                 <div class="col-md-6">
                                                     <div class="menu-title">Catégorie de produit</div><!-- End .menu-title -->
                                                     <ul>
-                                                        @foreach($category as $cat)
-                                                            <li><a href="{{route('archiveProduct', ['slug' => $cat->slug, "id" => $cat->id])}}">{{$cat->nom}}</a>
-                                                                @if(count($cat->children) > 0)
-                                                                    <ul wire:ignore.self>
-                                                                        @foreach ($cat->children as $child)
-                                                                            <li><a href="{{route('archiveProduct', ['slug' => $child->slug, "id" => $child->id])}}">{{$child->nom}}</a></li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                @endif
-                                                            </li>
-                                                        @endforeach
+                                                        @if(count($category) > 0)
+                                                            @foreach($category as $cat)
+                                                                <li><a href="{{route('archiveProduct', ['slug' => $cat->slug, "id" => $cat->id])}}">{{$cat->nom}}</a>
+                                                                    @if(count($cat->children) > 0)
+                                                                        <ul wire:ignore.self>
+                                                                            @foreach ($cat->children as $child)
+                                                                                <li><a href="{{route('archiveProduct', ['slug' => $child->slug, "id" => $child->id])}}">{{$child->nom}}</a></li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    @endif
+                                                                </li>
+                                                            @endforeach
+                                                        @else
+                                                            <li>Aucune catégorie</li>
+                                                        @endif
                                                     </ul>
                                                 </div><!-- End .col-md-6 -->
 
@@ -192,9 +198,6 @@
                                                     <ul>
                                                         <li><a href="{{route('cart')}}">Panier</a></li>
                                                         <li><a href="{{route('wishlist')}}">Favoris</a></li>
-                                                        {{-- <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="dashboard.html">My Account</a></li>
-                                                        <li><a href="#">Lookbook</a></li> --}}
                                                     </ul>
                                                 </div><!-- End .col-md-6 -->
                                             </div><!-- End .row -->
@@ -203,13 +206,24 @@
 
                                     <div class="col-md-4">
                                         <div class="banner banner-overlay">
-                                            <a href="category.html" class="banner banner-menu">
-                                                <img src="{{asset('assets/images/menu/banner-1.jpg')}}" alt="Banner">
+                                            @foreach($menupubs as $key=>$p)
+                                                @if($key == 0)
+                                                    <a href="produit/{{$p->product->id}}" class="banner banner-menu">
+                                                        <img src="{{asset('storage/images/'.$p->product->image)}}" alt="Banner">
 
-                                                <div class="banner-content banner-content-top">
-                                                    <div class="banner-title text-white">Last <br>Chance<br><span><strong>Sale</strong></span></div><!-- End .banner-title -->
-                                                </div><!-- End .banner-content -->
-                                            </a>
+                                                        <div class="banner-content banner-content-top">
+                                                            <div class="banner-title text-white">
+                                                                @foreach($p->product->tags as $t)
+                                                                    {{$t->nom}}
+                                                                @endforeach<br>
+                                                                <span>
+                                                                    <strong style="color: #f9ad2c">{{$p->product->nom}}</strong>
+                                                                </span>
+                                                            </div><!-- End .banner-title -->
+                                                        </div><!-- End .banner-content -->
+                                                    </a>
+                                                @endif
+                                            @endforeach
                                         </div><!-- End .banner banner-overlay -->
                                     </div><!-- End .col-md-4 -->
                                 </div><!-- End .row -->
@@ -233,13 +247,21 @@
 
                                     <div class="col-md-6">
                                         <div class="banner banner-overlay">
-                                            <a href="category.html">
-                                                <img src="{{asset('assets/images/menu/banner-2.jpg')}}" alt="Banner">
+                                            @foreach($menupubs as $key=>$p)
+                                                @if($key == 1)
+                                                    <a href="produit/{{$p->product->id}}">
+                                                        <img src="{{asset('storage/images/'.$p->product->image)}}" alt="Banner">
 
-                                                <div class="banner-content banner-content-bottom">
-                                                    <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span></div><!-- End .banner-title -->
-                                                </div><!-- End .banner-content -->
-                                            </a>
+                                                        <div class="banner-content banner-content-bottom">
+                                                            <div class="banner-title text-white">
+                                                                @foreach($p->product->tags as $t)
+                                                                    {{$t->nom}}
+                                                                @endforeach
+                                                            <br><span><strong style="color: #f9ad2c">{{$p->product->nom}}</strong></span></div><!-- End .banner-title -->
+                                                        </div><!-- End .banner-content -->
+                                                    </a>
+                                                @endif
+                                            @endforeach
                                         </div><!-- End .banner -->
                                     </div><!-- End .col-md-6 -->
                                 </div><!-- End .row -->

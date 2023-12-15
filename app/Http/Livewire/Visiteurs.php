@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Publicite;
 use App\Models\Souhait;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -200,6 +201,7 @@ class Visiteurs extends Component
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
             "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
             "favoris" => $this->favoris,
+            "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
         ]);
     }
 

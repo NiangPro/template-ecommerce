@@ -83,7 +83,7 @@
                                                 {{-- <span class="ratings-text">( 2 vue )</span> --}}
                                             </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
+                                            {{-- <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
                                                     <img src="{{asset('storage/images/'.$p->image)}}" alt="product desc">
                                                 </a>
@@ -94,7 +94,7 @@
                                                 <a href="#">
                                                     <img src="{{asset('storage/images/'.$p->image)}}" alt="product desc">
                                                 </a>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
@@ -179,6 +179,17 @@
             position: 'topRight'
             });
 
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        });
+
+        window.addEventListener('noLoggedFavori', event =>{
+            iziToast.error({
+            title: 'Favori',
+            message: 'Veuillez d\'abord se connecter',
+            position: 'topRight'
+            });
             setTimeout(() => {
                 window.location.reload();
             }, 3000);
