@@ -17,7 +17,11 @@ class Accueil extends Component
     public $tabpanProduct = [];
 
     public function isFavori($id_produit){
-        return Souhait::where("product_id", $id_produit)->where("user_id", Auth::user()->id)->first();
+        if (Auth::user()) {
+            return Souhait::where("product_id", $id_produit)->where("user_id", Auth::user()->id)->first();
+        }else{
+            return false;
+        }
     }
 
     public function addToWishlist($product_id){
