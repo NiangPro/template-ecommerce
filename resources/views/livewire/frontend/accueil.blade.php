@@ -124,10 +124,10 @@
 
                                 <div class="product-price ">
                                     @if($p->reduction!=0)
-                                        <span class="new-price">{{$p->reduction}}</span>F CFA
-                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                        <span class="new-price">{{$p->product->reduction}}F CFA</span>
+                                        <span class="old-price ml-2">{{$p->product->prix}}F CFA</span>
                                     @else
-                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                        <span class="new-price">{{$p->product->prix}}F CFA</span>
                                     @endif
                                 </div><!-- End .product-price -->
 
@@ -148,10 +148,10 @@
 
                                 <div class="product-price ">
                                     @if($p->reduction!=0)
-                                        <span class="new-price">{{$p->reduction}}</span>F CFA
-                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                        <span class="new-price">{{$p->product->reduction}}F CFA</span>
+                                        <span class="old-price ml-2">{{$p->product->prix}}F CFA</span>
                                     @else
-                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                        <span class="new-price">{{$p->product->prix}}F CFA</span>
                                     @endif
                                 </div><!-- End .product-price -->
 
@@ -172,10 +172,10 @@
 
                                 <div class="product-price ">
                                     @if($p->reduction!=0)
-                                        <span class="new-price">{{$p->reduction}}</span>F CFA
-                                        <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                        <span class="new-price">{{$p->product->reduction}}F CFA</span>
+                                        <span class="old-price ml-2">{{$p->product->prix}}F CFA</span>
                                     @else
-                                        <span class="new-price">{{$p->prix}}</span>F CFA
+                                        <span class="new-price">{{$p->product->prix}}F CFA</span>
                                     @endif
                                 </div><!-- End .product-price -->
 

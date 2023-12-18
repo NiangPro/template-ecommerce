@@ -2,7 +2,7 @@
     <div class="header-top">
         <div class="container">
             <div class="header-left">
-                <a href="tel:#"><i class="icon-phone"></i>Tel: +221 77 728 37 29</a>
+                <a target="_blank" href="#"><i class="icon-phone"></i>Tel: 777283722 / 338675942</a>
             </div><!-- End .header-left -->
 
             <div class="header-right">
@@ -12,7 +12,7 @@
                         <a href="#">Links</a>
                         <ul>
                             <li>
-                                <a href="#" ><i class="icon-envelope"></i>makhfuzmar@gmail.com</a>
+                                <a href="#" ><i class="icon-envelope text-lowercase"></i>support@sunumaketbusiness.com</a>
                             </li>
                         </ul>
                     </li>
@@ -34,6 +34,7 @@
                     <img src="{{asset('assets/images/smb.png')}}" alt="Molla Logo" width="105" height="25">
                     {{-- <span class="display-4">Makhfuz</span> --}}
                 </a>
+                <a class="ml-2" href="https://wa.me/777283722" target="_blank" ><i style="font-size: 29px; margin-left:50px" class="icon-whatsapp"></i></a>
             </div><!-- End .header-left -->
 
            <livewire:search />
@@ -219,7 +220,7 @@
                             </div><!-- End .megamenu megamenu-md -->
                         </li>
                         <li>
-                            <a href="product.html" class="sf-with-ul">Quelques produits</a>
+                            <a href="#" class="sf-with-ul">Quelques produits</a>
 
                             <div class="megamenu megamenu-sm">
                                 <div class="row no-gutters">
@@ -262,7 +263,7 @@
             </div><!-- End .header-center -->
 
             <div class="header-right">
-                <i class="la la-lightbulb-o"></i><p>Soldes<span class="highlight"> jusqu'à 30% de réduction</span></p>
+                <i class="la la-lightbulb-o"></i><p class="ml-n2">prix<span class="highlight"> jusqu'à 30% de réduction</span></p>         
             </div>
         </div><!-- End .container -->
     </div><!-- End .header-bottom -->

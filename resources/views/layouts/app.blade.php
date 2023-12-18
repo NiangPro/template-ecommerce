@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Makhfuz</title>
+        <title>SMB</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="eCommerce" name="keywords">
         <meta content="eCommerce" name="description">
@@ -79,17 +79,19 @@
             </ul>
 
             <div class="social-icons mt-2">
-                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                <a href="https://wa.me/777283722" class="social-icon" target="_blank" title="Facebook"><i class="icon-whatsapp"></i></a>
+                {{-- <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
                 <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
                 <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a> --}}
+                
             </div><!-- End .social-icons -->
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
    
 
-    <div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
+    {{-- <div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
         <div class="row justify-content-center">
             <div class="col-10">
                 <div class="row no-gutters bg-white newsletter-popup-content">
@@ -100,7 +102,7 @@
                             <p>Souscrivez à notre boutique pour recevoir des mises à jour opportunes de vos produits préférés.</p>
                             <form action="#">
                                 <div class="input-group input-group-round">
-                                    {{-- <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required> --}}
+                                    {{-- <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required> 
                                     <div class="input-group-append text-center">
                                         <a href="{{route('login')}}" class="btn bt-sm btn-info" type="submit"><span>S'inscrire</span></a>
                                     </div><!-- .End .input-group-append -->
@@ -109,7 +111,7 @@
                             {{-- <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
                                 <label class="custom-control-label" for="register-policy-2">Do not show this popup again</label>
-                            </div><!-- End .custom-checkbox --> --}}
+                            </div><!-- End .custom-checkbox --> 
                         </div>
                     </div>
                     <div class="col-xl-2-5col col-lg-5 ">
@@ -122,7 +124,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Plugins JS File -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/iziToast.min.js')}}"></script>
