@@ -16,6 +16,7 @@ class Order extends Model
         "shipping",
         "comments",
         "reference",
+        "statut",
         "user_id"
     ];
 

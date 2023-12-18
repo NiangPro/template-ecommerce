@@ -80,7 +80,11 @@ class Checkout extends Component
             $order->save();
 
             foreach ($this->prodsCart as $cart) {
-                $order->products()->attach($cart->product->id, ['quantity' => $cart->qte, 'price' => $cart->product->prix]);
+                $prix = $cart->product->reduction > 0 ? $cart->product->reduction:$cart->product->prix;
+                $order->products()->attach($cart->product->id, ['quantity' => $cart->qte, 'price' => $prix]);
+                $p = Product::where("id", $cart->product->id)->first();
+                $p->quantite = $p->quantite - $cart->qte;
+                $p->save();
             }
 
             $this->dispatchBrowserEvent("successOrder");
@@ -96,7 +100,8 @@ class Checkout extends Component
         if (Auth::user()) {
             $this->prodsCart = Cart::where("user_id", Auth::user()->id)->get();
             foreach ($this->prodsCart as $c) {
-                $total += ($c->product->prix * $c->qte);  
+                $prix = $c->product->reduction > 0 ? $c->product->reduction:$c->product->prix;
+                $total += ($prix * $c->qte);   
             }
 
             $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
@@ -120,7 +125,8 @@ class Checkout extends Component
     public function initProducts(){
         $this->subTotal = 0;
         foreach ($this->products as $p) {
-            $this->subTotal += ($p->product->prix*$p->qte);
+            $prix = $p->product->reduction > 0 ? $p->product->reduction:$p->product->prix;
+            $this->subTotal += ($prix*$p->qte);
         }
 
         $this->item_price = $this->subTotal + $this->montantTransport;

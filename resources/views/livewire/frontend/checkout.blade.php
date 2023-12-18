@@ -83,14 +83,20 @@
                                             @foreach($products as $c)
                                             <tr>
                                                 <td><a href="#">{{str($c->product->nom)->limit(17)}}</a></td>
-                                                <td>{{$c->product->prix * $c->qte}}F</td>
+                                                <td>
+                                                    @if($c->product->reduction > 0) 
+                                                        {{$c->product->reduction * $c->qte}}
+                                                    @else
+                                                        {{$c->product->prix * $c->qte}}
+                                                    @endif
+                                                    F</td>
                                             </tr>
                                             @endforeach
                                             <tr class="summary-subtotal">
                                                 <td>Sous-total:</td>
                                                 <td>{{$subTotal}}F</td>
                                             </tr><!-- End .summary-subtotal -->
-                                            <tr class="summary-subtotal">
+                                            {{-- <tr class="summary-subtotal">
                                                 <td>Expédition par:</td>
                                                 <td></td>
                                             </tr><!-- End .summary-subtotal -->
@@ -124,7 +130,7 @@
                                                     </div><!-- End .accordion --> 
                                                     <span><b>Montant du Transport</b> = {{$montantTransport}} FCFA</span>
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
                                             <tr class="summary-total">
                                                 <td>Total:</td>
                                                 <td>{{$item_price}} FCFA</td>

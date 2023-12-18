@@ -20,6 +20,7 @@ class Product extends Model
         "qte",
         "poids",
         "reduction",
+        "supplementaire",
         "image",
         "category_id"
     ];
@@ -27,6 +28,11 @@ class Product extends Model
     public function souhait()
     {
         return $this->hasMany(Souhait::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Galerie::class);
     }
 
     public function category()
