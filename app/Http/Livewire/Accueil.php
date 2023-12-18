@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Partener;
 use App\Models\Product;
 use App\Models\Publicite;
+use App\Models\Reglage;
 use App\Models\Souhait;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,8 @@ use Livewire\Component;
 class Accueil extends Component
 {
     public $tabpanProduct = [];
+    public $reglage;
+
 
     public function isFavori($id_produit){
         if (Auth::user()) {
@@ -100,5 +103,14 @@ class Accueil extends Component
             "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
             "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
         ]);
+    }
+
+    public function mount()
+    {
+        $this->reglage = new Reglage();
+
+        $this->reglage->createFirstAdmin();
+        $this->reglage->createFirstClientDemo();
+        $this->reglage->createShop();
     }
 }

@@ -31,6 +31,24 @@ class Reglage extends Model
         }
     }
 
+    public function createShop()
+    {
+        $shop = Shop::first();
+
+        if (!$shop) {
+            Shop::create([
+                "nom" => "SunuMarketBusiness",
+                "sigle" => "SMB",
+                "tel" => "777283722",
+                "fixe" => "338675942",
+                "adresse" => "",
+                "email" => "support@sunumaketbusiness.com",
+                "image" => "smb.png",
+                "slogan" => "La solution facile.",
+            ]);
+        }
+    }
+
     public function createFirstClientDemo()
     {
         $client = User::where("role", "admin")->first();

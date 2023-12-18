@@ -15,7 +15,6 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public $reglage;
     public $form1 = [
         "prenom" => "",
         "nom" => "",
@@ -153,10 +152,7 @@ class Login extends Component
             }
         }
 
-        $this->reglage = new Reglage();
-
-        $this->reglage->createFirstAdmin();
-        $this->reglage->createFirstClientDemo();
+        
         
     }
 }
