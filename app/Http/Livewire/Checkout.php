@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\PayTech;
 use App\Models\Product;
 use App\Models\Publicite;
+use App\Models\Shop;
 use App\Models\Souhait;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -119,6 +120,7 @@ class Checkout extends Component
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
             "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
             "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
+            "shop" => Shop::first()
         ]);
     }
 

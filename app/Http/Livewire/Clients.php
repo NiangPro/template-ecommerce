@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -187,7 +188,9 @@ class Clients extends Component
     {
         return view('livewire.admin.client.clients', [
             "clients" => User::where("role", "client")->orderBy("id", "DESC")->get()
-        ])->layout("layouts.dashboard");
+        ])->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     public function mount()

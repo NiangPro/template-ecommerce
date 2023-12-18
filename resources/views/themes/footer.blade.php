@@ -27,8 +27,8 @@
                     <div class="widget widget-about mt-n5">
                         <a href="{{route('accueil')}}"><img src="{{asset('assets/images/smb.png')}}" class="footer-logo" alt="Footer Logo" width="200" height="25"></a>
                     </div><!-- End .widget about-widget -->
-                    <p class="mt-n5 ml-5">La solution facile. </p>
-                    <a href="#" ><i class="icon-envelope"></i>makhfuzmar@gmail.com</a>
+                    <p class="mt-n5 ml-5">{{$shop->slogan}} </p>
+                    <a href="#" ><i class="icon-envelope"></i>{{$shop->email}}</a>
                 </div><!-- End .col-sm-6 col-lg-3 -->
 
                 <div class="col-sm-6 col-lg-3">
@@ -37,7 +37,7 @@
                         <div class="widget-call">
                             <i class="icon-phone"></i>
                             Vous avez des questions ? Appelez-nous 24h/24 et 7j/7
-                            <a href="tel:#">+221 77 728 37 22</a>         
+                            <a href="tel:#">+221 {{$shop->tel}}</a>         
                         </div><!-- End .widget-call -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->

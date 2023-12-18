@@ -2,7 +2,7 @@
     <div class="header-top">
         <div class="container">
             <div class="header-left">
-                <a target="_blank" href="#"><i class="icon-phone"></i>Tel: 777283722 / 338675942</a>
+                <a target="_blank" href="#"><i class="icon-phone"></i>Tel: {{$shop->tel}} / {{$shop->fixe}}</a>
             </div><!-- End .header-left -->
 
             <div class="header-right">
@@ -12,7 +12,7 @@
                         <a href="#">Links</a>
                         <ul>
                             <li>
-                                <a href="#" ><i class="icon-envelope text-lowercase"></i>support@sunumaketbusiness.com</a>
+                                <a href="#" ><i class="icon-envelope text-lowercase"></i>{{$shop->email}}</a>
                             </li>
                         </ul>
                     </li>
@@ -31,7 +31,7 @@
                 </button>
                 
                 <a href="{{route('accueil')}}" class="logo">
-                    <img src="{{asset('assets/images/smb.png')}}" alt="Molla Logo" width="105" height="25">
+                    <img src="{{asset('storage/images/'.$shop->image)}}" alt="{{$shop->nom}}" width="105" height="25">
                     {{-- <span class="display-4">Makhfuz</span> --}}
                 </a>
                 <a class="ml-2" href="https://wa.me/777283722" target="_blank" ><i style="font-size: 29px; margin-left:50px" class="icon-whatsapp"></i></a>

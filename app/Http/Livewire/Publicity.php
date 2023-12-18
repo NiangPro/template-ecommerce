@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use App\Models\Publicite;
+use App\Models\Shop;
 use Livewire\Component;
 
 class Publicity extends Component
@@ -77,7 +78,9 @@ class Publicity extends Component
         return view('livewire.admin.publicity.publicity', [
             "produits" => Publicite::orderBy("id", "DESC")->get(),
             "prods" => Product::orderBy("id", "DESC")->get(),
-        ])->layout("layouts.dashboard");
+        ])->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     public function mount()

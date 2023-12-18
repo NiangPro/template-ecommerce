@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Acheminement as ModelsAcheminement;
+use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -104,7 +105,9 @@ class Acheminement extends Component
     {
         return view('livewire.admin.acheminement.acheminement',[
             "aches" => ModelsAcheminement::orderBy("nom", "ASC")->get()
-        ])->layout("layouts.dashboard");
+        ])->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     protected function initForm()

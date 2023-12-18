@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Partener;
+use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -114,7 +115,9 @@ class Partenaires extends Component
     {
         return view('livewire.admin.partenaire.partenaires', [
             "parteners" => Partener::orderBy("nom", "ASC")->get()
-        ])->layout("layouts.dashboard");
+        ])->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     public function mount()

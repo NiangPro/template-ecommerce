@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="assets/images/smb.png" type="image/png" />
+	<link rel="icon" href="storage/images/{{$shop->image}}" type="image/png" />
 	<!--plugins-->
 	<link href="themes/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
 	<link href="themes/plugins/simplebar/css/simplebar.css" rel="stylesheet" />

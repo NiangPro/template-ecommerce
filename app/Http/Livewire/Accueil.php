@@ -8,6 +8,7 @@ use App\Models\Partener;
 use App\Models\Product;
 use App\Models\Publicite;
 use App\Models\Reglage;
+use App\Models\Shop;
 use App\Models\Souhait;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\Auth;
@@ -102,6 +103,7 @@ class Accueil extends Component
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
             "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
             "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
+            "shop" => Shop::first()
         ]);
     }
 

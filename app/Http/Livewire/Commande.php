@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Order;
+use App\Models\Shop;
 use Livewire\Component;
 
 class Commande extends Component
@@ -11,6 +12,8 @@ class Commande extends Component
     public function render()
     {
         $this->orders = Order::orderBy("id", "DESC")->get();
-        return view('livewire.admin.commande')->layout("layouts.dashboard");
+        return view('livewire.admin.commande')->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 }

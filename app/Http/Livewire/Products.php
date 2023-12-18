@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Publicite;
+use App\Models\Shop;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -191,7 +192,9 @@ class Products extends Component
             'categories' => Category::orderBy("nom", "ASC")->get(),
             'tags' => Tag::all(),
             "produits" => Product::orderBy("id", "DESC")->get()
-        ])->layout("layouts.dashboard");
+        ])->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     public function initForm()

@@ -3,14 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Shop;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class Baremes extends Component
+class Livraisons extends Component
 {
     public function render()
     {
-        return view('livewire.admin.baremes')->layout("layouts.dashboard",[
+        return view('livewire.admin.livraison.livraisons')->layout("layouts.dashboard",[
             "shop" => Shop::first()
         ]);
     }
