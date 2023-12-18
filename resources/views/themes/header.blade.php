@@ -80,7 +80,11 @@
 
                                     <span class="cart-product-info">
                                         <span class="cart-product-qty">{{$c->qte}}</span>
-                                        x {{$c->product->prix}} FCFA
+                                        x @if($c->product->reduction > 0) 
+                                        {{$c->product->reduction * $c->qte}}
+                                    @else
+                                        {{$c->product->prix * $c->qte}}
+                                    @endif FCFA
                                     </span>
                                 </div><!-- End .product-cart-details -->
 

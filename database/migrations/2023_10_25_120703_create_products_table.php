@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements("id");
             $table->string("nom");
             $table->text("description")->nullable();
+            $table->text("supplementaire")->nullable();
             $table->double("prix");
             $table->double("qte");
             $table->double("poids")->default(0);

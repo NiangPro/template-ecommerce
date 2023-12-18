@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->decimal('total_amount', 10, 2);
+            $table->integer('statut')->default(0);
             $table->decimal('shipping', 8, 2)->nullable();
             $table->text('comments')->nullable();
             $table->string('reference')->nullable();

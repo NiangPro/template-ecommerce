@@ -186,7 +186,8 @@ class Visiteurs extends Component
         if (Auth::user()) {
             $prodsCart = Cart::where("user_id", Auth::user()->id)->get();
             foreach ($prodsCart as $c) {
-                $total += ($c->product->prix * $c->qte); 
+                $prix = $c->product->reduction > 0 ? $c->product->reduction:$c->product->prix;
+                $total += ($prix * $c->qte);  
             }
             $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
