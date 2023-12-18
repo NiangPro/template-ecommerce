@@ -52,13 +52,33 @@
             <ul class="nav nav-pills-mobile nav-border-anim" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" href="#mobile-menu-tab" role="tab" aria-controls="mobile-menu-tab" aria-selected="true">Menu</a>
+                     <ul wire:ignore.self class="menu-vertical sf-arrows">
+                                @if(count($category) > 0)
+                                    @foreach($category as $cat)
+                                        <li class="item-lead">
+                                            <a href="{{route('archiveProduct', ['slug' => $cat->slug, "id" => $cat->id])}}">{{$cat->nom}}</a>
+                                            @if(count($cat->children) > 0)
+                                                <ul wire:ignore.self style="left: 15%; top:100%; float:left;
+                                                z-index: 1002;">
+                                                    @foreach ($cat->children as $child)
+                                                        <li><a class="item-lead" href="{{route('archiveProduct', ['slug' => $child->slug, "id" => $child->id])}}">{{$child->nom}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </li>
+                                        
+                                    @endforeach
+                                @else
+                                    <li>Aucune catégorie </li>
+                                @endif
+                            </ul><!-- End .menu-vertical -->
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" id="mobile-cats-link" data-toggle="tab" href="#mobile-cats-tab" role="tab" aria-controls="mobile-cats-tab" aria-selected="false">Categories</a>
-                </li>
+                </li> --}}
             </ul>
 
-            <div class="social-icons">
+            <div class="social-icons mt-2">
                 <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
                 <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
                 <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
