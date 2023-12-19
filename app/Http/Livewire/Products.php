@@ -178,7 +178,9 @@ class Products extends Component
 
                 $p->save();
 
-                $p->tags()->attach($this->form["tags"]);
+                if ($this->form["tags"]) {
+                    $p->tags()->attach($this->form["tags"]);
+                }
 
                 $this->dispatchBrowserEvent("addProduct");
                 $this->changeType("list");

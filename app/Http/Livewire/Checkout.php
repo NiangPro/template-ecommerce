@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Acheminement;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Livraison;
 use App\Models\Order;
 use App\Models\PayTech;
 use App\Models\Product;
@@ -22,7 +23,7 @@ class Checkout extends Component
     public $payTech;
     public $subTotal;
     public $prodsCart;
-    public $montantTransport = 0.0;
+    public $montantTransport = 0;
     public $etatTransport;
     public $item_price;
     public $favoris = null;
@@ -39,6 +40,10 @@ class Checkout extends Component
         "email" => "",
     ];
 
+    public function initAmount(){
+        $this->montantTransport = 0;
+        $this->dispatchBrowserEvent("cachedSection");
+    }
     public function calculTransport($cle)
     {
         $this->montantTransport = 0;
@@ -59,16 +64,16 @@ class Checkout extends Component
     public function payer()
     {
         
-        $response = $this->payTech->send($this->item_price);
+        // $response = $this->payTech->send($this->item_price);
 
-        $success = $response["success"];
-        $errors = $response["errors"];
+        // $success = $response["success"];
+        // $errors = $response["errors"];
 
-        if (count($errors) > 0) {
-            $this->dispatchBrowserEvent('display-errors', [
-                'errors' => $errors,
-            ]);
-        }else{
+        // if (count($errors) > 0) {
+        //     $this->dispatchBrowserEvent('display-errors', [
+        //         'errors' => $errors,
+        //     ]);
+        // }else{
             
             $order = new Order([
                 'user_id' => auth()->user()->id,
@@ -84,12 +89,12 @@ class Checkout extends Component
                 $prix = $cart->product->reduction > 0 ? $cart->product->reduction:$cart->product->prix;
                 $order->products()->attach($cart->product->id, ['quantity' => $cart->qte, 'price' => $prix]);
                 $p = Product::where("id", $cart->product->id)->first();
-                $p->quantite = $p->quantite - $cart->qte;
+                $p->qte = $p->qte - $cart->qte;
                 $p->save();
             }
 
             $this->dispatchBrowserEvent("successOrder");
-        }
+        // }
     }
 
     public function render()
@@ -112,7 +117,8 @@ class Checkout extends Component
 
         $this->initProducts();
         return view('livewire.frontend.checkout', [
-            "achms" => Acheminement::orderBy("nom", "ASC")->get()
+            "achms" => Acheminement::orderBy("nom", "ASC")->get(),
+            "livraisons" => Livraison::orderBy("lieu", "ASC")->get()
         ])->layout("layouts.app", [
             "prodsCart" => $this->prodsCart,
             "total" => $total,

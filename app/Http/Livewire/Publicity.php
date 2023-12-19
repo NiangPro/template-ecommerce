@@ -33,7 +33,9 @@ class Publicity extends Component
         }
     }
 
-    public function editer(Publicite $pub){
+    public function editer($id){
+
+        $pub = Publicite::where("id", $id)->first();
         $this->form["id"] = $pub->id;
         $this->form["type"] = $pub->type;
         $this->form["product_id"] = $pub->product_id;

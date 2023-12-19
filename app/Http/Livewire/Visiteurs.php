@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Publicite;
 use App\Models\Shop;
@@ -21,6 +22,10 @@ class Visiteurs extends Component
     public $userOrders;
     public $imgEditing = null;
     public $photo;
+    public $title;
+    public $etat = "list";
+    public $com;
+    
     use WithFileUploads;
 
     public $form = [
@@ -74,7 +79,15 @@ class Visiteurs extends Component
         "form.image.image" => "Veillez selectionner une image",
     ];
 
-    
+    public function showFacture($id)
+    {
+        $c = Order::where("id", $id)->first();
+
+        $this->com = $c;
+
+        $this->etat = "show";
+        $this->title = "Les informations de la commande de ".$c->user->prenom." ".$c->user->nom;
+    }
     public function editProfil()
     {
         if ($this->photo) {
@@ -115,6 +128,11 @@ class Visiteurs extends Component
             $this->dispatchBrowserEvent("passwordNotFound");
         }
 
+    }
+
+    public function changeType($type)
+    {
+        $this->etat = $type;
     }
 
     public function init()
@@ -196,7 +214,7 @@ class Visiteurs extends Component
 
         return view('livewire.frontend.visiteurs',[
             "produits" => Product::orderBy("id", "DESC")->get(),
-
+            "shop" => Shop::first()
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,
