@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -186,7 +187,9 @@ class Admins extends Component
     {
         return view('livewire.admin.administrateur.admins', [
             "admins" => User::where("role", "admin")->paginate(6)
-        ])->layout("layouts.dashboard");
+        ])->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     public function mount()

@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="assets/images/smb.png" type="image/png" />
+	<link rel="icon" href="storage/images/{{$shop->image}}" type="image/png" />
 	<!--plugins-->
 	<link href="themes/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
 	<link href="themes/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-	<title>SMB</title>
+	<title>{{$shop->nom}}</title>
 	@livewireStyles
 
 </head>

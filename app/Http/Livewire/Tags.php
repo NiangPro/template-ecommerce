@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Shop;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -90,7 +91,9 @@ class Tags extends Component
     {
         return view('livewire.admin.tag.tags', [
             "tags" => Tag::orderBy("id", "DESC")->get()
-        ])->layout("layouts.dashboard");
+        ])->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     public function initForm()

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -128,7 +129,9 @@ class Categories extends Component
     {
         return view('livewire.admin.category.categories', [
             "categories" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get()
-        ])->layout("layouts.dashboard");
+        ])->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     protected function initForm()

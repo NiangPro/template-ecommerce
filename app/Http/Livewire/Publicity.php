@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use App\Models\Publicite;
+use App\Models\Shop;
 use Livewire\Component;
 
 class Publicity extends Component
@@ -32,7 +33,9 @@ class Publicity extends Component
         }
     }
 
-    public function editer(Publicite $pub){
+    public function editer($id){
+
+        $pub = Publicite::where("id", $id)->first();
         $this->form["id"] = $pub->id;
         $this->form["type"] = $pub->type;
         $this->form["product_id"] = $pub->product_id;
@@ -77,7 +80,9 @@ class Publicity extends Component
         return view('livewire.admin.publicity.publicity', [
             "produits" => Publicite::orderBy("id", "DESC")->get(),
             "prods" => Product::orderBy("id", "DESC")->get(),
-        ])->layout("layouts.dashboard");
+        ])->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     public function mount()

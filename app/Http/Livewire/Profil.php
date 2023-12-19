@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -100,7 +101,9 @@ class Profil extends Component
     }
     public function render()
     {
-        return view('livewire.admin.profil')->layout("layouts.dashboard");
+        return view('livewire.admin.profil')->layout("layouts.dashboard",[
+            "shop" => Shop::first()
+        ]);
     }
 
     public function mount()

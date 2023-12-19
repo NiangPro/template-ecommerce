@@ -2,12 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Acheminement as ModelsAcheminement;
+use App\Models\Livraison;
 use App\Models\Shop;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class Acheminement extends Component
+class Livraisons extends Component
 {
     public $type = "list";
     public $idDeleting = null;
@@ -15,42 +14,40 @@ class Acheminement extends Component
     public $title = "La liste des modes d'acheminement";
 
     public $form = [
-        "nom" => "",
+        "lieu" => "",
         "id" => null,
-        "nbrejour"=>0,
         "prix"=>0,
     ];
 
     protected $rules = [
-        "form.nom" => "required",
-        "form.nbrejour" => "required",
+        "form.lieu" => "required",
+        "form.prix" => "required",
     ];
 
     protected $messages = [
-        "form.nom.required" => "Le nom est obligatoire",
-        "form.nbrejour.required" => "Le nombre de jour est obligatoire",
+        "form.lieu.required" => "Le lieu est obligatoire",
+        "form.prix.required" => "Le prix est obligatoire",
     ];
 
     public function changeType($type)
     {
         $this->type = $type;
         if ($this->type == "add") {
-            $this->title = "Ajout mode d'acheminement";
+            $this->title = "Ajout Lieu de livraison";
         }elseif ($this->type == "edit") {
-            $this->title = "Edition mode d'acheminement";
+            $this->title = "Edition de lieu de livraison";
         }else{
-            $this->title = "La liste des modes d'acheminement";
+            $this->title = "La liste des lieux de livraison";
             $this->initForm();
         }
     }
 
     public function editer($id)
     {
-        $c = ModelsAcheminement::where("id", $id)->first();
+        $c = Livraison::where("id", $id)->first();
 
-        $this->form["nom"] = $c->nom;
+        $this->form["lieu"] = $c->lieu;
         $this->form["id"] = $c->id;
-        $this->form["nbrejour"] = $c->nbrejour;
         $this->form["prix"] = $c->prix;
 
         $this->changeType("edit");
@@ -63,13 +60,13 @@ class Acheminement extends Component
 
     public function delete()
     {
-        $cat = ModelsAcheminement::where("id", $this->idDeleting)->first();
+        $cat = Livraison::where("id", $this->idDeleting)->first();
 
         $cat->delete();
 
         $this->initForm();
 
-        $this->dispatchBrowserEvent("deleteAcheminement");
+        $this->dispatchBrowserEvent("deleteLivraison");
     }
 
     public function store()
@@ -77,34 +74,31 @@ class Acheminement extends Component
         $this->validate();
 
         if ($this->form["id"]) {
-            $cat = ModelsAcheminement::where("id", $this->form["id"])->first();
+            $cat = Livraison::where("id", $this->form["id"])->first();
 
-            $cat->nom = ucfirst($this->form["nom"]);
-            $cat->nbrejour = $this->form["nbrejour"];
+            $cat->lieu = ucfirst($this->form["lieu"]);
             $cat->prix = $this->form["prix"];
 
 
             $cat->save();
-            $this->dispatchBrowserEvent("updateAcheminement");
+            $this->dispatchBrowserEvent("updateLivraison");
 
         }else{
 
-            ModelsAcheminement::create([
-                "nom" => ucfirst($this->form["nom"]) ,
-                "nbrejour" => $this->form["nbrejour"],
+            Livraison::create([
+                "lieu" => ucfirst($this->form["lieu"]) ,
                 "prix" => $this->form["prix"],
             ]);
     
-            $this->dispatchBrowserEvent("addAcheminement");
+            $this->dispatchBrowserEvent("addLivraison");
         }
 
         $this->changeType("list");
     }
-
     public function render()
     {
-        return view('livewire.admin.acheminement.acheminement',[
-            "aches" => ModelsAcheminement::orderBy("nom", "ASC")->get()
+        return view('livewire.admin.livraison.livraisons',[
+            "livraisons" => Livraison::orderBy("lieu", "ASC")->get()
         ])->layout("layouts.dashboard",[
             "shop" => Shop::first()
         ]);
@@ -113,8 +107,7 @@ class Acheminement extends Component
     protected function initForm()
     {
         $this->form["id"] = null;
-        $this->form["nom"] = "";
-        $this->form["nbrejour"] = 0;
+        $this->form["lieu"] = "";
         $this->form["prix"] = 0;
         $this->idDeleting = null;
     }

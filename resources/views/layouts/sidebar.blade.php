@@ -1,10 +1,10 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="assets/images/smb.png" class="logo-icon" alt="logo icon">
+            <img src="storage/images/{{$shop->image}}" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">SMB</h4>
+            <h4 class="logo-text">{{$shop->sigle}}</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
@@ -62,10 +62,10 @@
             </a>
         </li>
         <li>
-            <a href="{{route("bareme")}}">
-                <div class="parent-icon"><i class="bx bx-ruler"></i>
+            <a href="{{route("livraison")}}">
+                <div class="parent-icon"><i class="bx bx-car"></i>
                 </div>
-                <div class="menu-title">Barèmes</div>
+                <div class="menu-title">Livraisons</div>
             </a>
         </li>
         <li>
@@ -103,8 +103,11 @@
                 <div class="menu-title">Paramètres</div>
             </a>
             <ul>
-                <li> <a href="authentication-signin.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Général</a>
+                @if(Auth()->user()->isSuperAdmin())
+
+                <li> <a href="{{route('general')}}" target="_blank"><i class="bx bx-right-arrow-alt"></i>Général</a>
                 </li>
+                @endif
                 <li> <a href="{{route("profil")}}" target="_blank"><i class="bx bx-right-arrow-alt"></i>Profil</a>
                 </li>
             </ul>

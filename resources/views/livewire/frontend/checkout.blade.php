@@ -131,6 +131,25 @@
                                                     <span><b>Montant du Transport</b> = {{$montantTransport}} FCFA</span>
                                                 </td>
                                             </tr> --}}
+                                            <tr>
+                                                <td ><b>Livraison</b></td>
+                                                <td >
+                                                    OUI <input type="radio" name="shipping" id="yesShipping"><br>
+                                                    NON <input type="radio" name="shipping" wire:click="initAmount"  id="noShipping">
+                                                </td>
+                                            </tr>
+                                            <tr id="mshipping">
+                                                <td colspan="2">
+                                                    <select name="" id="sshipping" wire:model="montantTransport" class="form-control">
+                                                        <option value="0">Selectionner un lieu</option>
+                                                        @foreach ($livraisons as $l)
+                                                        <option value="{{$l->prix}}">{{$l->lieu}} -> {{$l->prix}}</option>
+                                                        @endforeach
+                                                        <br>
+                                                        <b>Montant Livraison: {{$this->montantTransport}}</b>
+                                                    </select>
+                                                </td>
+                                            </tr>
                                             <tr class="summary-total">
                                                 <td>Total:</td>
                                                 <td>{{$item_price}} FCFA</td>
@@ -192,6 +211,31 @@
             window.location.reload();
         }, 3000);
     });
+    
+    let shipping = document.getElementById("yesShipping");
+    let mshipping = document.getElementById("mshipping");
+    let noShipping = document.getElementById("noShipping");
+    let sshipping = document.getElementById("sshipping");
+    mshipping.style.visibility = "hidden";
+
+    shipping.addEventListener("click", ()=>{
+        if (shipping.value) {
+            mshipping.style.visibility = "visible";
+        }
+    })
+
+    
+    window.addEventListener('cachedSection', event =>{
+        mshipping.style.visibility = "hidden";
+    });
+
+
+    noShipping.addEventListener("click", ()=>{
+        if (shipping.value) {
+            mshipping.style.visibility = "hidden";
+            sshipping.selectedIndex = 0;
+        }
+    })
 
 </script>
 

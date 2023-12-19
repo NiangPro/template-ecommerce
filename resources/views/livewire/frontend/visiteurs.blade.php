@@ -86,14 +86,19 @@
                                 </div><!-- .End .tab-pane -->
 
                                 <div wire:ignore.self class="tab-pane fade" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders-link">
+                                    @if($etat == "show")
+                                        <button  wire:click.prevent="changeType('list')" class="btn btn-info">Retour</button>
+                                        <button class="btn btn-sm btn-outline-success" onclick="return printDiv()" title="Facture"><i class="la la-print"></i> Imprimer</button>
+                                        @include('livewire.admin.commande.facture')
+                                    @else
                                     <p>Liste des commandés</p>
                                     <table class="table table-cart table-mobile">
                                         <thead>
                                             <tr>
                                                 <th>Référence</th>
-                                                <th>Produit</th>
                                                 <th>Livraison</th>
                                                 <th>Total</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
 
@@ -101,30 +106,24 @@
                                             @foreach($userOrders as $o)
                                                     <tr>
                                                         <td style="width: 25%">{{$o->reference}}</td>
-                                                        <td class="product-col" style="width: 35%">
-                                                            @foreach($o->products as $p)
-                                                                <div class="product">
-                                                                    <figure class="product-media">
-                                                                        <a href="#">
-                                                                            <img src="storage/images/{{ $p->image}}" alt="Product image">
-                                                                        </a>
-                                                                    </figure>
-
-                                                                    <h3 class="product-title">
-                                                                        <a href="#">{{$p->nom}}</a>
-                                                                    </h3><!-- End .product-title -->
-                                                                </div><!-- End .product -->
-                                                            @endforeach
-                                                        </td>
                                                         <td>{{$o->shipping}} F CFA</td>
                                                         <td class="price-col">{{$o->total_amount}} F CFA</td>
+                                                        <td>
+                                                            @if($o->statut == 0)
+                                                                <span class="badge bg-info">En attente</span>
+                                                            @elseif($o->statut == 1)
+                                                            <button class="btn btn-sm btn-outline-info" wire:click="showFacture({{$o->id}})" title="Facture"><i class="la la-print"></i></button>
+                                                            @else
+                                                                <span class="badge bg-danger">Rejetée</span>
+                                                            @endif
+                                                        </td>
                                                     </tr>
                                             
                                             @endforeach
                                         </tbody>
                                     </table><!-- End .table table-wishlist -->
                                     {{-- <a href="category.html" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a> --}}
-                                
+                                    @endif
                                 </div><!-- .End .tab-pane -->
 
                                 <div wire:ignore.self class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
@@ -265,6 +264,18 @@
         });
         location.reload();
     });
+
+    function printDiv() {
+        var printContents = document.getElementById('facture').innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+        location.reload();
+    }
 
 
 </script>

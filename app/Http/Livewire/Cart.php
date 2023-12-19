@@ -6,6 +6,7 @@ use App\Models\Cart as ModelsCart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Publicite;
+use App\Models\Shop;
 use App\Models\Souhait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -69,6 +70,7 @@ class Cart extends Component
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
             "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
             "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
+            "shop" => Shop::first()
         ]);
     }
 
