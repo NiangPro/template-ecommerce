@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/skins/skin-demo-4.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/demos/demo-4.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/nouislider/nouislider.css')}}">
     @livewireStyles
     </head>
 
@@ -137,6 +138,7 @@
     <script src="{{asset('assets/js/jquery.plugin.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.elevateZoom.min.js')}}"></script>
     <!-- Main JS File -->
     <script src="{{asset('assets/js/main.js')}}"></script>
     <script src="{{asset('assets/js/demos/demo-4.js')}}"></script>

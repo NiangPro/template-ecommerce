@@ -141,6 +141,16 @@
 
     });
 
+    window.addEventListener('deleteImageGalerie', event =>{
+        iziToast.success({
+        title: 'Image',
+        message: 'Image supprimée de la galerie avec succès',
+        position: 'topRight'
+        });
+        
+    });
+
+
 </script>
 
 @endsection

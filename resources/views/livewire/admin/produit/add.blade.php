@@ -37,12 +37,17 @@
                 <input type="number" min="0" step="0.01" placeholder="Entrer le poids du produit" class="form-control @error('form.poids') is-invalid @enderror" wire:model="form.poids">
                 @error('form.poids') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
-            <div class="form-group mb-4 col-md-6">
+            <div class="form-group mb-4 col-md-4">
                 <label for="">Description <span class="text-danger">*</span></label>
                 <textarea placeholder="Entrer la description du produit" class="form-control @error('form.description') is-invalid @enderror" wire:model="form.description"></textarea>
                 @error('form.description') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
-            <div class="form-group mb-4 col-md-6">
+            <div class="form-group mb-4 col-md-4">
+                <label for="">Infos supplementaires</label>
+                <textarea placeholder="Entrer la description du produit" class="form-control @error('form.supplementaire') is-invalid @enderror" wire:model="form.supplementaire"></textarea>
+                @error('form.supplementaire') <span class="error text-danger">{{$message}}</span> @enderror
+            </div>
+            <div class="form-group mb-4 col-md-4">
                 <label for="">Tags</label> <br>
                 <select wire:model="form.tags" multiple class="form-control">
                     <option value="">Veuillez selectionner des tags</option>
@@ -64,12 +69,34 @@
                 <img src="storage/images/{{$imgEditing}}" alt="Responsive image" width="200" height="150"><br>
                 @endif
             </div>
+            @if($form["id"])
+                <div class="form-group mb-4 col-md-4 mt-2">
+                    <label for="">Image Galerie</label>
+                    <input type="file" multiple placeholder="Entrer des images galerie" class="form-control @error('form.galeries') is-invalid @enderror" wire:model="form.galeries">
+                    @error('form.galeries') <span class="error text-danger">{{$message}}</span> @enderror
+                    <div wire:loading wire:target="form.galeries" class="text-success">Chargement...</div>
+                </div>
+                <div class="col-md-8 text-center mt-2" style="position: relative; display: flex; flex-wrap: wrap;">
+                    @if($form["galeries"])
+                        @foreach($form["galeries"] as $image)
+                            <img src="{{$image->temporaryUrl()}}" alt="Responsive image" width="200" height="150">
+                        @endforeach
+                        @elseif($imgGalerie)
+                        @foreach($imgGalerie as $image)
+                            <span style="position: relative; margin-bottom: 5px; margin-left: 2px">
+                                <img src="storage/images/{{$image->nom}}" alt="Responsive image" width="200" height="150">
+                                <a wire:click.prevent="removeGalerie({{$image->id}})" style="position: absolute; right: 4px;" type="bouton" class="btn btn-sm btn-danger"><i class="bx bx-trash"></i></a>
+                            </span>
+                                                   
+                        @endforeach
+                    @endif
+                </div>
+            @endif
         </div>
         @if($form["id"])
-        <button type="submit" class="btn btn-outline-warning">Modifier</button>
+            <button type="submit" class="btn btn-outline-warning">Modifier</button>
         @else
-        <button type="submit" class="btn btn-outline-success">Ajouter</button>
+            <button type="submit" class="btn btn-outline-success">Ajouter</button>
         @endif
     </form>
 </div>
-

@@ -17,18 +17,30 @@
                         <div class="product-details-top">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="product-gallery">
-                                        <figure class="product-main-image">
-                                            @foreach($product->tags as $t)
-                                                <span style="background-color: " class="product-label label-new">{{$t->nom}}</span>
-                                            @endforeach
-                                            <img id="product-zoom" src="{{asset('storage/images/'.$product->image)}}" data-zoom-image="assets/images/products/single/sidebar-gallery/1-big.jpg" alt="product image">
-
-                                            <a href="#" id="btn-product-gallery" class="btn-product-gallery">
-                                                <i class="icon-arrows"></i>
-                                            </a>
-                                        </figure><!-- End .product-main-image -->
-
+                                    <div wire:ignore.self class="product-gallery product-gallery-vertical">
+                                        <div class="row">
+                                            <figure class="product-main-image">
+                                                @foreach($product->tags as $t)
+                                                    <span style="background-color: " class="product-label label-new">{{$t->nom}}</span>
+                                                @endforeach
+                                                @if($imgGalerie)
+                                                    <img id="product-zoom" src="{{asset('storage/images/'.$imgGalerie)}}" data-zoom-image="{{asset('storage/images/'.$imgGalerie)}}" alt="product image">
+                                                @else
+                                                    <img id="product-zoom" src="{{asset('storage/images/'.$product->image)}}" data-zoom-image="{{asset('storage/images/'.$product->image)}}" alt="product image">
+                                                @endif
+                                                <a href="#product-zoom-gallery" id="btn-product-gallery" class="btn-product-gallery">
+                                                    <i class="icon-arrows"></i>
+                                                </a>
+                                            </figure><!-- End .product-main-image -->
+    
+                                            <div wire:ignore.self id="product-zoom-gallery" class="product-image-gallery">
+                                                @foreach($product->images as $img)
+                                                    <a class="product-gallery-item" href="#" data-image="{{asset('storage/images/'.$img->nom)}}" data-zoom-image="{{asset('storage/images/'.$img->nom)}}">
+                                                        <img src="{{asset('storage/images/'.$img->nom)}}" alt="image galerie">
+                                                    </a>
+                                                @endforeach
+                                            </div><!-- End .product-image-gallery -->
+                                        </div><!-- End .row -->
                                     </div><!-- End .product-gallery -->
                                 </div><!-- End .col-md-6 -->
 

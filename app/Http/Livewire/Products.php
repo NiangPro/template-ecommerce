@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use App\Models\Galerie;
 use App\Models\Product;
 use App\Models\Publicite;
 use App\Models\Tag;
@@ -18,8 +19,9 @@ class Products extends Component
     public $type = "list";
     public $title = "La liste des produits";
     public $imgEditing = null;
+    public $imgGalerie = [];
     public $idDeleting = null;
-
+    public $idproductGal;
     public $form = [
         "nom",
         "id" => null,
@@ -30,7 +32,9 @@ class Products extends Component
         "poids" => 0,
         "reduction" => 0,
         "image" => null,
-        "tags" => []
+        "tags" => [],
+        "supplementaire"=>null,
+        "galeries" =>[],
     ];
 
     protected $rules = [
@@ -41,6 +45,7 @@ class Products extends Component
         "form.reduction" => "required|integer",
         "form.qte" => "required|integer",
         "form.image" => "required|image",
+        "form.supplementaire" => "nullable|string",
     ];
 
     protected $messages = [
@@ -56,6 +61,15 @@ class Products extends Component
         "form.image.required" => "L'image est obligatoire",
         "form.image.image" => "Veuillez selectionner une image",
     ];
+
+    public function removeGalerie($idGalerie){
+        $g = Galerie::where("id", $idGalerie)->first();
+
+        $g->delete();
+
+        $this->dispatchBrowserEvent("deleteImageGalerie");
+        $this->imgGalerie = Galerie::where("product_id", $this->idproductGal)->get();
+    }
 
     public function changeType($type)
     {
@@ -107,12 +121,15 @@ class Products extends Component
         $this->form["nom"] = $c->nom;
         $this->form["id"] = $c->id;
         $this->form["description"] = $c->description;
+        $this->form["supplementaire"] = $c->supplementaire;;
         $this->form["qte"] = $c->qte;
         $this->form["category_id"] = $c->category_id;
         $this->form["prix"] = $c->prix;
         $this->form["reduction"] = $c->reduction;
         $this->form["tags"] = $c->tags->pluck('id')->toArray();
         $this->imgEditing = $c->image;
+        $this->imgGalerie = Galerie::where("product_id", $c->id)->get();
+        $this->idproductGal=$c->id;
 
         $this->changeType("edit");
     }
@@ -139,6 +156,7 @@ class Products extends Component
                 $p->qte = $this->form["qte"];
                 $p->poids = $this->form["poids"];
                 $p->reduction = $this->form["reduction"];
+                $p->supplementaire = $this->form["supplementaire"];
 
                 if ($this->form["image"]) {
                     $img_name = uniqid().".jpg";
@@ -151,7 +169,18 @@ class Products extends Component
                 $p->save();
 
                 $p->tags()->sync($this->form["tags"]);
-                
+                $g= new Galerie();
+            
+                if($this->form["galeries"]){
+                    foreach($this->form["galeries"] as $img){
+                        $img_name = uniqid().".jpg";
+                        $img->storeAs("public/images", $img_name);
+                        Galerie::create([
+                            "nom" => $img_name,
+                            "product_id" => $p->id,
+                        ]);
+                    }
+                }
                 $this->dispatchBrowserEvent("updateProduct");
                 $this->changeType("list");
             }
@@ -174,6 +203,7 @@ class Products extends Component
                 $p->reduction = $this->form["reduction"];
                 $p->category_id = $this->form["category_id"];
                 $p->image = $img_name;
+                $p->supplementaire = $this->form["supplementaire"];
 
                 $p->save();
 
@@ -201,14 +231,17 @@ class Products extends Component
         $this->form["nom"] = "";
         $this->form["description"] = "";
         $this->form["image"] = null;
+        $this->form["galeries"] = [];
         $this->form["prix"] = 0;
         $this->form["qte"] = 0;
         $this->form["poids"] = 0;
         $this->form["reduction"] = 0;
         $this->form["tags"] = [];
+        $this->form["supplementaire"]="";
 
         $this->idDeleting = null;
         $this->imgEditing = null;
+        $this->imgGalerie = [];
     }
    
     public function mount()

@@ -16,6 +16,12 @@ class SingleProduct extends Component
     public $favoris = null;
     public $qte = 1;
     public $singleProduct;
+    public $imgGalerie;
+
+    public function galerieImage($nameImg){
+        $this->imgGalerie = $nameImg;
+        dd($this->imgGalerie);
+    }
 
     public function isFavori($id_produit){
         if (Auth::user()) {
