@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="storage/images/{{$shop->image}}" class="logo-icon" alt="logo icon">
+            <img src="{{asset('storage/images/'.$shop->image)}}" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <h4 class="logo-text">{{$shop->sigle}}</h4>
