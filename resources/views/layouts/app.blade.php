@@ -81,9 +81,9 @@
 
             <div class="social-icons mt-2">
                 <a href="https://wa.me/777283722" class="social-icon" target="_blank" title="Facebook"><i class="icon-whatsapp"></i></a>
-                {{-- <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                <a href="https://www.facebook.com/sunu.market.business" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/sunu-market-business" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                {{-- <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
                 <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a> --}}
                 
             </div><!-- End .social-icons -->

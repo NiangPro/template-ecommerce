@@ -52,7 +52,7 @@
                                             <div class="ratings">
                                                 <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
-                                            <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
+                                            {{-- <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a> --}}
                                         </div><!-- End .rating-container -->
 
                                         <div class="product-price">
@@ -91,13 +91,7 @@
                                                 <a href="#">{{$product->category->nom}}</a>,
                                             </div><!-- End .product-cat -->
 
-                                            {{-- <div class="social-icons social-icons-sm">
-                                                <span class="social-label">Share:</span>
-                                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                                <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                                <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                                <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-                                            </div> --}}
+                                           
                                         </div><!-- End .product-details-footer -->
                                     </div><!-- End .product-details -->
                                 </div><!-- End .col-md-6 -->
@@ -287,6 +281,15 @@
                                                 </div><!-- End .ratings -->
                                                 {{-- <span class="ratings-text">( 4 Reviews )</span> --}}
                                             </div><!-- End .rating-container -->
+                                            <div class="product-nav product-nav-thumbs">
+                                                @if($product->images)
+                                                    @foreach($product->images as $img)
+                                                        <a href="produit/{{$p->id}}">
+                                                            <img src="{{asset('storage/images/'.$img->nom)}}" alt="image galerie">
+                                                        </a>
+                                                    @endforeach
+                                                @endif
+                                            </div><!-- End .product-nav -->
                                         </div><!-- End .product-body -->
                                     </div><!-- End .product -->
                                 </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->

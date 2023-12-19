@@ -10,38 +10,7 @@
                                 Showing <span>9 of 56</span> Products
                             </div><!-- End .toolbox-info -->
                         </div><!-- End .toolbox-left -->
-                        {{-- 
-                        <div class="toolbox-right">
-                            <div class="toolbox-sort">
-                                <label for="sortby">Sort by:</label>
-                                <div class="select-custom">
-                                    <select name="sortby" id="sortby" class="form-control">
-                                        <option value="popularity" selected="selected">Most Popular</option>
-                                        <option value="rating">Most Rated</option>
-                                        <option value="date">Date</option>
-                                    </select>
-                                </div>
-                            </div><!-- End .toolbox-sort -->
-                            <div class="toolbox-layout">
-                                <a href="category-list.html" class="btn-layout">
-                                    <svg width="16" height="10">
-                                        <rect x="0" y="0" width="4" height="4" />
-                                        <rect x="6" y="0" width="10" height="4" />
-                                        <rect x="0" y="6" width="4" height="4" />
-                                        <rect x="6" y="6" width="10" height="4" />
-                                    </svg>
-                                </a>
-
-                                <a href="category-2cols.html" class="btn-layout">
-                                    <svg width="10" height="10">
-                                        <rect x="0" y="0" width="4" height="4" />
-                                        <rect x="6" y="0" width="4" height="4" />
-                                        <rect x="0" y="6" width="4" height="4" />
-                                        <rect x="6" y="6" width="4" height="4" />
-                                    </svg>
-                                </a>
-                            </div><!-- End .toolbox-layout -->
-                        </div><!-- End .toolbox-right --> --}}
+                       
                     </div><!-- End .toolbox -->
 
                     <div class="products mb-3">
@@ -79,31 +48,21 @@
                                             <h3 class="product-title"><a href="{{route('singleProduct', ["id" => $p->id])}}">{{ $p->nom}}</a></h3><!-- End .product-title -->
                                             <div class="product-price">
                                                 @if($p->reduction!=0)
-                                                    <span class="new-price">{{$p->reduction}}</span>F CFA
-                                                    <span class="old-price ml-2">{{$p->prix}}</span>F CFA
+                                                    <span class="new-price">{{$p->reduction}}F CFA</span>
+                                                    <span class="old-price ml-2">{{$p->prix}}F CFA</span>
                                                 @else
-                                                    <span class="new-price">{{$p->prix}}</span>F CFA
+                                                    <span class="new-price">{{$p->prix}}F CFA</span>
                                                 @endif
                                             </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                {{-- <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings --> --}}
-                                                {{-- <span class="ratings-text">( 2 vue )</span> --}}
-                                            </div><!-- End .rating-container -->
-
-                                            {{-- <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="{{asset('storage/images/'.$p->image)}}" alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="{{asset('storage/images/'.$p->image)}}" alt="product desc">
-                                                </a>
-
-                                                <a href="#">
-                                                    <img src="{{asset('storage/images/'.$p->image)}}" alt="product desc">
-                                                </a>
-                                            </div> --}}
+                                            <div class="product-nav product-nav-thumbs">
+                                                @if($p->images)
+                                                    @foreach($p->images as $img)
+                                                        <a href="produit/{{$p->id}}">
+                                                            <img src="{{asset('storage/images/'.$img->nom)}}" alt="image galerie">
+                                                        </a>
+                                                    @endforeach
+                                                @endif
+                                            </div><!-- End .product-nav -->
                                         </div>
                                     </div>
                                 </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->

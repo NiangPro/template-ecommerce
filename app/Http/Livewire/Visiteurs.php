@@ -115,8 +115,8 @@ class Visiteurs extends Component
             'form.password' => 'required|string|min:6|confirmed',
         ]);
 
-        if (Auth::check($this->form['current_password'], Auth::user()->password) == 0) {
-            $user = User::where('id', Auth::user()->id)->first();
+        $user = User::where('id', Auth::user()->id)->first();
+         if (Hash::check($this->form["current_password"], $user->password)) {
 
             $user->password = Hash::make($this->form['password']);
 
