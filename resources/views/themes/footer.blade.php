@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about mt-n5">
-                        <a href="{{route('accueil')}}"><img src="{{asset('storage/images/'.$shop->image)}}" class="footer-logo" alt="Footer Logo" width="200" height="25"></a>
+                        <a href="{{route('accueil')}}"><img src="{{asset('/storage/images/'.$shop->image)}}" class="footer-logo" alt="Footer Logo" width="200" height="25"></a>
                     </div><!-- End .widget about-widget -->
                     <p class="mt-n5 ml-5">{{$shop->slogan}} </p>
                     <a href="#" ><i class="icon-envelope"></i>{{$shop->email}}</a>
