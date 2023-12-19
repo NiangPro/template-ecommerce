@@ -105,10 +105,10 @@
             <ul>
                 @if(Auth()->user()->isSuperAdmin())
 
-                <li> <a href="{{route('general')}}" target="_blank"><i class="bx bx-right-arrow-alt"></i>Général</a>
+                <li> <a href="{{route('general')}}"><i class="bx bx-right-arrow-alt"></i>Général</a>
                 </li>
                 @endif
-                <li> <a href="{{route("profil")}}" target="_blank"><i class="bx bx-right-arrow-alt"></i>Profil</a>
+                <li> <a href="{{route("profil")}}"><i class="bx bx-right-arrow-alt"></i>Profil</a>
                 </li>
             </ul>
         </li>
