@@ -155,7 +155,7 @@ class Products extends Component
 
             if($this->form["reduction"] >= $this->form["prix"]){
                 $this->dispatchBrowserEvent("overReduction");
-            }else if($this->form["type"] == 1 && $this->form["acheminement_id"] ==""){
+            }else if($this->form["type"] == 1 && !$this->form["acheminement_id"]){
                 $this->dispatchBrowserEvent("noPays");
             }else{
                 $p = Product::where("id", $this->form["id"])->first();
@@ -201,7 +201,7 @@ class Products extends Component
             $this->validate();
             if($this->form["reduction"] >= $this->form["prix"]){
                 $this->dispatchBrowserEvent("overReduction");
-            }else if($this->form["type"] == 1 && $this->form["acheminement_id"] ==""){
+            }else if($this->form["type"] == 1 && !$this->form["acheminement_id"]){
                 $this->dispatchBrowserEvent("noPays");
             }else{
                 $img_name = uniqid().".jpg";

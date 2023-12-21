@@ -58,13 +58,13 @@
             @if($showPays == 1)
             <div class="form-group mb-4 col-md-4">
                 <label for="">Pays <span class="text-danger">*</span></label>
-                <select class="form-control" wire:model="form.category_id">
+                <select class="form-control" wire:model="form.acheminement_id">
                     <option value="">Veuillez selectionner un pays</option>
                     @foreach ($pays as $c)
                         <option value="{{$c->id}}"> {{$c->pays}}</option>
                     @endforeach
                 </select>
-                @error('form.category_id') <span class="error text-danger">{{$message}}</span> @enderror
+                @error('form.acheminement_id') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             @endif
             <div class="form-group mb-4 col-md-4">

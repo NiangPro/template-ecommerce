@@ -22,6 +22,7 @@ use App\Http\Livewire\Products;
 use App\Http\Livewire\Profil;
 use App\Http\Livewire\Affiche;
 use App\Http\Livewire\OutProducts;
+use App\Http\Livewire\SingleCheckout;
 use App\Http\Livewire\SingleProduct;
 use App\Http\Livewire\Tags;
 use App\Http\Livewire\Visiteurs;
@@ -68,5 +69,6 @@ Route::get("mon-profil", Profil::class)->name("profil");
 Route::get("general", General::class)->name("general");
 Route::get("produits_exterieurs", OutProducts::class)->name("outproduct");
 Route::get("produit/{id}", SingleProduct::class)->name("singleProduct");
+Route::get("checkout-exterieur/{id}", SingleCheckout::class)->name("singleCheckout");
 Route::get("archive-produit/{slug}-{id}", ArchiveProduct::class)->name("archiveProduct");
 
