@@ -80,9 +80,9 @@
                                             <td><a href="#">{{str($singleProduct->nom)->limit(17)}}</a></td>
                                             <td>
                                                 @if($singleProduct->reduction > 0) 
-                                                    {{$singleProduct->reduction * $singleProduct->qte}}
+                                                    {{$singleProduct->reduction * $qte}}
                                                 @else
-                                                    {{$singleProduct->prix * $singleProduct->qte}}
+                                                    {{$singleProduct->prix * $qte}}
                                                 @endif
                                                 F</td>
                                         </tr>
@@ -98,9 +98,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">
-                                                Frais par Bateaux: <br>
-                                                Prix d'un kg par bateau
+                                            <td colspan="2" class="text-left">
+                                                <u><b>Frais par {{$typeAcheminement}}</b></u>: <br>
+                                                Prix d'un kg par {{$typeAcheminement}} -> <strong>{{$prixAcheminement}} FCFA</strong> <br>
+                                                Nombre de jours par {{$typeAcheminement}} -> <strong>{{$jourAcheminement}} jours</strong> <br><br>
+                                                <strong><u>Formule</u>: </strong><br> Poids Produit x Qte x Prix d'un kg {{$typeAcheminement}} = Total Frais <br>
+                                                {{$singleProduct->poids}} x {{$qte}} x {{$prixAcheminement}} = {{$prixAcheminement * $singleProduct->poids * $qte}} FCFA <br>
+                                                <br>
+                                                <h6>Frais Acheminement: {{$montantAcheminement}} FCFA</h6>
+
                                             </td>
                                         </tr>
                                         <tr>

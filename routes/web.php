@@ -69,6 +69,6 @@ Route::get("mon-profil", Profil::class)->name("profil");
 Route::get("general", General::class)->name("general");
 Route::get("produits_exterieurs", OutProducts::class)->name("outproduct");
 Route::get("produit/{id}", SingleProduct::class)->name("singleProduct");
-Route::get("checkout-exterieur/{id}", SingleCheckout::class)->name("singleCheckout");
+Route::get("checkout-exterieur/{id}/{qte}", SingleCheckout::class)->name("singleCheckout");
 Route::get("archive-produit/{slug}-{id}", ArchiveProduct::class)->name("archiveProduct");
 

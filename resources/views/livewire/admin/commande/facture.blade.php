@@ -53,12 +53,22 @@
                 <table class="table table-bordered">
                     <tr>
                         <td>Montant Total Ht</td>
-                        <td class="text-center">{{$com->total_amount - $com->shipping}} F CFA</td>
+                        @if($com->prix_acheminement > 0)
+                        <td class="text-center">{{$com->total_amount - ($com->shipping +$com->prix_acheminement*$com->products[0]->poids * $com->products[0]->pivot->quantity)}} F CFA</td>
+                        @else
+                        <td class="text-center">{{$com->total_amount - ($com->shipping )}} F CFA</td>
+                        @endif
                     </tr>
                     <tr>
                         <td>Montant Livraison</td>
                         <td class="text-center">{{$com->shipping}} F CFA</td>
                     </tr>
+                    @if($com->prix_acheminement > 0)
+                    <tr>
+                        <td>Montant Acheminement</td>
+                        <td class="text-center">{{$com->prix_acheminement * $com->products[0]->poids * $com->products[0]->pivot->quantity}} F CFA</td>
+                    </tr>
+                    @endif
                     <tr>
                         <td>Montant Total</td>
                         <td class="h5 text-success text-center">{{$com->total_amount}} F CFA</td>
