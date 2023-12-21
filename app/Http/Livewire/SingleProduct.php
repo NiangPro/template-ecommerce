@@ -19,11 +19,6 @@ class SingleProduct extends Component
     public $singleProduct;
     public $imgGalerie;
 
-    public function galerieImage($nameImg){
-        $this->imgGalerie = $nameImg;
-        dd($this->imgGalerie);
-    }
-
     public function isFavori($id_produit){
         if (Auth::user()) {
             return Souhait::where("product_id", $id_produit)->where("user_id", Auth::user()->id)->first();

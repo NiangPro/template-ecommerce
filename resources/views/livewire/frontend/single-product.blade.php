@@ -120,20 +120,9 @@
                                 <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
                                     <div class="product-desc-content">
                                         <h3>Information</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
+                                        <p>{{$product->supplementaire}}. </p>
 
-                                        <h3>Fabric & care</h3>
-                                        <ul>
-                                            <li>Faux suede fabric</li>
-                                            <li>Gold tone metal hoop handles.</li>
-                                            <li>RI branding</li>
-                                            <li>Snake print trim interior </li>
-                                            <li>Adjustable cross body strap</li>
-                                            <li> Height: 31cm; Width: 32cm; Depth: 12cm; Handle Drop: 61cm</li>
-                                        </ul>
-
-                                        <h3>Size</h3>
-                                        <p>one size</p>
+                                       
                                     </div><!-- End .product-desc-content -->
                                 </div><!-- .End .tab-pane -->
                             </div><!-- End .tab-content -->
@@ -282,9 +271,9 @@
                                                 {{-- <span class="ratings-text">( 4 Reviews )</span> --}}
                                             </div><!-- End .rating-container -->
                                             <div class="product-nav product-nav-thumbs">
-                                                @if($product->images)
-                                                    @foreach($product->images as $img)
-                                                        <a href="produit/{{$p->id}}">
+                                                @if($p->images)
+                                                    @foreach($p->images as $img)
+                                                        <a href="{{route('singleProduct', ["id" => $p->id])}}">
                                                             <img src="{{asset('storage/images/'.$img->nom)}}" alt="image galerie">
                                                         </a>
                                                     @endforeach
