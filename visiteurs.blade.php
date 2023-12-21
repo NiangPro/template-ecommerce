@@ -201,7 +201,7 @@
                                                         @error('form.current_password') <span class="error text-danger">{{$message}}</span> @enderror
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <label for="">Nouveau mot de passe <span class="text-danger">*</span></label>
+                                                        <label for="">Noouveau mot de passe <span class="text-danger">*</span></label>
                                                         <input type="password" placeholder="Entrer le mot de passe" class="form-control @error('form.password') is-invalid @enderror" wire:model="form.password">
                                                         @error('form.password') <span class="error text-danger">{{$message}}</span> @enderror
                                                     </div>
