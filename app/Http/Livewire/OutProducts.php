@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Acheminement;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
