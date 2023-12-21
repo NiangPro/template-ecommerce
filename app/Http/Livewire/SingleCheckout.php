@@ -21,7 +21,9 @@ class SingleCheckout extends Component
     public $idProduit = null;
     public $singleProduct;
     public $subTotal;
+    public $etatAch = 0;
     public $montantTransport = 0;
+    public $montantAcheminement = 0;
     public $item_price;
     public $comments;
     public $form = [
@@ -40,6 +42,15 @@ class SingleCheckout extends Component
     public function initAmount(){
         $this->montantTransport = 0;
         $this->dispatchBrowserEvent("cachedSection");
+    }
+
+    public function changeEtat($type)
+    {
+        if ($type == "bateau") {
+            $this->etatAch = 0;
+        }else{
+            $this->etatAch = 1;
+        }
     }
 
     public function render()

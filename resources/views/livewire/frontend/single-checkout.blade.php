@@ -93,8 +93,14 @@
                                         <tr>
                                             <td ><b>Mode Acheminement</b></td>
                                             <td >
-                                                Bateau <input type="radio" name="ach" id="bateau"><br>
-                                                Avion <input type="radio" name="ach" id="avion">
+                                                Bateau <input type="radio" wire:click="changeEtat('bateau')" @if($etatAch == 0) checked @endif name="ach" id="bateau"><br>
+                                                Avion <input type="radio" wire:click="changeEtat('avion')" @if($etatAch == 1) checked @endif name="ach" id="avion">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Frais par Bateaux: <br>
+                                                Prix d'un kg par bateau
                                             </td>
                                         </tr>
                                         <tr>
