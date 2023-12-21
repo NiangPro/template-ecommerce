@@ -21,6 +21,6 @@ class Acheminement extends Model
 
     public function produits()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(Product::class);
     }
 }
