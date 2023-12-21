@@ -16,19 +16,25 @@ class OutProducts extends Component
 {
     public $prodsCart;
     public $favoris;
-    public $pays="";
+    public $acheminements;
+    public $filters = [
+        'pays' => [],
+    ];
 
-    public function selectedPays($pays){
-        $this->pays=$pays;
-        if($this->pays){
-            return Acheminement::where("pays", $this->pays)->orderBy("id", "DESC")->get();
-        }else{
-            return Acheminement::orderBy("pays", "ASC")->get();
+    public function getFilter(){
+        $this->filters['pays'] = array_filter($this->filters['pays']);
+
+        if (empty($this->filters['pays'])) {
+            return Acheminement::all();
         }
+
+        return Acheminement::whereIn('pays', array_keys($this->filters['pays']))->get();
+
     }
 
     public function render()
     {
+        $this->acheminements = $this->getFilter();
         $this->prodsCart = null;
         $total = 0;
         if (Auth::user()) {
@@ -39,11 +45,17 @@ class OutProducts extends Component
             }
 
             $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
+
+            // $test = Acheminement::all();
+            // foreach($test as $t){
+            //     dd($t->produits);
+            // }
+            
         }
         
         return view('livewire.frontend.out-products',[
-            "outproducts" => Acheminement::orderBy('pays', 'ASC')->get(),
-            "paysSelected" => $this->selectedPays($this->pays),
+            "acheminements" => $this->acheminements,
+            "outproducts" => Acheminement::all(),
         ])->layout("layouts.app", [
             "prodsCart" => $this->prodsCart,
             "total" => $total,
