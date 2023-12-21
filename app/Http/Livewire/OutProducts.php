@@ -15,6 +15,17 @@ class OutProducts extends Component
 {
     public $prodsCart;
     public $favoris;
+    public $pays="";
+
+    public function selectedPays($pays){
+        $this->pays=$pays;
+        if($this->pays){
+            return Acheminement::where("pays", $this->pays)->orderBy("id", "DESC")->get();
+        }else{
+            return Acheminement::orderBy("pays", "ASC")->get();
+        }
+    }
+
     public function render()
     {
         $this->prodsCart = null;
@@ -29,7 +40,10 @@ class OutProducts extends Component
             $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
         }
         
-        return view('livewire.frontend.out-products')->layout("layouts.app", [
+        return view('livewire.frontend.out-products',[
+            "outproducts" => Acheminement::orderBy('pays', 'ASC')->get(),
+            "paysSelected" => $this->selectedPays($this->pays),
+        ])->layout("layouts.app", [
             "prodsCart" => $this->prodsCart,
             "total" => $total,
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),

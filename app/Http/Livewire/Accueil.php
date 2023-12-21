@@ -46,7 +46,7 @@ class Accueil extends Component
     }
     
     public function changeCategory($idCategory){
-        $this->tabpanProduct = Product::where("category_id", $idCategory)->orderBy("id", "DESC")->limit(6)->get();
+        $this->tabpanProduct = Product::where("category_id", $idCategory)->where("type", 0)->orderBy("id", "DESC")->limit(6)->get();
     }
     
     public function addToCart($product_id)
@@ -89,19 +89,19 @@ class Accueil extends Component
             'parteners' => Partener::all(),
             'categories' => Category::orderBy("nom", "ASC")->Limit(12)->get(),
             'categoryType' => Category::orderBy("id", "DESC")->Limit(4)->get(),
-            "produits" => Product::orderBy("id", "DESC")->get(),
-            "produitsRec" => Product::orderBy("id", "DESC")->Limit(4)->get(),
-            "produitSlider" => Product::orderBy("id", "DESC")->Limit(5)->get(),
+            "produits" => Product::orderBy("id", "DESC")->where("type", 0)->get(),
+            "produitsRec" => Product::orderBy("id", "DESC")->where("type", 0)->Limit(4)->get(),
+            "produitSlider" => Product::orderBy("id", "DESC")->where("type", 0)->Limit(5)->get(),
             "CategorieSlider" => Category::orderBy("id", "DESC")->Limit(4)->get(),
             "banner" => Publicite::where("type", "banner")->first(),
             "minipubs" => Publicite::where("type", "mini")->limit(3)->get(),
-            "offreproduits" => Product::orderBy("id", "DESC")->where("reduction", "!=", 0)->limit(2)->get()
+            "offreproduits" => Product::orderBy("id", "DESC")->where("type", 0)->where("reduction", "!=", 0)->limit(2)->get()
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,
             "favoris" => $favoris,
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
-            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
+            "product" => Product::orderBy("id", "DESC")->where("type", 0)->Limit(6)->get(),
             "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
             "shop" => Shop::first()
         ]);

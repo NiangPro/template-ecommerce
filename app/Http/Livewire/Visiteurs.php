@@ -213,13 +213,13 @@ class Visiteurs extends Component
         $this->userOrders = auth()->user()->orders()->with('products')->get();
 
         return view('livewire.frontend.visiteurs',[
-            "produits" => Product::orderBy("id", "DESC")->get(),
+            "produits" => Product::orderBy("id", "DESC")->where("type", 0)->get(),
             "shop" => Shop::first()
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
             "total" => $total,
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
-            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
+            "product" => Product::orderBy("id", "DESC")->where("type", 0)->Limit(6)->get(),
             "favoris" => $this->favoris,
             "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
             "shop" => Shop::first()

@@ -75,10 +75,10 @@ class ArchiveProduct extends Component
         $this->filters['categories'] = array_filter($this->filters['categories']);
 
         if (empty($this->filters['categories'])) {
-            return Product::where("category_id", $this->idCategory)->orderBy("id", "DESC")->paginate(6);
+            return Product::where("category_id", $this->idCategory)->where("type", 0)->orderBy("id", "DESC")->paginate(6);
         }
 
-        return Product::whereIn('category_id', array_keys($this->filters['categories']))->orderBy("id", "DESC")->paginate(6);
+        return Product::whereIn('category_id', array_keys($this->filters['categories']))->where("type", 0)->orderBy("id", "DESC")->paginate(6);
 
     }
 
@@ -109,7 +109,7 @@ class ArchiveProduct extends Component
             "total" => $total,
             "favoris" => $favoris,
             "category" => Category::orderBy("nom", "ASC")->where("parent_id", null)->get(),
-            "product" => Product::orderBy("id", "DESC")->Limit(6)->get(),
+            "product" => Product::orderBy("id", "DESC")->where("type", 0)->Limit(6)->get(),
             "menupubs" => Publicite::where("type", "mini")->limit(3)->get(),
             "shop" => Shop::first()
         ]);

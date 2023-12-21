@@ -7,7 +7,7 @@
                     <div class="toolbox">
                         <div class="toolbox-left">
                             <div class="toolbox-info">
-                                Showing <span>9 of 56</span> Products
+                                <span>{{count($produits)}}</span>Produit(s)
                             </div><!-- End .toolbox-info -->
                         </div><!-- End .toolbox-left -->
                        

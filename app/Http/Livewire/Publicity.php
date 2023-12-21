@@ -79,7 +79,7 @@ class Publicity extends Component
     {
         return view('livewire.admin.publicity.publicity', [
             "produits" => Publicite::orderBy("id", "DESC")->get(),
-            "prods" => Product::orderBy("id", "DESC")->get(),
+            "prods" => Product::orderBy("id", "DESC")->where("type", 0)->get(),
         ])->layout("layouts.dashboard",[
             "shop" => Shop::first()
         ]);
