@@ -18,7 +18,7 @@ class Home extends Component
             "clients" => User::where("role", "client")->get(),
             "produits" => Product::all(),
             "categories" => Category::all(),
-            "orders" => Order::orderBy("id", "DESC")->limit(10)->get(),
+            "orders" => Order::orderBy("id", "DESC")->where("acheminement_id", "=", null)->limit(10)->get(),
             "commandes" => Order::all()
         ])->layout("layouts.dashboard",[
             "shop" => Shop::first()

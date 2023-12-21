@@ -6,6 +6,8 @@ use App\Models\Acheminement;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Livraison;
+use App\Models\Order;
+use App\Models\PayTech;
 use App\Models\Product;
 use App\Models\Publicite;
 use App\Models\Shop;
@@ -21,11 +23,16 @@ class SingleCheckout extends Component
     public $idProduit = null;
     public $singleProduct;
     public $subTotal;
+    public $payTech;
     public $etatAch = 0;
     public $montantTransport = 0;
+    public $prixAcheminement = 0;
+    public $jourAcheminement;
+    public $typeAcheminement;
     public $montantAcheminement = 0;
     public $item_price;
     public $comments;
+    public $qte;
     public $form = [
         "id" => null,
         "nom" => "",
@@ -48,9 +55,59 @@ class SingleCheckout extends Component
     {
         if ($type == "bateau") {
             $this->etatAch = 0;
+            $this->prixAcheminement = $this->singleProduct->acheminement->prix_bateau;
+            $this->jourAcheminement = $this->singleProduct->acheminement->nbrejour_bateau;
+            $this->typeAcheminement = "Bâteau";
         }else{
             $this->etatAch = 1;
+            $this->prixAcheminement = $this->singleProduct->acheminement->prix_avion;
+            $this->jourAcheminement = $this->singleProduct->acheminement->nbrejour_avion;
+            $this->typeAcheminement = "Avion";
         }
+
+        $this->montantAcheminement = $this->singleProduct->poids * $this->qte * $this->prixAcheminement;
+
+    }
+
+    public function payer()
+    {
+        
+        // $response = $this->payTech->send($this->item_price);
+
+        // $success = $response["success"];
+        // $errors = $response["errors"];
+
+        // if (count($errors) > 0) {
+        //     $this->dispatchBrowserEvent('display-errors', [
+        //         'errors' => $errors,
+        //     ]);
+        // }else{
+            
+            $order = new Order([
+                'user_id' => auth()->user()->id,
+                'total_amount' => $this->item_price,
+                'shipping' => $this->montantTransport,
+                'comments' => $this->comments,
+                'reference' => "#smb".date("dmYHis"),
+                'acheminement_id' => $this->singleProduct->acheminement->id,
+                'prix_acheminement' => $this->prixAcheminement,
+            ]);
+            
+            $order->save();
+
+            $prix = $this->singleProduct->reduction > 0 ? $this->singleProduct->reduction:$this->singleProduct->prix;
+            $order->products()->attach($this->singleProduct->id, ['quantity' => $this->qte, 'price' => $prix]);
+            $p = Product::where("id", $this->singleProduct->id)->first();
+            if ($p->qte - $this->qte < 0) {
+                $p->qte = 0;
+            }else{
+
+                $p->qte = $p->qte - $this->qte;
+            }
+            $p->save();
+
+            $this->dispatchBrowserEvent("successOrder");
+        // }
     }
 
     public function render()
@@ -68,6 +125,8 @@ class SingleCheckout extends Component
         }
 
         $this->initProducts();
+        $this->payTech = new PayTech();
+
         
         return view('livewire.frontend.single-checkout',[
             "achms" => Acheminement::orderBy("pays", "ASC")->get(),
@@ -83,9 +142,10 @@ class SingleCheckout extends Component
         ]);
     }
 
-    public function mount($id)
+    public function mount($id, $qte)
     {
         $this->idProduit = $id;
+        $this->qte = $qte;
         $this->singleProduct = Product::where("id", $this->idProduit)->first();
 
         $u = User::where("id", Auth::user()->id)->first();
@@ -99,18 +159,24 @@ class SingleCheckout extends Component
         $this->form["nationalite"] = $u->nationalite;
         $this->form["adresse"] = $u->adresse;
         $this->form["pays"] = $u->pays;
+
+        $this->prixAcheminement = $this->singleProduct->acheminement->prix_bateau;
+        $this->jourAcheminement = $this->singleProduct->acheminement->nbrejour_bateau;
+        $this->typeAcheminement = "Bâteau";
+
+        $this->montantAcheminement = $this->singleProduct->poids * $this->qte * $this->prixAcheminement;
     }
 
     public function initProducts(){
         $this->subTotal = 0;
         if ($this->singleProduct->reduction > 0) {
-            $this->subTotal += ($this->singleProduct->reduction*$this->singleProduct->qte);
+            $this->subTotal = ($this->singleProduct->reduction*$this->qte);
         } else {
-            $this->subTotal += ($this->singleProduct->prix*$this->singleProduct->qte);
+            $this->subTotal = ($this->singleProduct->prix*$this->qte);
         }
         
         
-        $this->item_price = $this->subTotal + $this->montantTransport;
+        $this->item_price = $this->subTotal + $this->montantTransport + $this->montantAcheminement;
 
     }
 }
