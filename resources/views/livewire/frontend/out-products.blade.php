@@ -45,6 +45,12 @@
                                                     <span class="new-price">{{$p->prix}}F CFA</span>
                                                 @endif
                                             </div><!-- End .product-price -->
+                                            <div class="ratings-container">
+                                                <div class="ratings">
+                                                    <div class="mt-1">Pays: <a href="produit/{{$p->id}}" class="badge badge-success text-center">{{$p->acheminement->pays}}</a></div>
+                                                    <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                                                </div><!-- End .ratings -->
+                                            </div><!-- End .rating-container -->
                                             <div class="product-nav product-nav-thumbs">
                                                 @if($p->images)
                                                     @foreach($p->images as $img)
@@ -89,7 +95,6 @@
                                                     <input type="checkbox" wire:model="filters.pays.{{ $out->pays }}" class="custom-control-input" id="cat-{{$out->id}}">
                                                     <label class="custom-control-label" for="cat-{{$out->id}}">{{$out->pays}}</label>
                                                 </div>
-                                                {{-- <span class="item-count">{{count($c->produits)}}</span> --}}
                                             </div><!-- End .filter-item -->
                                         @endforeach
                                     </div><!-- End .filter-items -->
@@ -124,15 +129,7 @@
                                             <a href="produit/{{$p->id}}">
                                                 <img src="{{asset('storage/images/'.$p->image)}}" alt="Product image" class="product-image">
                                             </a>
-        
-                                            {{-- <div class="product-action-vertical">
-                                                @if($this->isFavori($p->id))
-                                                    <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-fav btn-wish" title="Ajouer au favori"><i class="icon-heart"></i></a>
-                                                @else
-                                                    <a wire:click.prevent="addToWishlist({{$p->id}})" class="btn-product-icon btn-wishlist btn-fav" title="Ajouer au favori"></a>
-                                                @endif 
-                                            </div><!-- End .product-action -->--}}
-        
+
                                             <div class="product-action">
                                                 {{-- <a href="#" wire:click.prevent="addToCart({{$p->id}})" class="btn-product btn-cart" title="ajout panier"><span>Ajouter au panier</span></a> --}}
                                                 <a  href="produit/{{$p->id}}" class="btn-product" title="voir plus"><i class="la la-eye"></i><span>Voir plus</span></a>
@@ -155,10 +152,20 @@
                                             </div><!-- End .product-price -->
                                             <div class="ratings-container">
                                                 <div class="ratings">
-                                                    <div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
+                                                    <div class="mt-1">Pays: <a href="produit/{{$p->id}}" class="badge badge-success text-center">{{$p->acheminement->pays}}</a></div>
+                                                    <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
                                                 </div><!-- End .ratings -->
                                                 {{-- <span class="ratings-text">( 4 Reviews )</span> --}}
                                             </div><!-- End .rating-container -->
+                                            <div class="product-nav product-nav-thumbs">
+                                                @if($p->images)
+                                                    @foreach($p->images as $img)
+                                                        <a href="produit/{{$p->id}}">
+                                                            <img src="{{asset('storage/images/'.$img->nom)}}" alt="image galerie">
+                                                        </a>
+                                                    @endforeach
+                                                @endif
+                                            </div><!-- End .product-nav -->
                                         </div><!-- End .product-body -->
                                     </div><!-- End .product -->
                                 </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
