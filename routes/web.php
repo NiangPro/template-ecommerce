@@ -21,6 +21,7 @@ use App\Http\Livewire\Partenaires;
 use App\Http\Livewire\Products;
 use App\Http\Livewire\Profil;
 use App\Http\Livewire\Affiche;
+use App\Http\Livewire\OutProducts;
 use App\Http\Livewire\SingleProduct;
 use App\Http\Livewire\Tags;
 use App\Http\Livewire\Visiteurs;
@@ -65,6 +66,7 @@ Route::get("affiches", Affiche::class)->name("affiche");
 Route::get("livraisons", Livraisons::class)->name("livraison");
 Route::get("mon-profil", Profil::class)->name("profil");
 Route::get("general", General::class)->name("general");
+Route::get("produits_exterieurs", OutProducts::class)->name("outproduct");
 Route::get("produit/{id}", SingleProduct::class)->name("singleProduct");
 Route::get("archive-produit/{slug}-{id}", ArchiveProduct::class)->name("archiveProduct");
 

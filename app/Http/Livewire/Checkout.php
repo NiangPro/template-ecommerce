@@ -64,16 +64,16 @@ class Checkout extends Component
     public function payer()
     {
         
-        // $response = $this->payTech->send($this->item_price);
+        $response = $this->payTech->send($this->item_price);
 
-        // $success = $response["success"];
-        // $errors = $response["errors"];
+        $success = $response["success"];
+        $errors = $response["errors"];
 
-        // if (count($errors) > 0) {
-        //     $this->dispatchBrowserEvent('display-errors', [
-        //         'errors' => $errors,
-        //     ]);
-        // }else{
+        if (count($errors) > 0) {
+            $this->dispatchBrowserEvent('display-errors', [
+                'errors' => $errors,
+            ]);
+        }else{
             
             $order = new Order([
                 'user_id' => auth()->user()->id,
@@ -94,7 +94,7 @@ class Checkout extends Component
             }
 
             $this->dispatchBrowserEvent("successOrder");
-        // }
+        }
     }
 
     public function render()
@@ -117,7 +117,7 @@ class Checkout extends Component
 
         $this->initProducts();
         return view('livewire.frontend.checkout', [
-            "achms" => Acheminement::orderBy("nom", "ASC")->get(),
+            "achms" => Acheminement::orderBy("pays", "ASC")->get(),
             "livraisons" => Livraison::orderBy("lieu", "ASC")->get()
         ])->layout("layouts.app", [
             "prodsCart" => $this->prodsCart,

@@ -41,8 +41,8 @@
                         <th>Quantité</th>
                         <th>Prix</th>
                         <th>Tags</th>
-                        <th>Poids</th>
-                        <th>ACtions</th>
+                        <th>Type</th>
+                        <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,7 +58,7 @@
                                     <span class="badge bg-info">{{$t->nom}}</span>
                                 @endforeach
                             </td>
-                            <td>{{$p->poids}} Kg</td>
+                            <td>@if($p->type == 0) Local @else Extérieur @endif</td>
                             <td class="text-right">
                                 <button wire:click="editer({{$p->id}})" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></button>
                                 @if(!$p->publicite)
@@ -136,6 +136,15 @@
         iziToast.error({
         title: 'Produit',
         message: 'La reduction doit être inférieur au prix',
+        position: 'topRight'
+        });
+
+    });
+
+    window.addEventListener('noPays', event =>{
+        iziToast.error({
+        title: 'Produit',
+        message: 'Le champs pays est obligatoire pour les produits exterieurs',
         position: 'topRight'
         });
 

@@ -261,7 +261,7 @@
                                 </div><!-- End .row -->
                             </div><!-- End .megamenu megamenu-sm -->
                         </li>
-                        <li><a href="{{route('login')}}" >Mon compte</a></li>
+                        <li><a href="{{route('outproduct')}}" >Produits Extérieurs</a></li>
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->
             </div><!-- End .header-center -->

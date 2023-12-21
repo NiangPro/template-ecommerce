@@ -37,16 +37,36 @@
                 <input type="number" min="0" step="0.01" placeholder="Entrer le poids du produit" class="form-control @error('form.poids') is-invalid @enderror" wire:model="form.poids">
                 @error('form.poids') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
-            <div class="form-group mb-4 col-md-4">
+            <div class="form-group mb-4 col-md-6">
                 <label for="">Description <span class="text-danger">*</span></label>
                 <textarea placeholder="Entrer la description du produit" class="form-control @error('form.description') is-invalid @enderror" wire:model="form.description"></textarea>
                 @error('form.description') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
-            <div class="form-group mb-4 col-md-4">
+            <div class="form-group mb-4 col-md-6">
                 <label for="">Infos supplementaires</label>
                 <textarea placeholder="Entrer la description du produit" class="form-control @error('form.supplementaire') is-invalid @enderror" wire:model="form.supplementaire"></textarea>
                 @error('form.supplementaire') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
+            <div class="form-group mb-4 col-md-4">
+                <label for="">Type de Produit <span class="text-danger">*</span></label>
+                <select class="form-control" wire:model="form.type"  wire:change="afficherPays">
+                    <option value="0">Local</option>
+                    <option value="1">Extérieur</option>
+                </select>
+                @error('form.type') <span class="error text-danger">{{$message}}</span> @enderror
+            </div>
+            @if($showPays == 1)
+            <div class="form-group mb-4 col-md-4">
+                <label for="">Pays <span class="text-danger">*</span></label>
+                <select class="form-control" wire:model="form.category_id">
+                    <option value="">Veuillez selectionner un pays</option>
+                    @foreach ($pays as $c)
+                        <option value="{{$c->id}}"> {{$c->pays}}</option>
+                    @endforeach
+                </select>
+                @error('form.category_id') <span class="error text-danger">{{$message}}</span> @enderror
+            </div>
+            @endif
             <div class="form-group mb-4 col-md-4">
                 <label for="">Tags</label> <br>
                 <select wire:model="form.tags" multiple class="form-control">

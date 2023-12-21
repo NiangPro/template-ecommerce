@@ -22,7 +22,9 @@ class Product extends Model
         "reduction",
         "supplementaire",
         "image",
-        "category_id"
+        "type",
+        "category_id",
+        "acheminement_id"
     ];
 
     public function souhait()
@@ -38,6 +40,11 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, "category_id");
+    }
+
+    public function acheminement()
+    {
+        return $this->belongsTo(Acheminement::class, "acheminement_id");
     }
 
     public function publicite()

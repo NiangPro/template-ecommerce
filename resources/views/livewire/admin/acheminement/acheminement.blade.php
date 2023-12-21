@@ -35,18 +35,22 @@
                 <table id="example" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Nom</th>
-                            <th>Nombre de jours</th>
-                            <th>Prix d'un Kg</th>
+                            <th>Pays</th>
+                            <th>Prix Bâteau</th>
+                            <th>Jours par Bâteau</th>
+                            <th>Prix Avion</th>
+                            <th>Jours par Avion</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($aches as $c)
                             <tr >
-                                <td class="h5">{{$c->nom}}</td>
-                                <td>{{$c->nbrejour}} jour(s)</td>
-                                <td>{{$c->prix}} FCFA</td>
+                                <td class="h5">{{$c->pays}}</td>
+                                <td>{{$c->prix_bateau}} FCFA</td>
+                                <td>{{$c->nbrejour_bateau}} jours</td>
+                                <td>{{$c->prix_avion}} FCFA</td>
+                                <td>{{$c->nbrejour_avion}} jours</td>
                                 <td>
                                     <button class="btn btn-outline-info btn-sm radius-30" wire:click="editer({{$c->id}})"><i class="bx bx-show"></i></button>
                                     <button class="btn btn-outline-danger btn-sm radius-30" wire:click="readyForDelete({{$c->id}})" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bx bx-trash"></i></button>

@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Acheminement as ModelsAcheminement;
 use App\Models\Shop;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Acheminement extends Component
@@ -15,20 +14,20 @@ class Acheminement extends Component
     public $title = "La liste des modes d'acheminement";
 
     public $form = [
-        "nom" => "",
+        "pays" => "",
         "id" => null,
-        "nbrejour"=>0,
-        "prix"=>0,
+        "nbrejour_bateau"=>0,
+        "prix_bateau"=>0,
+        "nbrejour_avion"=>0,
+        "prix_avion"=>0,
     ];
 
     protected $rules = [
-        "form.nom" => "required",
-        "form.nbrejour" => "required",
+        "form.pays" => "required",
     ];
 
     protected $messages = [
-        "form.nom.required" => "Le nom est obligatoire",
-        "form.nbrejour.required" => "Le nombre de jour est obligatoire",
+        "form.pays.required" => "Le pays est obligatoire",
     ];
 
     public function changeType($type)
@@ -48,10 +47,12 @@ class Acheminement extends Component
     {
         $c = ModelsAcheminement::where("id", $id)->first();
 
-        $this->form["nom"] = $c->nom;
+        $this->form["pays"] = $c->pays;
         $this->form["id"] = $c->id;
-        $this->form["nbrejour"] = $c->nbrejour;
-        $this->form["prix"] = $c->prix;
+        $this->form["nbrejour_avion"] = $c->nbrejour_avion;
+        $this->form["prix_avion"] = $c->prix_avion;
+        $this->form["nbrejour_bateau"] = $c->nbrejour_bateau;
+        $this->form["prix_bateau"] = $c->prix_bateau;
 
         $this->changeType("edit");
     }
@@ -79,9 +80,11 @@ class Acheminement extends Component
         if ($this->form["id"]) {
             $cat = ModelsAcheminement::where("id", $this->form["id"])->first();
 
-            $cat->nom = ucfirst($this->form["nom"]);
-            $cat->nbrejour = $this->form["nbrejour"];
-            $cat->prix = $this->form["prix"];
+            $cat->pays = ucfirst($this->form["pays"]);
+            $cat->nbrejour_avion = $this->form["nbrejour_avion"];
+            $cat->prix_avion = $this->form["prix_avion"];
+            $cat->nbrejour_bateau = $this->form["nbrejour_bateau"];
+            $cat->prix_bateau = $this->form["prix_bateau"];
 
 
             $cat->save();
@@ -90,9 +93,11 @@ class Acheminement extends Component
         }else{
 
             ModelsAcheminement::create([
-                "nom" => ucfirst($this->form["nom"]) ,
-                "nbrejour" => $this->form["nbrejour"],
-                "prix" => $this->form["prix"],
+                "pays" => ucfirst($this->form["pays"]) ,
+                "nbrejour_bateau" => $this->form["nbrejour_bateau"],
+                "prix_bateau" => $this->form["prix_bateau"],
+                "nbrejour_avion" => $this->form["nbrejour_avion"],
+                "prix_avion" => $this->form["prix_avion"],
             ]);
     
             $this->dispatchBrowserEvent("addAcheminement");
@@ -104,7 +109,7 @@ class Acheminement extends Component
     public function render()
     {
         return view('livewire.admin.acheminement.acheminement',[
-            "aches" => ModelsAcheminement::orderBy("nom", "ASC")->get()
+            "aches" => ModelsAcheminement::orderBy("pays", "ASC")->get()
         ])->layout("layouts.dashboard",[
             "shop" => Shop::first()
         ]);
@@ -113,9 +118,11 @@ class Acheminement extends Component
     protected function initForm()
     {
         $this->form["id"] = null;
-        $this->form["nom"] = "";
-        $this->form["nbrejour"] = 0;
-        $this->form["prix"] = 0;
+        $this->form["pays"] = "";
+        $this->form["nbrejour_bateau"] = 0;
+        $this->form["prix_bateau"] = 0;
+        $this->form["nbrejour_avion"] = 0;
+        $this->form["prix_avion"] = 0;
         $this->idDeleting = null;
     }
 

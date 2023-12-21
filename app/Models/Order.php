@@ -17,7 +17,9 @@ class Order extends Model
         "comments",
         "reference",
         "statut",
-        "user_id"
+        "user_id",
+        "acheminement_id",
+        "prix_acheminement",
     ];
 
     public function user()

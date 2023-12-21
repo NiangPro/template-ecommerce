@@ -94,7 +94,8 @@ class PayTech extends Model
             'ref_command' => "effffsffff",
             'env' => ($this->testMode) ? 'test' : 'prod',
             'currency' => $this->currency,
-            'ipn_url' => PayTech::arrayGet($this->notificationUrl, 'ipn_url'),
+            // 'ipn_url' => PayTech::arrayGet($this->notificationUrl, 'ipn_url'),
+            'ipn_url' => PayTech::arrayGet($this->notificationUrl, 'http://127.0.0.1:8000/paiements'),
             'success_url' => $this->isMobile ? $this::MOBILE_SUCCESS_URL : PayTech::arrayGet($this->notificationUrl, 'success_url'),
             'cancel_url' => $this->isMobile ? $this::MOBILE_CANCEL_URL : PayTech::arrayGet($this->notificationUrl, 'cancel_url'),
             'custom_field' => json_encode($this->customeField)

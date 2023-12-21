@@ -17,7 +17,10 @@ return new class extends Migration
             $table->bigIncrements("id");
             $table->decimal('total_amount', 10, 2);
             $table->integer('statut')->default(0);
-            $table->decimal('shipping', 8, 2)->nullable();
+            $table->decimal('shipping', 8, 2)->default(0);
+            $table->unsignedBigInteger("acheminement_id")->nullable();
+            $table->foreign("acheminement_id")->references("id")->on("acheminements")->onDelete("cascade");
+            $table->unsignedDouble("prix_acheminement")->default(0);
             $table->text('comments')->nullable();
             $table->string('reference')->nullable();
             $table->unsignedBigInteger('user_id');

@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Acheminement;
 use App\Models\Category;
 use App\Models\Galerie;
 use App\Models\Product;
 use App\Models\Publicite;
 use App\Models\Shop;
 use App\Models\Tag;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -23,14 +23,17 @@ class Products extends Component
     public $imgGalerie = [];
     public $idDeleting = null;
     public $idproductGal;
+    public $showPays = 0;
     public $form = [
         "nom",
         "id" => null,
         "category_id"=> null, 
+        "acheminement_id"=> null, 
         "description",
         "prix" => 0,
         "qte" => 0,
         "poids" => 0,
+        "type" => 0,
         "reduction" => 0,
         "image" => null,
         "tags" => [],
@@ -63,6 +66,9 @@ class Products extends Component
         "form.image.image" => "Veuillez selectionner une image",
     ];
 
+    public function afficherPays(){
+        $this->showPays = $this->form["type"] == 0 ? 0: 1;
+    }
     public function removeGalerie($idGalerie){
         $g = Galerie::where("id", $idGalerie)->first();
 
@@ -125,7 +131,9 @@ class Products extends Component
         $this->form["supplementaire"] = $c->supplementaire;;
         $this->form["qte"] = $c->qte;
         $this->form["category_id"] = $c->category_id;
+        $this->form["acheminement_id"] = $c->acheminement_id;
         $this->form["prix"] = $c->prix;
+        $this->form["type"] = $c->type;
         $this->form["reduction"] = $c->reduction;
         $this->form["tags"] = $c->tags->pluck('id')->toArray();
         $this->imgEditing = $c->image;
@@ -147,6 +155,8 @@ class Products extends Component
 
             if($this->form["reduction"] >= $this->form["prix"]){
                 $this->dispatchBrowserEvent("overReduction");
+            }else if($this->form["type"] == 1 && $this->form["acheminement_id"] ==""){
+                $this->dispatchBrowserEvent("noPays");
             }else{
                 $p = Product::where("id", $this->form["id"])->first();
 
@@ -156,6 +166,8 @@ class Products extends Component
                 $p->prix = $this->form["prix"];
                 $p->qte = $this->form["qte"];
                 $p->poids = $this->form["poids"];
+                $p->type = $this->form["type"];
+                $p->acheminement_id = $this->form["acheminement_id"];
                 $p->reduction = $this->form["reduction"];
                 $p->supplementaire = $this->form["supplementaire"];
 
@@ -189,6 +201,8 @@ class Products extends Component
             $this->validate();
             if($this->form["reduction"] >= $this->form["prix"]){
                 $this->dispatchBrowserEvent("overReduction");
+            }else if($this->form["type"] == 1 && $this->form["acheminement_id"] ==""){
+                $this->dispatchBrowserEvent("noPays");
             }else{
                 $img_name = uniqid().".jpg";
 
@@ -200,7 +214,8 @@ class Products extends Component
                 $p->description = $this->form["description"];
                 $p->prix = $this->form["prix"];
                 $p->qte = $this->form["qte"];
-                $p->poids = $this->form["poids"];
+                $p->type = $this->form["type"];
+                $p->acheminement_id = $this->form["acheminement_id"];
                 $p->reduction = $this->form["reduction"];
                 $p->category_id = $this->form["category_id"];
                 $p->image = $img_name;
@@ -223,6 +238,7 @@ class Products extends Component
         return view('livewire.admin.produit.products', [
             'categories' => Category::orderBy("nom", "ASC")->get(),
             'tags' => Tag::all(),
+            'pays' => Acheminement::orderBy("pays", "ASC")->get(),
             "produits" => Product::orderBy("id", "DESC")->get()
         ])->layout("layouts.dashboard",[
             "shop" => Shop::first()

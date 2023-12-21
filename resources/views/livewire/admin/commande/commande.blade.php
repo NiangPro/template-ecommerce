@@ -40,6 +40,7 @@
                     <thead class="table-light">
                         <tr>
                         <th>Reference</th>
+                        <th>Date</th>
                         <th>Client</th>
                         <th>Livraison</th>
                         <th>Montant Total</th>
@@ -51,6 +52,7 @@
                         @foreach ($orders as $o)
                         <tr>
                             <td>{{$o->reference}}</td>
+                            <td>{{ date("d/m/Y", strtotime($o->created_at))}}</td>
                             <td>{{$o->user->prenom}} {{$o->user->nom}}</td>
                             <td>{{$o->shipping}} F CFA</td>
                             <td>{{$o->total_amount}} F CFA</td>
