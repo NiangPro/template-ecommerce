@@ -22,9 +22,12 @@ return new class extends Migration
             $table->double("qte");
             $table->double("poids")->default(0);
             $table->string("image")->nullable();
+            $table->integer("type")->default(0);
             $table->double("reduction")->nullable();
             $table->unsignedBigInteger("category_id");
             $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");
+            $table->unsignedBigInteger("acheminement_id")->nullable();
+            $table->foreign("acheminement_id")->references("id")->on("acheminements")->onDelete("cascade");
             $table->timestamps();
         });
     }

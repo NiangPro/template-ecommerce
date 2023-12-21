@@ -12,8 +12,15 @@ class Acheminement extends Model
     protected $table = "acheminements";
 
     protected $fillable = [
-        "nom",
-        "nbrejour",
-        "prix",
+        "pays",
+        "nbrejour_avion",
+        "nbrejour_bateau",
+        "prix_avion",
+        "prix_bateau",
     ];
+
+    public function produits()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

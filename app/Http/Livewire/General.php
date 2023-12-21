@@ -6,9 +6,12 @@ use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class General extends Component
 {
+    use WithFileUploads;
+
     public $image;
     public $form = [
         "nom" => "",

@@ -243,7 +243,7 @@
                                         <div class="banner banner-overlay">
                                             @foreach($menupubs as $key=>$p)
                                                 @if($key == 1)
-                                                    <a href="produit/{{$p->product->id}}">
+                                                    <a href="{{route('singleProduct', ["id" => $p->product->id])}}">
                                                         <img src="{{asset('storage/images/'.$p->product->image)}}" alt="Banner">
 
                                                         <div class="banner-content banner-content-bottom">
@@ -261,7 +261,7 @@
                                 </div><!-- End .row -->
                             </div><!-- End .megamenu megamenu-sm -->
                         </li>
-                        <li><a href="{{route('login')}}" >Mon compte</a></li>
+                        <li><a href="{{route('outproduct')}}" >Produits Extérieurs</a></li>
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->
             </div><!-- End .header-center -->

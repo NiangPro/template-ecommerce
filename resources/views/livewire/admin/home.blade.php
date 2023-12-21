@@ -152,7 +152,7 @@
                     <thead class="table-light">
                         <tr>
                         <th>Reference</th>
-                        <th>Produits</th>
+                        <th>Etat</th>
                         <th>Client</th>
                         <th>Livraison</th>
                         <th>Montant Total</th>
@@ -163,9 +163,13 @@
                         <tr>
                             <td>{{$o->reference}}</td>
                             <td>
-                                @foreach ($o->products as $p)
-                                    <span><img src="storage/images/{{$p->image}}" class="product-img-2" alt="{{$p->nom}}"> {{$p->nom}}</span><br>
-                                @endforeach
+                                @if($o->statut == 0)
+                                    <span class="badge bg-info">En attente</span>
+                                @elseif($o->statut == 1)
+                                    <span class="badge bg-success">Acceptée</span>
+                                @else
+                                    <span class="badge bg-danger">Rejetée</span>
+                                @endif
                             </td>
                             <td>{{$o->user->prenom}} {{$o->user->nom}}</td>
                             <td>{{$o->shipping}} F CFA</td>

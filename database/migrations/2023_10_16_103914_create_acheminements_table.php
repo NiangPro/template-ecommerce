@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('acheminements', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string("nom");
-            $table->unsignedInteger("nbrejour")->default(0);
-            $table->unsignedDouble("prix")->default(0);
+            $table->string("pays");
+            $table->unsignedInteger("nbrejour_bateau")->default(0);
+            $table->unsignedInteger("nbrejour_avion")->default(0);
+            $table->unsignedDouble("prix_bateau")->default(0);
+            $table->unsignedDouble("prix_avion")->default(0);
             $table->timestamps();
         });
     }
