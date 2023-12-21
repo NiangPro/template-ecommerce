@@ -19,14 +19,14 @@ use Livewire\Component;
 class Checkout extends Component
 {
     public $products;
-    public $comments;
     public $payTech;
-    public $subTotal;
     public $prodsCart;
+    public $subTotal;
     public $montantTransport = 0;
-    public $etatTransport;
     public $item_price;
+    public $etatTransport;
     public $favoris = null;
+    public $comments;
     public $form = [
         "id" => null,
         "nom" => "",
@@ -64,16 +64,16 @@ class Checkout extends Component
     public function payer()
     {
         
-        $response = $this->payTech->send($this->item_price);
+        // $response = $this->payTech->send($this->item_price);
 
-        $success = $response["success"];
-        $errors = $response["errors"];
+        // $success = $response["success"];
+        // $errors = $response["errors"];
 
-        if (count($errors) > 0) {
-            $this->dispatchBrowserEvent('display-errors', [
-                'errors' => $errors,
-            ]);
-        }else{
+        // if (count($errors) > 0) {
+        //     $this->dispatchBrowserEvent('display-errors', [
+        //         'errors' => $errors,
+        //     ]);
+        // }else{
             
             $order = new Order([
                 'user_id' => auth()->user()->id,
@@ -91,10 +91,13 @@ class Checkout extends Component
                 $p = Product::where("id", $cart->product->id)->first();
                 $p->qte = $p->qte - $cart->qte;
                 $p->save();
+
+                $c = Cart::where("id", $cart->id)->first();
+                $c->delete();
             }
 
             $this->dispatchBrowserEvent("successOrder");
-        }
+        // }
     }
 
     public function render()

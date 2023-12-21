@@ -101,7 +101,8 @@ class PayTech extends Model
             'custom_field' => json_encode($this->customeField)
         ];
 
-        $rawResponse = PayTech::post($this::URL . $this::PAYMENT_REQUEST_PATH, $params, [
+        // $rawResponse = PayTech::post($this::URL . $this::PAYMENT_REQUEST_PATH, $params, [
+            $rawResponse = PayTech::post('https://paytech.sn/api/payment/request-payment', $params, [
             "API_KEY: {$this->apiKey}",
             "API_SECRET: {$this->apiSecret}"
         ]);
