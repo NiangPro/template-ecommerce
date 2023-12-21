@@ -39,7 +39,6 @@
                                     <p>Bienvenue <span class="font-weight-normal text-dark">{{Auth::user()->pseudo}}</span>
                                     <br>
                                     À partir du tableau de bord de votre compte, vous pouvez consulter vos <a href="#tab-orders" class="tab-trigger-link link-underline">commandes récentes</a>, <a href="#tab-account" class="tab-trigger-link">Modifier votre mot de passe et les details de votre compte</a>.</p>
-                                    <p>The following addresses will be used on the checkout page by default.</p>
 
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -121,8 +120,7 @@
                                             
                                             @endforeach
                                         </tbody>
-                                    </table><!-- End .table table-wishlist -->
-                                    {{-- <a href="category.html" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a> --}}
+                                    </table>
                                     @endif
                                 </div><!-- .End .tab-pane -->
 
