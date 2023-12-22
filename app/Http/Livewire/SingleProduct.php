@@ -26,6 +26,15 @@ class SingleProduct extends Component
             return false;
         }
     }
+
+    public function gotoCheckout()
+    {
+        if (Auth()->user()) {
+            redirect(route('singleCheckout', ["id" => $this->singleProduct->id, "qte"=>$this->qte]));
+        }else{
+            $this->dispatchBrowserEvent("noLogged");
+        }
+    }
     public function addToWishlist($product_id){
         if (Auth::user()) {
            $fav = Souhait::where("product_id", $product_id)->first();

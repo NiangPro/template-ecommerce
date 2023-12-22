@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\MailClient;
 use App\Models\Acheminement;
 use App\Models\Cart;
 use App\Models\Category;
@@ -14,6 +15,7 @@ use App\Models\Shop;
 use App\Models\Souhait;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Checkout extends Component
@@ -95,7 +97,12 @@ class Checkout extends Component
                 $c = Cart::where("id", $cart->id)->first();
                 $c->delete();
             }
+            $mailData = [
+                "title" => "Message de SUNU MARKET BUSINESS",
+                "body" => "Votre commande a été validée",
+            ];
 
+            Mail::to(auth()->user()->email)->send(new MailClient($mailData));
             $this->dispatchBrowserEvent("successOrder");
         // }
     }

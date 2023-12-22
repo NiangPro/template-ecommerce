@@ -9,22 +9,22 @@
                 @error('form.pays') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-3 col-md-6">
-                <label for="">Prix du volume par bâteau</label>
+                <label for="">Prix d'un kg pour bâteau</label>
                 <input type="number" min="1" placeholder="Entrer le prix du volume par bâteau" class="form-control @error('form.prix_bateau') is-invalid @enderror" wire:model="form.prix_bateau">
                 @error('form.prix_bateau') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-3 col-md-6">
-                <label for="">Nombre de jours par bâteau</label>
+                <label for="">Nombre de jours pour bâteau</label>
                 <input type="number" min="1" placeholder="Entrer le nombre de jours par bâteau" class="form-control @error('form.nbrejour_bateau') is-invalid @enderror" wire:model="form.nbrejour_bateau">
                 @error('form.nbrejour_bateau') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-3 col-md-6">
-                <label for="">Prix du volume par avion</label>
+                <label for="">Prix d'un kg pour avion</label>
                 <input type="number" min="1" placeholder="Entrer le prix du volume par avion" class="form-control @error('form.prix_avion') is-invalid @enderror" wire:model="form.prix_avion">
                 @error('form.prix_avion') <span class="error text-danger">{{$message}}</span> @enderror
             </div>
             <div class="form-group mb-3 col-md-6">
-                <label for="">Nombre de jours par avion</label>
+                <label for="">Nombre de jours pour avion</label>
                 <input type="number" min="1" placeholder="Entrer le nombre de jours par avion" class="form-control @error('form.nbrejour_avion') is-invalid @enderror" wire:model="form.nbrejour_avion">
                 @error('form.nbrejour_avion') <span class="error text-danger">{{$message}}</span> @enderror
             </div>

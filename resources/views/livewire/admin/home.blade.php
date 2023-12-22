@@ -58,7 +58,7 @@
         </div>
     </div><!--end row-->
 
-    <div class="row">
+    <!--<div class="row">
        <div class="col-12 col-lg-8">
           <div class="card radius-10">
             <div class="card-header">
@@ -121,15 +121,65 @@
                </div>
            </div>
        </div>
-    </div><!--end row-->
+    </div>--><!--end row-->
     
+    @if(count($ordersAch) > 0)
+    <div class="card radius-10">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <div>
+                    <h6 class="mb-0">Dernières commandes des produits externes</h6>
+                </div>
+                <div class="dropdown ms-auto">
+                    <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                        <th>Reference</th>
+                        <th>Etat</th>
+                        <th>Client</th>
+                        <th>Pays d'origine</th>
+                        <th>Livraison</th>
+                        <th>Montant Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($ordersAch as $o)
+                        <tr>
+                            <td>{{$o->reference}}</td>
+                            <td>
+                                @if($o->statut == 0)
+                                    <span class="badge bg-info">En attente</span>
+                                @elseif($o->statut == 1)
+                                    <span class="badge bg-success">Acceptée</span>
+                                @else
+                                    <span class="badge bg-danger">Rejetée</span>
+                                @endif
+                            </td>
+                            <td>{{$o->user->prenom}} {{$o->user->nom}}</td>
+                            <td>{{$o->products[0]->acheminement->pays}}</td>
+                            <td>{{$o->shipping}} F CFA</td>
+                            <td>{{$o->total_amount}} F CFA</td>
+                            
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @endif
 
     @if(count($orders) > 0)
     <div class="card radius-10">
         <div class="card-body">
             <div class="d-flex align-items-center">
                 <div>
-                    <h6 class="mb-0">Dernières commandes</h6>
+                    <h6 class="mb-0">Dernières commandes des produits locaux</h6>
                 </div>
                 <div class="dropdown ms-auto">
                     <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>

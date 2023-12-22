@@ -76,12 +76,17 @@
                                                 <div class="product-details-quantity">
                                                     <input type="number" wire:model="qte" class="form-control" min="1"  step="1" data-decimals="0" required>
                                                 </div><!-- End .product-details-quantity -->
-
+                                                @if($product->type == 0)
                                                 <button class="btn-product btn-cart btn btn-warning btn" wire:click.prevent="addToCart"><span>ajouter au panier</span></button>
+                                                @else
+                                                <button class="btn-product btn-cart btn btn-warning btn" wire:click="gotoCheckout"><span>Commander</span></button>
+                                                @endif
                                             </div><!-- End .details-action-col -->
 
                                             <div class="details-action-wrapper">
+                                                @if($product->type == 0)
                                                 <a href="#" wire:click.prevent="addToWishlist({{$product->id}})" class="btn-product btn-compare" title="Compare"><span>ajouter au favoris</span></a>
+                                                @endif
                                             </div><!-- End .details-action-wrapper -->
                                         </div><!-- End .product-details-action -->
 
