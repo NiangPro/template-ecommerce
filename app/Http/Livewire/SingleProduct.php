@@ -90,7 +90,7 @@ class SingleProduct extends Component
         }
         
         return view('livewire.frontend.single-product',[
-            "product" => Product::where("id", $this->idProduit)->where("type", 0)->first(),
+            "product" => Product::where("id", $this->idProduit)->first(),
             "produits" => Product::orderBy("id", "DESC")->where("category_id", $this->singleProduct->category_id)->where("type", 0)->limit(4)->get(),
         ])->layout("layouts.app", [
             "prodsCart" => $prodsCart,
@@ -106,6 +106,6 @@ class SingleProduct extends Component
     public function mount($id)
     {
         $this->idProduit = $id;
-        $this->singleProduct = Product::where("id", $this->idProduit)->where("type", 0)->first();
+        $this->singleProduct = Product::where("id", $this->idProduit)->first();
     }
 }
