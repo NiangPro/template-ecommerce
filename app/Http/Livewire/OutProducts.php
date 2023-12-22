@@ -17,6 +17,7 @@ class OutProducts extends Component
     public $prodsCart;
     public $favoris;
     public $acheminements;
+    public $outprods;
     public $filters = [
         'pays' => [],
     ];
@@ -45,12 +46,9 @@ class OutProducts extends Component
             }
 
             $this->favoris = Souhait::where("user_id", Auth::user()->id)->get();
-
-            // $test = Acheminement::all();
-            // foreach($test as $t){
-            //     dd($t->produits);
-            // }
-            
+            $this->outprods = Acheminement::all();
+            // $prodPaginate = $this->outprods->produits();
+            // first()->sites()->paginate(10);
         }
         
         return view('livewire.frontend.out-products',[
