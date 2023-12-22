@@ -97,12 +97,12 @@ class Checkout extends Component
                 $c = Cart::where("id", $cart->id)->first();
                 $c->delete();
             }
-            $mailData = [
-                "title" => "Message de SUNU MARKET BUSINESS",
-                "body" => "Votre commande a été validée",
-            ];
+            // $mailData = [
+            //     "title" => "Message de SUNU MARKET BUSINESS",
+            //     "body" => "Votre commande a été validée",
+            // ];
 
-            Mail::to(auth()->user()->email)->send(new MailClient($mailData));
+            // Mail::to(auth()->user()->email)->send(new MailClient($mailData));
             $this->dispatchBrowserEvent("successOrder");
         // }
     }
